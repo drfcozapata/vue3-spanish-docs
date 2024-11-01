@@ -185,7 +185,7 @@ Implementing list virtualization isn't easy, luckily there are existing communit
 - [vue-virtual-scroll-grid](https://github.com/rocwang/vue-virtual-scroll-grid)
 - [vueuc/VVirtualList](https://github.com/07akioni/vueuc)
 
-### Reduce Reactivity Overhead for Large Immutable Structures {#reduce-reactivity-overhead-for-large-immutable-structures}
+### Reducir la Sobrecarga de Reactividad para Grandes Estructuras Inmutables {#reduce-reactivity-overhead-for-large-immutable-structures}
 
 Vue's reactivity system is deep by default. While this makes state management intuitive, it does create a certain level of overhead when the data size is large, because every property access triggers proxy traps that perform dependency tracking. This typically becomes noticeable when dealing with large arrays of deeply nested objects, where a single render needs to access 100,000+ properties, so it should only affect very specific use cases.
 
