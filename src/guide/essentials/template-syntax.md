@@ -42,7 +42,7 @@ El contenido de `span` será reemplazado con el valor de la propiedad `rawHtml`,
 El HTML arbitrario renderizado dinámicamente en tu sitio web puede ser muy peligroso porque puede conducir fácilmente a [vulnerabilidades XSS](https://es.wikipedia.org/wiki/Cross-site_scripting). Utiliza `v-html` solo en contenido confiable y **nunca** en contenido proporcionado por el usuario.
 :::
 
-## Vinculación de Atributos {#attribute-bindings}
+## Vincular Atributos {#attribute-bindings}
 
 Los mostachos no se pueden usar dentro de los atributos HTML. En su lugar, utiliza una directiva [`v-bind`](/api/built-in-directives#v-bind):
 

@@ -181,7 +181,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/computed'
         },
         {
-          text: 'Vinculación de Clases y Estilos',
+          text: 'Vincular Clases y Estilos',
           link: '/guide/essentials/class-and-style'
         },
         {
@@ -194,7 +194,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/event-handling'
         },
         {
-          text: 'Vinculación de Entradas de Formularios',
+          text: 'Vincular Entradas de Formularios',
           link: '/guide/essentials/forms'
         },
         {
@@ -482,7 +482,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/examples/#handling-input'
         },
         {
-          text: 'Vinculación de Atributos',
+          text: 'Vincular Atributos',
           link: '/examples/#attribute-bindings'
         },
         {
@@ -490,7 +490,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/examples/#conditionals-and-loops'
         },
         {
-          text: 'Vinculación de Formularios',
+          text: 'Vincular Formularios',
           link: '/examples/#form-bindings'
         },
         {
