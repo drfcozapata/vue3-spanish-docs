@@ -1,8 +1,8 @@
-# Composition API: <br>Dependency Injection {#composition-api-dependency-injection}
+# Composition API: <br>Inyección de Dependencias {#composition-api-dependency-injection}
 
 ## provide() {#provide}
 
-Provides a value that can be injected by descendant components.
+Proporciona un valor que puede ser inyectado por componentes descendientes.
 
 - **Type**
 
@@ -10,15 +10,15 @@ Provides a value that can be injected by descendant components.
   function provide<T>(key: InjectionKey<T> | string, value: T): void
   ```
 
-- **Details**
+- **Detalles**
 
-  `provide()` takes two arguments: the key, which can be a string or a symbol, and the value to be injected.
+  `provide()` toma dos argumentos: la clave, que puede ser una cadena o un `symbol`, y el valor a inyectar.
 
-  When using TypeScript, the key can be a symbol casted as `InjectionKey` - a Vue provided utility type that extends `Symbol`, which can be used to sync the value type between `provide()` and `inject()`.
+  Cuando se usa TypeScript, la clave puede ser un `symbol` casteado como `InjectionKey` - un tipo de utilidad proporcionado por Vue que extiende `Symbol`, el cual puede ser usado para sincronizar el tipo de valor entre `provide()` e `inject()`.
 
-  Similar to lifecycle hook registration APIs, `provide()` must be called synchronously during a component's `setup()` phase.
+  Similar a las APIs de registro de `lifecycle hook`, `provide()` debe ser llamado de forma síncrona durante la fase `setup()` de un componente.
 
-- **Example**
+- **Ejemplo**
 
   ```vue
   <script setup>
@@ -37,13 +37,13 @@ Provides a value that can be injected by descendant components.
   </script>
   ```
 
-- **See also**
-  - [Guide - Provide / Inject](/guide/components/provide-inject)
-  - [Guide - Typing Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
+- **Ver también**
+  - [Guía - Provide / Inject](/guide/components/provide-inject)
+  - [Guía - Tipado de Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
 
 ## inject() {#inject}
 
-Injects a value provided by an ancestor component or the application (via `app.provide()`).
+Inyecta un valor proporcionado por un componente ancestro o la aplicación (a través de `app.provide()`).
 
 - **Type**
 
@@ -62,21 +62,21 @@ Injects a value provided by an ancestor component or the application (via `app.p
   ): T
   ```
 
-- **Details**
+- **Detalles**
 
-  The first argument is the injection key. Vue will walk up the parent chain to locate a provided value with a matching key. If multiple components in the parent chain provide the same key, the one closest to the injecting component will "shadow" those higher up the chain and its value will be used. If no value with matching key was found, `inject()` returns `undefined` unless a default value is provided.
+  El primer argumento es la clave de inyección. Vue recorrerá la cadena de padres para localizar un valor proporcionado con una clave coincidente. Si múltiples componentes en la cadena de padres proporcionan la misma clave, el más cercano al componente que inyecta "ensombrecerá" a los que estén más arriba en la cadena y se usará su valor. Si no se encontró ningún valor con una clave coincidente, `inject()` devuelve `undefined` a menos que se proporcione un valor por defecto.
 
-  The second argument is optional and is the default value to be used when no matching value was found.
+  El segundo argumento es opcional y es el valor por defecto a usar cuando no se encontró ningún valor coincidente.
 
-  The second argument can also be a factory function that returns values that are expensive to create. In this case, `true` must be passed as the third argument to indicate that the function should be used as a factory instead of the value itself.
+  El segundo argumento también puede ser una función `factory` que devuelve valores que son costosos de crear. En este caso, `true` debe pasarse como tercer argumento para indicar que la función debe usarse como `factory` en lugar del valor en sí.
 
-  Similar to lifecycle hook registration APIs, `inject()` must be called synchronously during a component's `setup()` phase.
+  Similar a las APIs de registro de `lifecycle hook`, `inject()` debe ser llamado de forma síncrona durante la fase `setup()` de un componente.
 
-  When using TypeScript, the key can be of type of `InjectionKey` - a Vue-provided utility type that extends `Symbol`, which can be used to sync the value type between `provide()` and `inject()`.
+  Cuando se usa TypeScript, la clave puede ser del tipo `InjectionKey` - un tipo de utilidad proporcionado por Vue que extiende `Symbol`, el cual puede ser usado para sincronizar el tipo de valor entre `provide()` e `inject()`.
 
-- **Example**
+- **Ejemplo**
 
-  Assuming a parent component has provided values as shown in the previous `provide()` example:
+  Asumiendo que un componente padre ha proporcionado valores como se muestra en el ejemplo `provide()` anterior:
 
   ```vue
   <script setup>
@@ -103,15 +103,15 @@ Injects a value provided by an ancestor component or the application (via `app.p
   </script>
   ```
   
-- **See also**
-  - [Guide - Provide / Inject](/guide/components/provide-inject)
-  - [Guide - Typing Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
+- **Ver también**
+  - [Guía - Provide / Inject](/guide/components/provide-inject)
+  - [Guía - Tipado de Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
 
 ## hasInjectionContext() {#has-injection-context}
 
-- Only supported in 3.3+
+- Solo compatible con 3.3+
 
-Returns true if [inject()](#inject) can be used without warning about being called in the wrong place (e.g. outside of `setup()`). This method is designed to be used by libraries that want to use `inject()` internally without triggering a warning to the end user.
+Devuelve `true` si [`inject()`](#inject) puede usarse sin advertencia por ser llamado en el lugar incorrecto (por ejemplo, fuera de `setup()`). Este método está diseñado para ser usado por librerías que quieren usar `inject()` internamente sin activar una advertencia para el usuario final.
 
 - **Type**
 

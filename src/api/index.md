@@ -1,8 +1,8 @@
----
-title: API Reference
+title: Referencia de la API
 sidebar: false
 page: true
 footer: false
+
 ---
 
 <script setup>

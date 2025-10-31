@@ -1,5 +1,5 @@
-## Description of Problem
+## Descripción del Problema
 
-## Proposed Solution
+## Solución Propuesta
 
-## Additional Information
+## Información Adicional

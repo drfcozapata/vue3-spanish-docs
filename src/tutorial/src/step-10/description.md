@@ -1,6 +1,6 @@
-# Watchers {#watchers}
+# Observadores {#watchers}
 
-Sometimes we may need to perform "side effects" reactively - for example, logging a number to the console when it changes. We can achieve this with watchers:
+A veces puede que necesitemos realizar "efectos secundarios" de forma reactiva, por ejemplo, registrar un número en la consola cuando cambie. Podemos lograr esto con observadores:
 
 <div class="composition-api">
 
@@ -15,7 +15,7 @@ watch(count, (newCount) => {
 })
 ```
 
-`watch()` can directly watch a ref, and the callback gets fired whenever `count`'s value changes. `watch()` can also watch other types of data sources - more details are covered in <a target="_blank" href="/guide/essentials/watchers.html">Guide - Watchers</a>.
+`watch()` puede observar directamente un `ref`, y la función de `callback` se ejecuta cada vez que el valor de `count` cambia. `watch()` también puede observar otros tipos de fuentes de datos; más detalles se cubren en <a target="_blank" href="/guide/essentials/watchers.html">Guía - Observadores</a>.
 
 </div>
 <div class="options-api">
@@ -36,8 +36,8 @@ export default {
 }
 ```
 
-Here, we are using the `watch` option to watch changes to the `count` property. The watch callback is called when `count` changes, and receives the new value as the argument. More details are covered in <a target="_blank" href="/guide/essentials/watchers.html">Guide - Watchers</a>.
+Aquí, estamos usando la opción `watch` para observar los cambios en la propiedad `count`. La función de `callback` de `watch` se llama cuando `count` cambia y recibe el nuevo valor como argumento. Más detalles se cubren en <a target="_blank" href="/guide/essentials/watchers.html">Guía - Observadores</a>.
 
 </div>
 
-A more practical example than logging to the console would be fetching new data when an ID changes. The code we have is fetching todos data from a mock API on component mount. There is also a button that increments the todo ID that should be fetched. Try to implement a watcher that fetches a new todo when the button is clicked.
+Un ejemplo más práctico que registrar en la consola sería la obtención de nuevos datos cuando un ID cambia. El código que tenemos está obteniendo datos de tareas (todos) de una API simulada en el montaje del componente. También hay un botón que incrementa el ID de la tarea a obtener. Intenta implementar un observador que obtenga una nueva tarea cuando se haga clic en el botón.

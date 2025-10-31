@@ -2,74 +2,74 @@
 outline: deep
 ---
 
-# Using Vue with TypeScript {#using-vue-with-typescript}
+# Usando Vue con TypeScript {#using-vue-with-typescript}
 
-A type system like TypeScript can detect many common errors via static analysis at build time. This reduces the chance of runtime errors in production, and also allows us to more confidently refactor code in large-scale applications. TypeScript also improves developer ergonomics via type-based auto-completion in IDEs.
+Un sistema de tipos como TypeScript puede detectar muchos errores comunes mediante análisis estático en tiempo de construcción. Esto reduce la probabilidad de errores en tiempo de ejecución en producción, y también nos permite refactorizar código con mayor confianza en aplicaciones de gran escala. TypeScript también mejora la ergonomía del desarrollador mediante la auto-completación basada en tipos en los IDEs.
 
-Vue is written in TypeScript itself and provides first-class TypeScript support. All official Vue packages come with bundled type declarations that should work out-of-the-box.
+Vue está escrito en TypeScript y proporciona soporte de primera clase para TypeScript. Todos los paquetes oficiales de Vue vienen con declaraciones de tipo incluidas que deberían funcionar de inmediato.
 
-## Project Setup {#project-setup}
+## Configuración del Proyecto {#project-setup}
 
-[`create-vue`](https://github.com/vuejs/create-vue), the official project scaffolding tool, offers the options to scaffold a [Vite](https://vitejs.dev/)-powered, TypeScript-ready Vue project.
+[`create-vue`](https://github.com/vuejs/create-vue), la herramienta oficial de scaffolding de proyectos, ofrece las opciones para configurar un proyecto Vue impulsado por [Vite](https://vitejs.dev/) y listo para TypeScript.
 
-### Overview {#overview}
+### Resumen {#overview}
 
-With a Vite-based setup, the dev server and the bundler are transpilation-only and do not perform any type-checking. This ensures the Vite dev server stays blazing fast even when using TypeScript.
+Con una configuración basada en Vite, el servidor de desarrollo y el empaquetador son solo de transpilación y no realizan ninguna verificación de tipos. Esto asegura que el servidor de desarrollo de Vite se mantenga increíblemente rápido incluso cuando se usa TypeScript.
 
-- During development, we recommend relying on a good [IDE setup](#ide-support) for instant feedback on type errors.
+- Durante el desarrollo, recomendamos depender de una buena [configuración de IDE](#ide-support) para obtener retroalimentación instantánea sobre errores de tipo.
 
-- If using SFCs, use the [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) utility for command line type checking and type declaration generation. `vue-tsc` is a wrapper around `tsc`, TypeScript's own command line interface. It works largely the same as `tsc` except that it supports Vue SFCs in addition to TypeScript files. You can run `vue-tsc` in watch mode in parallel to the Vite dev server, or use a Vite plugin like [vite-plugin-checker](https://vite-plugin-checker.netlify.app/) which runs the checks in a separate worker thread.
+- Si usas SFCs, utiliza la utilidad [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) para la verificación de tipos en línea de comandos y la generación de declaraciones de tipo. `vue-tsc` es un _wrapper_ para `tsc`, la interfaz de línea de comandos propia de TypeScript. Funciona en gran medida igual que `tsc` excepto que soporta SFCs de Vue además de archivos TypeScript. Puedes ejecutar `vue-tsc` en modo de observación (watch mode) en paralelo con el servidor de desarrollo de Vite, o usar un plugin de Vite como [vite-plugin-checker](https://vite-plugin-checker.netlify.app/) que ejecuta las verificaciones en un hilo de trabajo (worker thread) separado.
 
-- Vue CLI also provides TypeScript support, but is no longer recommended. See [notes below](#note-on-vue-cli-and-ts-loader).
+- Vue CLI también proporciona soporte para TypeScript, pero ya no se recomienda. Consulta las [notas a continuación](#note-on-vue-cli-and-ts-loader).
 
-### IDE Support {#ide-support}
+### Soporte para IDE {#ide-support}
 
-- [Visual Studio Code](https://code.visualstudio.com/) (VS Code) is strongly recommended for its great out-of-the-box support for TypeScript.
+- [Visual Studio Code](https://code.visualstudio.com/) (VS Code) es fuertemente recomendado por su excelente soporte inmediato para TypeScript.
 
-  - [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) is the official VS Code extension that provides TypeScript support inside Vue SFCs, along with many other great features.
+  - [Vue - Oficial](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (anteriormente Volar) es la extensión oficial de VS Code que proporciona soporte para TypeScript dentro de los SFCs de Vue, junto con muchas otras excelentes características.
 
-    :::tip
-    Vue - Official extension replaces [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur), our previous official VS Code extension for Vue 2. If you have Vetur currently installed, make sure to disable it in Vue 3 projects.
-    :::
+  :::tip
+  La extensión Vue - Oficial reemplaza a [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur), nuestra extensión oficial anterior de VS Code para Vue 2. Si tienes Vetur instalado actualmente, asegúrate de deshabilitarlo en proyectos de Vue 3.
+  :::
 
-- [WebStorm](https://www.jetbrains.com/webstorm/) also provides out-of-the-box support for both TypeScript and Vue. Other JetBrains IDEs support them too, either out of the box or via [a free plugin](https://plugins.jetbrains.com/plugin/9442-vue-js). As of version 2023.2, WebStorm and the Vue Plugin come with built-in support for the Vue Language Server. You can set the Vue service to use Volar integration on all TypeScript versions, under Settings > Languages & Frameworks > TypeScript > Vue. By default, Volar will be used for TypeScript versions 5.0 and higher.
+- [WebStorm](https://www.jetbrains.com/webstorm/) también proporciona soporte inmediato para TypeScript y Vue. Otros IDEs de JetBrains también los soportan, ya sea de inmediato o mediante [un plugin gratuito](https://plugins.jetbrains.com/plugin/9442-vue-js). A partir de la versión 2023.2, WebStorm y el plugin de Vue vienen con soporte integrado para el Vue Language Server. Puedes configurar el servicio de Vue para usar la integración de Volar en todas las versiones de TypeScript, en Ajustes > Lenguajes y Frameworks > TypeScript > Vue. Por defecto, Volar se utilizará para las versiones de TypeScript 5.0 y superiores.
 
-### Configuring `tsconfig.json` {#configuring-tsconfig-json}
+### Configuración de `tsconfig.json` {#configuring-tsconfig-json}
 
-Projects scaffolded via `create-vue` include pre-configured `tsconfig.json`. The base config is abstracted in the [`@vue/tsconfig`](https://github.com/vuejs/tsconfig) package. Inside the project, we use [Project References](https://www.typescriptlang.org/docs/handbook/project-references.html) to ensure correct types for code running in different environments (e.g. app code and test code should have different global variables).
+Los proyectos configurados mediante `create-vue` incluyen un `tsconfig.json` preconfigurado. La configuración base se abstrae en el paquete [`@vue/tsconfig`](https://github.com/vuejs/tsconfig). Dentro del proyecto, usamos [Project References](https://www.typescriptlang.org/docs/handbook/project-references.html) para asegurar tipos correctos para el código que se ejecuta en diferentes entornos (por ejemplo, el código de la aplicación y el código de prueba deberían tener diferentes variables globales).
 
-When configuring `tsconfig.json` manually, some notable options include:
+Al configurar `tsconfig.json` manualmente, algunas opciones notables incluyen:
 
-- [`compilerOptions.isolatedModules`](https://www.typescriptlang.org/tsconfig#isolatedModules) is set to `true` because Vite uses [esbuild](https://esbuild.github.io/) for transpiling TypeScript and is subject to single-file transpile limitations. [`compilerOptions.verbatimModuleSyntax`](https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax) is [a superset of `isolatedModules`](https://github.com/microsoft/TypeScript/issues/53601) and is a good choice, too - it's what [`@vue/tsconfig`](https://github.com/vuejs/tsconfig) uses.
+- [`compilerOptions.isolatedModules`](https://www.typescriptlang.org/tsconfig#isolatedModules) se establece en `true` porque Vite usa [esbuild](https://esbuild.github.io/) para transpilación de TypeScript y está sujeto a limitaciones de transpilación de archivo único. [`compilerOptions.verbatimModuleSyntax`](https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax) es [un superconjunto de `isolatedModules`](https://github.com/microsoft/TypeScript/issues/53601) y también es una buena opción, es lo que usa [`@vue/tsconfig`](https://github.com/vuejs/tsconfig).
 
-- If you're using Options API, you need to set [`compilerOptions.strict`](https://www.typescriptlang.org/tsconfig#strict) to `true` (or at least enable [`compilerOptions.noImplicitThis`](https://www.typescriptlang.org/tsconfig#noImplicitThis), which is a part of the `strict` flag) to leverage type checking of `this` in component options. Otherwise `this` will be treated as `any`.
+- Si estás usando la Options API, necesitas establecer [`compilerOptions.strict`](https://www.typescriptlang.org/tsconfig#strict) en `true` (o al menos habilitar [`compilerOptions.noImplicitThis`](https://www.typescriptlang.org/tsconfig#noImplicitThis), que es parte del flag `strict`) para aprovechar la verificación de tipos de `this` en las opciones del componente. De lo contrario, `this` será tratado como `any`.
 
-- If you have configured resolver aliases in your build tool, for example the `@/*` alias configured by default in a `create-vue` project, you need to also configure it for TypeScript via [`compilerOptions.paths`](https://www.typescriptlang.org/tsconfig#paths).
+- Si has configurado alias de resolutor en tu herramienta de construcción, por ejemplo, el alias `@/*` configurado por defecto en un proyecto `create-vue`, también necesitas configurarlo para TypeScript a través de [`compilerOptions.paths`](https://www.typescriptlang.org/tsconfig#paths).
 
-- If you intend to use TSX with Vue, set [`compilerOptions.jsx`](https://www.typescriptlang.org/tsconfig#jsx) to `"preserve"`, and set [`compilerOptions.jsxImportSource`](https://www.typescriptlang.org/tsconfig#jsxImportSource) to `"vue"`.
+- Si tienes la intención de usar TSX con Vue, establece [`compilerOptions.jsx`](https://www.typescriptlang.org/tsconfig#jsx) en `"preserve"`, y establece [`compilerOptions.jsxImportSource`](https://www.typescriptlang.org/tsconfig#jsxImportSource) en `"vue"`.
 
-See also:
+Ver también:
 
-- [Official TypeScript compiler options docs](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
-- [esbuild TypeScript compilation caveats](https://esbuild.github.io/content-types/#typescript-caveats)
+- [Documentación oficial de opciones del compilador de TypeScript](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+- [Advertencias de compilación de TypeScript de esbuild](https://esbuild.github.io/content-types/#typescript-caveats)
 
-### Note on Vue CLI and `ts-loader` {#note-on-vue-cli-and-ts-loader}
+### Nota sobre Vue CLI y `ts-loader` {#note-on-vue-cli-and-ts-loader}
 
-In webpack-based setups such as Vue CLI, it is common to perform type checking as part of the module transform pipeline, for example with `ts-loader`. This, however, isn't a clean solution because the type system needs knowledge of the entire module graph to perform type checks. Individual module's transform step simply is not the right place for the task. It leads to the following problems:
+En configuraciones basadas en webpack, como Vue CLI, es común realizar la verificación de tipos como parte de la pipeline de transformación de módulos, por ejemplo con `ts-loader`. Sin embargo, esta no es una solución limpia porque el sistema de tipos necesita conocimiento de todo el grafo de módulos para realizar las verificaciones de tipos. El paso de transformación de un módulo individual simplemente no es el lugar adecuado para esta tarea. Esto lleva a los siguientes problemas:
 
-- `ts-loader` can only type check post-transform code. This doesn't align with the errors we see in IDEs or from `vue-tsc`, which map directly back to the source code.
+- `ts-loader` solo puede verificar tipos en el código post-transformación. Esto no se alinea con los errores que vemos en los IDEs o de `vue-tsc`, los cuales se mapean directamente al código fuente.
 
-- Type checking can be slow. When it is performed in the same thread / process with code transformations, it significantly affects the build speed of the entire application.
+- La verificación de tipos puede ser lenta. Cuando se realiza en el mismo hilo / proceso con transformaciones de código, afecta significativamente la velocidad de construcción de toda la aplicación.
 
-- We already have type checking running right in our IDE in a separate process, so the cost of dev experience slow down simply isn't a good trade-off.
+- Ya tenemos la verificación de tipos ejecutándose directamente en nuestro IDE en un proceso separado, por lo que el costo de ralentizar la experiencia de desarrollo simplemente no es un buen intercambio.
 
-If you are currently using Vue 3 + TypeScript via Vue CLI, we strongly recommend migrating over to Vite. We are also working on CLI options to enable transpile-only TS support, so that you can switch to `vue-tsc` for type checking.
+Si actualmente estás usando Vue 3 + TypeScript a través de Vue CLI, recomendamos encarecidamente migrar a Vite. También estamos trabajando en opciones de CLI para habilitar el soporte de TS solo para transpilación, de modo que puedas cambiar a `vue-tsc` para la verificación de tipos.
 
-## General Usage Notes {#general-usage-notes}
+## Notas de Uso General {#general-usage-notes}
 
 ### `defineComponent()` {#definecomponent}
 
-To let TypeScript properly infer types inside component options, we need to define components with [`defineComponent()`](/api/general#definecomponent):
+Para que TypeScript infiera correctamente los tipos dentro de las opciones del componente, necesitamos definir componentes con [`defineComponent()`](/api/general#definecomponent):
 
 ```ts
 import { defineComponent } from 'vue'
@@ -93,7 +93,7 @@ export default defineComponent({
 })
 ```
 
-`defineComponent()` also supports inferring the props passed to `setup()` when using Composition API without `<script setup>`:
+`defineComponent()` también soporta la inferencia de las `props` pasadas a `setup()` cuando se usa la Composition API sin `<script setup>`:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -109,18 +109,18 @@ export default defineComponent({
 })
 ```
 
-See also:
+Ver también:
 
-- [Note on webpack Treeshaking](/api/general#note-on-webpack-treeshaking)
-- [type tests for `defineComponent`](https://github.com/vuejs/core/blob/main/packages-private/dts-test/defineComponent.test-d.tsx)
+- [Nota sobre el Tree-shaking de webpack](/api/general#note-on-webpack-treeshaking)
+- [pruebas de tipo para `defineComponent`](https://github.com/vuejs/core/blob/main/packages-private/dts-test/defineComponent.test-d.tsx)
 
 :::tip
-`defineComponent()` also enables type inference for components defined in plain JavaScript.
+`defineComponent()` también habilita la inferencia de tipos para componentes definidos en JavaScript puro.
 :::
 
-### Usage in Single-File Components {#usage-in-single-file-components}
+### Uso en Componentes de Archivo Único {#usage-in-single-file-components}
 
-To use TypeScript in SFCs, add the `lang="ts"` attribute to `<script>` tags. When `lang="ts"` is present, all template expressions also enjoy stricter type checking.
+Para usar TypeScript en SFCs, añade el atributo `lang="ts"` a las etiquetas `<script>`. Cuando `lang="ts"` está presente, todas las expresiones de la plantilla también disfrutan de una verificación de tipos más estricta.
 
 ```vue
 <script lang="ts">
@@ -141,7 +141,7 @@ export default defineComponent({
 </template>
 ```
 
-`lang="ts"` can also be used with `<script setup>`:
+`lang="ts"` también se puede usar con `<script setup>`:
 
 ```vue
 <script setup lang="ts">
@@ -157,11 +157,11 @@ const count = ref(1)
 </template>
 ```
 
-### TypeScript in Templates {#typescript-in-templates}
+### TypeScript en Plantillas {#typescript-in-templates}
 
-The `<template>` also supports TypeScript in binding expressions when `<script lang="ts">` or `<script setup lang="ts">` is used. This is useful in cases where you need to perform type casting in template expressions.
+La etiqueta `<template>` también soporta TypeScript en expresiones de enlace (binding expressions) cuando se usa `<script lang="ts">` o `<script setup lang="ts">`. Esto es útil en casos donde necesitas realizar una conversión de tipos (type casting) en expresiones de la plantilla.
 
-Here's a contrived example:
+Aquí tienes un ejemplo forzado:
 
 ```vue
 <script setup lang="ts">
@@ -174,7 +174,7 @@ let x: string | number = 1
 </template>
 ```
 
-This can be worked around with an inline type cast:
+Esto se puede solucionar con una conversión de tipos (type cast) en línea:
 
 ```vue{6}
 <script setup lang="ts">
@@ -187,21 +187,21 @@ let x: string | number = 1
 ```
 
 :::tip
-If using Vue CLI or a webpack-based setup, TypeScript in template expressions requires `vue-loader@^16.8.0`.
+Si utilizas Vue CLI o una configuración basada en webpack, TypeScript en las expresiones de la plantilla requiere `vue-loader@^16.8.0`.
 :::
 
-### Usage with TSX {#usage-with-tsx}
+### Uso con TSX {#usage-with-tsx}
 
-Vue also supports authoring components with JSX / TSX. Details are covered in the [Render Function & JSX](/guide/extras/render-function.html#jsx-tsx) guide.
+Vue también soporta la creación de componentes con JSX / TSX. Los detalles se cubren en la guía [Función de Renderizado y JSX](/guide/extras/render-function.html#jsx-tsx).
 
-## Generic Components {#generic-components}
+## Componentes Genéricos {#generic-components}
 
-Generic components are supported in two cases:
+Los componentes genéricos se soportan en dos casos:
 
-- In SFCs: [`<script setup>` with the `generic` attribute](/api/sfc-script-setup.html#generics)
-- Render function / JSX components: [`defineComponent()`'s function signature](/api/general.html#function-signature)
+- En SFCs: [`<script setup>` con el atributo `generic`](/api/sfc-script-setup.html#generics)
+- Componentes de función de renderizado / JSX: [la firma de función de `defineComponent()`](/api/general.html#function-signature)
 
-## API-Specific Recipes {#api-specific-recipes}
+## Recetas Específicas de la API {#api-specific-recipes}
 
-- [TS with Composition API](./composition-api)
-- [TS with Options API](./options-api)
+- [TS con Composition API](./composition-api)
+- [TS con Options API](./options-api)

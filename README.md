@@ -1,28 +1,28 @@
 # vuejs.org
 
-## Contributing
+## Contribuyendo
 
-This site is built with [VitePress](https://github.com/vuejs/vitepress) and depends on [@vue/theme](https://github.com/vuejs/vue-theme). Site content is written in Markdown format located in `src`. For simple edits, you can directly edit the file on GitHub and generate a Pull Request.
+Este sitio está construido con [VitePress](https://github.com/vuejs/vitepress) y depende de [@vue/theme](https://github.com/vuejs/vue-theme). El contenido del sitio está escrito en formato Markdown y se encuentra en `src`. Para ediciones sencillas, puedes editar directamente el archivo en GitHub y generar una Pull Request.
 
-For local development, [pnpm](https://pnpm.io/) is preferred as package manager:
+Para el desarrollo local, se prefiere [pnpm](https://pnpm.io/) como gestor de paquetes:
 
 ```bash
 pnpm i
 pnpm run dev
 ```
 
-This project requires Node.js to be `v18` or higher. And it is recommended to enable corepack:
+Este proyecto requiere que Node.js sea `v18` o superior. Y se recomienda habilitar corepack:
 
 ```bash
 corepack enable
 ```
 
-## Working on the content
+## Trabajando en el contenido
 
-- See VitePress docs on supported [Markdown Extensions](https://vitepress.dev/guide/markdown) and the ability to [use Vue syntax inside markdown](https://vitepress.dev/guide/using-vue).
+- Consulta la documentación de VitePress sobre las [Extensiones de Markdown](https://vitepress.dev/guide/markdown) compatibles y la capacidad de [usar sintaxis de Vue dentro de Markdown](https://vitepress.dev/guide/using-vue).
 
-- See the [Writing Guide](https://github.com/vuejs/docs/blob/main/.github/contributing/writing-guide.md) for our rules and recommendations on writing and maintaining documentation content.
+- Consulta la [Guía de Redacción](https://github.com/vuejs/docs/blob/main/.github/contributing/writing-guide.md) para nuestras reglas y recomendaciones sobre la redacción y el mantenimiento del contenido de la documentación.
 
-## Working on the theme
+## Trabajando en el tema
 
-If changes need to made for the theme, check out the [instructions for developing the theme alongside the docs](https://github.com/vuejs/vue-theme#developing-with-real-content).
+Si es necesario realizar cambios en el tema, consulta las [instrucciones para desarrollar el tema junto con la documentación](https://github.com/vuejs/vue-theme#developing-with-real-content).

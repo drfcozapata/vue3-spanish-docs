@@ -1,12 +1,12 @@
-# Global API: General {#global-api-general}
+# API Global: General {#global-api-general}
 
 ## version {#version}
 
-Exposes the current version of Vue.
+Expone la versión actual de Vue.
 
-- **Type:** `string`
+- **Tipo:** `string`
 
-- **Example**
+- **Ejemplo**
 
   ```js
   import { version } from 'vue'
@@ -16,21 +16,21 @@ Exposes the current version of Vue.
 
 ## nextTick() {#nexttick}
 
-A utility for waiting for the next DOM update flush.
+Una utilidad para esperar el siguiente vaciado de actualizaciones del DOM.
 
-- **Type**
+- **Tipo**
 
   ```ts
   function nextTick(callback?: () => void): Promise<void>
   ```
 
-- **Details**
+- **Detalles**
 
-  When you mutate reactive state in Vue, the resulting DOM updates are not applied synchronously. Instead, Vue buffers them until the "next tick" to ensure that each component updates only once no matter how many state changes you have made.
+  Cuando mutas el estado reactivo en Vue, las actualizaciones resultantes del DOM no se aplican sincrónicamente. En su lugar, Vue las almacena en un búfer hasta el "siguiente tick" para asegurar que cada `componente` se actualice solo una vez, sin importar cuántos cambios de estado hayas realizado.
 
-  `nextTick()` can be used immediately after a state change to wait for the DOM updates to complete. You can either pass a callback as an argument, or await the returned Promise.
+  `nextTick()` se puede usar inmediatamente después de un cambio de estado para esperar que las actualizaciones del DOM se completen. Puedes pasar una `callback` como argumento, o esperar la `Promise` devuelta.
 
-- **Example**
+- **Ejemplo**
 
   <div class="composition-api">
 
@@ -92,13 +92,13 @@ A utility for waiting for the next DOM update flush.
 
   </div>
 
-- **See also** [`this.$nextTick()`](/api/component-instance#nexttick)
+- **Ver también** [`this.$nextTick()`](/api/component-instance#nexttick)
 
 ## defineComponent() {#definecomponent}
 
-A type helper for defining a Vue component with type inference.
+Un asistente de tipos para definir un `componente` de Vue con inferencia de tipos.
 
-- **Type**
+- **Tipo**
 
   ```ts
   // options syntax
@@ -113,15 +113,15 @@ A type helper for defining a Vue component with type inference.
   ): () => any
   ```
 
-  > Type is simplified for readability.
+  > El tipo se simplifica para mayor legibilidad.
 
-- **Details**
+- **Detalles**
 
-  The first argument expects a component options object. The return value will be the same options object, since the function is essentially a runtime no-op for type inference purposes only.
+  El primer argumento espera un objeto de `opciones` del `componente`. El `valor de retorno` será el mismo objeto de `opciones`, ya que la función es esencialmente una operación nula en tiempo de ejecución solo para fines de inferencia de tipos.
 
-  Note that the return type is a bit special: it will be a constructor type whose instance type is the inferred component instance type based on the options. This is used for type inference when the returned type is used as a tag in TSX.
+  Ten en cuenta que el `tipo de retorno` es un poco especial: será un `tipo de constructor` cuyo `tipo de instancia` es el `tipo de instancia` de `componente` inferido basado en las `opciones`. Esto se usa para la inferencia de tipos cuando el `tipo de retorno` se usa como una etiqueta en TSX.
 
-  You can extract the instance type of a component (equivalent to the type of `this` in its options) from the return type of `defineComponent()` like this:
+  Puedes extraer el `tipo de instancia` de un `componente` (equivalente al tipo de `this` en sus `opciones`) del `tipo de retorno` de `defineComponent()` de esta manera:
 
   ```ts
   const Foo = defineComponent(/* ... */)
@@ -129,13 +129,13 @@ A type helper for defining a Vue component with type inference.
   type FooInstance = InstanceType<typeof Foo>
   ```
 
-  ### Function Signature {#function-signature}
+  ### Firma de la Función {#function-signature}
 
-  - Only supported in 3.3+
+  - Solo soportado en 3.3+
 
-  `defineComponent()` also has an alternative signature that is meant to be used with the Composition API and [render functions or JSX](/guide/extras/render-function.html).
+  `defineComponent()` también tiene una `firma` alternativa que está destinada a ser utilizada con la `Composition API` y [funciones de renderizado o JSX](/guide/extras/render-function.html).
 
-  Instead of passing in an options object, a function is expected instead. This function works the same as the Composition API [`setup()`](/api/composition-api-setup.html#composition-api-setup) function: it receives the props and the setup context. The return value should be a render function - both `h()` and JSX are supported:
+  En lugar de pasar un objeto de `opciones`, se espera una `función`. Esta `función` funciona igual que la `función` [`setup()`](/api/composition-api-setup.html#composition-api-setup) de la `Composition API`: recibe las `props` y el `contexto de setup`. El `valor de retorno` debe ser una `función de renderizado` - tanto `h()` como JSX son soportados:
 
   ```js
   import { ref, h } from 'vue'
@@ -159,7 +159,7 @@ A type helper for defining a Vue component with type inference.
   )
   ```
 
-  The main use case for this signature is with TypeScript (and in particular with TSX), as it supports generics:
+  El principal caso de uso para esta `firma` es con `TypeScript` (y en particular con TSX), ya que soporta `genéricos`:
 
   ```tsx
   const Comp = defineComponent(
@@ -179,27 +179,27 @@ A type helper for defining a Vue component with type inference.
   )
   ```
 
-  In the future, we plan to provide a Babel plugin that automatically infers and injects the runtime props (like for `defineProps` in SFCs) so that the runtime props declaration can be omitted.
+  En el futuro, planeamos proporcionar un `plugin` de Babel que infiera e inyecte automáticamente las `props` en tiempo de ejecución (como para `defineProps` en SFCs) para que la `declaración de props` en tiempo de ejecución pueda omitirse.
 
-  ### Note on webpack Treeshaking {#note-on-webpack-treeshaking}
+  ### Nota sobre el `Treeshaking` de `webpack` {#note-on-webpack-treeshaking}
 
-  Because `defineComponent()` is a function call, it could look like it would produce side-effects to some build tools, e.g. webpack. This will prevent the component from being tree-shaken even when the component is never used.
+  Debido a que `defineComponent()` es una `llamada a función`, podría parecer que produciría `efectos secundarios` para algunas `herramientas de construcción`, por ejemplo, `webpack`. Esto evitará que el `componente` sea `tree-shaken` incluso cuando el `componente` nunca se use.
 
-  To tell webpack that this function call is safe to be tree-shaken, you can add a `/*#__PURE__*/` comment notation before the function call:
+  Para indicar a `webpack` que esta `llamada a función` es segura para ser `tree-shaken`, puedes añadir una notación de `comentario` `/*#__PURE__*/` antes de la `llamada a función`:
 
   ```js
   export default /*#__PURE__*/ defineComponent(/* ... */)
   ```
 
-  Note this is not necessary if you are using Vite, because Rollup (the underlying production bundler used by Vite) is smart enough to determine that `defineComponent()` is in fact side-effect-free without the need for manual annotations.
+  Ten en cuenta que esto no es necesario si estás usando `Vite`, porque `Rollup` (el `bundler` de producción subyacente utilizado por `Vite`) es lo suficientemente inteligente como para determinar que `defineComponent()` es, de hecho, libre de `efectos secundarios` sin la necesidad de `anotaciones manuales`.
 
-- **See also** [Guide - Using Vue with TypeScript](/guide/typescript/overview#general-usage-notes)
+- **Ver también** [Guía - Uso de Vue con `TypeScript`](/guide/typescript/overview#general-usage-notes)
 
 ## defineAsyncComponent() {#defineasynccomponent}
 
-Define an async component which is lazy loaded only when it is rendered. The argument can either be a loader function, or an options object for more advanced control of the loading behavior.
+Define un `componente asíncrono` que se carga perezosamente solo cuando se renderiza. El argumento puede ser una `función de cargador` o un objeto de `opciones` para un control más avanzado del `comportamiento de carga`.
 
-- **Type**
+- **Tipo**
 
   ```ts
   function defineAsyncComponent(
@@ -224,4 +224,4 @@ Define an async component which is lazy loaded only when it is rendered. The arg
   }
   ```
 
-- **See also** [Guide - Async Components](/guide/components/async)
+- **Ver también** [Guía - `Componentes Asíncronos`](/guide/components/async)

@@ -1,16 +1,16 @@
-# Emits {#emits}
+# Emisiones {#emits}
 
-In addition to receiving props, a child component can also emit events to the parent:
+Además de recibir `props`, un `componente` hijo también puede `emitir` `eventos` al padre:
 
 <div class="composition-api">
 <div class="sfc">
 
 ```vue
 <script setup>
-// declare emitted events
+// declarar eventos emitidos
 const emit = defineEmits(['response'])
 
-// emit with argument
+// emitir con argumento
 emit('response', 'hello from child')
 </script>
 ```
@@ -21,10 +21,10 @@ emit('response', 'hello from child')
 
 ```js
 export default {
-  // declare emitted events
+  // declarar eventos emitidos
   emits: ['response'],
   setup(props, { emit }) {
-    // emit with argument
+    // emitir con argumento
     emit('response', 'hello from child')
   }
 }
@@ -38,10 +38,10 @@ export default {
 
 ```js
 export default {
-  // declare emitted events
+  // declarar eventos emitidos
   emits: ['response'],
   created() {
-    // emit with argument
+    // emitir con argumento
     this.$emit('response', 'hello from child')
   }
 }
@@ -49,9 +49,9 @@ export default {
 
 </div>
 
-The first argument to <span class="options-api">`this.$emit()`</span><span class="composition-api">`emit()`</span> is the event name. Any additional arguments are passed on to the event listener.
+El primer argumento para <span class="options-api">`this.$emit()`</span><span class="composition-api">`emit()`</span> es el nombre del `evento`. Cualquier argumento adicional se pasa al `listener` del `evento`.
 
-The parent can listen to child-emitted events using `v-on` - here the handler receives the extra argument from the child emit call and assigns it to local state:
+El padre puede escuchar los `eventos` `emitidos` por el hijo usando `v-on` - aquí el `handler` recibe el argumento extra de la llamada `emit` del hijo y lo asigna al estado local:
 
 <div class="sfc">
 
@@ -68,4 +68,4 @@ The parent can listen to child-emitted events using `v-on` - here the handler re
 
 </div>
 
-Now try it yourself in the editor.
+Ahora pruébalo tú mismo en el editor.

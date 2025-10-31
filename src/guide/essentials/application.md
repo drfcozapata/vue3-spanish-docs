@@ -1,8 +1,8 @@
-# Creating a Vue Application {#creating-a-vue-application}
+# Creando una Aplicación Vue {#creating-a-vue-application}
 
-## The application instance {#the-application-instance}
+## La instancia de aplicación {#the-application-instance}
 
-Every Vue application starts by creating a new **application instance** with the [`createApp`](/api/application#createapp) function:
+Cada aplicación Vue comienza creando una nueva **instancia de aplicación** con la función [`createApp`](/api/application#createapp):
 
 ```js
 import { createApp } from 'vue'
@@ -12,11 +12,11 @@ const app = createApp({
 })
 ```
 
-## The Root Component {#the-root-component}
+## El Componente Raíz {#the-root-component}
 
-The object we are passing into `createApp` is in fact a component. Every app requires a "root component" that can contain other components as its children.
+El objeto que pasamos a `createApp` es de hecho un componente. Cada aplicación requiere un "componente raíz" que puede contener otros componentes como sus hijos.
 
-If you are using Single-File Components, we typically import the root component from another file:
+Si estás usando Componentes de Un Solo Archivo (Single-File Components), normalmente importamos el componente raíz de otro archivo:
 
 ```js
 import { createApp } from 'vue'
@@ -26,7 +26,7 @@ import App from './App.vue'
 const app = createApp(App)
 ```
 
-While many examples in this guide only need a single component, most real applications are organized into a tree of nested, reusable components. For example, a Todo application's component tree might look like this:
+Aunque muchos ejemplos en esta guía solo necesitan un único componente, la mayoría de las aplicaciones reales se organizan en un árbol de componentes anidados y reutilizables. Por ejemplo, el árbol de componentes de una aplicación de Tareas Pendientes (Todo) podría verse así:
 
 ```
 App (root component)
@@ -39,11 +39,11 @@ App (root component)
    └─ TodoStatistics
 ```
 
-In later sections of the guide, we will discuss how to define and compose multiple components together. Before that, we will focus on what happens inside a single component.
+En secciones posteriores de la guía, discutiremos cómo definir y componer múltiples componentes juntos. Antes de eso, nos centraremos en lo que sucede dentro de un solo componente.
 
-## Mounting the App {#mounting-the-app}
+## Montando la Aplicación {#mounting-the-app}
 
-An application instance won't render anything until its `.mount()` method is called. It expects a "container" argument, which can either be an actual DOM element or a selector string:
+Una instancia de aplicación no renderizará nada hasta que se llame a su método `.mount()`. Espera un argumento "container", que puede ser un elemento DOM real o una cadena de selector:
 
 ```html
 <div id="app"></div>
@@ -53,13 +53,13 @@ An application instance won't render anything until its `.mount()` method is cal
 app.mount('#app')
 ```
 
-The content of the app's root component will be rendered inside the container element. The container element itself is not considered part of the app.
+El contenido del componente raíz de la aplicación se renderizará dentro del elemento contenedor. El elemento contenedor en sí no se considera parte de la aplicación.
 
-The `.mount()` method should always be called after all app configurations and asset registrations are done. Also note that its return value, unlike the asset registration methods, is the root component instance instead of the application instance.
+El método `.mount()` siempre debe llamarse después de que todas las configuraciones de la aplicación y los registros de activos estén completos. También ten en cuenta que su valor de retorno, a diferencia de los métodos de registro de activos, es la instancia del componente raíz en lugar de la instancia de la aplicación.
 
-### In-DOM Root Component Template {#in-dom-root-component-template}
+### Plantilla de Componente Raíz en el DOM {#in-dom-root-component-template}
 
-The template for the root component is usually part of the component itself, but it is also possible to provide the template separately by writing it directly inside the mount container:
+La plantilla para el componente raíz suele ser parte del propio componente, pero también es posible proporcionar la plantilla por separado escribiéndola directamente dentro del contenedor de montaje:
 
 ```html
 <div id="app">
@@ -81,13 +81,13 @@ const app = createApp({
 app.mount('#app')
 ```
 
-Vue will automatically use the container's `innerHTML` as the template if the root component does not already have a `template` option.
+Vue utilizará automáticamente el `innerHTML` del contenedor como plantilla si el componente raíz aún no tiene una opción `template`.
 
-In-DOM templates are often used in applications that are [using Vue without a build step](/guide/quick-start.html#using-vue-from-cdn). They can also be used in conjunction with server-side frameworks, where the root template might be generated dynamically by the server.
+Las plantillas en el DOM a menudo se utilizan en aplicaciones que están [usando Vue sin un paso de construcción](/guide/quick-start.html#using-vue-from-cdn). También pueden usarse en conjunto con frameworks del lado del servidor, donde la plantilla raíz podría ser generada dinámicamente por el servidor.
 
-## App Configurations {#app-configurations}
+## Configuraciones de la Aplicación {#app-configurations}
 
-The application instance exposes a `.config` object that allows us to configure a few app-level options, for example, defining an app-level error handler that captures errors from all descendant components:
+La instancia de aplicación expone un objeto `.config` que nos permite configurar algunas opciones a nivel de aplicación, por ejemplo, definir un manejador de errores a nivel de aplicación que captura errores de todos los componentes descendientes:
 
 ```js
 app.config.errorHandler = (err) => {
@@ -95,19 +95,19 @@ app.config.errorHandler = (err) => {
 }
 ```
 
-The application instance also provides a few methods for registering app-scoped assets. For example, registering a component:
+La instancia de aplicación también proporciona algunos métodos para registrar activos con alcance de aplicación. Por ejemplo, registrando un componente:
 
 ```js
 app.component('TodoDeleteButton', TodoDeleteButton)
 ```
 
-This makes the `TodoDeleteButton` available for use anywhere in our app. We will discuss registration for components and other types of assets in later sections of the guide. You can also browse the full list of application instance APIs in its [API reference](/api/application).
+Esto hace que el `TodoDeleteButton` esté disponible para su uso en cualquier parte de nuestra aplicación. Discutiremos el registro de componentes y otros tipos de activos en secciones posteriores de la guía. También puedes consultar la lista completa de APIs de la instancia de aplicación en su [referencia de API](/api/application).
 
-Make sure to apply all app configurations before mounting the app!
+¡Asegúrate de aplicar todas las configuraciones de la aplicación antes de montar la aplicación!
 
-## Multiple application instances {#multiple-application-instances}
+## Múltiples instancias de aplicación {#multiple-application-instances}
 
-You are not limited to a single application instance on the same page. The `createApp` API allows multiple Vue applications to co-exist on the same page, each with its own scope for configuration and global assets:
+No estás limitado a una única instancia de aplicación en la misma página. La API `createApp` permite que múltiples aplicaciones Vue coexistan en la misma página, cada una con su propio alcance para la configuración y los activos globales:
 
 ```js
 const app1 = createApp({
@@ -121,4 +121,4 @@ const app2 = createApp({
 app2.mount('#container-2')
 ```
 
-If you are using Vue to enhance server-rendered HTML and only need Vue to control specific parts of a large page, avoid mounting a single Vue application instance on the entire page. Instead, create multiple small application instances and mount them on the elements they are responsible for.
+Si estás utilizando Vue para mejorar HTML renderizado por el servidor y solo necesitas que Vue controle partes específicas de una página grande, evita montar una única instancia de aplicación Vue en toda la página. En su lugar, crea múltiples instancias de aplicación pequeñas y móntalas en los elementos de los que son responsables.

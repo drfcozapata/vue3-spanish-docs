@@ -1,34 +1,37 @@
-# Composition API: Lifecycle Hooks {#composition-api-lifecycle-hooks}
+# API de Composición: Hooks de Ciclo de Vida {#composition-api-lifecycle-hooks}
 
-:::info Usage Note
-All APIs listed on this page must be called synchronously during the `setup()` phase of a component. See [Guide - Lifecycle Hooks](/guide/essentials/lifecycle) for more details.
+:::info Nota de Uso
+Todas las APIs listadas en esta página deben ser llamadas sincrónicamente durante la fase `setup()` de un componente. Consulta [Guía - Hooks de Ciclo de Vida](/guide/essentials/lifecycle) para más detalles.
 :::
 
 ## onMounted() {#onmounted}
 
-Registers a callback to be called after the component has been mounted.
+Registra una función de callback para ser llamada después de que el componente haya sido montado.
 
-- **Type**
+- **Tipo**
 
   ```ts
-  function onMounted(callback: () => void, target?: ComponentInternalInstance | null): void
+  function onMounted(
+    callback: () => void,
+    target?: ComponentInternalInstance | null
+  ): void
   ```
 
-- **Details**
+- **Detalles**
 
-  A component is considered mounted after:
+  Un componente se considera montado después de que:
 
-  - All of its synchronous child components have been mounted (does not include async components or components inside `<Suspense>` trees).
+  - Todos sus componentes hijos síncronos han sido montados (no incluye `async components` o componentes dentro de árboles `<Suspense>`).
 
-  - Its own DOM tree has been created and inserted into the parent container. Note it only guarantees that the component's DOM tree is in-document if the application's root container is also in-document.
+  - Su propio árbol DOM ha sido creado e insertado en el contenedor padre. Ten en cuenta que solo garantiza que el árbol DOM del componente está en el documento si el contenedor raíz de la aplicación también está en el documento.
 
-  This hook is typically used for performing side effects that need access to the component's rendered DOM, or for limiting DOM-related code to the client in a [server-rendered application](/guide/scaling-up/ssr).
+  Este gancho se utiliza típicamente para realizar efectos secundarios que necesitan acceso al DOM renderizado del componente, o para limitar el código relacionado con el DOM al cliente en una [aplicación renderizada en el servidor](/guide/scaling-up/ssr).
 
-  **This hook is not called during server-side rendering.**
+  **Este gancho no se llama durante la renderización del lado del servidor.**
 
-- **Example**
+- **Ejemplo**
 
-  Accessing an element via template ref:
+  Accediendo a un elemento a través de una `template ref`:
 
   ```vue
   <script setup>
@@ -48,29 +51,32 @@ Registers a callback to be called after the component has been mounted.
 
 ## onUpdated() {#onupdated}
 
-Registers a callback to be called after the component has updated its DOM tree due to a reactive state change.
+Registra una función de callback para ser llamada después de que el componente haya actualizado su árbol DOM debido a un cambio de estado reactivo.
 
-- **Type**
+- **Tipo**
 
   ```ts
-  function onUpdated(callback: () => void, target?: ComponentInternalInstance | null): void
+  function onUpdated(
+    callback: () => void,
+    target?: ComponentInternalInstance | null
+  ): void
   ```
 
-- **Details**
+- **Detalles**
 
-  A parent component's updated hook is called after that of its child components.
+  El gancho `updated` de un componente padre se llama después del de sus componentes hijos.
 
-  This hook is called after any DOM update of the component, which can be caused by different state changes, because multiple state changes can be batched into a single render cycle for performance reasons. If you need to access the updated DOM after a specific state change, use [nextTick()](/api/general#nexttick) instead.
+  Este gancho se llama después de cualquier actualización DOM del componente, que puede ser causada por diferentes cambios de estado, ya que múltiples cambios de estado pueden ser agrupados en un único ciclo de renderizado por razones de rendimiento. Si necesitas acceder al DOM actualizado después de un cambio de estado específico, usa [nextTick()](/api/general#nexttick) en su lugar.
 
-  **This hook is not called during server-side rendering.**
+  **Este gancho no se llama durante la renderización del lado del servidor.**
 
   :::warning
-  Do not mutate component state in the updated hook - this will likely lead to an infinite update loop!
+  No modifiques el estado del componente en el gancho `updated`: ¡esto probablemente llevará a un bucle de actualización infinito!
   :::
 
-- **Example**
+- **Ejemplo**
 
-  Accessing updated DOM:
+  Accediendo al DOM actualizado:
 
   ```vue
   <script setup>
@@ -79,7 +85,7 @@ Registers a callback to be called after the component has updated its DOM tree d
   const count = ref(0)
 
   onUpdated(() => {
-    // text content should be the same as current `count.value`
+    // el contenido de texto debería ser el mismo que el `count.value` actual
     console.log(document.getElementById('count').textContent)
   })
   </script>
@@ -91,27 +97,30 @@ Registers a callback to be called after the component has updated its DOM tree d
 
 ## onUnmounted() {#onunmounted}
 
-Registers a callback to be called after the component has been unmounted.
+Registra una función de callback para ser llamada después de que el componente haya sido desmontado.
 
-- **Type**
+- **Tipo**
 
   ```ts
-  function onUnmounted(callback: () => void, target?: ComponentInternalInstance | null): void
+  function onUnmounted(
+    callback: () => void,
+    target?: ComponentInternalInstance | null
+  ): void
   ```
 
-- **Details**
+- **Detalles**
 
-  A component is considered unmounted after:
+  Un componente se considera desmontado después de que:
 
-  - All of its child components have been unmounted.
+  - Todos sus componentes hijos han sido desmontados.
 
-  - All of its associated reactive effects (render effect and computed / watchers created during `setup()`) have been stopped.
+  - Todos sus efectos reactivos asociados (efecto de renderizado y `computed` / `watchers` creados durante `setup()`) han sido detenidos.
 
-  Use this hook to clean up manually created side effects such as timers, DOM event listeners or server connections.
+  Utiliza este gancho para limpiar efectos secundarios creados manualmente, como temporizadores, escuchadores de eventos DOM o conexiones con el servidor.
 
-  **This hook is not called during server-side rendering.**
+  **Este gancho no se llama durante la renderización del lado del servidor.**
 
-- **Example**
+- **Ejemplo**
 
   ```vue
   <script setup>
@@ -130,57 +139,66 @@ Registers a callback to be called after the component has been unmounted.
 
 ## onBeforeMount() {#onbeforemount}
 
-Registers a hook to be called right before the component is to be mounted.
+Registra un gancho para ser llamado justo antes de que el componente vaya a ser montado.
 
-- **Type**
+- **Tipo**
 
   ```ts
-  function onBeforeMount(callback: () => void, target?: ComponentInternalInstance | null): void
+  function onBeforeMount(
+    callback: () => void,
+    target?: ComponentInternalInstance | null
+  ): void
   ```
 
-- **Details**
+- **Detalles**
 
-  When this hook is called, the component has finished setting up its reactive state, but no DOM nodes have been created yet. It is about to execute its DOM render effect for the first time.
+  Cuando se llama a este gancho, el componente ha terminado de configurar su estado reactivo, pero aún no se han creado nodos DOM. Está a punto de ejecutar su efecto de renderizado DOM por primera vez.
 
-  **This hook is not called during server-side rendering.**
+  **Este gancho no se llama durante la renderización del lado del servidor.**
 
 ## onBeforeUpdate() {#onbeforeupdate}
 
-Registers a hook to be called right before the component is about to update its DOM tree due to a reactive state change.
+Registra un gancho para ser llamado justo antes de que el componente vaya a actualizar su árbol DOM debido a un cambio de estado reactivo.
 
-- **Type**
+- **Tipo**
 
   ```ts
-  function onBeforeUpdate(callback: () => void, target?: ComponentInternalInstance | null): void
+  function onBeforeUpdate(
+    callback: () => void,
+    target?: ComponentInternalInstance | null
+  ): void
   ```
 
-- **Details**
+- **Detalles**
 
-  This hook can be used to access the DOM state before Vue updates the DOM. It is also safe to modify component state inside this hook.
+  Este gancho puede utilizarse para acceder al estado del DOM antes de que Vue actualice el DOM. También es seguro modificar el estado del componente dentro de este gancho.
 
-  **This hook is not called during server-side rendering.**
+  **Este gancho no se llama durante la renderización del lado del servidor.**
 
 ## onBeforeUnmount() {#onbeforeunmount}
 
-Registers a hook to be called right before a component instance is to be unmounted.
+Registra un gancho para ser llamado justo antes de que una instancia de componente vaya a ser desmontada.
 
-- **Type**
+- **Tipo**
 
   ```ts
-  function onBeforeUnmount(callback: () => void, target?: ComponentInternalInstance | null): void
+  function onBeforeUnmount(
+    callback: () => void,
+    target?: ComponentInternalInstance | null
+  ): void
   ```
 
-- **Details**
+- **Detalles**
 
-  When this hook is called, the component instance is still fully functional.
+  Cuando se llama a este gancho, la instancia del componente sigue siendo completamente funcional.
 
-  **This hook is not called during server-side rendering.**
+  **Este gancho no se llama durante la renderización del lado del servidor.**
 
 ## onErrorCaptured() {#onerrorcaptured}
 
-Registers a hook to be called when an error propagating from a descendant component has been captured.
+Registra un gancho para ser llamado cuando se ha capturado un error que se propaga desde un componente descendiente.
 
-- **Type**
+- **Tipo**
 
   ```ts
   function onErrorCaptured(callback: ErrorCapturedHook): void
@@ -192,45 +210,45 @@ Registers a hook to be called when an error propagating from a descendant compon
   ) => boolean | void
   ```
 
-- **Details**
+- **Detalles**
 
-  Errors can be captured from the following sources:
+  Los errores pueden ser capturados de las siguientes fuentes:
 
-  - Component renders
-  - Event handlers
-  - Lifecycle hooks
-  - `setup()` function
-  - Watchers
-  - Custom directive hooks
-  - Transition hooks
+  - Renderizados de componentes
+  - Manejadores de eventos
+  - Hooks de ciclo de vida
+  - Función `setup()`
+  - `Watchers`
+  - Hooks de directivas personalizadas
+  - Hooks de transición
 
-  The hook receives three arguments: the error, the component instance that triggered the error, and an information string specifying the error source type.
+  El gancho recibe tres argumentos: el error, la instancia del componente que activó el error y una cadena de información que especifica el tipo de fuente del error.
 
   :::tip
-  In production, the 3rd argument (`info`) will be a shortened code instead of the full information string. You can find the code to string mapping in the [Production Error Code Reference](/error-reference/#runtime-errors).
+  En producción, el tercer argumento (`info`) será un código abreviado en lugar de la cadena de información completa. Puedes encontrar la correspondencia de código a cadena en la [Referencia de Códigos de Error de Producción](/error-reference/#runtime-errors).
   :::
 
-  You can modify component state in `onErrorCaptured()` to display an error state to the user. However, it is important that the error state should not render the original content that caused the error; otherwise the component will be thrown into an infinite render loop.
+  Puedes modificar el estado del componente en `onErrorCaptured()` para mostrar un estado de error al usuario. Sin embargo, es importante que el estado de error no renderice el contenido original que causó el error; de lo contrario, el componente entrará en un bucle de renderizado infinito.
 
-  The hook can return `false` to stop the error from propagating further. See error propagation details below.
+  El gancho puede devolver `false` para detener la propagación del error. Consulta los detalles de propagación de errores a continuación.
 
-  **Error Propagation Rules**
+  **Reglas de Propagación de Errores**
 
-  - By default, all errors are still sent to the application-level [`app.config.errorHandler`](/api/application#app-config-errorhandler) if it is defined, so that these errors can still be reported to an analytics service in a single place.
+  - Por defecto, todos los errores se envían al [`app.config.errorHandler`](/api/application#app-config-errorhandler) a nivel de aplicación si está definido, para que estos errores puedan ser reportados a un servicio de análisis en un solo lugar.
 
-  - If multiple `errorCaptured` hooks exist on a component's inheritance chain or parent chain, all of them will be invoked on the same error, in the order of bottom to top. This is similar to the bubbling mechanism of native DOM events.
+  - Si existen múltiples ganchos `errorCaptured` en la cadena de herencia o en la cadena de padres de un componente, todos ellos serán invocados con el mismo error, en orden de abajo hacia arriba. Esto es similar al mecanismo de burbujeo de los eventos DOM nativos.
 
-  - If the `errorCaptured` hook itself throws an error, both this error and the original captured error are sent to `app.config.errorHandler`.
+  - Si el propio gancho `errorCaptured` lanza un error, tanto este error como el error original capturado se envían a `app.config.errorHandler`.
 
-  - An `errorCaptured` hook can return `false` to prevent the error from propagating further. This is essentially saying "this error has been handled and should be ignored." It will prevent any additional `errorCaptured` hooks or `app.config.errorHandler` from being invoked for this error.
+  - Un gancho `errorCaptured` puede devolver `false` para evitar que el error se propague más. Esto esencialmente dice "este error ha sido manejado y debe ser ignorado". Evitará que cualquier gancho `errorCaptured` adicional o `app.config.errorHandler` sean invocados para este error.
 
 ## onRenderTracked() <sup class="vt-badge dev-only" /> {#onrendertracked}
 
-Registers a debug hook to be called when a reactive dependency has been tracked by the component's render effect.
+Registra un gancho de depuración para ser llamado cuando una dependencia reactiva ha sido rastreada por el efecto de renderizado del componente.
 
-**This hook is development-mode-only and not called during server-side rendering.**
+**Este gancho es solo para modo de desarrollo y no se llama durante la renderización del lado del servidor.**
 
-- **Type**
+- **Tipo**
 
   ```ts
   function onRenderTracked(callback: DebuggerHook): void
@@ -245,15 +263,15 @@ Registers a debug hook to be called when a reactive dependency has been tracked 
   }
   ```
 
-- **See also** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
+- **Ver también** [Reactividad en Profundidad](/guide/extras/reactivity-in-depth)
 
 ## onRenderTriggered() <sup class="vt-badge dev-only" /> {#onrendertriggered}
 
-Registers a debug hook to be called when a reactive dependency triggers the component's render effect to be re-run.
+Registra un gancho de depuración para ser llamado cuando una dependencia reactiva activa que el efecto de renderizado del componente se ejecute de nuevo.
 
-**This hook is development-mode-only and not called during server-side rendering.**
+**Este gancho es solo para modo de desarrollo y no se llama durante la renderización del lado del servidor.**
 
-- **Type**
+- **Tipo**
 
   ```ts
   function onRenderTriggered(callback: DebuggerHook): void
@@ -271,53 +289,59 @@ Registers a debug hook to be called when a reactive dependency triggers the comp
   }
   ```
 
-- **See also** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
+- **Ver también** [Reactividad en Profundidad](/guide/extras/reactivity-in-depth)
 
 ## onActivated() {#onactivated}
 
-Registers a callback to be called after the component instance is inserted into the DOM as part of a tree cached by [`<KeepAlive>`](/api/built-in-components#keepalive).
+Registra una función de callback para ser llamada después de que la instancia del componente se inserta en el DOM como parte de un árbol almacenado en caché por [`<KeepAlive>`](/api/built-in-components#keepalive).
 
-**This hook is not called during server-side rendering.**
+**Este gancho no se llama durante la renderización del lado del servidor.**
 
-- **Type**
+- **Tipo**
 
   ```ts
-  function onActivated(callback: () => void, target?: ComponentInternalInstance | null): void
+  function onActivated(
+    callback: () => void,
+    target?: ComponentInternalInstance | null
+  ): void
   ```
 
-- **See also** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
+- **Ver también** [Guía - Ciclo de Vida de Instancia Cacheada](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## onDeactivated() {#ondeactivated}
 
-Registers a callback to be called after the component instance is removed from the DOM as part of a tree cached by [`<KeepAlive>`](/api/built-in-components#keepalive).
+Registra una función de callback para ser llamada después de que la instancia del componente se elimina del DOM como parte de un árbol almacenado en caché por [`<KeepAlive>`](/api/built-in-components#keepalive).
 
-**This hook is not called during server-side rendering.**
+**Este gancho no se llama durante la renderización del lado del servidor.**
 
-- **Type**
+- **Tipo**
 
   ```ts
-  function onDeactivated(callback: () => void, target?: ComponentInternalInstance | null): void
+  function onDeactivated(
+    callback: () => void,
+    target?: ComponentInternalInstance | null
+  ): void
   ```
 
-- **See also** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
+- **Ver también** [Guía - Ciclo de Vida de Instancia Cacheada](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## onServerPrefetch() <sup class="vt-badge" data-text="SSR only" /> {#onserverprefetch}
 
-Registers an async function to be resolved before the component instance is to be rendered on the server.
+Registra una función `async` para ser resuelta antes de que la instancia del componente sea renderizada en el servidor.
 
-- **Type**
+- **Tipo**
 
   ```ts
   function onServerPrefetch(callback: () => Promise<any>): void
   ```
 
-- **Details**
+- **Detalles**
 
-  If the callback returns a Promise, the server renderer will wait until the Promise is resolved before rendering the component.
+  Si la función de callback devuelve una Promise, el renderizador del servidor esperará hasta que la Promise se resuelva antes de renderizar el componente.
 
-  This hook is only called during server-side rendering can be used to perform server-only data fetching.
+  Este gancho solo se llama durante la renderización del lado del servidor y puede utilizarse para realizar la obtención de datos solo en el servidor.
 
-- **Example**
+- **Ejemplo**
 
   ```vue
   <script setup>
@@ -326,20 +350,20 @@ Registers an async function to be resolved before the component instance is to b
   const data = ref(null)
 
   onServerPrefetch(async () => {
-    // component is rendered as part of the initial request
-    // pre-fetch data on server as it is faster than on the client
+    // el componente se renderiza como parte de la solicitud inicial
+    // pre-obtiene datos en el servidor ya que es más rápido que en el cliente
     data.value = await fetchOnServer(/* ... */)
   })
 
   onMounted(async () => {
     if (!data.value) {
-      // if data is null on mount, it means the component
-      // is dynamically rendered on the client. Perform a
-      // client-side fetch instead.
+      // si `data` es null en el montado, significa que el componente
+      // se renderiza dinámicamente en el cliente. Realiza una
+      // obtención del lado del cliente en su lugar.
       data.value = await fetchOnClient(/* ... */)
     }
   })
   </script>
   ```
 
-- **See also** [Server-Side Rendering](/guide/scaling-up/ssr)
+- **Ver también** [Renderización del Lado del Servidor](/guide/scaling-up/ssr)

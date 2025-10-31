@@ -1,10 +1,10 @@
-# Options: Composition {#options-composition}
+# Opciones: Composición {#options-composition}
 
 ## provide {#provide}
 
-Provide values that can be injected by descendant components.
+Proporciona valores que pueden ser inyectados por componentes descendientes.
 
-- **Type**
+- **Tipo**
 
   ```ts
   interface ComponentOptions {
@@ -12,15 +12,15 @@ Provide values that can be injected by descendant components.
   }
   ```
 
-- **Details**
+- **Detalles**
 
-  `provide` and [`inject`](#inject) are used together to allow an ancestor component to serve as a dependency injector for all its descendants, regardless of how deep the component hierarchy is, as long as they are in the same parent chain.
+  `provide` y [`inject`](#inject) se utilizan juntos para permitir que un componente ancestro sirva como inyector de dependencias para todos sus descendientes, sin importar la profundidad de la jerarquía de componentes, siempre que estén en la misma cadena de padres.
 
-  The `provide` option should be either an object or a function that returns an object. This object contains the properties that are available for injection into its descendants. You can use Symbols as keys in this object.
+  La opción `provide` debe ser un objeto o una función que devuelva un objeto. Este objeto contiene las propiedades que están disponibles para ser inyectadas en sus descendientes. Puedes usar Symbols como claves en este objeto.
 
-- **Example**
+- **Ejemplo**
 
-  Basic usage:
+  Uso básico:
 
   ```js
   const s = Symbol()
@@ -33,7 +33,7 @@ Provide values that can be injected by descendant components.
   }
   ```
 
-  Using a function to provide per-component state:
+  Usando una función para proporcionar estado por componente:
 
   ```js
   export default {
@@ -50,15 +50,15 @@ Provide values that can be injected by descendant components.
   }
   ```
 
-  Note in the above example, the provided `msg` will NOT be reactive. See [Working with Reactivity](/guide/components/provide-inject#working-with-reactivity) for more details.
+  Ten en cuenta que en el ejemplo anterior, el `msg` proporcionado NO será reactivo. Consulta [Trabajar con Reactividad](/guide/components/provide-inject#working-with-reactivity) para más detalles.
 
-- **See also** [Provide / Inject](/guide/components/provide-inject)
+- **Consulta también** [Provide / Inject](/guide/components/provide-inject)
 
 ## inject {#inject}
 
-Declare properties to inject into the current component by locating them from ancestor providers.
+Declara propiedades para inyectar en el componente actual, localizándolas desde los proveedores ancestros.
 
-- **Type**
+- **Tipo**
 
   ```ts
   interface ComponentOptions {
@@ -75,24 +75,24 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-- **Details**
+- **Detalles**
 
-  The `inject` option should be either:
+  La opción `inject` debe ser:
 
-  - An array of strings, or
-  - An object where the keys are the local binding name and the value is either:
-    - The key (string or Symbol) to search for in available injections, or
-    - An object where:
-      - The `from` property is the key (string or Symbol) to search for in available injections, and
-      - The `default` property is used as fallback value. Similar to props default values, a factory function is needed for object types to avoid value sharing between multiple component instances.
+  - Un array de cadenas, o
+  - Un objeto donde las claves son el nombre de la vinculación local y el valor es:
+    - La clave (cadena o Symbol) a buscar en las inyecciones disponibles, o
+    - Un objeto donde:
+      - La propiedad `from` es la clave (cadena o Symbol) a buscar en las inyecciones disponibles, y
+      - La propiedad `default` se utiliza como valor de respaldo. Similar a los valores predeterminados de las `props`, se necesita una función de fábrica para los tipos de objeto para evitar compartir valores entre múltiples instancias de componentes.
 
-  An injected property will be `undefined` if neither a matching property nor a default value was provided.
+  Una propiedad inyectada será `undefined` si no se proporcionó una propiedad coincidente ni un valor predeterminado.
 
-  Note that injected bindings are NOT reactive. This is intentional. However, if the injected value is a reactive object, properties on that object do remain reactive. See [Working with Reactivity](/guide/components/provide-inject#working-with-reactivity) for more details.
+  Ten en cuenta que las vinculaciones inyectadas NO son reactivas. Esto es intencional. Sin embargo, si el valor inyectado es un objeto reactivo, las propiedades de ese objeto sí permanecen reactivas. Consulta [Trabajar con Reactividad](/guide/components/provide-inject#working-with-reactivity) para más detalles.
 
-- **Example**
+- **Ejemplo**
 
-  Basic usage:
+  Uso básico:
 
   ```js
   export default {
@@ -103,7 +103,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Using an injected value as the default for a prop:
+  Usando un valor inyectado como valor predeterminado para una `prop`:
 
   ```js
   const Child = {
@@ -118,7 +118,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Using an injected value as data entry:
+  Usando un valor inyectado como entrada de datos:
 
   ```js
   const Child = {
@@ -131,7 +131,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Injections can be optional with default value:
+  Las inyecciones pueden ser opcionales con un valor predeterminado:
 
   ```js
   const Child = {
@@ -141,7 +141,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  If it needs to be injected from a property with a different name, use `from` to denote the source property:
+  Si necesita ser inyectado desde una propiedad con un nombre diferente, usa `from` para denotar la propiedad de origen:
 
   ```js
   const Child = {
@@ -154,7 +154,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Similar to prop defaults, you need to use a factory function for non-primitive values:
+  De forma similar a los valores predeterminados de las `prop`, necesitas usar una función de fábrica para valores no primitivos:
 
   ```js
   const Child = {
@@ -167,13 +167,13 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-- **See also** [Provide / Inject](/guide/components/provide-inject)
+- **Consulta también** [Provide / Inject](/guide/components/provide-inject)
 
 ## mixins {#mixins}
 
-An array of option objects to be mixed into the current component.
+Un array de objetos de opciones para ser mezclados en el componente actual.
 
-- **Type**
+- **Tipo**
 
   ```ts
   interface ComponentOptions {
@@ -181,17 +181,17 @@ An array of option objects to be mixed into the current component.
   }
   ```
 
-- **Details**
+- **Detalles**
 
-  The `mixins` option accepts an array of mixin objects. These mixin objects can contain instance options like normal instance objects, and they will be merged against the eventual options using the certain option merging logic. For example, if your mixin contains a `created` hook and the component itself also has one, both functions will be called.
+  La opción `mixins` acepta un array de objetos `mixin`. Estos objetos `mixin` pueden contener opciones de instancia como los objetos de instancia normales, y se fusionarán con las opciones finales utilizando la lógica de fusión de opciones específica. Por ejemplo, si tu `mixin` contiene un `hook` `created` y el componente en sí también tiene uno, ambas funciones serán llamadas.
 
-  Mixin hooks are called in the order they are provided, and called before the component's own hooks.
+  Los `hooks` de `Mixin` se llaman en el orden en que se proporcionan, y se llaman antes de los `hooks` propios del componente.
 
-  :::warning No Longer Recommended
-  In Vue 2, mixins were the primary mechanism for creating reusable chunks of component logic. While mixins continue to be supported in Vue 3, [Composable functions using Composition API](/guide/reusability/composables) is now the preferred approach for code reuse between components.
+  :::warning Ya no recomendado
+  En Vue 2, los `mixins` eran el mecanismo principal para crear bloques reutilizables de lógica de componente. Aunque los `mixins` siguen siendo compatibles en Vue 3, las [funciones Composable usando la Composition API](/guide/reusability/composables) son ahora el enfoque preferido para la reutilización de código entre componentes.
   :::
 
-- **Example**
+- **Ejemplo**
 
   ```js
   const mixin = {
@@ -213,9 +213,9 @@ An array of option objects to be mixed into the current component.
 
 ## extends {#extends}
 
-A "base class" component to extend from.
+Un componente de "clase base" del que extender.
 
-- **Type**
+- **Tipo**
 
   ```ts
   interface ComponentOptions {
@@ -223,17 +223,17 @@ A "base class" component to extend from.
   }
   ```
 
-- **Details**
+- **Detalles**
 
-  Allows one component to extend another, inheriting its component options.
+  Permite que un componente extienda a otro, heredando sus opciones de componente.
 
-  From an implementation perspective, `extends` is almost identical to `mixins`. The component specified by `extends` will be treated as though it were the first mixin.
+  Desde la perspectiva de la implementación, `extends` es casi idéntico a `mixins`. El componente especificado por `extends` será tratado como si fuera el primer `mixin`.
 
-  However, `extends` and `mixins` express different intents. The `mixins` option is primarily used to compose chunks of functionality, whereas `extends` is primarily concerned with inheritance.
+  Sin embargo, `extends` y `mixins` expresan intenciones diferentes. La opción `mixins` se utiliza principalmente para componer fragmentos de funcionalidad, mientras que `extends` se ocupa principalmente de la herencia.
 
-  As with `mixins`, any options (except for `setup()`) will be merged using the relevant merge strategy.
+  Al igual que con los `mixins`, cualquier opción (excepto `setup()`) se fusionará utilizando la estrategia de fusión relevante.
 
-- **Example**
+- **Ejemplo**
 
   ```js
   const CompA = { ... }
@@ -244,12 +244,12 @@ A "base class" component to extend from.
   }
   ```
 
-  :::warning Not Recommended for Composition API
-  `extends` is designed for Options API and does not handle the merging of the `setup()` hook.
+  :::warning No recomendado para Composition API
+  `extends` está diseñado para la Options API y no maneja la fusión del `hook` `setup()`.
 
-  In Composition API, the preferred mental model for logic reuse is "compose" over "inheritance". If you have logic from a component that needs to be reused in another one, consider extracting the relevant logic into a [Composable](/guide/reusability/composables#composables).
+  En la Composition API, el modelo mental preferido para la reutilización de lógica es "componer" en lugar de "heredar". Si tienes lógica de un componente que necesita ser reutilizada en otro, considera extraer la lógica relevante en un [Composable](/guide/reusability/composables#composables).
 
-  If you still intend to "extend" a component using Composition API, you can call the base component's `setup()` in the extending component's `setup()`:
+  Si aún pretendes "extender" un componente usando la Composition API, puedes llamar al `setup()` del componente base en el `setup()` del componente que extiende:
 
   ```js
   import Base from './Base.js'

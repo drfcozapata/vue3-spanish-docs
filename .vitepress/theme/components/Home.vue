@@ -13,18 +13,17 @@ onMounted(load)
   <section id="hero">
     <img id="uwu" alt="Vue.js Kawaii Logo by @icarusgkx" />
     <h1 class="tagline">
-      The
-      <span class="accent">Progressive</span>
-      <br />JavaScript Framework
+      El Framework
+      <span class="accent">Progresivo</span>
+      <br />de JavaScript
     </h1>
     <p class="description">
-      An approachable, performant and versatile framework for building web
-      user interfaces.
+      Un framework accesible, eficaz y versátil para crear interfaces de usuario web.
     </p>
     <p class="actions">
       <VueMasteryModal />
       <a class="get-started" href="/guide/introduction.html">
-        Get Started
+        Comenzar
         <svg
           class="icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -37,9 +36,9 @@ onMounted(load)
           />
         </svg>
       </a>
-      <a class="setup" href="/guide/quick-start.html">Install</a>
+      <a class="setup" href="/guide/quick-start.html">Instalar</a>
       <a class="security" href="https://v2.vuejs.org/eol/" target="_blank">
-        Get Security Updates for Vue 2
+        Obtener actualizaciones de seguridad para Vue 2
         <svg
           class="icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +53,7 @@ onMounted(load)
   </section>
 
   <section v-if="data && data.special" id="special-spsr">
-    <span class="lead">Special Sponsor</span>
+    <span class="lead">Patrocinador Especial</span>
     <template v-for="{ url, img, name, description } of data.special">
       <a :href="url" target="_blank" rel="sponsored noopener">
         <picture v-if="img.endsWith('png')">
@@ -78,39 +77,38 @@ onMounted(load)
   <section v-else id="special-spsr">
     <span>
       <a href="/sponsor/#tier-benefits">
-        Special Sponsor slot is now vacant - Inquire now
+        El puesto de Patrocinador Especial está vacante. Solicita información ahora.
       </a>
     </span>
   </section>
 
   <section id="highlights" class="vt-box-container">
     <div class="vt-box">
-      <h2>Approachable</h2>
+      <h2>Accesible</h2>
       <p>
-        Builds on top of standard HTML, CSS and JavaScript with intuitive
-        API and world-class documentation.
+        Basado en HTML, CSS y JavaScript estándar con una API intuitiva y documentación de primera clase.
       </p>
     </div>
     <div class="vt-box">
-      <h2>Performant</h2>
+      <h2>Eficaz</h2>
       <p>
-        Truly reactive, compiler-optimized rendering system that rarely
-        requires manual optimization.
+        Sistema de renderización verdaderamente reactivo y optimizado por compilador que rara vez
+        requiere optimización manual.
       </p>
     </div>
     <div class="vt-box">
-      <h2>Versatile</h2>
+      <h2>Versátil</h2>
       <p>
-        A rich, incrementally adoptable ecosystem that scales between a
-        library and a full-featured framework.
+        Un ecosistema rico y adoptable de forma incremental que se adapta entre una
+        librería y un framework completo.
       </p>
     </div>
   </section>
 
   <section id="spsrs">
-    <h2>Platinum Sponsors</h2>
+    <h2>Patrocinadores Platino</h2>
     <SponsorsGroup tier="platinum" placement="landing" />
-    <h2>Gold Sponsors</h2>
+    <h2>Patrocinadores Oro</h2>
     <SponsorsGroup tier="gold" placement="landing" />
   </section>
 

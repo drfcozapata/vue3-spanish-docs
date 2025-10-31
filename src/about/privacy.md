@@ -1,42 +1,42 @@
-# Vue.js Privacy Policy {#vue.js-privacy-policy}
+# Política de Privacidad de Vue.js {#vue.js-privacy-policy}
 
-> Effective Date: May 3, 2024
+> Fecha de Vigencia: 3 de mayo de 2024
 
-This Privacy Policy describes the Vue.js organization ("Vue", "we", "us" or "our") practices for handling your information in connection with this website (https://vuejs.org) and our open source-related websites ("Websites") and any content, related documentation, information and services (e.g. tutorials, tools to support the developer workflow, access to resources, etc.) made available to you on this website (collectively, the "Services"). This Privacy Policy describes the personal information we process to support our Services.
+Esta Política de Privacidad describe las prácticas de la organización Vue.js ("Vue", "nosotros" o "nuestro") para el manejo de su información en relación con este sitio web (https://vuejs.org) y nuestros sitios web relacionados con código abierto ("Sitios web"), así como cualquier contenido, documentación relacionada, información y servicios (por ejemplo, tutoriales, herramientas para apoyar el flujo de trabajo del desarrollador, acceso a recursos, etc.) puestos a su disposición en este sitio web (colectivamente, los "Servicios"). Esta Política de Privacidad describe la información personal que procesamos para respaldar nuestros Servicios.
 
-For clarity, this Privacy Policy does not apply to any:
+Para mayor claridad, esta Política de Privacidad no se aplica a ningún:
 
-1. Use of open source code, documentation or specifications made available on GitHub (https://github.com/), which are governed by the terms of the applicable open source license;
+1.  Uso de código abierto, documentación o especificaciones disponibles en GitHub (https://github.com/), los cuales se rigen por los términos de la licencia de código abierto aplicable;
 
-2. Pull requests, issues and any other interactions or features related to participation in open source projects on GitHub, which are governed by GitHub's terms and conditions; or
+2.  Pull requests, issues y cualquier otra interacción o característica relacionada con la participación en proyectos de código abierto en GitHub, las cuales se rigen por los términos y condiciones de GitHub; o
 
-3. Usage statistics of our published packages on NPM (https://npmjs.com/), which are governed by NPM's terms and conditions; or
+3.  Estadísticas de uso de nuestros paquetes publicados en NPM (https://npmjs.com/), las cuales se rigen por los términos y condiciones de NPM; o
 
-4. Usage statistics of our published browser / IDE extensions collected by the browser / IDE vendors. Such statistics are governed by the vendors' respective terms and conditions.
+4.  Estadísticas de uso de nuestras extensiones de navegador / IDE publicadas y recopiladas por los proveedores de navegadores / IDE. Dichas estadísticas se rigen por los respectivos términos y condiciones de los proveedores.
 
-## What Kinds of Information Do We Collect? {#what-kinds-of-information-do-we-collect}
+## ¿Qué Tipo de Información Recopilamos? {#what-kinds-of-information-do-we-collect}
 
-We do **not** collect or store any type of personal data, whether through our websites or through our published npm packages or browser / IDE extensions.
+Nosotros **no** recopilamos ni almacenamos ningún tipo de datos personales, ya sea a través de nuestros sitios web o a través de nuestros paquetes `npm` o extensiones de navegador / IDE publicadas.
 
-We may collect anonymized data via 3rd party services integrated in our websites:
+Podemos recopilar datos anonimizados a través de servicios de terceros integrados en nuestros sitios web:
 
-- **Visitor data to our websites.** Our website analytics is powered by [Fathom Analytics](https://usefathom.com/), which doesn't use cookies and complies with the GDPR, ePrivacy (including PECR), COPPA and CCPA. Using this privacy-friendly website analytics software, your IP address is only briefly processed, and we (running this website) have no way of identifying you. As per the CCPA, your personal information is de-identified. You can read more about this on Fathom Analytics' website.
+-   **Datos de visitantes de nuestros sitios web.** Nuestras analíticas web son impulsadas por [Fathom Analytics](https://usefathom.com/), que no utiliza cookies y cumple con el GDPR, ePrivacy (incluido PECR), COPPA y CCPA. Utilizando este software de analíticas web respetuoso con la privacidad, su dirección IP solo se procesa brevemente, y nosotros (que gestionamos este sitio web) no tenemos forma de identificarle. Según la CCPA, su información personal es desidentificada. Puede leer más al respecto en el sitio web de Fathom Analytics.
 
-  - Fathom Analytics' Privacy Policy: https://usefathom.com/legal/privacy
+    -   Política de Privacidad de Fathom Analytics: https://usefathom.com/legal/privacy
 
-- **Usage data of the search functionality.** Our search functionality is powered by [Algolia DocSearch](https://docsearch.algolia.com/), which does not perform any type of user tracking or fingerprinting, and does not use cookies. Algolia services are GDPR compliant, CCPA compliant, and TRUSTe Certified.
+-   **Datos de uso de la funcionalidad de búsqueda.** Nuestra funcionalidad de búsqueda es impulsada por [Algolia DocSearch](https://docsearch.algolia.com/), que no realiza ningún tipo de seguimiento de usuarios ni de huellas digitales, y no utiliza cookies. Los servicios de Algolia cumplen con GDPR, CCPA y están certificados por TRUSTe.
 
-  - Algolia's privacy policy: https://www.algolia.com/policies/privacy/
-  - Algolia's security and privacy compliance: https://www.algolia.com/distributed-secure/security-compliance/
+    -   Política de privacidad de Algolia: https://www.algolia.com/policies/privacy/
+    -   Cumplimiento de seguridad y privacidad de Algolia: https://www.algolia.com/distributed-secure/security-compliance/
 
-## How Do We Use Information? {#how-do-we-use-information}
+## ¿Cómo Usamos la Información? {#how-do-we-use-information}
 
-The sole purpose of collecting the aforementioned data is to understand our website traffic and usage in the most privacy-friendly way possible so that we can continually improve our website and documentation quality. The lawful basis as per the GDPR is "Article 6(1)(f); where our legitimate interests are to improve our website and business continually." As per the explanation, no personal data is stored over time.
+El único propósito de recopilar los datos antes mencionados es comprender el tráfico y el uso de nuestro sitio web de la manera más respetuosa con la privacidad posible para que podamos mejorar continuamente la calidad de nuestro sitio web y documentación. La base legal según el GDPR es "Artículo 6(1)(f); donde nuestros intereses legítimos son mejorar continuamente nuestro sitio web y negocio." Según la explicación, no se almacenan datos personales con el tiempo.
 
-## Data Retention {#data-retention}
+## Retención de Datos {#data-retention}
 
-All data collected are stored on aforementioned 3rd party services and are subject to the services' respective data retention policies.
+Todos los datos recopilados se almacenan en los servicios de terceros antes mencionados y están sujetos a las políticas de retención de datos respectivas de dichos servicios.
 
-## Questions {#questions}
+## Preguntas {#questions}
 
-If you have any questions about this Privacy Policy or our practices, please contact us via email at hello@vuejs.org.
+Si tiene alguna pregunta sobre esta Política de Privacidad o nuestras prácticas, contáctenos por correo electrónico en hello@vuejs.org.

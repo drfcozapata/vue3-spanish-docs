@@ -1,25 +1,25 @@
-# Priority D Rules: Use with Caution {#priority-d-rules-use-with-caution}
+# Reglas de Prioridad D: Usar con Precaución {#priority-d-rules-use-with-caution}
 
-::: warning Note
-This Vue.js Style Guide is outdated and needs to be reviewed. If you have any questions or suggestions, please [open an issue](https://github.com/vuejs/docs/issues/new).
+::: warning Nota
+Esta Guía de Estilo de Vue.js está desactualizada y necesita ser revisada. Si tienes alguna pregunta o sugerencia, por favor [abre una incidencia](https://github.com/vuejs/docs/issues/new).
 :::
 
-Some features of Vue exist to accommodate rare edge cases or smoother migrations from a legacy code base. When overused however, they can make your code more difficult to maintain or even become a source of bugs. These rules shine a light on potentially risky features, describing when and why they should be avoided.
+Algunas características de Vue existen para acomodar casos extremos raros o migraciones más fluidas desde una base de código heredada. Sin embargo, cuando se usan en exceso, pueden hacer que tu código sea más difícil de mantener o incluso convertirse en una fuente de errores. Estas reglas arrojan luz sobre características potencialmente riesgosas, describiendo cuándo y por qué deben evitarse.
 
-## Element selectors with `scoped` {#element-selectors-with-scoped}
+## Selectores de elemento con `scoped` {#element-selectors-with-scoped}
 
-**Element selectors should be avoided with `scoped`.**
+**Los selectores de elemento deben evitarse con `scoped`.**
 
-Prefer class selectors over element selectors in `scoped` styles, because large numbers of element selectors are slow.
+Prefiere los selectores de clase sobre los selectores de elemento en los estilos `scoped`, porque un gran número de selectores de elemento son lentos.
 
-::: details Detailed Explanation
-To scope styles, Vue adds a unique attribute to component elements, such as `data-v-f3f3eg9`. Then selectors are modified so that only matching elements with this attribute are selected (e.g. `button[data-v-f3f3eg9]`).
+::: details Explicación Detallada
+Para `scoped` estilos, Vue añade un `attribute` único a los elementos del componente, como `data-v-f3f3eg9`. Luego los selectores son modificados para que solo se seleccionen los elementos coincidentes con este `attribute` (por ejemplo, `button[data-v-f3f3eg9]`).
 
-The problem is that large numbers of element-attribute selectors (e.g. `button[data-v-f3f3eg9]`) will be considerably slower than class-attribute selectors (e.g. `.btn-close[data-v-f3f3eg9]`), so class selectors should be preferred whenever possible.
+El problema es que un gran número de selectores de `attribute` de elemento (por ejemplo, `button[data-v-f3f3eg9]`) serán considerablemente más lentos que los selectores de `attribute` de clase (por ejemplo, `.btn-close[data-v-f3f3eg9]`), por lo que los selectores de clase deben preferirse siempre que sea posible.
 :::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Mal</h3>
 
 ```vue-html
 <template>
@@ -36,7 +36,7 @@ button {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Bien</h3>
 
 ```vue-html
 <template>
@@ -52,18 +52,18 @@ button {
 
 </div>
 
-## Implicit parent-child communication {#implicit-parent-child-communication}
+## Comunicación implícita padre-hijo {#implicit-parent-child-communication}
 
-**Props and events should be preferred for parent-child component communication, instead of `this.$parent` or mutating props.**
+**Las `props` y los `events` deben preferirse para la comunicación entre componentes padre-hijo, en lugar de `this.$parent` o mutar `props`.**
 
-An ideal Vue application is props down, events up. Sticking to this convention makes your components much easier to understand. However, there are edge cases where prop mutation or `this.$parent` can simplify two components that are already deeply coupled.
+Una aplicación ideal de Vue es `props` hacia abajo, `events` hacia arriba. Mantener esta convención hace que tus componentes sean mucho más fáciles de entender. Sin embargo, hay casos extremos donde la mutación de `prop` o `this.$parent` puede simplificar dos componentes que ya están profundamente acoplados.
 
-The problem is, there are also many _simple_ cases where these patterns may offer convenience. Beware: do not be seduced into trading simplicity (being able to understand the flow of your state) for short-term convenience (writing less code).
+El problema es que también hay muchos casos _simples_ donde estos patrones pueden ofrecer conveniencia. Advertencia: no te dejes seducir para cambiar la simplicidad (ser capaz de entender el flujo de tu estado) por la conveniencia a corto plazo (escribir menos código).
 
 <div class="options-api">
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Mal</h3>
 
 ```js
 app.component('TodoItem', {
@@ -109,7 +109,7 @@ app.component('TodoItem', {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Bien</h3>
 
 ```js
 app.component('TodoItem', {
@@ -160,7 +160,7 @@ app.component('TodoItem', {
 <div class="composition-api">
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Mal</h3>
 
 ```vue
 <script setup>
@@ -211,7 +211,7 @@ function removeTodo() {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Bien</h3>
 
 ```vue
 <script setup>

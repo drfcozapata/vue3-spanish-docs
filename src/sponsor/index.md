@@ -13,72 +13,72 @@ import { onMounted } from 'vue'
 onMounted(load)
 </script>
 
-# Become a Vue.js Sponsor {#become-a-vue-js-sponsor}
+# Conviértete en un patrocinador de Vue.js {#become-a-vue-js-sponsor}
 
-Vue.js is an MIT licensed open source project and completely free to use.
-The tremendous amount of effort needed to maintain such a large ecosystem and develop new features for the project is only made sustainable thanks to the generous financial backing of our sponsors.
+Vue.js es un proyecto de código abierto con licencia MIT y completamente gratuito de usar.
+La enorme cantidad de esfuerzo necesaria para mantener un ecosistema tan grande y desarrollar nuevas características para el proyecto solo es sostenible gracias al generoso apoyo financiero de nuestros patrocinadores.
 
-## How to Sponsor {#how-to-sponsor}
+## Cómo patrocinar {#how-to-sponsor}
 
-Sponsorships can be done via [GitHub Sponsors](https://github.com/sponsors/yyx990803) or [OpenCollective](https://opencollective.com/vuejs). Invoices can be obtained via GitHub's payment system. Both monthly-recurring sponsorships and one-time donations are accepted. Recurring sponsorships are entitled to logo placements as specified in [Sponsorship Tiers](#tier-benefits).
+Los patrocinios se pueden realizar a través de [GitHub Sponsors](https://github.com/sponsors/yyx990803) o [OpenCollective](https://opencollective.com/vuejs). Las facturas se pueden obtener a través del sistema de pago de GitHub. Se aceptan tanto patrocinios mensuales recurrentes como donaciones únicas. Los patrocinios recurrentes dan derecho a la colocación del logo según lo especificado en [Beneficios de los niveles de patrocinio](#tier-benefits).
 
-If you have questions regarding tiers, payment logistics, or sponsor exposure data, please reach out to [sponsor@vuejs.org](mailto:sponsor@vuejs.org?subject=Vue.js%20sponsorship%20inquiry).
+Si tiene preguntas sobre los niveles, la logística de pago o los datos de exposición del patrocinador, por favor, póngase en contacto con [sponsor@vuejs.org](mailto:sponsor@vuejs.org?subject=Vue.js%20sponsorship%20inquiry).
 
-## Sponsoring Vue as a Business {#sponsoring-vue-as-a-business}
+## Patrocinar Vue como empresa {#sponsoring-vue-as-a-business}
 
-Sponsoring Vue gives you great exposure to over **2 million** Vue developers around the world through our website and GitHub project READMEs. This not only directly generates leads, but also improves your brand recognition as a business that cares about Open Source. This is an intangible but extremely important asset for companies building products for developers, as it improves your conversion rate.
+Patrocinar Vue le da una gran exposición a más de **2 millones** de desarrolladores Vue en todo el mundo a través de nuestro sitio web y los READMEs de proyectos de GitHub. Esto no solo genera leads directamente, sino que también mejora el reconocimiento de su marca como una empresa que se preocupa por el Código Abierto. Este es un activo intangible pero extremadamente importante para las empresas que desarrollan productos para desarrolladores, ya que mejora su tasa de conversión.
 
-If you are using Vue to build a revenue-generating product, it makes business sense to sponsor Vue's development: **it ensures the project that your product relies on stays healthy and actively maintained.** The exposure and positive brand image in the Vue community also makes it easier to attract and recruit Vue developers.
+Si está utilizando Vue para construir un producto que genera ingresos, tiene sentido comercial patrocinar el desarrollo de Vue: **garantiza que el proyecto en el que se basa su producto se mantenga saludable y activamente mantenido.** La exposición y la imagen de marca positiva en la comunidad Vue también facilitan la atracción y el reclutamiento de desarrolladores Vue.
 
-If you are building a product where your target customers are developers, you will gain high quality traffic through the sponsorship exposure, since all our visitors are developers. The sponsorship also builds brand recognition and improves conversion.
+Si está construyendo un producto donde sus clientes objetivo son desarrolladores, obtendrá tráfico de alta calidad a través de la exposición del patrocinio, ya que todos nuestros visitantes son desarrolladores. El patrocinio también construye el reconocimiento de la marca y mejora la conversión.
 
-## Sponsoring Vue as an Individual {#sponsoring-vue-as-an-individual}
+## Patrocinar Vue como individuo {#sponsoring-vue-as-an-individual}
 
-If you are an individual user and have enjoyed the productivity of using Vue, consider donating as a sign of appreciation - like buying us coffee once in a while. Many of our team members accept sponsorships and donations via GitHub Sponsors. Look for the "Sponsor" button on each team member's profile on our [team page](/about/team).
+Si es un usuario individual y ha disfrutado de la productividad de usar Vue, considere donar como una señal de agradecimiento, como invitarnos a un café de vez en cuando. Muchos de nuestros miembros del equipo aceptan patrocinios y donaciones a través de GitHub Sponsors. Busque el botón "Sponsor" en el perfil de cada miembro del equipo en nuestra [página del equipo](/about/team).
 
-You can also try to convince your employer to sponsor Vue as a business. This may not be easy, but business sponsorships typically make a much larger impact on the sustainability of OSS projects than individual donations, so you will help us much more if you succeed.
+También puede intentar convencer a su empleador de que patrocine Vue como empresa. Esto puede no ser fácil, pero los patrocinios empresariales suelen tener un impacto mucho mayor en la sostenibilidad de los proyectos OSS que las donaciones individuales, por lo que nos ayudará mucho más si lo consigue.
 
-## Tier Benefits {#tier-benefits}
+## Beneficios de los niveles {#tier-benefits}
 
-- **Global Special Sponsor**:
-  - Limited to **one** sponsor globally. <span v-if="!data?.special">Currently vacant. [Get in touch](mailto:sponsor@vuejs.org?subject=Vue.js%20special%20sponsor%20inquiry)!</span><span v-else>(Currently filled)</span>
-  - (Exclusive) **Above the fold** logo placement on the front page of [vuejs.org](/).
-  - (Exclusive) Special shoutout and regular retweets of major product launches via [Vue's official X account](https://twitter.com/vuejs) (320k followers).
-  - Most prominent logo placement in all locations from tiers below.
-- **Platinum (USD$2,000/mo)**:
-  - Prominent logo placement on the front page of [vuejs.org](/).
-  - Prominent logo placement in sidebar of all content pages.
-  - Prominent logo placement in the README of [`vuejs/core`](https://github.com/vuejs/core) and [`vuejs/vue`](https://github.com/vuejs/core).
-- **Gold (USD$500/mo)**:
-  - Large logo placement on the front page of [vuejs.org](/).
-  - Large logo placement in the README of `vuejs/core` and `vuejs/vue`.
-- **Silver (USD$250/mo)**:
-  - Medium logo placement in the `BACKERS.md` file of `vuejs/core` and `vuejs/vue`.
-- **Bronze (USD$100/mo)**:
-  - Small logo placement in the `BACKERS.md` file of `vuejs/core` and `vuejs/vue`.
-- **Generous Backer (USD$50/mo)**:
-  - Name listed in the `BACKERS.md` file of `vuejs/core` and `vuejs/vue`, above other individual backers.
-- **Individual Backer (USD$5/mo)**:
-  - Name listed in the `BACKERS.md` file of `vuejs/core` and `vuejs/vue`.
+- **Patrocinador Especial Global**:
+  - Limitado a **un** patrocinador a nivel global. <span v-if="!data?.special">Actualmente vacante. ¡[Póngase en contacto](mailto:sponsor@vuejs.org?subject=Vue.js%20special%20sponsor%20inquiry)!</span><span v-else>(Actualmente ocupado)</span>
+  - (Exclusivo) Colocación del logo **en la parte superior visible** de la página principal de [vuejs.org](/).
+  - (Exclusivo) Mención especial y retweets regulares de lanzamientos de productos importantes a través de la [cuenta oficial de X de Vue](https://twitter.com/vuejs) (320k seguidores).
+  - Colocación del logo más prominente en todas las ubicaciones de los niveles inferiores.
+- **Platino (USD$2,000/mes)**:
+  - Colocación prominente del logo en la página principal de [vuejs.org](/).
+  - Colocación prominente del logo en la barra lateral de todas las páginas de contenido.
+  - Colocación prominente del logo en el README de [`vuejs/core`](https://github.com/vuejs/core) y [`vuejs/vue`](https://github.com/vuejs/core).
+- **Oro (USD$500/mes)**:
+  - Colocación de logo grande en la página principal de [vuejs.org](/).
+  - Colocación de logo grande en el README de `vuejs/core` y `vuejs/vue`.
+- **Plata (USD$250/mes)**:
+  - Colocación de logo mediano en el archivo `BACKERS.md` de `vuejs/core` y `vuejs/vue`.
+- **Bronce (USD$100/mes)**:
+  - Colocación de logo pequeño en el archivo `BACKERS.md` de `vuejs/core` y `vuejs/vue`.
+- **Patrocinador Generoso (USD$50/mes)**:
+  - Nombre listado en el archivo `BACKERS.md` de `vuejs/core` y `vuejs/vue`, por encima de otros patrocinadores individuales.
+- **Patrocinador Individual (USD$5/mes)**:
+  - Nombre listado en el archivo `BACKERS.md` de `vuejs/core` y `vuejs/vue`.
 
-## Current Sponsors {#current-sponsors}
+## Patrocinadores actuales {#current-sponsors}
 
-### Special Global Sponsor {#special-global-sponsor}
+### Patrocinador Especial Global {#special-global-sponsor}
 
 <SponsorsGroup tier="special" placement="page" />
 
-### Platinum {#platinum}
+### Platino {#platinum}
 
 <SponsorsGroup tier="platinum" placement="page" />
 
-### Platinum (China) {#platinum-china}
+### Platino (China) {#platinum-china}
 
 <SponsorsGroup tier="platinum_china" placement="page" />
 
-### Gold {#gold}
+### Oro {#gold}
 
 <SponsorsGroup tier="gold" placement="page" />
 
-### Silver {#silver}
+### Plata {#silver}
 
 <SponsorsGroup tier="silver" placement="page" />

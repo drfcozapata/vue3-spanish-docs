@@ -1,6 +1,6 @@
-# Computed Property {#computed-property}
+# Propiedad Computada {#computed-property}
 
-Let's keep building on top of the todo list from the last step. Here, we've already added a toggle functionality to each todo. This is done by adding a `done` property to each todo object, and using `v-model` to bind it to a checkbox:
+Sigamos construyendo sobre la lista de tareas del paso anterior. Aquí, ya hemos añadido una funcionalidad de alternancia a cada tarea. Esto se logra añadiendo una propiedad `done` a cada objeto todo, y usando `v-model` para vincularla a una casilla de verificación:
 
 ```vue-html{2}
 <li v-for="todo in todos">
@@ -9,11 +9,11 @@ Let's keep building on top of the todo list from the last step. Here, we've alre
 </li>
 ```
 
-The next improvement we can add is to be able to hide already completed todos. We already have a button that toggles the `hideCompleted` state. But how do we render different list items based on that state?
+La siguiente mejora que podemos añadir es la capacidad de ocultar las tareas ya completadas. Ya tenemos un botón que alterna el estado `hideCompleted`. Pero, ¿cómo renderizamos diferentes elementos de la lista basándonos en ese estado?
 
 <div class="options-api">
 
-Introducing <a target="_blank" href="/guide/essentials/computed.html">computed property</a>. We can declare a property that is reactively computed from other properties using the `computed` option:
+Presentamos la <a target="_blank" href="/guide/essentials/computed.html">propiedad computada</a>. Podemos declarar una propiedad que se calcula reactivamente a partir de otras propiedades utilizando la opción `computed`:
 
 <div class="sfc">
 
@@ -47,7 +47,7 @@ createApp({
 </div>
 <div class="composition-api">
 
-Introducing <a target="_blank" href="/guide/essentials/computed.html">`computed()`</a>. We can create a computed ref that computes its `.value` based on other reactive data sources:
+Presentamos <a target="_blank" href="/guide/essentials/computed.html">`computed()`</a>. Podemos crear una `ref` computada que calcula su `.value` basándose en otras fuentes de datos reactivas:
 
 <div class="sfc">
 
@@ -99,6 +99,6 @@ createApp({
 + <li v-for="todo in filteredTodos">
 ```
 
-A computed property tracks other reactive state used in its computation as dependencies. It caches the result and automatically updates it when its dependencies change.
+Una propiedad computada rastrea otros estados reactivos utilizados en su cálculo como dependencias. Almacena en caché el resultado y lo actualiza automáticamente cuando sus dependencias cambian.
 
-Now, try to add the `filteredTodos` computed property and implement its computation logic! If implemented correctly, checking off a todo when hiding completed items should instantly hide it as well.
+Ahora, ¡intenta añadir la propiedad computada `filteredTodos` e implementar su lógica de cálculo! Si se implementa correctamente, marcar una tarea como completada mientras se ocultan los elementos completados debería ocultarla también al instante.

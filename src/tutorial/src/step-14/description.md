@@ -1,6 +1,6 @@
-# Slots {#slots}
+# Ranuras {#slots}
 
-In addition to passing data via props, the parent component can also pass down template fragments to the child via **slots**:
+Además de pasar datos a través de `props`, el componente padre también puede pasar fragmentos de plantilla al hijo a través de **ranuras**:
 
 <div class="sfc">
 
@@ -21,7 +21,7 @@ In addition to passing data via props, the parent component can also pass down t
 
 </div>
 
-In the child component, it can render the slot content from the parent using the `<slot>` element as outlet:
+En el componente hijo, puede renderizar el contenido de ranura del padre usando el elemento `<slot>` como salida:
 
 <div class="sfc">
 
@@ -40,10 +40,10 @@ In the child component, it can render the slot content from the parent using the
 
 </div>
 
-Content inside the `<slot>` outlet will be treated as "fallback" content: it will be displayed if the parent did not pass down any slot content:
+El contenido dentro de la salida `<slot>` será tratado como "contenido de respaldo": se mostrará si el padre no pasó ningún contenido de ranura:
 
 ```vue-html
 <slot>Fallback content</slot>
 ```
 
-Currently we are not passing any slot content to `<ChildComp>`, so you should see the fallback content. Let's provide some slot content to the child while making use of the parent's `msg` state.
+Actualmente no estamos pasando ningún contenido de ranura a `<ChildComp>`, así que deberías ver el contenido de respaldo. Vamos a proporcionar algo de contenido de ranura al hijo mientras hacemos uso del estado `msg` del padre.

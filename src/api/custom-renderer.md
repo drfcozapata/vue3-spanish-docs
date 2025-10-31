@@ -1,10 +1,10 @@
-# Custom Renderer API {#custom-renderer-api}
+# API de Renderizador Personalizado {#custom-renderer-api}
 
 ## createRenderer() {#createrenderer}
 
-Creates a custom renderer. By providing platform-specific node creation and manipulation APIs, you can leverage Vue's core runtime to target non-DOM environments.
+Crea un renderizador personalizado. Al proporcionar APIs de creación y manipulación de nodos específicos de la plataforma, puedes aprovechar el runtime central de Vue para dirigirte a entornos que no son DOM.
 
-- **Type**
+- **Tipo**
 
   ```ts
   function createRenderer<HostNode, HostElement>(
@@ -53,7 +53,7 @@ Creates a custom renderer. By providing platform-specific node creation and mani
   }
   ```
 
-- **Example**
+- **Ejemplo**
 
   ```js
   import { createRenderer } from '@vue/runtime-core'
@@ -74,4 +74,4 @@ Creates a custom renderer. By providing platform-specific node creation and mani
   export * from '@vue/runtime-core'
   ```
 
-  Vue's own `@vue/runtime-dom` is [implemented using the same API](https://github.com/vuejs/core/blob/main/packages/runtime-dom/src/index.ts). For a simpler implementation, check out [`@vue/runtime-test`](https://github.com/vuejs/core/blob/main/packages/runtime-test/src/index.ts) which is a private package for Vue's own unit testing.
+  El propio `@vue/runtime-dom` de Vue está [implementado utilizando la misma API](https://github.com/vuejs/core/blob/main/packages/runtime-dom/src/index.ts). Para una implementación más sencilla, consulta [`@vue/runtime-test`](https://github.com/vuejs/core/blob/main/packages/runtime-test/src/index.ts) que es un paquete privado para las propias pruebas unitarias de Vue.

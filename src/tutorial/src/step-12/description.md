@@ -1,6 +1,6 @@
 # Props {#props}
 
-A child component can accept input from the parent via **props**. First, it needs to declare the props it accepts:
+Un componente hijo puede aceptar entrada desde el padre vía **props**. Primero, necesita declarar las `props` que acepta:
 
 <div class="composition-api">
 <div class="sfc">
@@ -13,7 +13,7 @@ const props = defineProps({
 </script>
 ```
 
-Note `defineProps()` is a compile-time macro and doesn't need to be imported. Once declared, the `msg` prop can be used in the child component's template. It can also be accessed in JavaScript via the returned object of `defineProps()`.
+Ten en cuenta que `defineProps()` es una macro de tiempo de compilación y no necesita ser importada. Una vez declarada, la `prop` `msg` puede ser usada en la plantilla del componente hijo. También puede ser accedida en JavaScript vía el objeto retornado de `defineProps()`.
 
 </div>
 
@@ -31,7 +31,7 @@ export default {
 }
 ```
 
-Once declared, the `msg` prop is exposed on `this` and can be used in the child component's template. The received props are passed to `setup()` as the first argument.
+Una vez declarada, la `prop` `msg` es expuesta en `this` y puede ser usada en la plantilla del componente hijo. Las `props` recibidas son pasadas a `setup()` como el primer argumento.
 
 </div>
 
@@ -48,11 +48,11 @@ export default {
 }
 ```
 
-Once declared, the `msg` prop is exposed on `this` and can be used in the child component's template.
+Una vez declarada, la `prop` `msg` es expuesta en `this` y puede ser usada en la plantilla del componente hijo.
 
 </div>
 
-The parent can pass the prop to the child just like attributes. To pass a dynamic value, we can also use the `v-bind` syntax:
+El padre puede pasar la `prop` al hijo al igual que los atributos. Para pasar un valor dinámico, también podemos usar la sintaxis de `v-bind`:
 
 <div class="sfc">
 
@@ -69,4 +69,4 @@ The parent can pass the prop to the child just like attributes. To pass a dynami
 
 </div>
 
-Now try it yourself in the editor.
+Ahora pruébalo tú mismo en el editor.

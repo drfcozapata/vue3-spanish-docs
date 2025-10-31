@@ -1,6 +1,6 @@
-# Form Bindings {#form-bindings}
+# Enlaces de Formulario {#form-bindings}
 
-Using `v-bind` and `v-on` together, we can create two-way bindings on form input elements:
+Usando `v-bind` y `v-on` juntos, podemos crear enlaces bidireccionales en elementos de entrada de formulario:
 
 ```vue-html
 <input :value="text" @input="onInput">
@@ -32,16 +32,16 @@ function onInput(e) {
 
 </div>
 
-Try typing in the input box - you should see the text in `<p>` updating as you type.
+Intenta escribir en el cuadro de entrada; deberías ver el texto en `<p>` actualizándose a medida que escribes.
 
-To simplify two-way bindings, Vue provides a directive, `v-model`, which is essentially syntactic sugar for the above:
+Para simplificar los enlaces bidireccionales, Vue proporciona una directiva, `v-model`, que es esencialmente azúcar sintáctico para lo anterior:
 
 ```vue-html
 <input v-model="text">
 ```
 
-`v-model` automatically syncs the `<input>`'s value with the bound state, so we no longer need to use an event handler for that.
+`v-model` sincroniza automáticamente el valor del `<input>` con el estado enlazado, por lo que ya no necesitamos usar un manejador de eventos para ello.
 
-`v-model` works not only on text inputs, but also on other input types such as checkboxes, radio buttons, and select dropdowns. We cover more details in <a target="_blank" href="/guide/essentials/forms.html">Guide - Form Bindings</a>.
+`v-model` funciona no solo en entradas de texto, sino también en otros tipos de entrada como casillas de verificación, botones de radio y selectores desplegables. Cubrimos más detalles en <a target="_blank" href="/guide/essentials/forms.html">Guía - Enlaces de Formulario</a>.
 
-Now, try to refactor the code to use `v-model` instead.
+Ahora, intenta refactorizar el código para usar `v-model` en su lugar.

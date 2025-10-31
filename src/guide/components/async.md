@@ -1,8 +1,8 @@
-# Async Components {#async-components}
+# Componentes Asíncronos {#async-components}
 
-## Basic Usage {#basic-usage}
+## Uso Básico {#basic-usage}
 
-In large applications, we may need to divide the app into smaller chunks and only load a component from the server when it's needed. To make that possible, Vue has a [`defineAsyncComponent`](/api/general#defineasynccomponent) function:
+En aplicaciones grandes, puede que necesitemos dividir la aplicación en partes más pequeñas y cargar un componente desde el servidor solo cuando sea necesario. Para hacer esto posible, Vue tiene una función [`defineAsyncComponent`](/api/general#defineasynccomponent):
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -16,9 +16,9 @@ const AsyncComp = defineAsyncComponent(() => {
 // ... use `AsyncComp` like a normal component
 ```
 
-As you can see, `defineAsyncComponent` accepts a loader function that returns a Promise. The Promise's `resolve` callback should be called when you have retrieved your component definition from the server. You can also call `reject(reason)` to indicate the load has failed.
+Como puedes ver, `defineAsyncComponent` acepta una función cargadora que devuelve una `Promise`. La función de callback `resolve` de la `Promise` debe ser llamada cuando hayas recuperado la definición de tu componente del servidor. También puedes llamar a `reject(reason)` para indicar que la carga ha fallado.
 
-[ES module dynamic import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) also returns a Promise, so most of the time we will use it in combination with `defineAsyncComponent`. Bundlers like Vite and webpack also support the syntax (and will use it as bundle split points), so we can use it to import Vue SFCs:
+[La importación dinámica de módulos ES](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) también devuelve una `Promise`, así que la mayoría de las veces la usaremos en combinación con `defineAsyncComponent`. Bundlers como Vite y webpack también soportan esta sintaxis (y la usarán como puntos de división de bundle), así que podemos usarla para importar SFCs de Vue:
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -28,9 +28,9 @@ const AsyncComp = defineAsyncComponent(() =>
 )
 ```
 
-The resulting `AsyncComp` is a wrapper component that only calls the loader function when it is actually rendered on the page. In addition, it will pass along any props and slots to the inner component, so you can use the async wrapper to seamlessly replace the original component while achieving lazy loading.
+El `AsyncComp` resultante es un componente envoltorio que solo llama a la función cargadora cuando se renderiza realmente en la página. Además, pasará cualquier `props` y `slots` al componente interno, por lo que puedes usar el envoltorio asíncrono para reemplazar sin problemas el componente original mientras logras la carga perezosa.
 
-As with normal components, async components can be [registered globally](/guide/components/registration#global-registration) using `app.component()`:
+Al igual que con los componentes normales, los componentes asíncronos pueden ser [registrados globalmente](/guide/components/registration#global-registration) usando `app.component()`:
 
 ```js
 app.component('MyComponent', defineAsyncComponent(() =>
@@ -40,7 +40,7 @@ app.component('MyComponent', defineAsyncComponent(() =>
 
 <div class="options-api">
 
-You can also use `defineAsyncComponent` when [registering a component locally](/guide/components/registration#local-registration):
+También puedes usar `defineAsyncComponent` cuando [registras un componente localmente](/guide/components/registration#local-registration):
 
 ```vue
 <script>
@@ -64,7 +64,7 @@ export default {
 
 <div class="composition-api">
 
-They can also be defined directly inside their parent component:
+También pueden definirse directamente dentro de su componente padre:
 
 ```vue
 <script setup>
@@ -82,9 +82,9 @@ const AdminPage = defineAsyncComponent(() =>
 
 </div>
 
-## Loading and Error States {#loading-and-error-states}
+## Estados de Carga y Error {#loading-and-error-states}
 
-Asynchronous operations inevitably involve loading and error states - `defineAsyncComponent()` supports handling these states via advanced options:
+Las operaciones asíncronas inevitablemente implican estados de carga y error - `defineAsyncComponent()` soporta el manejo de estos estados a través de opciones avanzadas:
 
 ```js
 const AsyncComp = defineAsyncComponent({
@@ -104,23 +104,23 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-If a loading component is provided, it will be displayed first while the inner component is being loaded. There is a default 200ms delay before the loading component is shown - this is because on fast networks, an instant loading state may get replaced too fast and end up looking like a flicker.
+Si se proporciona un componente de carga, este se mostrará primero mientras se carga el componente interno. Hay un retraso predeterminado de 200ms antes de que se muestre el componente de carga - esto se debe a que en redes rápidas, un estado de carga instantáneo podría ser reemplazado demasiado rápido y terminar pareciendo un parpadeo.
 
-If an error component is provided, it will be displayed when the Promise returned by the loader function is rejected. You can also specify a timeout to show the error component when the request is taking too long.
+Si se proporciona un componente de error, este se mostrará cuando la `Promise` devuelta por la función cargadora sea rechazada. También puedes especificar un `timeout` para mostrar el componente de error cuando la solicitud está tardando demasiado.
 
-## Lazy Hydration <sup class="vt-badge" data-text="3.5+" /> {#lazy-hydration}
+## Hidratación Perezosa <sup class="vt-badge" data-text="3.5+" /> {#lazy-hydration}
 
-> This section only applies if you are using [Server-Side Rendering](/guide/scaling-up/ssr).
+> Esta sección solo aplica si estás usando [Server-Side Rendering](/guide/scaling-up/ssr).
 
-In Vue 3.5+, async components can control when they are hydrated by providing a hydration strategy.
+En Vue 3.5+, los componentes asíncronos pueden controlar cuándo se hidratan al proporcionar una estrategia de hidratación.
 
-- Vue provides a number of built-in hydration strategies. These built-in strategies need to be individually imported so they can be tree-shaken if not used.
+- Vue proporciona varias estrategias de hidratación incorporadas. Estas estrategias incorporadas deben importarse individualmente para que puedan ser `tree-shaken` si no se utilizan.
 
-- The design is intentionally low-level for flexibility. Compiler syntax sugar can potentially be built on top of this in the future either in core or in higher level solutions (e.g. Nuxt).
+- El diseño es intencionadamente de bajo nivel para mayor flexibilidad. El `syntax sugar` del compilador puede construirse sobre esto en el futuro, ya sea en el `core` o en soluciones de nivel superior (por ejemplo, Nuxt).
 
-### Hydrate on Idle {#hydrate-on-idle}
+### Hidratar en Inactividad {#hydrate-on-idle}
 
-Hydrates via `requestIdleCallback`:
+Hidrata vía `requestIdleCallback`:
 
 ```js
 import { defineAsyncComponent, hydrateOnIdle } from 'vue'
@@ -131,9 +131,9 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-### Hydrate on Visible {#hydrate-on-visible}
+### Hidratar al ser Visible {#hydrate-on-visible}
 
-Hydrate when element(s) become visible via `IntersectionObserver`.
+Hidrata cuando el/los elemento(s) se vuelven visibles vía `IntersectionObserver`.
 
 ```js
 import { defineAsyncComponent, hydrateOnVisible } from 'vue'
@@ -144,15 +144,15 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-Can optionally pass in an options object value for the observer:
+Opcionalmente se puede pasar un objeto de opciones para el observador:
 
 ```js
 hydrateOnVisible({ rootMargin: '100px' })
 ```
 
-### Hydrate on Media Query {#hydrate-on-media-query}
+### Hidratar por Media Query {#hydrate-on-media-query}
 
-Hydrates when the specified media query matches.
+Hidrata cuando la `media query` especificada coincide.
 
 ```js
 import { defineAsyncComponent, hydrateOnMediaQuery } from 'vue'
@@ -163,9 +163,9 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-### Hydrate on Interaction {#hydrate-on-interaction}
+### Hidratar en Interacción {#hydrate-on-interaction}
 
-Hydrates when specified event(s) are triggered on the component element(s). The event that triggered the hydration will also be replayed once hydration is complete.
+Hidrata cuando el/los evento(s) especificado(s) se activan en el/los elemento(s) del componente. El evento que desencadenó la hidratación también se reproducirá una vez que la hidratación esté completa.
 
 ```js
 import { defineAsyncComponent, hydrateOnInteraction } from 'vue'
@@ -176,13 +176,13 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-Can also be a list of multiple event types:
+También puede ser una lista de varios tipos de eventos:
 
 ```js
 hydrateOnInteraction(['wheel', 'mouseover'])
 ```
 
-### Custom Strategy {#custom-strategy}
+### Estrategia Personalizada {#custom-strategy}
 
 ```ts
 import { defineAsyncComponent, type HydrationStrategy } from 'vue'
@@ -207,6 +207,6 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-## Using with Suspense {#using-with-suspense}
+## Uso con Suspense {#using-with-suspense}
 
-Async components can be used with the `<Suspense>` built-in component. The interaction between `<Suspense>` and async components is documented in the [dedicated chapter for `<Suspense>`](/guide/built-ins/suspense).
+Los componentes asíncronos pueden usarse con el componente integrado `<Suspense>`. La interacción entre `<Suspense>` y los componentes asíncronos está documentada en el [capítulo dedicado a `<Suspense>`](/guide/built-ins/suspense).

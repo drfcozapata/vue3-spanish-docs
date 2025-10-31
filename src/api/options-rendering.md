@@ -1,10 +1,10 @@
-# Options: Rendering {#options-rendering}
+# Opciones: Renderizado {#options-rendering}
 
 ## template {#template}
 
-A string template for the component.
+Una plantilla de cadena para el componente.
 
-- **Type**
+- **Tipo**
 
   ```ts
   interface ComponentOptions {
@@ -12,25 +12,25 @@ A string template for the component.
   }
   ```
 
-- **Details**
+- **Detalles**
 
-  A template provided via the `template` option will be compiled on-the-fly at runtime. It is only supported when using a build of Vue that includes the template compiler. The template compiler is **NOT** included in Vue builds that have the word `runtime` in their names, e.g. `vue.runtime.esm-bundler.js`. Consult the [dist file guide](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use) for more details about the different builds.
+  Una plantilla proporcionada a través de la opción `template` se compilará sobre la marcha en tiempo de ejecución. Solo es compatible cuando se utiliza una construcción de Vue que incluye el compilador de plantillas. El compilador de plantillas **NO** está incluido en las construcciones de Vue que tienen la palabra `runtime` en sus nombres, p. ej. `vue.runtime.esm-bundler.js`. Consulta la [guía de archivos dist](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use) para más detalles sobre las diferentes construcciones.
 
-  If the string starts with `#` it will be used as a `querySelector` and use the selected element's `innerHTML` as the template string. This allows the source template to be authored using native `<template>` elements.
+  Si la cadena comienza con `#`, se utilizará como un `querySelector` y se usará el `innerHTML` del elemento seleccionado como la cadena de plantilla. Esto permite que la plantilla de origen se cree utilizando elementos `<template>` nativos.
 
-  If the `render` option is also present in the same component, `template` will be ignored.
+  Si la opción `render` también está presente en el mismo componente, `template` será ignorado.
 
-  If the root component of your application doesn't have a `template` or `render` option specified, Vue will try to use the `innerHTML` of the mounted element as the template instead.
+  Si el componente raíz de tu aplicación no tiene una opción `template` o `render` especificada, Vue intentará usar el `innerHTML` del elemento montado como plantilla en su lugar.
 
-  :::warning Security Note
-  Only use template sources that you can trust. Do not use user-provided content as your template. See [Security Guide](/guide/best-practices/security#rule-no-1-never-use-non-trusted-templates) for more details.
+  :::warning Nota de Seguridad
+  Solo usa fuentes de plantilla en las que puedas confiar. No uses contenido proporcionado por el usuario como tu plantilla. Consulta la [Guía de Seguridad](/guide/best-practices/security#rule-no-1-never-use-non-trusted-templates) para más detalles.
   :::
 
 ## render {#render}
 
-A function that programmatically returns the virtual DOM tree of the component.
+Una función que devuelve programáticamente el árbol DOM virtual del componente.
 
-- **Type**
+- **Tipo**
 
   ```ts
   interface ComponentOptions {
@@ -51,21 +51,21 @@ A function that programmatically returns the virtual DOM tree of the component.
   type VNodeArrayChildren = (VNodeArrayChildren | VNodeChildAtom)[]
   ```
 
-- **Details**
+- **Detalles**
 
-  `render` is an alternative to string templates that allows you to leverage the full programmatic power of JavaScript to declare the render output of the component.
+  `render` es una alternativa a las plantillas de cadena que te permite aprovechar todo el poder programático de JavaScript para declarar la salida de renderizado del componente.
 
-  Pre-compiled templates, for example those in Single-File Components, are compiled into the `render` option at build time. If both `render` and `template` are present in a component, `render` will take higher priority.
+  Las plantillas precompiladas, por ejemplo, las de los Single-File Components, se compilan en la opción `render` en tiempo de construcción. Si tanto `render` como `template` están presentes en un componente, `render` tendrá mayor prioridad.
 
-- **See also**
-  - [Rendering Mechanism](/guide/extras/rendering-mechanism)
-  - [Render Functions](/guide/extras/render-function)
+- **Ver también**
+  - [Mecanismo de Renderizado](/guide/extras/rendering-mechanism)
+  - [Funciones de Renderizado](/guide/extras/render-function)
 
 ## compilerOptions {#compileroptions}
 
-Configure runtime compiler options for the component's template.
+Configura las opciones del compilador en tiempo de ejecución para la plantilla del componente.
 
-- **Type**
+- **Tipo**
 
   ```ts
   interface ComponentOptions {
@@ -78,21 +78,21 @@ Configure runtime compiler options for the component's template.
   }
   ```
 
-- **Details**
+- **Detalles**
 
-  This config option is only respected when using the full build (i.e. the standalone `vue.js` that can compile templates in the browser). It supports the same options as the app-level [app.config.compilerOptions](/api/application#app-config-compileroptions), and has higher priority for the current component.
+  Esta opción de configuración solo se respeta cuando se utiliza la construcción completa (es decir, el `vue.js` independiente que puede compilar plantillas en el navegador). Es compatible con las mismas opciones que el [app.config.compilerOptions](/api/application#app-config-compileroptions) a nivel de aplicación, y tiene mayor prioridad para el componente actual.
 
-- **See also** [app.config.compilerOptions](/api/application#app-config-compileroptions)
+- **Ver también** [app.config.compilerOptions](/api/application#app-config-compileroptions)
 
 ## slots<sup class="vt-badge ts"/> {#slots}
 
-- Only supported in 3.3+
+- Solo compatible con 3.3+
 
-An option to assist with type inference when using slots programmatically in render functions.
+Una opción para ayudar con la inferencia de tipos al usar `slots` programáticamente en funciones de renderizado.
 
-- **Details**
+- **Detalles**
 
-  This option's runtime value is not used. The actual types should be declared via type casting using the `SlotsType` type helper:
+  El valor en tiempo de ejecución de esta opción no se utiliza. Los tipos reales deben declararse mediante `type casting` usando el asistente de tipo `SlotsType`:
 
   ```ts
   import { SlotsType } from 'vue'

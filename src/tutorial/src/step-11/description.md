@@ -1,8 +1,8 @@
-# Components {#components}
+# Componentes {#components}
 
-So far, we've only been working with a single component. Real Vue applications are typically created with nested components.
+Hasta ahora, solo hemos estado trabajando con un único componente. Las aplicaciones Vue reales se crean típicamente con componentes anidados.
 
-A parent component can render another component in its template as a child component. To use a child component, we need to first import it:
+Un componente padre puede renderizar otro componente en su plantilla como un componente hijo. Para usar un componente hijo, primero necesitamos importarlo:
 
 <div class="composition-api">
 <div class="sfc">
@@ -27,14 +27,14 @@ export default {
 }
 ```
 
-We also need to register the component using the `components` option. Here we are using the object property shorthand to register the `ChildComp` component under the `ChildComp` key.
+También necesitamos registrar el componente usando la opción `components`. Aquí estamos usando la abreviatura de propiedad de objeto para registrar el componente `ChildComp` bajo la clave `ChildComp`.
 
 </div>
 </div>
 
 <div class="sfc">
 
-Then, we can use the component in the template as:
+Luego, podemos usar el componente en la plantilla como:
 
 ```vue-html
 <ChildComp />
@@ -54,9 +54,9 @@ createApp({
 })
 ```
 
-We also need to register the component using the `components` option. Here we are using the object property shorthand to register the `ChildComp` component under the `ChildComp` key.
+También necesitamos registrar el componente usando la opción `components`. Aquí estamos usando la abreviatura de propiedad de objeto para registrar el componente `ChildComp` bajo la clave `ChildComp`.
 
-Because we are writing the template in the DOM, it will be subject to browser's parsing rules, which is case-insensitive for tag names. Therefore, we need to use the kebab-cased name to reference the child component:
+Debido a que estamos escribiendo la plantilla en el DOM, estará sujeta a las reglas de análisis del navegador, que no distinguen entre mayúsculas y minúsculas para los nombres de etiquetas. Por lo tanto, necesitamos usar el nombre en `kebab-case` para referenciar el componente hijo:
 
 ```vue-html
 <child-comp></child-comp>
@@ -64,5 +64,4 @@ Because we are writing the template in the DOM, it will be subject to browser's 
 
 </div>
 
-
-Now try it yourself - import the child component and render it in the template.
+Ahora inténtalo tú mismo: importa el componente hijo y renderízalo en la plantilla.
