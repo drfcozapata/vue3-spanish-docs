@@ -28,7 +28,7 @@ watch(
       viewBox="0 0 100 125"
       fill="#FFFFFF"
     >
-      <title id="simpleicons-play-icon" lang="en">Play icon</title>
+      <title id="simpleicons-play-icon" lang="en">Icono de Reproducir</title>
       <path
         d="M50,3.8C24.5,3.8,3.8,24.5,3.8,50S24.5,96.2,50,96.2S96.2,75.5,96.2,50S75.5,3.8,50,3.8z M71.2,53.3l-30.8,18  c-0.6,0.4-1.3,0.5-1.9,0.5c-0.6,0-1.3-0.1-1.9-0.5c-1.2-0.6-1.9-1.9-1.9-3.3V32c0-1.4,0.8-2.7,1.9-3.3c1.2-0.6,2.7-0.6,3.8,0  l30.8,18c1.2,0.6,1.9,1.9,1.9,3.3S72.3,52.7,71.2,53.3z"
       ></path>
@@ -65,22 +65,22 @@ watch(
 
           <div class="vuemastery-modal-footer">
             <p class="vuemastery-modal-footer-text">
-              Video by
+              Video de
               <a
                 href="https://www.vuemastery.com"
                 target="_blank"
                 rel="sponsored noopener"
-                title="Vue.js Courses on Vue Mastery"
+                title="Cursos de Vue.js en Vue Mastery"
               >
                 Vue Mastery.</a
-              > Watch Vue Mastery’s free
+              > Mira el curso gratuito de Vue Mastery
               <a
-                href="https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3"
+              href="https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3"
                 target="_blank"
                 rel="sponsored noopener"
-                title="Vue.js Courses on Vue Mastery"
+                title="Cursos de Vue.js en Vue Mastery"
               >
-                Intro to Vue course.</a
+                Introducción al curso de Vue.</a
               >
             </p>
           </div>

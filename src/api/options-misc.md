@@ -1,4 +1,4 @@
-# Opciones: Miscelánea {#options-misc}
+# Options: Miscelánea {#options-misc}
 
 ## name {#name}
 

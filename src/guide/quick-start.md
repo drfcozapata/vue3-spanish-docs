@@ -46,7 +46,7 @@ $ yarn create vue
 
 # For Yarn Modern (v2+)
 $ yarn create vue@latest
-  
+
 # For Yarn ^v4.11
 $ yarn dlx create-vue@latest
 ```
@@ -54,6 +54,7 @@ $ yarn dlx create-vue@latest
 ```sh [bun]
 $ bun create vue@latest
 ```
+
 :::
 
 Este comando instalará y ejecutará [create-vue](https://github.com/vuejs/create-vue), la herramienta oficial de andamiaje de proyectos de Vue. Se te presentarán indicaciones para varias características opcionales como TypeScript y soporte para pruebas:
@@ -102,11 +103,10 @@ $ bun run dev
 
 :::
 
-
 ¡Ahora deberías tener tu primer proyecto Vue en ejecución! Ten en cuenta que los componentes de ejemplo en el proyecto generado están escritos usando la [Composition API](/guide/introduction#composition-api) y `<script setup>`, en lugar de la [Options API](/guide/introduction#options-api). Aquí tienes algunos consejos adicionales:
 
 - La configuración de IDE recomendada es [Visual Studio Code](https://code.visualstudio.com/) + [Vue - Official extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Si utilizas otros editores, consulta la [sección de soporte de IDE](/guide/scaling-up/tooling#ide-support).
-- Más detalles sobre las herramientas, incluida la integración con frameworks de backend, se discuten en la [Guía de Herramientas](/guide/scaling-up/tooling).
+- Más detalles sobre las herramientas, incluida la integración con frameworks de backend, se discuten en la guía de [Herramientas](/guide/scaling-up/tooling).
 - Para aprender más sobre la herramienta de construcción subyacente Vite, consulta la [documentación de Vite](https://vitejs.dev).
 - Si eliges usar TypeScript, consulta la [Guía de Uso de TypeScript](typescript/overview).
 
@@ -131,7 +131,6 @@ $ bun run build
 ```
 
 :::
-
 
 Esto creará una versión lista para producción de tu aplicación en el directorio `./dist` del proyecto. Consulta la [Guía de Despliegue en Producción](/guide/best-practices/production-deployment) para aprender más sobre cómo enviar tu aplicación a producción.
 

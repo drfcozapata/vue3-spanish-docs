@@ -1,4 +1,4 @@
-# Opciones: Renderizado {#options-rendering}
+# Options: Renderizado {#options-rendering}
 
 ## template {#template}
 

@@ -1,4 +1,4 @@
-# Referencias de Plantilla {#template-refs}
+# Template Refs {#template-refs}
 
 Aunque el modelo de renderizado declarativo de Vue abstrae la mayoría de las operaciones directas del DOM por ti, todavía puede haber casos en los que necesitemos acceso directo a los elementos del DOM subyacentes. Para lograr esto, podemos usar el atributo especial `ref`:
 

@@ -18,9 +18,9 @@ onMounted(() => {
 
 <template>
   <PageShowcaseListLayout
-    spotlightTitle="Partner Spotlight"
-    featuredTitle="Featured Partners"
-    browseLinkText="Browse All Partners"
+    spotlightTitle="Socios de Primera Plana"
+    featuredTitle="Socios Destacados"
+    browseLinkText="Explorar Todos los Socios"
     browseLinkUrl="./all.html"
   >
     <template #hero>

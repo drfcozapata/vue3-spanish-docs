@@ -102,7 +102,7 @@ El contenido del slot **no** tiene acceso a los datos del componente hijo. Las e
 
 > Las expresiones en la plantilla padre solo tienen acceso al ámbito padre; las expresiones en la plantilla hijo solo tienen acceso al ámbito hijo.
 
-## Contenido de Reserva {#fallback-content}
+## Contenido Alternativo {#fallback-content}
 
 Hay casos en los que es útil especificar contenido de reserva (es decir, por defecto) para un slot, que se renderizará solo cuando no se proporcione ningún contenido. Por ejemplo, en un componente `<SubmitButton>`:
 
@@ -157,7 +157,7 @@ Entonces el contenido proporcionado será renderizado en su lugar:
 
 </div>
 
-## Slots Nombrados {#named-slots}
+## Slots con Nombre {#named-slots}
 
 Hay ocasiones en las que es útil tener múltiples salidas de slot en un solo componente. Por ejemplo, en un componente `<BaseLayout>` con la siguiente plantilla:
 
@@ -311,11 +311,11 @@ Cuando el contenido para el `header` / `footer` / `default` está presente, quer
     <div v-if="$slots.header" class="card-header">
       <slot name="header" />
     </div>
-    
+
     <div v-if="$slots.default" class="card-content">
       <slot />
     </div>
-    
+
     <div v-if="$slots.footer" class="card-footer">
       <slot name="footer" />
     </div>

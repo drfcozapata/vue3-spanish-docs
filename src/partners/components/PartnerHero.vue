@@ -10,8 +10,8 @@ defineProps<{ title?: string }>()
     <template #lead>
       <p>
         Los socios de Vue son agencias avaladas por el equipo de Vue que ofrecen servicios de consultoría y desarrollo de primera clase.
-Si su empresa está interesada en aparecer en la lista de socios, por favor,
-<a class="link" href="https://airtable.com/shrCQhat57SApJI2l" target="_blank">registre su interés aquí</a
+Si estás interesado en que tu empresa aparezca en la lista de socios, por favor,
+<a class="link" href="https://airtable.com/shrCQhat57SApJI2l" target="_blank">registra tu interés aquí</a
 >.
       </p>
     </template>

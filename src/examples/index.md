@@ -1,9 +1,9 @@
+---
 page: true
 title: Ejemplos
 aside: false
 footer: false
 outline: false
-
 ---
 
 <script>

@@ -2,7 +2,7 @@
 
 > Esta página asume que ya has leído la sección [Fundamentos de Componentes](/guide/essentials/component-basics). Léela primero si eres nuevo en los componentes.
 
-## Prop Drilling {#prop-drilling}
+## Propagación de Props {#prop-drilling}
 
 Normalmente, cuando necesitamos pasar datos del componente padre a un componente hijo, utilizamos [props](/guide/components/props). Sin embargo, imagina el caso en el que tenemos un árbol de componentes grande, y un componente anidado profundamente necesita algo de un componente ancestro distante. Con solo `props`, tendríamos que pasar la misma `prop` a través de toda la cadena de padres:
 
@@ -10,7 +10,7 @@ Normalmente, cuando necesitamos pasar datos del componente padre a un componente
 
 <!-- https://www.figma.com/file/yNDTtReM2xVgjcGVRzChss/prop-drilling -->
 
-Observa que, aunque el componente `<Footer>` puede no preocuparse en absoluto por estas `props`, aún necesita declararlas y pasarlas para que `<DeepChild>` pueda acceder a ellas. Si hay una cadena de padres más larga, más componentes se verían afectados en el camino. Esto se llama "props drilling" y definitivamente no es divertido de manejar.
+Observa que, aunque el componente `<Footer>` puede no preocuparse en absoluto por estas `props`, aún necesita declararlas y pasarlas para que `<DeepChild>` pueda acceder a ellas. Si hay una cadena de padres más larga, más componentes se verían afectados en el camino. Esto se llama "props drilling" (propagación de props) y definitivamente no es divertido de manejar.
 
 Podemos resolver el "props drilling" con `provide` e `inject`. Un componente padre puede actuar como un **proveedor de dependencia** para todos sus descendientes. Cualquier componente en el árbol descendiente, sin importar cuán profundo esté, puede **inyectar** dependencias proporcionadas por componentes en su cadena de padres.
 

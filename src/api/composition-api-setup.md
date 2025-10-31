@@ -2,7 +2,7 @@
 
 ## Uso Básico {#basic-usage}
 
-El gancho `setup()` sirve como punto de entrada para el uso de la Composition API en los componentes en los siguientes casos:
+El hook `setup()` sirve como punto de entrada para el uso de la Composition API en los componentes en los siguientes casos:
 
 1.  Uso de la Composition API sin un paso de construcción;
 2.  Integración con código basado en Composition API en un componente de Options API.
@@ -111,7 +111,7 @@ export default {
 }
 ```
 
-`attrs` y `slots` son objetos con estado que siempre se actualizan cuando el componente mismo se actualiza. Esto significa que debes evitar desestructurarlos y siempre referenciar las propiedades como `attrs.x` o `slots.x`. También ten en cuenta que, a diferencia de `props`, las propiedades de `attrs` y `slots` **no** son reactivas. Si tienes la intención de aplicar efectos secundarios basados en cambios en `attrs` o `slots`, debes hacerlo dentro de un gancho de ciclo de vida `onBeforeUpdate`.
+`attrs` y `slots` son objetos con estado que siempre se actualizan cuando el componente mismo se actualiza. Esto significa que debes evitar desestructurarlos y siempre referenciar las propiedades como `attrs.x` o `slots.x`. También ten en cuenta que, a diferencia de `props`, las propiedades de `attrs` y `slots` **no** son reactivas. Si tienes la intención de aplicar efectos secundarios basados en cambios en `attrs` o `slots`, debes hacerlo dentro de un hook de ciclo de vida `onBeforeUpdate`.
 
 ### Exponiendo Propiedades Públicas {#exposing-public-properties}
 

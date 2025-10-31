@@ -17,7 +17,7 @@ import {
 
 const nav: ThemeConfig['nav'] = [
   {
-    text: 'Documentación',
+    text: 'Docs',
     activeMatch: `^/(guide|style-guide|cookbook|examples)/`,
     items: [
       { text: 'Guía', link: '/guide/introduction' },
@@ -121,7 +121,7 @@ const nav: ThemeConfig['nav'] = [
     ]
   },
   {
-    text: 'Acerca de',
+    text: 'Acerca',
     activeMatch: `^/about/`,
     items: [
       { text: 'FAQ', link: '/about/faq' },
@@ -226,7 +226,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
         },
         { text: 'Slots', link: '/guide/components/slots' },
         {
-          text: 'Provide / inject',
+          text: 'Provide / Inject',
           link: '/guide/components/provide-inject'
         },
         {
@@ -592,8 +592,48 @@ export const sidebar: ThemeConfig['sidebar'] = {
 }
 
 // Placeholder of the i18n config for @vuejs-translations.
-// const i18n: ThemeConfig['i18n'] = {
-// }
+const i18n: ThemeConfig['i18n'] = {
+  search: 'Buscar',
+  menu: 'Menú',
+  toc: 'En esta página',
+  returnToTop: 'Volver arriba',
+  appearance: 'Apariencia',
+  previous: 'Anterior',
+  next: 'Siguiente',
+  pageNotFound: 'Página no encontrada',
+  locales: 'Idiomas',
+  joinTranslation: '¡Ayúdanos a Traducir!',
+  deadLink: {
+    before: 'Has encontrado un enlace roto: ',
+    after: '.'
+  },
+  deadLinkReport: {
+    before: 'Por favor, ',
+    link: 'repórtanos',
+    after: ' para que podamos corregirlo.'
+  },
+  footerLicense: {
+    before: 'Publicado bajo ',
+    after: ''
+  },
+  ariaAnnouncer: {
+    before: '',
+    link: 'Anunciador',
+    after: ''
+  },
+  ariaDarkMode: 'Cambiar a modo oscuro',
+  ariaSkipToContent: 'Saltar al contenido',
+  ariaToC: 'Tabla de contenidos de la página actual',
+  ariaMainNav: 'Navegación principal',
+  ariaMobileNav: 'Navegación móvil',
+  ariaSidebarNav: 'Navegación de barra lateral',
+  ariaLanguage: 'Cambiar idioma',
+  ariaRepo: {
+    before: 'Ver ',
+    link: 'repositorio',
+    after: ''
+  }
+}
 
 function inlineScript(file: string): HeadConfig {
   return [
@@ -671,7 +711,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     nav,
     sidebar,
     // Placeholder of the i18n config for @vuejs-translations.
-    // i18n,
+    i18n,
 
     localeLinks: [
       {
@@ -757,6 +797,37 @@ export default defineConfigWithTheme<ThemeConfig>({
       apiKey: '21cf9df0734770a2448a9da64a700c22',
       searchParameters: {
         facetFilters: ['version:v3']
+      },
+      placeholder: 'Buscar documentos...',
+      translations: {
+        button: {
+          buttonText: 'Buscar',
+          buttonAriaLabel: 'Buscar'
+        },
+        modal: {
+          searchBox: {
+            resetButtonTitle: 'Limpiar búsqueda',
+            resetButtonAriaLabel: 'Limpiar búsqueda',
+            cancelButtonText: 'Cancelar',
+            cancelButtonAriaLabel: 'Cancelar'
+          },
+          startScreen: {
+            recentSearchesTitle: 'Búsquedas recientes',
+            noRecentSearchesText: 'No hay búsquedas recientes',
+            saveRecentSearchButtonTitle: 'Guardar búsqueda',
+            removeRecentSearchButtonTitle: 'Eliminar búsqueda'
+          },
+          errorScreen: {
+            titleText: 'Error al buscar',
+            helpText: 'Verifica tu conexión o intenta nuevamente'
+          },
+          footer: {
+            selectText: 'Seleccionar',
+            navigateText: 'Navegar',
+            closeText: 'Cerrar',
+            searchByText: 'Buscar por'
+          }
+        }
       }
     },
 

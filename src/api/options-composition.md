@@ -1,4 +1,4 @@
-# Opciones: Composición {#options-composition}
+# Options: Composición {#options-composition}
 
 ## provide {#provide}
 
@@ -257,10 +257,11 @@ Un componente de "clase base" del que extender.
     extends: Base,
     setup(props, ctx) {
       return {
-        ...Base.setup(props, ctx),
+        ...Base.setup(props, ctx)
         // local bindings
       }
     }
   }
   ```
+
   :::

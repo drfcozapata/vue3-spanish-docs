@@ -1,4 +1,4 @@
-# Opciones: Estado {#options-state}
+# Options: Estado {#options-state}
 
 ## data {#data}
 

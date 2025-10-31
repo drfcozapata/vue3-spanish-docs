@@ -25,7 +25,7 @@ Además del conjunto predeterminado de directivas que vienen en el core (como `v
 
 Hemos introducido dos formas de reutilización de código en Vue: [componentes](/guide/essentials/component-basics) y [composables](./composables). Los componentes son los bloques de construcción principales, mientras que los composables se centran en la reutilización de lógica con estado. Las directivas personalizadas, por otro lado, están principalmente destinadas a reutilizar lógica que involucra acceso de bajo nivel al DOM en elementos simples.
 
-Una directiva personalizada se define como un objeto que contiene ganchos de ciclo de vida similares a los de un componente. Los ganchos reciben el elemento al que está vinculada la directiva. Aquí hay un ejemplo de una directiva que añade una `class` a un elemento cuando Vue lo inserta en el DOM:
+Una directiva personalizada se define como un objeto que contiene hooks de ciclo de vida similares a los de un componente. Los hooks reciben el elemento al que está vinculada la directiva. Aquí hay un ejemplo de una directiva que añade una `class` a un elemento cuando Vue lo inserta en el DOM:
 
 <div class="composition-api">
 
@@ -164,7 +164,7 @@ La creación de plantillas declarativas con directivas incorporadas como `v-bind
 
 ## Ganchos de Directiva {#directive-hooks}
 
-Un objeto de definición de directiva puede proporcionar varias funciones de gancho (todas opcionales):
+Un objeto de definición de directiva puede proporcionar varias funciones de hook (todas opcionales):
 
 ```js
 const myDirective = {
@@ -192,7 +192,7 @@ const myDirective = {
 
 ### Argumentos de los Ganchos {#hook-arguments}
 
-Los ganchos de directiva reciben estos argumentos:
+Los hooks de directiva reciben estos argumentos:
 
 - `el`: el elemento al que está vinculada la directiva. Esto se puede usar para manipular directamente el DOM.
 
@@ -206,7 +206,7 @@ Los ganchos de directiva reciben estos argumentos:
   - `dir`: el objeto de definición de la directiva.
 
 - `vnode`: el VNode subyacente que representa el elemento vinculado.
-- `prevVnode`: el VNode que representa el elemento vinculado del renderizado anterior. Solo disponible en los ganchos `beforeUpdate` y `updated`.
+- `prevVnode`: el VNode que representa el elemento vinculado del renderizado anterior. Solo disponible en los hooks `beforeUpdate` y `updated`.
 
 Como ejemplo, considera el siguiente uso de directiva:
 
@@ -234,12 +234,12 @@ Similar a las directivas incorporadas, los argumentos de las directivas personal
 Aquí el argumento de la directiva se actualizará reactivamente basándose en la propiedad `arg` en el estado de nuestro componente.
 
 :::tip Nota
-Aparte de `el`, debes tratar estos argumentos como de solo lectura y nunca modificarlos. Si necesitas compartir información entre ganchos, se recomienda hacerlo a través del [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) del elemento.
+Aparte de `el`, debes tratar estos argumentos como de solo lectura y nunca modificarlos. Si necesitas compartir información entre hooks, se recomienda hacerlo a través del [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) del elemento.
 :::
 
 ## Atajo de Función {#function-shorthand}
 
-Es común que una directiva personalizada tenga el mismo comportamiento para `mounted` y `updated`, sin necesidad de los otros ganchos. En tales casos podemos definir la directiva como una función:
+Es común que una directiva personalizada tenga el mismo comportamiento para `mounted` y `updated`, sin necesidad de los otros hooks. En tales casos podemos definir la directiva como una función:
 
 ```vue-html
 <div v-color="color"></div>
