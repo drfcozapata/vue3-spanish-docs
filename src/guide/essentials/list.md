@@ -43,7 +43,7 @@ Dentro del ámbito de `v-for`, las expresiones de plantilla tienen acceso a toda
 <div class="composition-api">
 
 ```js
-const parentMessage = ref('Parent')
+const parentMessage = ref('Padre')
 const items = ref([{ message: 'Foo' }, { message: 'Bar' }])
 ```
 
@@ -53,7 +53,7 @@ const items = ref([{ message: 'Foo' }, { message: 'Bar' }])
 ```js
 data() {
   return {
-    parentMessage: 'Parent',
+    parentMessage: 'Padre',
     items: [{ message: 'Foo' }, { message: 'Bar' }]
   }
 }
@@ -68,7 +68,7 @@ data() {
 ```
 
 <script setup>
-const parentMessage = 'Parent'
+const parentMessage = 'Padre'
 const items = [{ message: 'Foo' }, { message: 'Bar' }]
 </script>
 <div class="demo">
@@ -91,14 +91,14 @@ const items = [{ message: 'Foo' }, { message: 'Bar' }]
 El ámbito de las variables de `v-for` es similar al siguiente JavaScript:
 
 ```js
-const parentMessage = 'Parent'
+const parentMessage = 'Padre'
 const items = [
   /* ... */
 ]
 
 items.forEach((item, index) => {
-  // has access to outer scope `parentMessage`
-  // but `item` and `index` are only available in here
+  // tiene acceso al ámbito externo `parentMessage`,
+  // pero `item` e `index` solo están disponibles aquí.
   console.log(parentMessage, item.message, index)
 })
 ```
@@ -253,7 +253,7 @@ Hay dos casos comunes en los que esto puede ser tentador:
 - Para filtrar elementos en una lista (por ejemplo, `v-for="user in users" v-if="user.isActive"`). En estos casos, reemplaza `users` con una nueva propiedad `computed` que devuelva tu lista filtrada (por ejemplo, `activeUsers`).
 
 - Para evitar renderizar una lista si debe estar oculta (por ejemplo, `v-for="user in users" v-if="shouldShowUsers"`). En estos casos, mueve el `v-if` a un elemento contenedor (por ejemplo, `ul`, `ol`).
-:::
+  :::
 
 ## Mantener el Estado con `key` {#maintaining-state-with-key}
 

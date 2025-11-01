@@ -202,7 +202,7 @@ Por ejemplo, si tenemos un componente llamado `MyComponent` con la siguiente pla
 
 ```vue-html
 <!-- plantilla del componente hijo -->
-<p class="foo bar">Hi!</p>
+<p class="foo bar">¡Hola!</p>
 ```
 
 Luego añade algunas clases al usarlo:
@@ -215,7 +215,7 @@ Luego añade algunas clases al usarlo:
 El HTML renderizado será:
 
 ```vue-html
-<p class="foo bar baz boo">Hi!</p>
+<p class="foo bar baz boo">¡Hola!</p>
 ```
 
 Lo mismo ocurre con los enlaces de clase:
@@ -227,15 +227,15 @@ Lo mismo ocurre con los enlaces de clase:
 Cuando `isActive` sea verdadero, el HTML renderizado será:
 
 ```vue-html
-<p class="foo bar active">Hi!</p>
+<p class="foo bar active">¡Hola!</p>
 ```
 
 Si tu componente tiene múltiples elementos raíz, necesitarías definir qué elemento recibirá esta clase. Puedes hacerlo usando la propiedad de componente `$attrs`:
 
 ```vue-html
 <!-- plantilla de MyComponent usando $attrs -->
-<p :class="$attrs.class">Hi!</p>
-<span>This is a child component</span>
+<p :class="$attrs.class">¡Hola!</p>
+<span>Este es un componente hijo</span>
 ```
 
 ```vue-html
@@ -245,8 +245,8 @@ Si tu componente tiene múltiples elementos raíz, necesitarías definir qué el
 Renderizará:
 
 ```html
-<p class="baz">Hi!</p>
-<span>This is a child component</span>
+<p class="baz">¡Hola!</p>
+<span>Este es un componente hijo</span>
 ```
 
 Puedes aprender más sobre la herencia de atributos de componente en la sección [Atributos de Fallback](/guide/components/attrs).
@@ -325,16 +325,16 @@ De nuevo, el enlace de estilo de objeto se utiliza a menudo junto con propiedade
 
 Las directivas `:style` también pueden coexistir con atributos `style` regulares, al igual que `:class`.
 
-Plantilla:
+Template:
 
 ```vue-html
-<h1 style="color: red" :style="'font-size: 1em'">hello</h1>
+<h1 style="color: red" :style="'font-size: 1em'">hola</h1>
 ```
 
 Renderizará:
 
 ```vue-html
-<h1 style="color: red; font-size: 1em;">hello</h1>
+<h1 style="color: red; font-size: 1em;">hola</h1>
 ```
 
 ### Enlace a Arrays {#binding-to-arrays-1}

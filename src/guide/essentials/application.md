@@ -57,7 +57,7 @@ El contenido del componente raíz de la aplicación se renderizará dentro del e
 
 El método `.mount()` siempre debe llamarse después de que todas las configuraciones de la aplicación y los registros de activos estén completos. También ten en cuenta que su valor de retorno, a diferencia de los métodos de registro de activos, es la instancia del componente raíz en lugar de la instancia de la aplicación.
 
-### Plantilla de Componente Raíz en el DOM {#in-dom-root-component-template}
+### Template de Componente Raíz en el DOM {#in-dom-root-component-template}
 
 La plantilla para el componente raíz suele ser parte del propio componente, pero también es posible proporcionar la plantilla por separado escribiéndola directamente dentro del contenedor de montaje:
 

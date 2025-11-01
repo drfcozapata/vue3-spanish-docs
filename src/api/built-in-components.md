@@ -318,7 +318,7 @@ Renderiza el contenido de su `slot` en otra parte del DOM.
   ```vue-html
   <Teleport defer to="#late-div">...</Teleport>
 
-  <!-- en algún lugar más adelante en la plantilla -->
+  <!-- en algún lugar más adelante en el template -->
   <div id="late-div"></div>
   ```
 

@@ -165,7 +165,7 @@ El enlace anterior carga la _compilación global_ de Vue, donde todas las APIs d
   createApp({
     data() {
       return {
-        message: 'Hello Vue!'
+        message: '¡Hola Vue!'
       }
     }
   }).mount('#app')
@@ -188,7 +188,7 @@ El enlace anterior carga la _compilación global_ de Vue, donde todas las APIs d
 
   createApp({
     setup() {
-      const message = ref('Hello vue!')
+      const message = ref('¡Hola Vue!')
       return {
         message
       }
@@ -220,7 +220,7 @@ A lo largo del resto de la documentación, usaremos principalmente la sintaxis d
   createApp({
     data() {
       return {
-        message: 'Hello Vue!'
+        message: '¡Hola Vue!'
       }
     }
   }).mount('#app')
@@ -239,7 +239,7 @@ A lo largo del resto de la documentación, usaremos principalmente la sintaxis d
 
   createApp({
     setup() {
-      const message = ref('Hello Vue!')
+      const message = ref('¡Hola Vue!')
       return {
         message
       }
@@ -292,7 +292,7 @@ Podemos enseñarle al navegador dónde localizar la importación de `vue` usando
   createApp({
     data() {
       return {
-        message: 'Hello Vue!'
+        message: '¡Hola Vue!'
       }
     }
   }).mount('#app')
@@ -321,7 +321,7 @@ Podemos enseñarle al navegador dónde localizar la importación de `vue` usando
 
   createApp({
     setup() {
-      const message = ref('Hello Vue!')
+      const message = ref('¡Hola Vue!')
       return {
         message
       }
@@ -368,7 +368,7 @@ export default {
   data() {
     return { count: 0 }
   },
-  template: `<div>Count is: {{ count }}</div>`
+  template: `<div>La Cuenta es: {{ count }}</div>`
 }
 ```
 
@@ -382,7 +382,7 @@ export default {
     const count = ref(0)
     return { count }
   },
-  template: `<div>Count is: {{ count }}</div>`
+  template: `<div>La Cuenta es: {{ count }}</div>`
 }
 ```
 

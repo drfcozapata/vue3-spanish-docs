@@ -88,9 +88,9 @@ Consulta las [Preguntas Frecuentes de la Composition API](/guide/extras/composit
 
 Un _custom element_ (elemento personalizado) es una característica del estándar [Componentes Web](#web-component), que está implementado en los navegadores web modernos. Se refiere a la capacidad de usar un elemento HTML personalizado en tu marcado HTML para incluir un Componente Web en ese punto de la página.
 
-Vue tiene soporte incorporado para renderizar custom elements y permite que se usen directamente en las plantillas de los componentes de Vue.
+Vue tiene soporte incorporado para renderizar custom elements y permite que se usen directamente en los templates de los componentes de Vue.
 
-Los custom elements no deben confundirse con la capacidad de incluir componentes de Vue como etiquetas dentro de la plantilla de otro componente de Vue. Los custom elements se utilizan para crear Componentes Web, no componentes de Vue.
+Los custom elements no deben confundirse con la capacidad de incluir componentes de Vue como etiquetas dentro del template de otro componente de Vue. Los custom elements se utilizan para crear Componentes Web, no componentes de Vue.
 
 Para más detalles, consulta:
 
@@ -98,7 +98,7 @@ Para más detalles, consulta:
 
 ## directiva {#directive}
 
-El término _directiva_ se refiere a los atributos de plantilla que comienzan con el prefijo `v-`, o sus abreviaturas equivalentes.
+El término _directiva_ se refiere a los atributos del template que comienzan con el prefijo `v-`, o sus abreviaturas equivalentes.
 
 Las directivas integradas incluyen `v-if`, `v-for`, `v-bind`, `v-on` y `v-slot`.
 
@@ -106,7 +106,7 @@ Vue también soporta la creación de directivas personalizadas, aunque típicame
 
 Para más detalles, consulta:
 
-- [Guía - Sintaxis de Plantilla - Directivas](/guide/essentials/template-syntax.html#directives)
+- [Guía - Sintaxis de Template - Directivas](/guide/essentials/template-syntax.html#directives)
 - [Guía - Directivas Personalizadas](/guide/reusability/custom-directives.html)
 
 ## componente dinámico {#dynamic-component}
@@ -125,7 +125,7 @@ Ver [reactive effect](#reactive-effect) y [side effect](#side-effect).
 
 ## evento {#event}
 
-El uso de eventos para la comunicación entre diferentes partes de un programa es común a muchas áreas de la programación. Dentro de Vue, el término se aplica comúnmente tanto a los eventos nativos de elementos HTML como a los eventos de componentes de Vue. La directiva `v-on` se utiliza en las plantillas para escuchar ambos tipos de eventos.
+El uso de eventos para la comunicación entre diferentes partes de un programa es común a muchas áreas de la programación. Dentro de Vue, el término se aplica comúnmente tanto a los eventos nativos de elementos HTML como a los eventos de componentes de Vue. La directiva `v-on` se utiliza en los templates para escuchar ambos tipos de eventos.
 
 Para más detalles, consulta:
 
@@ -140,7 +140,7 @@ El nombre proviene del concepto similar de un [`DocumentFragment`](https://devel
 
 Los fragmentos se utilizan para soportar componentes con múltiples nodos raíz. Si bien tales componentes podrían parecer tener múltiples raíces, detrás de escena utilizan un nodo fragmento como una única raíz, como padre de los nodos 'raíz'.
 
-Los fragmentos también son utilizados por el compilador de plantillas como una forma de envolver múltiples nodos dinámicos, por ejemplo, aquellos creados a través de `v-for` o `v-if`. Esto permite pasar pistas adicionales al algoritmo de parcheo de [VDOM](#virtual-dom). Gran parte de esto se maneja internamente, pero un lugar donde puedes encontrar esto directamente es usando un `key` en una etiqueta `<template>` con `v-for`. En ese escenario, el `key` se añade como una [prop](#prop) al VNode del fragmento.
+Los fragmentos también son utilizados por el compilador de templates como una forma de envolver múltiples nodos dinámicos, por ejemplo, aquellos creados a través de `v-for` o `v-if`. Esto permite pasar pistas adicionales al algoritmo de parcheo de [VDOM](#virtual-dom). Gran parte de esto se maneja internamente, pero un lugar donde puedes encontrar esto directamente es usando un `key` en una etiqueta `<template>` con `v-for`. En ese escenario, el `key` se añade como una [prop](#prop) al VNode del fragmento.
 
 Los nodos fragmento se renderizan actualmente en el DOM como nodos de texto vacíos, aunque eso es un detalle de implementación. Puedes encontrarte con esos nodos de texto si utilizas `$el` o intentas recorrer el DOM con las API integradas del navegador.
 
@@ -168,7 +168,7 @@ En el contexto de Vue, el compilador aplica _hoisting_ para mejorar el rendimien
 
 El término _caché_ se utiliza para describir el almacenamiento temporal de datos a los que se accede con frecuencia para mejorar el rendimiento.
 
-El compilador de plantillas de Vue identifica esos VNodes estáticos, los almacena en caché durante la renderización inicial y reutiliza los mismos VNodes para cada renderización posterior.
+El compilador de templates de Vue identifica esos VNodes estáticos, los almacena en caché durante la renderización inicial y reutiliza los mismos VNodes para cada renderización posterior.
 
 Para más detalles, consulta:
 
@@ -176,16 +176,16 @@ Para más detalles, consulta:
 
 ## in-DOM template {#in-dom-template}
 
-Existen varias formas de especificar una plantilla para un componente. En la mayoría de los casos, la plantilla se proporciona como una cadena.
+Existen varias formas de especificar un template para un componente. En la mayoría de los casos, el template se proporciona como una cadena.
 
-El término _in-DOM template_ (plantilla en el DOM) se refiere al escenario en el que la plantilla se proporciona en forma de nodos del DOM, en lugar de una cadena. Vue convierte los nodos del DOM en una plantilla de cadena utilizando `innerHTML`.
+El término _in-DOM template_ (template en el DOM) se refiere al escenario en el que el template se proporciona en forma de nodos del DOM, en lugar de una cadena. Vue convierte los nodos del DOM en un template de cadena utilizando `innerHTML`.
 
-Típicamente, una plantilla en el DOM comienza como marcado HTML escrito directamente en el HTML de la página. El navegador luego lo analiza en nodos del DOM, que Vue utiliza para leer el `innerHTML`.
+Típicamente, un template en el DOM comienza como marcado HTML escrito directamente en el HTML de la página. El navegador luego lo analiza en nodos del DOM, que Vue utiliza para leer el `innerHTML`.
 
 Para más detalles, consulta:
 
-- [Guía - Creando una Aplicación Vue - Plantilla de Componente Raíz en el DOM](/guide/essentials/application.html#in-dom-root-component-template)
-- [Guía - Fundamentos de Componentes - AdvConsideraciones sobre el Análisis de Plantillas en el DOM](/guide/essentials/component-basics.html#in-dom-template-parsing-caveats)
+- [Guía - Creando una Aplicación Vue - Template de Componente Raíz en el DOM](/guide/essentials/application.html#in-dom-root-component-template)
+- [Guía - Fundamentos de Componentes - Consideraciones sobre el Análisis de Templates en el DOM](/guide/essentials/component-basics.html#in-dom-template-parsing-caveats)
 - [Options: Renderizado - template](/api/options-rendering.html#template)
 
 ## inject {#inject}
@@ -319,7 +319,7 @@ Para más detalles, consulta:
 
 ## ref {#ref}
 
-> Esta entrada trata sobre el uso de `ref` para la reactividad. Para el atributo `ref` utilizado en las plantillas, consulta [template ref](#template-ref) en su lugar.
+> Esta entrada trata sobre el uso de `ref` para la reactividad. Para el atributo `ref` utilizado en los templates, consulta [template ref](#template-ref) en su lugar.
 
 Una `ref` (referencia) forma parte del sistema de reactividad de Vue. Es un objeto con una única propiedad reactiva, llamada `value`.
 
@@ -334,7 +334,7 @@ Para más detalles, consulta:
 
 ## función de renderizado {#render-function}
 
-Una _función de renderizado_ es la parte de un componente que genera los VNodes utilizados durante el renderizado. Las plantillas se compilan en funciones de renderizado.
+Una _función de renderizado_ es la parte de un componente que genera los VNodes utilizados durante el renderizado. Los templates se compilan en funciones de renderizado.
 
 Para más detalles, consulta:
 
@@ -354,11 +354,11 @@ Los trabajos en el planificador también se utilizan para realizar varias otras 
 
 El término _slot con ámbito_ se utiliza para referirse a un [slot](#slot) que recibe [props](#prop).
 
-Históricamente, Vue hacía una distinción mucho mayor entre slots con ámbito y sin ámbito. Hasta cierto punto, podrían considerarse dos características separadas, unificadas bajo una sintaxis de plantilla común.
+Históricamente, Vue hacía una distinción mucho mayor entre slots con ámbito y sin ámbito. Hasta cierto punto, podrían considerarse dos características separadas, unificadas bajo una sintaxis de template común.
 
 En Vue 3, las API de slot se simplificaron para que todos los slots se comportaran como slots con ámbito. Sin embargo, los casos de uso para los slots con ámbito y los slots sin ámbito a menudo difieren, por lo que el término sigue siendo útil como una forma de referirse a los slots con props.
 
-Las props pasadas a un slot solo se pueden usar dentro de una región específica de la plantilla padre, responsable de definir el contenido del slot. Esta región de la plantilla se comporta como un ámbito de variable para las props, de ahí el nombre 'slot con ámbito'.
+Las props pasadas a un slot solo se pueden usar dentro de una región específica del template padre, responsable de definir el contenido del slot. Esta región del template se comporta como un ámbito de variable para las props, de ahí el nombre 'slot con ámbito'.
 
 Para más detalles, consulta:
 
@@ -397,7 +397,7 @@ Para más detalles, consulta:
 
 ## template ref {#template-ref}
 
-El término _template ref_ (ref de plantilla) se refiere al uso de un atributo `ref` en una etiqueta dentro de una plantilla. Después de que el componente se renderiza, este atributo se utiliza para poblar una propiedad correspondiente con el elemento HTML o la instancia del componente que corresponde a la etiqueta en la plantilla.
+El término _template ref_ (ref de template) se refiere al uso de un atributo `ref` en una etiqueta dentro de un template. Después de que el componente se renderiza, este atributo se utiliza para poblar una propiedad correspondiente con el elemento HTML o la instancia del componente que corresponde a la etiqueta en el template.
 
 Si estás utilizando la Options API, entonces los refs se exponen a través de las propiedades del objeto `$refs`.
 
@@ -425,7 +425,7 @@ En lugar de crear nodos del DOM directamente, los componentes de Vue generan una
 
 Cada vez que un componente se vuelve a renderizar, el nuevo árbol de VNodes se compara con el árbol de VNodes anterior y cualquier diferencia se aplica al DOM real. Si nada ha cambiado, entonces no es necesario tocar el DOM.
 
-Vue utiliza un enfoque híbrido que llamamos [Virtual DOM informado por el compilador](/guide/extras/rendering-mechanism.html#compiler-informed-virtual-dom). El compilador de plantillas de Vue es capaz de aplicar optimizaciones de rendimiento basadas en el análisis estático de la plantilla. En lugar de realizar una comparación completa de los árboles de VNodes antiguos y nuevos de un componente en tiempo de ejecución, Vue puede usar la información extraída por el compilador para reducir la comparación solo a las partes del árbol que realmente pueden cambiar.
+Vue utiliza un enfoque híbrido que llamamos [Virtual DOM informado por el compilador](/guide/extras/rendering-mechanism.html#compiler-informed-virtual-dom). El compilador de templates de Vue es capaz de aplicar optimizaciones de rendimiento basadas en el análisis estático del template. En lugar de realizar una comparación completa de los árboles de VNodes antiguos y nuevos de un componente en tiempo de ejecución, Vue puede usar la información extraída por el compilador para reducir la comparación solo a las partes del árbol que realmente pueden cambiar.
 
 Para más detalles, consulta:
 

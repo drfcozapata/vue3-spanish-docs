@@ -63,7 +63,7 @@ createApp({
 ```vue-html
 <div id="app">
   <button @click="count++">
-    Count is: {{ count }}
+    La Cuenta es: {{ count }}
   </button>
 </div>
 ```
@@ -77,7 +77,7 @@ const count = ref(0)
 
 <div class="demo">
   <button @click="count++">
-    Count is: {{ count }}
+    La Cuenta es: {{ count }}
   </button>
 </div>
 
@@ -128,7 +128,7 @@ export default {
 </script>
 
 <template>
-  <button @click="count++">Count is: {{ count }}</button>
+  <button @click="count++">La Cuenta es: {{ count }}</button>
 </template>
 
 <style scoped>
@@ -148,7 +148,7 @@ const count = ref(0)
 </script>
 
 <template>
-  <button @click="count++">Count is: {{ count }}</button>
+  <button @click="count++">La Cuenta es: {{ count }}</button>
 </template>
 
 <style scoped>
@@ -193,13 +193,13 @@ export default {
   // of a component's lifecycle.
   // This function will be called when the component is mounted.
   mounted() {
-    console.log(`The initial count is ${this.count}.`)
+    console.log(`La cuenta inicial es ${this.count}.`)
   }
 }
 </script>
 
 <template>
-  <button @click="increment">Count is: {{ count }}</button>
+  <button @click="increment">La Cuenta es: {{ count }}</button>
 </template>
 ```
 
@@ -225,12 +225,12 @@ function increment() {
 
 // lifecycle hooks
 onMounted(() => {
-  console.log(`The initial count is ${count.value}.`)
+  console.log(`La cuenta inicial es ${count.value}.`)
 })
 </script>
 
 <template>
-  <button @click="increment">Count is: {{ count }}</button>
+  <button @click="increment">La Cuenta es: {{ count }}</button>
 </template>
 ```
 

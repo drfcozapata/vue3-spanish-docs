@@ -170,7 +170,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/application'
         },
         {
-          text: 'Sintaxis de Plantilla',
+          text: 'Sintaxis de Template',
           link: '/guide/essentials/template-syntax'
         },
         {

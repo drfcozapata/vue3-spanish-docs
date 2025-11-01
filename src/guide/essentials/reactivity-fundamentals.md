@@ -22,12 +22,12 @@ export default {
     }
   },
 
-  // `mounted` is a lifecycle hook which we will explain later
+  // `mounted` es un hook del ciclo de vida que se explicará después
   mounted() {
-    // `this` refers to the component instance.
+    // `this` se refiere a la instancia del componente.
     console.log(this.count) // => 1
 
-    // data can be mutated as well
+    // los datos también pueden mutarse
     this.count = 2
   }
 }
@@ -93,17 +93,17 @@ console.log(count.value) // 1
 
 > Ver también: [Tipado de Refs](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />
 
-Para acceder a las refs en la plantilla de un componente, decláralas y retórnalas desde la función `setup()` de un componente:
+Para acceder a las refs en el template de un componente, decláralas y retórnalas desde la función `setup()` del componente:
 
 ```js{5,9-11}
 import { ref } from 'vue'
 
 export default {
-  // `setup` is a special hook dedicated for the Composition API.
+  // `setup` es un hook especial dedicado para la Composition API.
   setup() {
     const count = ref(0)
 
-    // expose the ref to the template
+    // expone el ref al template
     return {
       count
     }
@@ -115,7 +115,7 @@ export default {
 <div>{{ count }}</div>
 ```
 
-Observa que **no** necesitamos añadir `.value` al usar la ref en la plantilla. Por comodidad, las refs se desenvuelven automáticamente cuando se usan dentro de plantillas (con algunas [advertencias](#caveat-when-unwrapping-in-templates)).
+Observa que **no** necesitamos añadir `.value` al usar la ref en el template. Por comodidad, las refs se desenvuelven automáticamente cuando se usan dentro de templates (con algunas [advertencias](#caveat-when-unwrapping-in-templates)).
 
 También puedes mutar una ref directamente en los manejadores de eventos:
 
@@ -135,11 +135,11 @@ export default {
     const count = ref(0)
 
     function increment() {
-      // .value is needed in JavaScript
+      // .value es necesario en JavaScript
       count.value++
     }
 
-    // don't forget to expose the function as well.
+    // no olvides exponer también la función.
     return {
       count,
       increment
@@ -160,7 +160,7 @@ Aquí tienes el ejemplo en vivo en [Codepen](https://codepen.io/vuejs-examples/p
 
 ### `<script setup>` \*\* {#script-setup}
 
-Exponer manualmente el estado y los métodos a través de `setup()` puede ser verboso. Afortunadamente, se puede evitar al usar [Componentes de Archivo Único (SFCs)](/guide/scaling-up/sfc). Podemos simplificar el uso con `<script setup>`:
+Exponer manualmente el estado y los métodos a través de `setup()` puede ser tedioso. Afortunadamente, se puede evitar al usar [Componentes de Archivo Único (SFCs)](/guide/scaling-up/sfc). Podemos simplificar el uso con `<script setup>`:
 
 ```vue{1}
 <script setup>
@@ -182,7 +182,7 @@ function increment() {
 
 [Pruébalo en el Playground](https://play.vuejs.org/#eNo9jUEKgzAQRa8yZKMiaNcllvYe2dgwQqiZhDhxE3L3jrW4/DPvv1/UK8Zhz6juSm82uciwIef4MOR8DImhQMIFKiwpeGgEbQwZsoE2BhsyMUwH0d66475ksuwCgSOb0CNx20ExBCc77POas...=)
 
-Las importaciones de nivel superior, variables y funciones declaradas en `<script setup>` son automáticamente utilizables en la plantilla del mismo componente. Piensa en la plantilla como una función de JavaScript declarada en el mismo ámbito: naturalmente tiene acceso a todo lo declarado junto a ella.
+Las importaciones de nivel superior, variables y funciones declaradas en `<script setup>` son automáticamente utilizables en el template del mismo componente. Piensa en el template como una función de JavaScript declarada en el mismo ámbito: naturalmente tiene acceso a todo lo declarado junto a ella.
 
 :::tip
 Para el resto de la guía, utilizaremos principalmente la sintaxis SFC + `<script setup>` para los ejemplos de código de la Composition API, ya que es el uso más común para los desarrolladores de Vue.
@@ -194,14 +194,14 @@ Si no estás utilizando SFC, aún puedes usar la Composition API con la opción 
 
 Puede que te estés preguntando por qué necesitamos refs con el `.value` en lugar de variables simples. Para explicar eso, tendremos que discutir brevemente cómo funciona el sistema de reactividad de Vue.
 
-Cuando usas una ref en una plantilla, y cambias el valor de la ref más tarde, Vue detecta automáticamente el cambio y actualiza el DOM en consecuencia. Esto es posible gracias a un sistema de reactividad basado en el seguimiento de dependencias. Cuando un componente se renderiza por primera vez, Vue **rastrea** cada ref que se usó durante la renderización. Más tarde, cuando una ref es mutada, **activará** una nueva renderización para los componentes que la están rastreando.
+Cuando usas una ref en un template, y cambias el valor de la ref más tarde, Vue detecta automáticamente el cambio y actualiza el DOM en consecuencia. Esto es posible gracias a un sistema de reactividad basado en el seguimiento de dependencias. Cuando un componente se renderiza por primera vez, Vue **rastrea** cada ref que se usó durante la renderización. Más tarde, cuando una ref es mutada, **activará** una nueva renderización para los componentes que la están rastreando.
 
 En JavaScript estándar, no hay forma de detectar el acceso o la mutación de variables simples. Sin embargo, podemos interceptar las operaciones de obtención y establecimiento de las propiedades de un objeto usando métodos getter y setter.
 
 La propiedad `.value` le da a Vue la oportunidad de detectar cuándo se ha accedido o mutado a una ref. Internamente, Vue realiza el seguimiento en su getter y la activación en su setter. Conceptualmente, puedes pensar en una ref como un objeto que se ve así:
 
 ```js
-// pseudo code, not actual implementation
+// pseudocódigo, no implementación real
 const myRef = {
   _value: 0,
   get value() {
@@ -217,7 +217,7 @@ const myRef = {
 
 Otra característica interesante de las refs es que, a diferencia de las variables simples, puedes pasar refs a funciones mientras mantienes el acceso al último valor y la conexión de reactividad. Esto es particularmente útil al refactorizar lógica compleja en código reutilizable.
 
-El sistema de reactividad se discute con más detalle en la sección [Reactivity in Depth](/guide/extras/reactivity-in-depth).
+El sistema de reactividad se discute con más detalle en la sección [Reactividad en Profundidad](/guide/extras/reactivity-in-depth).
 
 </div>
 
@@ -242,7 +242,7 @@ export default {
     }
   },
   mounted() {
-    // methods can be called in lifecycle hooks, or other methods!
+    // methods pueden llamarse en los hooks del ciclo de vida o en otros métodos
     this.increment()
   }
 }
@@ -254,13 +254,13 @@ Vue vincula automáticamente el valor `this` para los `methods` para que siempre
 export default {
   methods: {
     increment: () => {
-      // BAD: no `this` access here!
+      // MAL: ¡no hay acceso a `this` aquí!
     }
   }
 }
 ```
 
-Al igual que todas las demás propiedades de la instancia del componente, los `methods` son accesibles desde dentro de la plantilla del componente. Dentro de una plantilla se usan más comúnmente como listeners de eventos:
+Al igual que todas las demás propiedades de la instancia del componente, los `methods` son accesibles desde dentro del template del componente. Dentro de un template se usan más comúnmente como listeners de eventos:
 
 ```vue-html
 <button @click="increment">{{ count }}</button>
@@ -290,7 +290,7 @@ export default {
   },
   methods: {
     mutateDeeply() {
-      // these will work as expected.
+      // funcionarán como se espera.
       this.obj.nested.count++
       this.obj.arr.push('baz')
     }
@@ -315,7 +315,7 @@ const obj = ref({
 })
 
 function mutateDeeply() {
-  // these will work as expected.
+  // funcionarán como se espera.
   obj.value.nested.count++
   obj.value.arr.push('baz')
 }
@@ -334,7 +334,7 @@ Lectura adicional:
 
 ### Momento de Actualización del DOM {#dom-update-timing}
 
-Cuando mutas el estado reactivo, el DOM se actualiza automáticamente. Sin embargo, debe tenerse en cuenta que las actualizaciones del DOM no se aplican de forma síncrona. En su lugar, Vue las almacena en un búfer hasta el "siguiente tick" en el ciclo de actualización para asegurar que cada componente se actualice solo una vez, sin importar cuántos cambios de estado hayas realizado.
+Cuando mutas el estado reactivo, el DOM se actualiza automáticamente. Sin embargo, debe tenerse en cuenta que las actualizaciones del DOM no se aplican de forma síncrona. En su lugar, Vue las almacena en un búfer hasta la "siguiente iteración" (next tick) en el ciclo de actualización para asegurar que cada componente se actualice solo una vez, sin importar cuántos cambios de estado hayas realizado.
 
 Para esperar a que la actualización del DOM se complete después de un cambio de estado, puedes usar la API global [nextTick()](/api/general#nexttick):
 
@@ -346,7 +346,7 @@ import { nextTick } from 'vue'
 async function increment() {
   count.value++
   await nextTick()
-  // Now the DOM is updated
+  // Ahora el DOM está actualizado
 }
 ```
 
@@ -361,7 +361,7 @@ export default {
     async increment() {
       this.count++
       await nextTick()
-      // Now the DOM is updated
+      // Ahora el DOM está actualizado
     }
   }
 }
@@ -383,7 +383,7 @@ const state = reactive({ count: 0 })
 
 > Ver también: [Tipado de Reactive](/guide/typescript/composition-api#typing-reactive) <sup class="vt-badge ts" />
 
-Uso en plantilla:
+Uso en template:
 
 ```vue-html
 <button @click="state.count++">
@@ -403,7 +403,7 @@ Es importante notar que el valor retornado de `reactive()` es un [Proxy](https:/
 const raw = {}
 const proxy = reactive(raw)
 
-// proxy is NOT equal to the original.
+// el proxy NO es igual al original.
 console.log(proxy === raw) // false
 ```
 
@@ -412,10 +412,10 @@ Solo el proxy es reactivo - mutar el objeto original no activará actualizacione
 Para asegurar un acceso consistente al proxy, llamar a `reactive()` sobre el mismo objeto siempre retorna el mismo proxy, y llamar a `reactive()` sobre un proxy existente también retorna ese mismo proxy:
 
 ```js
-// calling reactive() on the same object returns the same proxy
+// llamar a reactive() sobre un mismo objeto retorna el mismo proxy
 console.log(reactive(raw) === proxy) // true
 
-// calling reactive() on a proxy returns itself
+// llamar a reactive() sobre un proxy lo retorna a sí mismo
 console.log(reactive(proxy) === proxy) // true
 ```
 
@@ -441,8 +441,8 @@ La API `reactive()` tiene algunas limitaciones:
     ```js
     let state = reactive({ count: 0 })
 
-    // the above reference ({ count: 0 }) is no longer being tracked
-    // (reactivity connection is lost!)
+    // la referencia anterior ({ count: 0 }) ya no se rastrea
+    // (¡se ha perdido la conexión de reactividad!)
     state = reactive({ count: 1 })
     ```
 
@@ -451,14 +451,14 @@ La API `reactive()` tiene algunas limitaciones:
     ```js
     const state = reactive({ count: 0 })
 
-    // count is disconnected from state.count when destructured.
+    // count se desconecta de state.count cuando se desestructura.
     let { count } = state
-    // does not affect original state
+    // no afecta el estado original
     count++
 
-    // the function receives a plain number and
-    // won't be able to track changes to state.count
-    // we have to pass the entire object in to retain reactivity
+    // La función recibe un número simple y no
+    // podrá rastrear los cambios en state.count.
+    // Tenemos que pasar el objeto completo para mantener la reactividad.
     callSomeFunction(state.count)
     ```
 
@@ -489,7 +489,7 @@ const otherCount = ref(2)
 
 state.count = otherCount
 console.log(state.count) // 2
-// original ref is now disconnected from state.count
+// la ref original ahora está desconectada de state.count
 console.log(count.value) // 1
 ```
 
@@ -501,17 +501,17 @@ A diferencia de los objetos reactivos, **no** se realiza ningún desenvolvimient
 
 ```js
 const books = reactive([ref('Vue 3 Guide')])
-// need .value here
+// necesita .value aquí
 console.log(books[0].value)
 
 const map = reactive(new Map([['count', ref(0)]]))
-// need .value here
+// necesita .value aquí
 console.log(map.get('count').value)
 ```
 
 ### Advertencia al Desenvolver en Plantillas \*\* {#caveat-when-unwrapping-in-templates}
 
-El desenvolvimiento de refs en plantillas solo se aplica si la ref es una propiedad de nivel superior en el contexto de renderizado de la plantilla.
+El desenvolvimiento de refs en templates solo se aplica si la ref es una propiedad de nivel superior en el contexto de renderizado del template.
 
 En el ejemplo siguiente, `count` y `object` son propiedades de nivel superior, pero `object.id` no lo es:
 
@@ -565,9 +565,9 @@ import { debounce } from 'lodash-es'
 
 export default {
   methods: {
-    // Debouncing with Lodash
+    // Limitación de eventos con Lodash
     click: debounce(function () {
-      // ... respond to click ...
+      // ... respuesta al clic ...
     }, 500)
   }
 }
@@ -580,17 +580,17 @@ Para mantener la función "debounced" de cada instancia de componente independie
 ```js
 export default {
   created() {
-    // each instance now has its own copy of debounced handler
+    // ahora cada instancia tiene su propia copia del gestor debounced
     this.debouncedClick = _.debounce(this.click, 500)
   },
   unmounted() {
-    // also a good idea to cancel the timer
-    // when the component is removed
+    // también es buena idea cancelar el temporizador
+    // cuando se elimina el componente
     this.debouncedClick.cancel()
   },
   methods: {
     click() {
-      // ... respond to click ...
+      // ... respuesta al clic ...
     }
   }
 }

@@ -503,11 +503,11 @@ Ajusta el comportamiento del manejo de espacios en blanco en las plantillas.
 
 ### app.config.compilerOptions.delimiters {#app-config-compileroptions-delimiters}
 
-Ajusta los delimitadores utilizados para la interpolación de texto dentro de la plantilla.
+Ajusta los delimitadores utilizados para la interpolación de texto dentro del template.
 
 - **Tipo:** `[string, string]`
 
-- **Valor por defecto:** ``{{ "['\u007b\u007b', '\u007d\u007d']" }}``
+- **Valor por defecto:** `{{ "['\u007b\u007b', '\u007d\u007d']" }}`
 
 - **Detalles**
 
@@ -562,7 +562,7 @@ Un objeto que se puede utilizar para registrar propiedades globales a las que se
   app.config.globalProperties.msg = 'hello'
   ```
 
-  Esto hace que `msg` esté disponible dentro de cualquier plantilla de componente en la aplicación, y también en `this` de cualquier instancia de componente:
+  Esto hace que `msg` esté disponible dentro de cualquier template del componente en la aplicación, y también en `this` de cualquier instancia del componente:
 
   ```js
   export default {

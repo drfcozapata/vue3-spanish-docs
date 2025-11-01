@@ -18,7 +18,7 @@ const awesome = ref(true)
 La directiva `v-if` se utiliza para renderizar un bloque condicionalmente. El bloque solo se renderizará si la expresión de la directiva devuelve un valor verdadero (truthy).
 
 ```vue-html
-<h1 v-if="awesome">Vue is awesome!</h1>
+<h1 v-if="awesome">¡Vue es fabuloso!</h1>
 ```
 
 ## `v-else` {#v-else}
@@ -28,13 +28,13 @@ Puedes usar la directiva `v-else` para indicar un "bloque else" para `v-if`:
 ```vue-html
 <button @click="awesome = !awesome">Toggle</button>
 
-<h1 v-if="awesome">Vue is awesome!</h1>
+<h1 v-if="awesome">¡Vue es fabuloso!</h1>
 <h1 v-else>Oh no 😢</h1>
 ```
 
 <div class="demo">
   <button @click="awesome = !awesome">Toggle</button>
-  <h1 v-if="awesome">Vue is awesome!</h1>
+  <h1 v-if="awesome">¡Vue es fabuloso!</h1>
   <h1 v-else>Oh no 😢</h1>
 </div>
 
@@ -66,7 +66,7 @@ Un elemento `v-else` debe seguir inmediatamente a un elemento `v-if` o `v-else-i
   C
 </div>
 <div v-else>
-  Not A/B/C
+  No A/B/C
 </div>
 ```
 
@@ -78,9 +78,9 @@ Debido a que `v-if` es una directiva, debe adjuntarse a un solo elemento. Pero, 
 
 ```vue-html
 <template v-if="ok">
-  <h1>Title</h1>
-  <p>Paragraph 1</p>
-  <p>Paragraph 2</p>
+  <h1>Título</h1>
+  <p>Párrafo 1</p>
+  <p>Párrafo 2</p>
 </template>
 ```
 
@@ -91,7 +91,7 @@ Debido a que `v-if` es una directiva, debe adjuntarse a un solo elemento. Pero, 
 Otra opción para mostrar condicionalmente un elemento es la directiva `v-show`. El uso es en gran medida el mismo:
 
 ```vue-html
-<h1 v-show="ok">Hello!</h1>
+<h1 v-show="ok">¡Hola!</h1>
 ```
 
 La diferencia es que un elemento con `v-show` siempre se renderizará y permanecerá en el DOM; `v-show` solo alterna la propiedad CSS `display` del elemento.

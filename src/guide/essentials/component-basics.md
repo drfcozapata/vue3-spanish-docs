@@ -541,7 +541,7 @@ También puedes usar el atributo `is` para crear elementos HTML regulares.
 
 Al cambiar entre múltiples componentes con `<component :is="...">`, un componente será desmontado cuando se cambie de él. Podemos forzar a que los componentes inactivos permanezcan "vivos" con el [componente incorporado `<KeepAlive>`](/guide/built-ins/keep-alive).
 
-## Consideraciones sobre el Análisis de Plantillas en el DOM {#in-dom-template-parsing-caveats}
+## Consideraciones sobre el Análisis de Templates en el DOM {#in-dom-template-parsing-caveats}
 
 Si estás escribiendo tus plantillas de Vue directamente en el DOM, Vue tendrá que recuperar la cadena de la plantilla del DOM. Esto conlleva algunas consideraciones debido al comportamiento nativo de análisis HTML de los navegadores.
 

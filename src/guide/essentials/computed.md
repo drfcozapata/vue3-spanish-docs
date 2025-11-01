@@ -21,9 +21,9 @@ export default {
       author: {
         name: 'John Doe',
         books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
+          'Vue 2 - Guía Avanzada',
+          'Vue 3 - Guía Básica',
+          'Vue 4 - El Misterio'
         ]
       }
     }
@@ -38,9 +38,9 @@ export default {
 const author = reactive({
   name: 'John Doe',
   books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
+    'Vue 2 - Guía Avanzada',
+    'Vue 3 - Guía Básica',
+    'Vue 4 - El Misterio'
   ]
 })
 ```
@@ -50,8 +50,8 @@ const author = reactive({
 Y queremos mostrar mensajes diferentes dependiendo de si `author` ya tiene algunos libros o no:
 
 ```vue-html
-<p>Has published books:</p>
-<span>{{ author.books.length > 0 ? 'Yes' : 'No' }}</span>
+<p>Ha publicado libros:</p>
+<span>{{ author.books.length > 0 ? 'Sí' : 'No' }}</span>
 ```
 
 En este punto, la plantilla se está volviendo un poco recargada. Tenemos que mirarla un segundo antes de darnos cuenta de que realiza un cálculo que depende de `author.books`. Más importante aún, probablemente no queramos repetirnos si necesitamos incluir este cálculo en la plantilla más de una vez.
@@ -67,25 +67,25 @@ export default {
       author: {
         name: 'John Doe',
         books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
+          'Vue 2 - Guía Avanzada',
+          'Vue 3 - Guía Básica',
+          'Vue 4 - El Misterio'
         ]
       }
     }
   },
   computed: {
-    // a computed getter
+    // un getter computado
     publishedBooksMessage() {
-      // `this` points to the component instance
-      return this.author.books.length > 0 ? 'Yes' : 'No'
+      // `this` apunta a la instancia del componente
+      return this.author.books.length > 0 ? 'Sí' : 'No'
     }
   }
 }
 ```
 
 ```vue-html
-<p>Has published books:</p>
+<p>Ha publicado libros:</p>
 <span>{{ publishedBooksMessage }}</span>
 ```
 
@@ -110,20 +110,20 @@ import { reactive, computed } from 'vue'
 const author = reactive({
   name: 'John Doe',
   books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
+    'Vue 2 - Guía Avanzada',
+    'Vue 3 - Guía Básica',
+    'Vue 4 - El Misterio'
   ]
 })
 
-// a computed ref
+// una ref computada
 const publishedBooksMessage = computed(() => {
-  return author.books.length > 0 ? 'Yes' : 'No'
+  return author.books.length > 0 ? 'Sí' : 'No'
 })
 </script>
 
 <template>
-  <p>Has published books:</p>
+  <p>Ha publicado libros:</p>
   <span>{{ publishedBooksMessage }}</span>
 </template>
 ```
@@ -134,11 +134,11 @@ Aquí hemos declarado una propiedad computada `publishedBooksMessage`. La funci�
 
 Una propiedad computada rastrea automáticamente sus dependencias reactivas. Vue sabe que el cálculo de `publishedBooksMessage` depende de `author.books`, por lo que actualizará cualquier enlace que dependa de `publishedBooksMessage` cuando `author.books` cambie.
 
-Ver también: [Tipado de Computados](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
+Ver también: [Tipado de Computed](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
 
 </div>
 
-## Caché de Propiedades Computadas vs. Métodos {#computed-caching-vs-methods}
+## Caché Computada vs. Métodos {#computed-caching-vs-methods}
 
 Quizás hayas notado que podemos lograr el mismo resultado invocando un método en la expresión:
 
@@ -149,10 +149,10 @@ Quizás hayas notado que podemos lograr el mismo resultado invocando un método 
 <div class="options-api">
 
 ```js
-// in component
+// en el componente
 methods: {
   calculateBooksMessage() {
-    return this.author.books.length > 0 ? 'Yes' : 'No'
+    return this.author.books.length > 0 ? 'Sí' : 'No'
   }
 }
 ```
@@ -162,9 +162,9 @@ methods: {
 <div class="composition-api">
 
 ```js
-// in component
+// en el componente
 function calculateBooksMessage() {
-  return author.books.length > 0 ? 'Yes' : 'No'
+  return author.books.length > 0 ? 'Sí' : 'No'
 }
 ```
 
@@ -220,8 +220,8 @@ export default {
       },
       // setter
       set(newValue) {
-        // Note: we are using destructuring assignment syntax here.
-        [this.firstName, this.lastName] = newValue.split(' ')
+        // Nota: aquí estamos usando la sintaxis de asignación de desestructuración.
+        ;[this.firstName, this.lastName] = newValue.split(' ')
       }
     }
   }
@@ -248,8 +248,8 @@ const fullName = computed({
   },
   // setter
   set(newValue) {
-    // Note: we are using destructuring assignment syntax here.
-    [firstName.value, lastName.value] = newValue.split(' ')
+    // Nota: aquí estamos usando la sintaxis de asignación de desestructuración.
+    ;[firstName.value, lastName.value] = newValue.split(' ')
   }
 })
 </script>
@@ -281,9 +281,9 @@ export default {
     }
   },
   computed: {
-    // This computed will return the value of count when it's less or equal to 3.
-    // When count is >=4, the last value that fulfilled our condition will be returned
-    // instead until count is less or equal to 3
+    // Este cálculo devolverá el valor de count cuando sea menor o igual a 3.
+    // Cuando count sea >=4, devolverá el último valor que cumpliera nuestra condición
+    // hasta que count sea menor o igual a 3.
     alwaysSmall(_, previous) {
       if (this.count <= 3) {
         return this.count
@@ -294,6 +294,7 @@ export default {
   }
 }
 ```
+
 </div>
 
 <div class="composition-api">
@@ -304,9 +305,9 @@ import { ref, computed } from 'vue'
 
 const count = ref(2)
 
-// This computed will return the value of count when it's less or equal to 3.
-// When count is >=4, the last value that fulfilled our condition will be returned
-// instead until count is less or equal to 3
+// Este cálculo devolverá el valor de count cuando sea menor o igual a 3.
+// Cuando count sea >=4, devolverá el último valor que cumpliera nuestra condición
+// hasta que count sea menor o igual a 3.
 const alwaysSmall = computed((previous) => {
   if (count.value <= 3) {
     return count.value
@@ -316,6 +317,7 @@ const alwaysSmall = computed((previous) => {
 })
 </script>
 ```
+
 </div>
 
 En caso de que estés usando una propiedad computada escribible:
@@ -336,7 +338,7 @@ export default {
           return this.count
         }
 
-        return previous;
+        return previous
       },
       set(newValue) {
         this.count = newValue * 2

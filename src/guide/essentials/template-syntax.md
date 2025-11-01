@@ -1,4 +1,4 @@
-# Sintaxis de Plantilla {#template-syntax}
+# Sintaxis de Template {#template-syntax}
 
 <ScrimbaLink href="https://scrimba.com/links/vue-template-syntax" title="Lección gratuita e interactiva de Sintaxis de Plantilla de Vue.js" type="scrimba">
   Mira una lección en video interactiva en Scrimba
@@ -15,7 +15,7 @@ Si estás familiarizado con los conceptos del Virtual DOM y prefieres el poder p
 La forma más básica de enlace de datos es la interpolación de texto usando la sintaxis de "bigotes" (doble llave):
 
 ```vue-html
-<span>Message: {{ msg }}</span>
+<span>Mensaje: {{ msg }}</span>
 ```
 
 La etiqueta de bigotes será reemplazada por el valor de la propiedad `msg` [de la instancia del componente correspondiente](/guide/essentials/reactivity-fundamentals#declaring-reactive-state). También se actualizará cada vez que la propiedad `msg` cambie.
@@ -25,17 +25,17 @@ La etiqueta de bigotes será reemplazada por el valor de la propiedad `msg` [de 
 Los dobles bigotes interpretan los datos como texto plano, no como HTML. Para generar HTML real, necesitarás usar la [directiva `v-html`](/api/built-in-directives#v-html):
 
 ```vue-html
-<p>Using text interpolation: {{ rawHtml }}</p>
-<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+<p>Usando interpolación de texto: {{ rawHtml }}</p>
+<p>Usando la directiva v-html: <span v-html="rawHtml"></span></p>
 ```
 
 <script setup>
-  const rawHtml = '<span style="color: red">This should be red.</span>'
+  const rawHtml = '<span style="color: red">Esto debería ser rojo.</span>'
 </script>
 
 <div class="demo">
-  <p>Using text interpolation: {{ rawHtml }}</p>
-  <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+  <p>Usando interpolación de texto: {{ rawHtml }}</p>
+  <p>Usando la directiva v-html: <span v-html="rawHtml"></span></p>
 </div>
 
 Aquí nos encontramos con algo nuevo. El atributo `v-html` que estás viendo se llama **directiva**. Las directivas tienen el prefijo `v-` para indicar que son atributos especiales proporcionados por Vue, y como habrás adivinado, aplican un comportamiento reactivo especial al DOM renderizado. Aquí, básicamente estamos diciendo "mantén el HTML interno de este elemento actualizado con la propiedad `rawHtml` de la instancia activa actual".
@@ -56,7 +56,7 @@ Los bigotes no se pueden usar dentro de los atributos HTML. En su lugar, usa una
 
 La directiva `v-bind` le indica a Vue que mantenga el atributo `id` del elemento sincronizado con la propiedad `dynamicId` del componente. Si el valor enlazado es `null` o `undefined`, entonces el atributo será eliminado del elemento renderizado.
 
-### Abreviamiento {#shorthand}
+### Abreviación {#shorthand}
 
 Debido a que `v-bind` se usa con tanta frecuencia, tiene una sintaxis abreviada dedicada:
 
@@ -68,17 +68,17 @@ Los atributos que comienzan con `:` pueden parecer un poco diferentes del HTML n
 
 > Para el resto de la guía, usaremos la sintaxis abreviada en los ejemplos de código, ya que es el uso más común para los desarrolladores de Vue.
 
-### Abreviamiento con el mismo nombre {#same-name-shorthand}
+### Abreviación con el mismo nombre {#same-name-shorthand}
 
 - Solo compatible con 3.4+
 
 Si el atributo tiene el mismo nombre que el nombre de la variable del valor JavaScript que se está enlazando, la sintaxis se puede acortar aún más para omitir el valor del atributo:
 
 ```vue-html
-<!-- same as :id="id" -->
+<!-- lo mismo que :id="id" -->
 <div :id></div>
 
-<!-- this also works -->
+<!-- esto también funciona -->
 <div v-bind:id></div>
 ```
 
@@ -91,7 +91,7 @@ Los [atributos booleanos](https://html.spec.whatwg.org/multipage/common-microsyn
 `v-bind` funciona un poco diferente en este caso:
 
 ```vue-html
-<button :disabled="isButtonDisabled">Button</button>
+<button :disabled="isButtonDisabled">Botón</button>
 ```
 
 El atributo `disabled` se incluirá si `isButtonDisabled` tiene un [valor verdadero (truthy)](https://developer.mozilla.org/en-US/docs/Glossary/Truthy). También se incluirá si el valor es una cadena vacía, manteniendo la consistencia con `<button disabled="">`. Para otros [valores falsos (falsy)](https://developer.mozilla.org/en-US/docs/Glossary/Falsy), el atributo se omitirá.
@@ -139,7 +139,7 @@ Hasta ahora solo hemos estado enlazando a claves de propiedades simples en nuest
 ```vue-html
 {{ number + 1 }}
 
-{{ ok ? 'YES' : 'NO' }}
+{{ ok ? 'SÍ' : 'NO' }}
 
 {{ message.split('').reverse().join('') }}
 
@@ -160,10 +160,10 @@ Cada enlace solo puede contener **una única expresión**. Una expresión es un 
 Por lo tanto, lo siguiente **NO** funcionará:
 
 ```vue-html
-<!-- this is a statement, not an expression: -->
+<!-- esta es una declaración, no una expresión: -->
 {{ var a = 1 }}
 
-<!-- flow control won't work either, use ternary expressions -->
+<!-- el control de flujo tampoco funcionará, usa expresiones ternarias -->
 {{ if (ok) { return message } }}
 ```
 
@@ -194,7 +194,7 @@ Las directivas son atributos especiales con el prefijo `v-`. Vue proporciona una
 Se espera que los valores de los atributos de las directivas sean expresiones JavaScript únicas (con la excepción de `v-for`, `v-on` y `v-slot`, que se discutirán en sus secciones respectivas más adelante). El trabajo de una directiva es aplicar actualizaciones de forma reactiva al DOM cuando cambia el valor de su expresión. Tomemos [`v-if`](/api/built-in-directives#v-if) como ejemplo:
 
 ```vue-html
-<p v-if="seen">Now you see me</p>
+<p v-if="seen">Ahora me ves</p>
 ```
 
 Aquí, la directiva `v-if` eliminaría o insertaría el elemento `<p>` basándose en la veracidad del valor de la expresión `seen`.
@@ -206,7 +206,7 @@ Algunas directivas pueden tomar un "argumento", denotado por dos puntos después
 ```vue-html
 <a v-bind:href="url"> ... </a>
 
-<!-- shorthand -->
+<!-- abreviación -->
 <a :href="url"> ... </a>
 ```
 
@@ -217,7 +217,7 @@ Otro ejemplo es la directiva `v-on`, que escucha eventos del DOM:
 ```vue-html
 <a v-on:click="doSomething"> ... </a>
 
-<!-- shorthand -->
+<!-- abreviación -->
 <a @click="doSomething"> ... </a>
 ```
 
@@ -229,12 +229,12 @@ También es posible usar una expresión JavaScript en un argumento de directiva 
 
 ```vue-html
 <!--
-Note that there are some constraints to the argument expression,
-as explained in the "Dynamic Argument Value Constraints" and "Dynamic Argument Syntax Constraints" sections below.
+Ten en cuenta que existen algunas restricciones para la expresión del argumento, tal y como se explica en las secciones
+"Restricciones Dinámicas del Valor del Argumento" y "Restricciones Dinámicas de la Sintaxis del Argumento" más adelante.
 -->
 <a v-bind:[attributeName]="url"> ... </a>
 
-<!-- shorthand -->
+<!-- abreviación -->
 <a :[attributeName]="url"> ... </a>
 ```
 
@@ -245,22 +245,22 @@ De manera similar, puedes usar argumentos dinámicos para enlazar un manejador a
 ```vue-html
 <a v-on:[eventName]="doSomething"> ... </a>
 
-<!-- shorthand -->
+<!-- abreviación -->
 <a @[eventName]="doSomething"> ... </a>
 ```
 
 En este ejemplo, cuando el valor de `eventName` es `"focus"`, `v-on:[eventName]` será equivalente a `v-on:focus`.
 
-#### Restricciones de valor de argumento dinámico {#dynamic-argument-value-constraints}
+#### Restricciones Dinámicas del Valor del Argumento {#dynamic-argument-value-constraints}
 
 Se espera que los argumentos dinámicos se evalúen a una cadena, con la excepción de `null`. El valor especial `null` se puede usar para eliminar explícitamente el enlace. Cualquier otro valor que no sea una cadena disparará una advertencia.
 
-#### Restricciones de sintaxis de argumento dinámico {#dynamic-argument-syntax-constraints}
+#### Restricciones Dinámicas de la Sintaxis del Argumento {#dynamic-argument-syntax-constraints}
 
 Las expresiones de argumento dinámico tienen algunas restricciones de sintaxis porque ciertos caracteres, como espacios y comillas, son inválidos dentro de los nombres de atributos HTML. Por ejemplo, lo siguiente no es válido:
 
 ```vue-html
-<!-- This will trigger a compiler warning. -->
+<!-- Esto activará una advertencia del compilador. -->
 <a :['foo' + bar]="value"> ... </a>
 ```
 
