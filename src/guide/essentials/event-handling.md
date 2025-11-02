@@ -12,15 +12,15 @@
 
 Podemos usar la directiva `v-on`, que usualmente abreviamos con el símbolo `@`, para escuchar eventos del DOM y ejecutar algo de JavaScript cuando estos se disparan. El uso sería `v-on:click="handler"` o, con el atajo, `@click="handler"`.
 
-El valor del handler puede ser uno de los siguientes:
+El valor del manejador puede ser uno de los siguientes:
 
-1.  **Handlers en línea:** JavaScript en línea que se ejecutará cuando el evento sea disparado (similar al atributo nativo `onclick`).
+1.  **Manejadores en línea:** JavaScript en línea que se ejecutará cuando el evento sea disparado (similar al atributo nativo `onclick`).
 
-2.  **Handlers de método:** Un nombre de propiedad o ruta que apunta a un método definido en el componente.
+2.  **Manejadores de método:** Un nombre de propiedad o ruta que apunta a un método definido en el componente.
 
-## Handlers en Línea {#inline-handlers}
+## Manejadores en Línea {#inline-handlers}
 
-Los handlers en línea se usan típicamente en casos sencillos, por ejemplo:
+Los manejadores en línea se usan típicamente en casos sencillos, por ejemplo:
 
 <div class="composition-api">
 
@@ -42,8 +42,8 @@ data() {
 </div>
 
 ```vue-html
-<button @click="count++">Add 1</button>
-<p>Count is: {{ count }}</p>
+<button @click="count++">Añadir 1</button>
+<p>La Cuenta es: {{ count }}</p>
 ```
 
 <div class="composition-api">
@@ -57,9 +57,9 @@ data() {
 
 </div>
 
-## Handlers de Método {#method-handlers}
+## Manejadores de Método {#method-handlers}
 
-Sin embargo, la lógica para muchos handlers de eventos será más compleja y probablemente no sea factible con handlers en línea. Es por eso que `v-on` también puede aceptar el nombre o la ruta de un método del componente que te gustaría llamar.
+Sin embargo, la lógica para muchos manejadores de eventos será más compleja y probablemente no sea factible con manejadores en línea. Es por eso que `v-on` también puede aceptar el nombre o la ruta de un método del componente que te gustaría llamar.
 
 Por ejemplo:
 
@@ -70,7 +70,7 @@ const name = ref('Vue.js')
 
 function greet(event) {
   alert(`Hello ${name.value}!`)
-  // `event` is the native DOM event
+  // `event` es el evento nativo del DOM
   if (event) {
     alert(event.target.tagName)
   }
@@ -88,9 +88,9 @@ data() {
 },
 methods: {
   greet(event) {
-    // `this` inside methods points to the current active instance
-    alert(`Hello ${this.name}!`)
-    // `event` is the native DOM event
+    // `this` dentro de los métodos apunta a la instancia activa actual
+    alert(`¡Hola ${this.name}!`)
+    // `event` es el evento nativo del DOM
     if (event) {
       alert(event.target.tagName)
     }
@@ -101,8 +101,8 @@ methods: {
 </div>
 
 ```vue-html
-<!-- `greet` is the name of the method defined above -->
-<button @click="greet">Greet</button>
+<!-- `greet` es el nombre del método definido anteriormente -->
+<button @click="greet">Saludar</button>
 ```
 
 <div class="composition-api">
@@ -116,26 +116,26 @@ methods: {
 
 </div>
 
-Un handler de método recibe automáticamente el objeto nativo `DOM Event` que lo dispara; en el ejemplo anterior, podemos acceder al elemento que despacha el evento a través de `event.target`.
+Un manejador de método recibe automáticamente el objeto nativo DOM Event que lo dispara; en el ejemplo anterior, podemos acceder al elemento que despacha el evento a través de `event.target`.
 
 <div class="composition-api">
 
-Ver también: [Typing Event Handlers](/guide/typescript/composition-api#typing-event-handlers) <sup class="vt-badge ts" />
+Ver también: [Typing Event Manejadores](/guide/typescript/composition-api#typing-event-handlers) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">
 
-Ver también: [Typing Event Handlers](/guide/typescript/options-api#typing-event-handlers) <sup class="vt-badge ts" />
+Ver también: [Typing Event Manejadores](/guide/typescript/options-api#typing-event-handlers) <sup class="vt-badge ts" />
 
 </div>
 
 ### Detección de Método vs. En Línea {#method-vs-inline-detection}
 
-El compilador de plantillas detecta los handlers de método comprobando si la cadena de valor de `v-on` es un identificador de JavaScript válido o una ruta de acceso a una propiedad. Por ejemplo, `foo`, `foo.bar` y `foo['bar']` se tratan como handlers de método, mientras que `foo()` y `count++` se tratan como handlers en línea.
+El compilador de plantillas detecta los manejadores de método comprobando si la cadena de valor de `v-on` es un identificador de JavaScript válido o una ruta de acceso a una propiedad. Por ejemplo, `foo`, `foo.bar` y `foo['bar']` se tratan como manejadores de método, mientras que `foo()` y `count++` se tratan como manejadores en línea.
 
-## Llamando Métodos en Handlers en Línea {#calling-methods-in-inline-handlers}
+## Llamando Métodos en Manejadores en Línea {#calling-methods-in-inline-handlers}
 
-En lugar de enlazar directamente a un nombre de método, también podemos llamar métodos en un handler en línea. Esto nos permite pasar argumentos personalizados al método en lugar del evento nativo:
+En lugar de enlazar directamente a un nombre de método, también podemos llamar métodos en un manejador en línea. Esto nos permite pasar argumentos personalizados al método en lugar del evento nativo:
 
 <div class="composition-api">
 
@@ -159,8 +159,8 @@ methods: {
 </div>
 
 ```vue-html
-<button @click="say('hello')">Say hello</button>
-<button @click="say('bye')">Say bye</button>
+<button @click="say('hello')">Di hola</button>
+<button @click="say('bye')">Di adiós</button>
 ```
 
 <div class="composition-api">
@@ -174,19 +174,19 @@ methods: {
 
 </div>
 
-## Accediendo al Argumento Event en Handlers en Línea {#accessing-event-argument-in-inline-handlers}
+## Accediendo al Argumento Event en Manejadores en Línea {#accessing-event-argument-in-inline-handlers}
 
-A veces también necesitamos acceder al evento DOM original en un handler en línea. Puedes pasarlo a un método usando la variable especial `$event`, o usar una función de flecha en línea:
+A veces también necesitamos acceder al evento DOM original en un manejador en línea. Puedes pasarlo a un método usando la variable especial `$event`, o usar una función de flecha en línea:
 
 ```vue-html
-<!-- using $event special variable -->
-<button @click="warn('Form cannot be submitted yet.', $event)">
-  Submit
+<!-- usando la variable especial $event -->
+<button @click="warn('El formulario no se puede enviar todavía.', $event)">
+  Enviar
 </button>
 
-<!-- using inline arrow function -->
-<button @click="(event) => warn('Form cannot be submitted yet.', event)">
-  Submit
+<!-- usando la función flecha en línea -->
+<button @click="(event) => warn('El formulario no se puede enviar todavía.', event)">
+  Enviar
 </button>
 ```
 
@@ -194,7 +194,7 @@ A veces también necesitamos acceder al evento DOM original en un handler en lí
 
 ```js
 function warn(message, event) {
-  // now we have access to the native event
+  // ahora tenemos acceso al evento nativo
   if (event) {
     event.preventDefault()
   }
@@ -208,7 +208,7 @@ function warn(message, event) {
 ```js
 methods: {
   warn(message, event) {
-    // now we have access to the native event
+    // ahora tenemos acceso al evento nativo
     if (event) {
       event.preventDefault()
     }
@@ -221,7 +221,7 @@ methods: {
 
 ## Modificadores de Evento {#event-modifiers}
 
-Es una necesidad muy común llamar a `event.preventDefault()` o `event.stopPropagation()` dentro de los handlers de eventos. Aunque podemos hacer esto fácilmente dentro de los métodos, sería mejor si los métodos pudieran ser puramente sobre lógica de datos en lugar de tener que lidiar con los detalles de los eventos DOM.
+Es una necesidad muy común llamar a `event.preventDefault()` o `event.stopPropagation()` dentro de los manejadores de eventos. Aunque podemos hacer esto fácilmente dentro de los métodos, sería mejor si los métodos pudieran ser puramente sobre lógica de datos en lugar de tener que lidiar con los detalles de los eventos DOM.
 
 Para abordar este problema, Vue proporciona **modificadores de evento** para `v-on`. Recuerda que los modificadores son sufijos de directiva denotados por un punto.
 
@@ -233,41 +233,41 @@ Para abordar este problema, Vue proporciona **modificadores de evento** para `v-
 - `.passive`
 
 ```vue-html
-<!-- the click event's propagation will be stopped -->
+<!-- se detendrá la propagación del evento de clic -->
 <a @click.stop="doThis"></a>
 
-<!-- the submit event will no longer reload the page -->
+<!-- el evento submit ya no recargará la página -->
 <form @submit.prevent="onSubmit"></form>
 
-<!-- modifiers can be chained -->
+<!-- los modificadores se pueden encadenar -->
 <a @click.stop.prevent="doThat"></a>
 
-<!-- just the modifier -->
+<!-- solo el modificador -->
 <form @submit.prevent></form>
 
-<!-- only trigger handler if event.target is the element itself -->
-<!-- i.e. not from a child element -->
+<!-- solo se activará el controlador si event.target es el propio elemento -->
+<!-- es decir, no desde un elemento secundario -->
 <div @click.self="doThat">...</div>
 ```
 
 ::: tip
-El orden importa al usar modificadores porque el código relevante se genera en el mismo orden. Por lo tanto, usar `@click.prevent.self` evitará la **acción predeterminada de `click` en el elemento mismo y en sus hijos**, mientras que `@click.self.prevent` solo evitará la acción predeterminada de `click` en el elemento mismo.
+El orden importa al usar modificadores porque el código relevante se genera en el mismo orden. Por lo tanto, usar `@click.prevent.self` evitará la **acción predeterminada de click en el elemento mismo y en sus hijos**, mientras que `@click.self.prevent` solo evitará la acción predeterminada de click en el elemento mismo.
 :::
 
 Los modificadores `.capture`, `.once` y `.passive` reflejan las [opciones del método nativo `addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#options):
 
 ```vue-html
-<!-- use capture mode when adding the event listener     -->
-<!-- i.e. an event targeting an inner element is handled -->
-<!-- here before being handled by that element           -->
+<!-- usa el modo de captura al agregar el detector de eventos -->
+<!-- es decir, se gestiona un evento dirigido a un elemento   -->
+<!-- interno aquí antes de que lo gestione ese elemento       -->
 <div @click.capture="doThis">...</div>
 
-<!-- the click event will be triggered at most once -->
+<!-- el evento clic se activará como máximo una vez -->
 <a @click.once="doThis"></a>
 
-<!-- the scroll event's default behavior (scrolling) will happen -->
-<!-- immediately, instead of waiting for `onScroll` to complete  -->
-<!-- in case it contains `event.preventDefault()`                -->
+<!-- el comportamiento por defecto del evento de scroll (desplazamiento) -->
+<!-- se producirá inmediatamente, en lugar de esperar a que se complete  -->
+<!-- `onScroll` en caso de que contenga `event.preventDefault()`         -->
 <div @scroll.passive="onScroll">...</div>
 ```
 
@@ -282,7 +282,7 @@ No uses `.passive` y `.prevent` juntos, porque `.passive` ya indica al navegador
 Al escuchar eventos de teclado, a menudo necesitamos verificar teclas específicas. Vue permite agregar modificadores de tecla para `v-on` o `@` al escuchar eventos de teclado:
 
 ```vue-html
-<!-- only call `submit` when the `key` is `Enter` -->
+<!-- solo llama a `submit` cuando la `tecla` sea `Enter` -->
 <input @keyup.enter="submit" />
 ```
 
@@ -292,7 +292,7 @@ Puedes usar directamente cualquier nombre de tecla válido expuesto a través de
 <input @keyup.page-down="onPageDown" />
 ```
 
-En el ejemplo anterior, el handler solo se llamará si `$event.key` es igual a `'PageDown'`.
+En el ejemplo anterior, el manejador solo se llamará si `$event.key` es igual a `'PageDown'`.
 
 ### Alias de Teclas {#key-aliases}
 
@@ -318,7 +318,7 @@ Puedes usar los siguientes modificadores para disparar listeners de eventos de r
 - `.meta`
 
 ::: tip Nota
-En teclados Macintosh, `meta` es la tecla de comando (⌘). En teclados Windows, `meta` es la tecla de Windows (⊞). En teclados Sun Microsystems, `meta` se marca como un diamante sólido (◆). En ciertos teclados, específicamente MIT y los teclados de máquinas Lisp y sus sucesores, como el teclado Knight, el teclado space-cadet, `meta` se etiqueta como "META". En teclados Symbolics, `meta` se etiqueta como "META" o "Meta".
+En teclados Macintosh, meta es la tecla de comando (⌘). En teclados Windows, meta es la tecla de Windows (⊞). En teclados Sun Microsystems, meta se marca como un diamante sólido (◆). En ciertos teclados, específicamente MIT y los teclados de máquinas Lisp y sus sucesores, como el teclado Knight, el teclado space-cadet, meta se etiqueta como "META". En teclados Symbolics, meta se etiqueta como "META" o "Meta".
 :::
 
 Por ejemplo:
@@ -328,7 +328,7 @@ Por ejemplo:
 <input @keyup.alt.enter="clear" />
 
 <!-- Ctrl + Click -->
-<div @click.ctrl="doSomething">Do something</div>
+<div @click.ctrl="doSomething">Hacer algo</div>
 ```
 
 ::: tip
@@ -340,13 +340,13 @@ Ten en cuenta que las teclas modificadoras son diferentes de las teclas regulare
 El modificador `.exact` permite controlar la combinación exacta de modificadores del sistema necesaria para disparar un evento.
 
 ```vue-html
-<!-- this will fire even if Alt or Shift is also pressed -->
+<!-- esto se activará incluso si también se presiona Alt o Shift -->
 <button @click.ctrl="onClick">A</button>
 
-<!-- this will only fire when Ctrl and no other keys are pressed -->
+<!-- esto solo se activará cuando se presione Ctrl y ninguna otra tecla -->
 <button @click.ctrl.exact="onCtrlClick">A</button>
 
-<!-- this will only fire when no system modifiers are pressed -->
+<!-- esto solo se activará cuando no se presione modificadores del sistema -->
 <button @click.exact="onClick">A</button>
 ```
 
@@ -356,6 +356,6 @@ El modificador `.exact` permite controlar la combinación exacta de modificadore
 - `.right`
 - `.middle`
 
-Estos modificadores restringen el handler a eventos disparados por un botón específico del ratón.
+Estos modificadores restringen el manejador a eventos disparados por un botón específico del ratón.
 
-Sin embargo, ten en cuenta que los nombres de los modificadores `.left`, `.right` y `.middle` se basan en la disposición típica del ratón para diestros, pero en realidad representan los disparadores de eventos de "main", "secondary" y "auxiliary" del dispositivo señalador, respectivamente, y no los botones físicos reales. Así, para una disposición de ratón para zurdos, el botón "main" podría ser físicamente el derecho, pero dispararía el handler del modificador `.left`. O un trackpad podría disparar el handler `.left` con un toque de un dedo, el handler `.right` con un toque de dos dedos y el handler `.middle` con un toque de tres dedos. De manera similar, otros dispositivos y fuentes de eventos que generan eventos de "ratón" podrían tener modos de disparo que no están relacionados en absoluto con "izquierda" y "derecha".
+Sin embargo, ten en cuenta que los nombres de los modificadores `.left`, `.right` y `.middle` se basan en la disposición típica del ratón para diestros, pero en realidad representan los disparadores de eventos de "main", "secondary" y "auxiliary" del dispositivo señalador, respectivamente, y no los botones físicos reales. Así, para una disposición de ratón para zurdos, el botón "main" podría ser físicamente el derecho, pero dispararía el manejador del modificador `.left`. O un trackpad podría disparar el manejador `.left` con un toque de un dedo, el manejador `.right` con un toque de dos dedos y el manejador `.middle` con un toque de tres dedos. De manera similar, otros dispositivos y fuentes de eventos que generan eventos de "ratón" podrían tener modos de disparo que no están relacionados en absoluto con "izquierda" y "derecha".

@@ -110,7 +110,7 @@ Observa cómo el valor de `v-for` coincide con la firma de la función del callb
   {{ message }}
 </li>
 
-<!-- with index alias -->
+<!-- con alias del índice -->
 <li v-for="({ message }, index) in items">
   {{ message }} {{ index }}
 </li>
@@ -140,9 +140,9 @@ También puedes usar `v-for` para iterar a través de las propiedades de un obje
 
 ```js
 const myObject = reactive({
-  title: 'How to do lists in Vue',
+  title: 'Cómo hacer listas en Vue',
   author: 'Jane Doe',
-  publishedAt: '2016-04-10'
+  publishedAt: '10-04-2016'
 })
 ```
 
@@ -153,9 +153,9 @@ const myObject = reactive({
 data() {
   return {
     myObject: {
-      title: 'How to do lists in Vue',
+      title: 'Cómo hacer listas en Vue',
       author: 'Jane Doe',
-      publishedAt: '2016-04-10'
+      publishedAt: '10-04-2016'
     }
   }
 }
@@ -227,8 +227,8 @@ Cuando existen en el mismo nodo, `v-if` tiene una prioridad más alta que `v-for
 
 ```vue-html
 <!--
-This will throw an error because property "todo"
-is not defined on instance.
+Esto generará un error porque la propiedad "todo"
+no está definida en la instancia.
 -->
 <li v-for="todo in todos" v-if="!todo.isComplete">
   {{ todo.name }}
@@ -250,7 +250,7 @@ Esto se puede solucionar moviendo `v-for` a una etiqueta `<template>` de envoltu
 
 Hay dos casos comunes en los que esto puede ser tentador:
 
-- Para filtrar elementos en una lista (por ejemplo, `v-for="user in users" v-if="user.isActive"`). En estos casos, reemplaza `users` con una nueva propiedad `computed` que devuelva tu lista filtrada (por ejemplo, `activeUsers`).
+- Para filtrar elementos en una lista (por ejemplo, `v-for="user in users" v-if="user.isActive"`). En estos casos, reemplaza `users` con una nueva propiedad computada que devuelva tu lista filtrada (por ejemplo, `activeUsers`).
 
 - Para evitar renderizar una lista si debe estar oculta (por ejemplo, `v-for="user in users" v-if="shouldShowUsers"`). En estos casos, mueve el `v-if` a un elemento contenedor (por ejemplo, `ul`, `ol`).
   :::
@@ -265,7 +265,7 @@ Para darle una pista a Vue y que pueda rastrear la identidad de cada nodo, y as�
 
 ```vue-html
 <div v-for="item in items" :key="item.id">
-  <!-- content -->
+  <!-- contenido -->
 </div>
 ```
 
@@ -278,7 +278,7 @@ Cuando se usa `<template v-for>`, la `key` debe colocarse en el contenedor `<tem
 ```
 
 :::tip Nota
-Aquí `key` es un atributo especial que se vincula con `v-bind`. No debe confundirse con la variable `key` de propiedad al [usar `v-for` con un objeto](#v-for-with-an-object).
+Aquí `key` es un atributo especial que se vincula con `v-bind`. No debe confundirse con la variable clave de propiedad al [usar `v-for` con un objeto](#v-for-with-an-object).
 :::
 
 Se recomienda proporcionar un atributo `key` con `v-for` siempre que sea posible, a menos que el contenido del DOM iterado sea simple (es decir, no contenga componentes o elementos del DOM con estado), o si dependes intencionalmente del comportamiento predeterminado para obtener mejoras de rendimiento.
@@ -295,7 +295,7 @@ Puedes usar directamente `v-for` en un componente, como cualquier elemento norma
 <MyComponent v-for="item in items" :key="item.id" />
 ```
 
-Sin embargo, esto no pasará automáticamente ningún dato al componente, porque los componentes tienen ámbitos aislados propios. Para pasar los datos iterados al componente, también deberíamos usar `props`:
+Sin embargo, esto no pasará automáticamente ningún dato al componente, porque los componentes tienen ámbitos aislados propios. Para pasar los datos iterados al componente, también deberíamos usar props:
 
 ```vue-html
 <MyComponent
@@ -340,7 +340,7 @@ Los métodos de mutación, como su nombre indica, mutan el array original sobre 
 <div class="composition-api">
 
 ```js
-// `items` is a ref with array value
+// `items` es una referencia con valor de array
 items.value = items.value.filter((item) => item.message.match(/Foo/))
 ```
 
@@ -357,7 +357,7 @@ Podrías pensar que esto hará que Vue descarte el DOM existente y vuelva a rend
 
 ## Mostrar Resultados Filtrados/Ordenados {#displaying-filtered-sorted-results}
 
-A veces queremos mostrar una versión filtrada o ordenada de un array sin mutar o restablecer los datos originales. En este caso, puedes crear una propiedad `computed` que devuelva el array filtrado o ordenado.
+A veces queremos mostrar una versión filtrada o ordenada de un array sin mutar o restablecer los datos originales. En este caso, puedes crear una propiedad computada que devuelva el array filtrado o ordenado.
 
 Por ejemplo:
 
@@ -393,7 +393,7 @@ computed: {
 <li v-for="n in evenNumbers">{{ n }}</li>
 ```
 
-En situaciones donde las propiedades `computed` no son factibles (por ejemplo, dentro de bucles `v-for` anidados), puedes usar un método:
+En situaciones donde las propiedades computedas no son factibles (por ejemplo, dentro de bucles `v-for` anidados), puedes usar un método:
 
 <div class="composition-api">
 
@@ -432,7 +432,7 @@ methods: {
 </ul>
 ```
 
-¡Ten cuidado con `reverse()` y `sort()` en una propiedad `computed`! Estos dos métodos mutarán el array original, lo cual debe evitarse en los `computed` getters. Crea una copia del array original antes de llamar a estos métodos:
+¡Ten cuidado con `reverse()` y `sort()` en una propiedad computada! Estos dos métodos mutarán el array original, lo cual debe evitarse en los getters computados. Crea una copia del array original antes de llamar a estos métodos:
 
 ```diff
 - return numbers.reverse()

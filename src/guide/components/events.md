@@ -184,7 +184,7 @@ La opción `emits` y la macro `defineEmits()` también admiten una sintaxis de o
 ```vue
 <script setup lang="ts">
 const emit = defineEmits({
-  submit(payload: { email: string, password: string }) {
+  submit(payload: { email: string; password: string }) {
     // devuelve `true` o `false` para indicar
     // si la validación pasó / falló
   }
@@ -203,7 +203,7 @@ const emit = defineEmits<{
 </script>
 ```
 
-Más detalles: [Tipado de Emisiones de Componentes](/guide/typescript/composition-api#typing-component-emits) <sup class="vt-badge ts" />
+Más detalles: [Tipado de Emits de Componentes](/guide/typescript/composition-api#typing-component-emits) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">

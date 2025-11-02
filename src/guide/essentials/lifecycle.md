@@ -13,7 +13,7 @@ Por ejemplo, el hook <span class="composition-api">`onMounted`</span><span class
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  console.log(`the component is now mounted.`)
+  console.log(`El componente ya está montado.`)
 })
 </script>
 ```
@@ -24,7 +24,7 @@ onMounted(() => {
 ```js
 export default {
   mounted() {
-    console.log(`the component is now mounted.`)
+    console.log(`El componente ya está montado.`)
   }
 }
 ```
@@ -46,7 +46,7 @@ Al llamar a `onMounted`, Vue asocia automáticamente la función de callback reg
 ```js
 setTimeout(() => {
   onMounted(() => {
-    // this won't work.
+    // Esto no funcionará.
   })
 }, 100)
 ```

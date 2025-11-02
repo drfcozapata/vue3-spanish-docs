@@ -13,9 +13,9 @@ const selected = ref('')
 const multiSelected = ref([])
 const dynamicSelected = ref('A')
 const options = ref([
-  { text: 'One', value: 'A' },
-  { text: 'Two', value: 'B' },
-  { text: 'Three', value: 'C' }
+  { text: 'Uno', value: 'A' },
+  { text: 'Dos', value: 'B' },
+  { text: 'Tres', value: 'C' }
 ])
 </script>
 
@@ -59,7 +59,7 @@ Además, `v-model` se puede usar en inputs de diferentes tipos, elementos `<text
 
 ```vue-html
 <p>Message is: {{ message }}</p>
-<input v-model="message" placeholder="edit me" />
+<input v-model="message" placeholder="edítame" />
 ```
 
 <div class="demo">
@@ -88,7 +88,7 @@ Para lenguajes que requieren un [IME](https://en.wikipedia.org/wiki/Input_method
 ```vue-html
 <span>Multiline message is:</span>
 <p style="white-space: pre-line;">{{ message }}</p>
-<textarea v-model="message" placeholder="add multiple lines"></textarea>
+<textarea v-model="message" placeholder="añade múltiples líneas"></textarea>
 ```
 
 <div class="demo">
@@ -111,10 +111,10 @@ Para lenguajes que requieren un [IME](https://en.wikipedia.org/wiki/Input_method
 Ten en cuenta que la interpolación dentro de `<textarea>` no funcionará. Usa `v-model` en su lugar.
 
 ```vue-html
-<!-- malo -->
+<!-- mal -->
 <textarea>{{ text }}</textarea>
 
-<!-- bueno -->
+<!-- bien -->
 <textarea v-model="text"></textarea>
 ```
 
@@ -167,7 +167,7 @@ export default {
 </div>
 
 ```vue-html
-<div>Checked names: {{ checkedNames }}</div>
+<div>Nombres seleccionados: {{ checkedNames }}</div>
 
 <input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
 <label for="jack">Jack</label>
@@ -208,22 +208,22 @@ En este caso, el array `checkedNames` siempre contendrá los valores de las casi
 ### Botón de Radio {#radio}
 
 ```vue-html
-<div>Picked: {{ picked }}</div>
+<div>Seleccionado: {{ picked }}</div>
 
-<input type="radio" id="one" value="One" v-model="picked" />
-<label for="one">One</label>
+<input type="radio" id="one" value="Uno" v-model="picked" />
+<label for="one">Uno</label>
 
-<input type="radio" id="two" value="Two" v-model="picked" />
-<label for="two">Two</label>
+<input type="radio" id="two" value="Dos" v-model="picked" />
+<label for="two">Dos</label>
 ```
 
 <div class="demo">
   <div>Seleccionado: {{ picked }}</div>
 
-  <input type="radio" id="one" value="One" v-model="picked" />
+  <input type="radio" id="one" value="Uno" v-model="picked" />
   <label for="one">Uno</label>
 
-  <input type="radio" id="two" value="Two" v-model="picked" />
+  <input type="radio" id="two" value="Dos" v-model="picked" />
   <label for="two">Dos</label>
 </div>
 
@@ -243,10 +243,10 @@ En este caso, el array `checkedNames` siempre contendrá los valores de las casi
 Selección única:
 
 ```vue-html
-<div>Selected: {{ selected }}</div>
+<div>Seleccionado: {{ selected }}</div>
 
 <select v-model="selected">
-  <option disabled value="">Please select one</option>
+  <option disabled value="">Por favor selecciona uno</option>
   <option>A</option>
   <option>B</option>
   <option>C</option>
@@ -275,13 +275,13 @@ Selección única:
 </div>
 
 :::tip Nota
-Si el valor inicial de tu expresión `v-model` no coincide con ninguna de las opciones, el elemento `<select>` se renderizará en un estado "no seleccionado". En iOS, esto provocará que el usuario no pueda seleccionar el primer elemento porque iOS no dispara un evento `change` en este caso. Por lo tanto, se recomienda proporcionar una opción deshabilitada con un valor vacío, como se demostró en el ejemplo anterior.
+Si el valor inicial de tu expresión `v-model` no coincide con ninguna de las opciones, el elemento `<select>` se renderizará en un estado "no seleccionado". En iOS, esto provocará que el usuario no pueda seleccionar el primer elemento porque iOS no dispara un evento change en este caso. Por lo tanto, se recomienda proporcionar una opción deshabilitada con un valor vacío, como se demostró en el ejemplo anterior.
 :::
 
 Selección múltiple (enlazada a array):
 
 ```vue-html
-<div>Selected: {{ selected }}</div>
+<div>Seleccionado: {{ selected }}</div>
 
 <select v-model="selected" multiple>
   <option>A</option>
@@ -319,9 +319,9 @@ Las opciones de selección se pueden renderizar dinámicamente con `v-for`:
 const selected = ref('A')
 
 const options = ref([
-  { text: 'One', value: 'A' },
-  { text: 'Two', value: 'B' },
-  { text: 'Three', value: 'C' }
+  { text: 'Uno', value: 'A' },
+  { text: 'Dos', value: 'B' },
+  { text: 'Tres', value: 'C' }
 ])
 ```
 
@@ -332,11 +332,11 @@ const options = ref([
 export default {
   data() {
     return {
-      selected: 'A',
+      Seleccionado: 'A',
       options: [
-        { text: 'One', value: 'A' },
-        { text: 'Two', value: 'B' },
-        { text: 'Three', value: 'C' }
+        { text: 'Uno', value: 'A' },
+        { text: 'Dos', value: 'B' },
+        { text: 'Tres', value: 'C' }
       ]
     }
   }
@@ -346,7 +346,7 @@ export default {
 </div>
 
 ```vue-html
-<div>Selected: {{ selected }}</div>
+<div>Seleccionado: {{ selected }}</div>
 
 <select v-model="selected">
   <option v-for="option in options" :value="option.value">

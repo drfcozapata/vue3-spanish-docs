@@ -6,7 +6,7 @@
 
 > Esta página asume que ya has leído la descripción general sobre [Uso de Vue con TypeScript](./overview).
 
-## Tipado de `props` de componente {#typing-component-props}
+## Tipado de Props de componente {#typing-component-props}
 
 ### Uso de `<script setup>` {#using-script-setup}
 
@@ -70,7 +70,7 @@ En la versión 3.2 y anteriores, el parámetro de tipo genérico para `definePro
 
 Esta limitación se ha resuelto en 3.3. La última versión de Vue admite la referencia de tipos importados y un conjunto limitado de tipos complejos en la posición del parámetro de tipo. Sin embargo, debido a que la conversión de tipo a tiempo de ejecución sigue siendo basada en AST, algunos tipos complejos que requieren un análisis de tipo real, por ejemplo, tipos condicionales, no son compatibles. Puedes usar tipos condicionales para el tipo de una sola `prop`, pero no para todo el objeto `props`.
 
-### Valores por Defecto de las `props` {#props-default-values}
+### Valores por Defecto de las Props {#props-default-values}
 
 Al usar la declaración basada en tipo, perdemos la capacidad de declarar valores por defecto para las `props`. Esto se puede resolver usando [Desestructuración Reactiva de Props](/guide/components/props#reactive-props-destructure) <sup class="vt-badge" data-text="3.5+" />:
 
@@ -120,7 +120,7 @@ export default defineComponent({
 })
 ```
 
-### Tipos de `props` complejos {#complex-prop-types}
+### Tipos de prop complejos {#complex-prop-types}
 
 Con la declaración basada en tipo, una `prop` puede usar un tipo complejo como cualquier otro tipo:
 
@@ -163,7 +163,7 @@ export default defineComponent({
 
 La opción `props` se usa más comúnmente con la Options API, por lo que encontrarás ejemplos más detallados en la guía de [TypeScript con Options API](/guide/typescript/options-api#typing-component-props). Las técnicas mostradas en esos ejemplos también se aplican a las declaraciones en tiempo de ejecución usando `defineProps()`.
 
-## Tipado de `emits` de componente {#typing-component-emits}
+## Tipado de Emits de componente {#typing-component-emits}
 
 En `<script setup>`, la función `emit` también puede ser tipada usando la declaración en tiempo de ejecución O la declaración de tipo:
 
@@ -336,7 +336,7 @@ function handleChange(event: Event) {
 }
 ```
 
-## Tipado de `provide` / `inject` {#typing-provide-inject}
+## Tipado de Provide / Inject {#typing-provide-inject}
 
 `provide` e `inject` se realizan generalmente en componentes separados. Para tipar correctamente los valores inyectados, Vue proporciona una interfaz `InjectionKey`, que es un tipo genérico que extiende `Symbol`. Se puede usar para sincronizar el tipo del valor inyectado entre el proveedor y el consumidor:
 
@@ -373,7 +373,7 @@ Si estás seguro de que el valor siempre se proporciona, también puedes forzar 
 const foo = inject('foo') as string
 ```
 
-## Tipado de `Template Refs` {#typing-template-refs}
+## Tipado de Template Refs {#typing-template-refs}
 
 Con Vue 3.5 y `@vue/language-tools` 2.1 (que impulsa tanto el servicio de lenguaje del IDE como `vue-tsc`), el tipo de `refs` creados por `useTemplateRef()` en `SFCs` puede ser **inferido automáticamente** para `refs` estáticos basándose en el elemento donde se usa el atributo `ref` coincidente.
 
@@ -410,9 +410,9 @@ Para obtener la interfaz `DOM` correcta, puedes consultar páginas como [MDN](ht
 
 Ten en cuenta que para una estricta seguridad de tipo, es necesario usar encadenamiento opcional o guardas de tipo al acceder a `el.value`. Esto se debe a que el valor inicial de `ref` es `null` hasta que el componente se monta, y también puede establecerse en `null` si el elemento referenciado es desmontado por `v-if`.
 
-## Tipado de `Template Refs` de Componente {#typing-component-template-refs}
+## Tipado de Template Refs de Componente {#typing-component-template-refs}
 
-Con Vue 3.5 y `@vue/language-tools` 2.1 (que impulsa tanto el servicio de lenguaje del IDE como `vue-tsc`), el tipo de `refs` creados por `useTemplateRef()` en `SFCs` puede ser **inferido automáticamente** para `refs` estáticos basándose en el elemento o componente donde se usa el atributo `ref` coincidente.
+Con Vue 3.5 y `@vue/language-tools` 2.1 (que impulsa tanto el servicio de lenguaje del IDE como `vue-tsc`), el tipo de refs creados por `useTemplateRef()` en SFCs puede ser **inferido automáticamente** para refs estáticos basándose en el elemento o componente donde se usa el atributo `ref` coincidente.
 
 En casos donde la inferencia automática no es posible (por ejemplo, uso no `SFC` o componentes dinámicos), aún puedes convertir el `template ref` a un tipo explícito a través del argumento genérico.
 

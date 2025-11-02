@@ -16,9 +16,9 @@ import { createApp } from 'vue'
 const app = createApp({})
 
 app.component(
-  // the registered name
+  // el nombre registrado
   'MyComponent',
-  // the implementation
+  // la implementación
   {
     /* ... */
   }
@@ -45,7 +45,7 @@ app
 Los componentes registrados globalmente pueden usarse en la plantilla de cualquier componente dentro de esta aplicación:
 
 ```vue-html
-<!-- this will work in any component inside the app -->
+<!-- esto funcionará en cualquier componente dentro de la aplicación -->
 <ComponentA/>
 <ComponentB/>
 <ComponentC/>
@@ -136,6 +136,6 @@ A lo largo de la guía, estamos usando nombres PascalCase al registrar component
 
 2.  `<PascalCase />` hace más obvio que se trata de un componente Vue en lugar de un elemento HTML nativo en las plantillas. También diferencia los componentes Vue de los elementos personalizados (web components).
 
-Este es el estilo recomendado cuando se trabaja con SFC o plantillas de cadena. Sin embargo, como se discute en [Advertencias de Análisis de Plantillas en el DOM](/guide/essentials/component-basics#in-dom-template-parsing-caveats), las etiquetas PascalCase no son utilizables en plantillas en el DOM.
+Este es el estilo recomendado cuando se trabaja con SFC o plantillas de cadena. Sin embargo, como se discute en [Consideraciones sobre el Análisis de Templates en el DOM](/guide/essentials/component-basics#in-dom-template-parsing-caveats), las etiquetas PascalCase no son utilizables en plantillas en el DOM.
 
 Afortunadamente, Vue admite la resolución de etiquetas kebab-case a componentes registrados usando PascalCase. Esto significa que un componente registrado como `MyComponent` puede ser referenciado dentro de una plantilla Vue (o dentro de un elemento HTML renderizado por Vue) tanto a través de `<MyComponent>` como de `<my-component>`. Esto nos permite usar el mismo código de registro de componentes JavaScript independientemente de la fuente de la plantilla.

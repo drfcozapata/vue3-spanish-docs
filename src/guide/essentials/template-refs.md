@@ -6,9 +6,9 @@ Aunque el modelo de renderizado declarativo de Vue abstrae la mayoría de las op
 <input ref="input">
 ```
 
-`ref` es un atributo especial, similar al atributo `key` discutido en el capítulo de `v-for`. Nos permite obtener una referencia directa a un elemento DOM específico o a una instancia de componente hijo después de que se monta. Esto puede ser útil cuando quieres, por ejemplo, enfocar programáticamente un `input` al montar un componente, o inicializar una librería de terceros en un elemento.
+`ref` es un atributo especial, similar al atributo `key` discutido en el capítulo de `v-for`. Nos permite obtener una referencia directa a un elemento DOM específico o a una instancia de componente hijo después de que se monta. Esto puede ser útil cuando quieres, por ejemplo, enfocar programáticamente un input al montar un componente, o inicializar una librería de terceros en un elemento.
 
-## Accediendo a las Referencias {#accessing-the-refs}
+## Accediendo a las Refs {#accessing-the-refs}
 
 <div class="composition-api">
 
@@ -36,7 +36,7 @@ Cuando se utiliza TypeScript, el soporte IDE de Vue y `vue-tsc` inferirán autom
 <details>
 <summary>Uso antes de 3.5</summary>
 
-En versiones anteriores a la 3.5, donde `useTemplateRef()` no había sido introducido, necesitamos declarar una `ref` con un nombre que coincida con el valor del atributo `ref` de la plantilla:
+En versiones anteriores a la 3.5, donde `useTemplateRef()` no había sido introducido, necesitamos declarar una ref con un nombre que coincida con el valor del atributo ref del template:
 
 ```vue
 <script setup>
@@ -56,7 +56,7 @@ onMounted(() => {
 </template>
 ```
 
-Si no estás usando `<script setup>`, asegúrate de también retornar la `ref` desde `setup()`:
+Si no estás usando `<script setup>`, asegúrate de también retornar la ref desde `setup()`:
 
 ```js{6}
 export default {
@@ -93,27 +93,27 @@ export default {
 
 </div>
 
-Ten en cuenta que solo puedes acceder a la `ref` **después de que el componente esté montado.** Si intentas acceder a <span class="options-api">`$refs.input`</span><span class="composition-api">`input`</span> en una expresión de plantilla, será <span class="options-api">`undefined`</span><span class="composition-api">`null`</span> en el primer renderizado. ¡Esto se debe a que el elemento no existe hasta después del primer renderizado!
+Ten en cuenta que solo puedes acceder a la ref **después de que el componente esté montado.** Si intentas acceder a <span class="options-api">`$refs.input`</span><span class="composition-api">`input`</span> en una expresión de template, será <span class="options-api">`undefined`</span><span class="composition-api">`null`</span> en el primer renderizado. ¡Esto se debe a que el elemento no existe hasta después del primer renderizado!
 
 <div class="composition-api">
 
-Si estás intentando observar los cambios de una `ref` de plantilla, asegúrate de considerar el caso en que la `ref` tenga un valor `null`:
+Si estás intentando observar los cambios de una ref de template, asegúrate de considerar el caso en que la ref tenga un valor `null`:
 
 ```js
 watchEffect(() => {
   if (input.value) {
     input.value.focus()
   } else {
-    // not mounted yet, or the element was unmounted (e.g. by v-if)
+    // no se ha montado todavía, o el elemento se ha desmontado (por ejemplo, mediante v-if)
   }
 })
 ```
 
-Ver también: [Tipado de Referencias de Plantilla](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
+Ver también: [Tipado de Template Refs](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
 
 </div>
 
-## `ref` en Componente {#ref-on-component}
+## Ref en Componente {#ref-on-component}
 
 > Esta sección asume conocimientos de [Componentes](/guide/essentials/component-basics). Siéntete libre de saltarla y volver más tarde.
 
@@ -129,7 +129,7 @@ import Child from './Child.vue'
 const childRef = useTemplateRef('child')
 
 onMounted(() => {
-  // childRef.value will hold an instance of <Child />
+  // childRef.value contendrá una instancia de <Child />.
 })
 </script>
 
@@ -149,7 +149,7 @@ import Child from './Child.vue'
 const child = ref(null)
 
 onMounted(() => {
-  // child.value will hold an instance of <Child />
+  // child.value contendrá una instancia de <Child />.
 })
 </script>
 
@@ -172,7 +172,7 @@ export default {
     Child
   },
   mounted() {
-    // this.$refs.child will hold an instance of <Child />
+    // this.$refs.child contendrá una instancia de <Child />
   }
 }
 </script>
@@ -184,7 +184,7 @@ export default {
 
 </div>
 
-<span class="composition-api">Si el componente hijo está usando la Options API o no está usando `<script setup>`, la</span><span class="options-api">La</span> instancia referenciada será idéntica al `this` del componente hijo, lo que significa que el componente padre tendrá acceso completo a cada propiedad y método del componente hijo. Esto facilita la creación de detalles de implementación fuertemente acoplados entre el padre y el hijo, por lo que las `ref` de componentes solo deben usarse cuando sea absolutamente necesario; en la mayoría de los casos, primero deberías intentar implementar las interacciones padre/hijo utilizando las interfaces estándar de `props` y `emit`.
+<span class="composition-api">Si el componente hijo está usando la Options API o no está usando `<script setup>`, la</span><span class="options-api">La</span> instancia referenciada será idéntica al `this` del componente hijo, lo que significa que el componente padre tendrá acceso completo a cada propiedad y método del componente hijo. Esto facilita la creación de detalles de implementación fuertemente acoplados entre el padre y el hijo, por lo que las ref de componentes solo deben usarse cuando sea absolutamente necesario; en la mayoría de los casos, primero deberías intentar implementar las interacciones padre/hijo utilizando las interfaces estándar de props y emit.
 
 <div class="composition-api">
 
@@ -197,7 +197,7 @@ import { ref } from 'vue'
 const a = 1
 const b = ref(2)
 
-// Compiler macros, such as defineExpose, don't need to be imported
+// Las macros del compilador, como defineExpose, no necesitan importarse
 defineExpose({
   a,
   b
@@ -205,11 +205,11 @@ defineExpose({
 </script>
 ```
 
-Cuando un padre obtiene una instancia de este componente a través de `ref` de plantilla, la instancia recuperada tendrá la forma `{ a: number, b: number }` (las `ref` se desenvuelven automáticamente al igual que en las instancias normales).
+Cuando un padre obtiene una instancia de este componente a través de ref de template, la instancia recuperada tendrá la forma `{ a: number, b: number }` (las ref se desenvuelven automáticamente al igual que en las instancias normales).
 
-Ten en cuenta que `defineExpose` debe llamarse antes de cualquier operación `await`. De lo contrario, las propiedades y métodos expuestos después de la operación `await` no serán accesibles.
+Ten en cuenta que defineExpose debe llamarse antes de cualquier operación await. De lo contrario, las propiedades y métodos expuestos después de la operación await no serán accesibles.
 
-Ver también: [Tipado de `ref` de Plantilla de Componentes](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
+Ver también: [Tipado de Template Refs de Componente](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">
@@ -236,17 +236,17 @@ export default {
 }
 ```
 
-En el ejemplo anterior, un padre que referencia este componente a través de una `ref` de plantilla solo podrá acceder a `publicData` y `publicMethod`.
+En el ejemplo anterior, un padre que referencia este componente a través de una ref de template solo podrá acceder a `publicData` y `publicMethod`.
 
 </div>
 
-## Referencias dentro de `v-for` {#refs-inside-v-for}
+## Refs dentro de `v-for` {#refs-inside-v-for}
 
 > Requiere v3.5 o superior
 
 <div class="composition-api">
 
-Cuando se usa `ref` dentro de `v-for`, la `ref` correspondiente debería contener un valor `Array`, que se poblará con los elementos después del montaje:
+Cuando se usa `ref` dentro de `v-for`, la ref correspondiente debería contener un valor Array, que se poblará con los elementos después del montaje:
 
 ```vue
 <script setup>
@@ -275,7 +275,7 @@ onMounted(() => console.log(itemRefs.value))
 <details>
 <summary>Uso antes de 3.5</summary>
 
-En versiones anteriores a la 3.5, donde `useTemplateRef()` no había sido introducido, necesitamos declarar una `ref` con un nombre que coincida con el valor del atributo `ref` de la plantilla. La `ref` también debería contener un valor de array:
+En versiones anteriores a la 3.5, donde `useTemplateRef()` no había sido introducido, necesitamos declarar una ref con un nombre que coincida con el valor del atributo ref del template. La ref también debería contener un valor de array:
 
 ```vue
 <script setup>
@@ -304,7 +304,7 @@ onMounted(() => console.log(itemRefs.value))
 </div>
 <div class="options-api">
 
-Cuando se usa `ref` dentro de `v-for`, el valor `ref` resultante será un array que contiene los elementos correspondientes:
+Cuando se usa `ref` dentro de `v-for`, el valor ref resultante será un array que contiene los elementos correspondientes:
 
 ```vue
 <script>
@@ -335,14 +335,14 @@ export default {
 
 </div>
 
-Cabe señalar que el array de `ref` **no** garantiza el mismo orden que el array fuente.
+Cabe señalar que el array de ref **no** garantiza el mismo orden que el array fuente.
 
-## `ref` como Función {#function-refs}
+## Refs de Funciones {#function-refs}
 
 En lugar de una clave de cadena, el atributo `ref` también puede vincularse a una función, que se llamará en cada actualización del componente y te da total flexibilidad sobre dónde almacenar la referencia del elemento. La función recibe la referencia del elemento como primer argumento:
 
 ```vue-html
-<input :ref="(el) => { /* assign el to a property or ref */ }">
+<input :ref="(el) => { /* asignar el a una propiedad o ref */ }">
 ```
 
-Ten en cuenta que estamos usando un enlace dinámico `:ref` para poder pasarle una función en lugar de una cadena de nombre de `ref`. Cuando el elemento se desmonta, el argumento será `null`. Por supuesto, puedes usar un método en lugar de una función `inline`.
+Ten en cuenta que estamos usando un enlace dinámico `:ref` para poder pasarle una función en lugar de una cadena de nombre de ref. Cuando el elemento se desmonta, el argumento será `null`. Por supuesto, puedes usar un método en lugar de una función inline.
