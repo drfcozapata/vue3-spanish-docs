@@ -6,7 +6,7 @@ const { x, y } = useMouse()
 </script>
 
 :::tip
-Esta sección asume conocimientos básicos de la Composition API. Si has estado aprendiendo Vue solo con la Options API, puedes establecer la Preferencia de API en Composition API (usando el interruptor en la parte superior de la barra lateral izquierda) y volver a leer los capítulos [Fundamentos de Reactividad](/guide/essentials/reactivity-fundamentals) y [Hooks de Ciclo de Vida](/guide/essentials/lifecycle).
+Esta sección asume conocimientos básicos de la Composition API. Si has estado aprendiendo Vue solo con la Options API, puedes establecer la Preferencia de API en Composition API (usando el interruptor en la parte superior de la barra lateral izquierda) y volver a leer los capítulos [Fundamentos de Reactividad](/guide/essentials/reactivity-fundamentals) y [Hooks del Ciclo de Vida](/guide/essentials/lifecycle).
 :::
 
 ## ¿Qué es un "Composable"? {#what-is-a-composable}
@@ -37,7 +37,7 @@ onMounted(() => window.addEventListener('mousemove', update))
 onUnmounted(() => window.removeEventListener('mousemove', update))
 </script>
 
-<template>Mouse position is at: {{ x }}, {{ y }}</template>
+<template>Posición del ratón: {{ x }}, {{ y }}</template>
 ```
 
 Pero, ¿qué pasa si queremos reutilizar la misma lógica en varios componentes? Podemos extraer la lógica a un archivo externo, como una función composable:
@@ -45,24 +45,24 @@ Pero, ¿qué pasa si queremos reutilizar la misma lógica en varios componentes?
 ```js [mouse.js]
 import { ref, onMounted, onUnmounted } from 'vue'
 
-// by convention, composable function names start with "use"
+// Por convención, los nombres de las funciones composables comienzan con "use"
 export function useMouse() {
-  // state encapsulated and managed by the composable
+  // estado encapsulado y gestionado por el composable
   const x = ref(0)
   const y = ref(0)
 
-  // a composable can update its managed state over time.
+  // un composable puede actualizar su estado gestionado a lo largo del tiempo.
   function update(event) {
     x.value = event.pageX
     y.value = event.pageY
   }
 
-  // a composable can also hook into its owner component's
-  // lifecycle to setup and teardown side effects.
+  // un composable también puede conectarse al ciclo de vida de su componente
+  // propietario para configurar y desmontar efectos secundarios.
   onMounted(() => window.addEventListener('mousemove', update))
   onUnmounted(() => window.removeEventListener('mousemove', update))
 
-  // expose managed state as return value
+  // exponer el estado gestionado como valor de retorno
   return { x, y }
 }
 ```
@@ -76,11 +76,11 @@ import { useMouse } from './mouse.js'
 const { x, y } = useMouse()
 </script>
 
-<template>Mouse position is at: {{ x }}, {{ y }}</template>
+<template>Posición del ratón: {{ x }}, {{ y }}</template>
 ```
 
 <div class="demo">
-  Mouse position is at: {{ x }}, {{ y }}
+  Posición del ratón: {{ x }}, {{ y }}
 </div>
 
 [Pruébalo en el Playground](https://play.vuejs.org/#eNqNkj1rwzAQhv/KocUOGKVzSAIdurVjoQUvJj4XlfgkJNmxMfrvPcmJkkKHLrbu69H7SlrEszFyHFDsxN6drLIeHPrBHGtSvdHWwwKDwzfNHwjQWd1DIbd9jOW3K2qq6aTJxb6pgpl7Dnmg3NS0365YBnLgsTfnxiNHACvUaKe80gTKQeN3sDAIQqjignEhIvKYqMRta1acFVrsKtDEQPLYxuU7cV8Msmg2mdTilIa6gU5p27tYWKKq1c3ENphaPrGFW25+yMXsHWFaFlfiiOSvFIBJjs15QJ5JeWmaL/xYS/Mfpc5YYrPxl52ULOpwhIuiVl9k07Yvsf9VOY+EtizSWfR6xKK6itgkvQ/+fyNs6v4XJXIsPwVL+WprCiL8AEUxw5s=)
@@ -95,8 +95,8 @@ Por ejemplo, podemos extraer la lógica de añadir y eliminar un escuchador de e
 import { onMounted, onUnmounted } from 'vue'
 
 export function useEventListener(target, event, callback) {
-  // if you want, you can also make this
-  // support selector strings as target
+  // Si quieres, también puedes hacer que
+  // soporte cadenas de selección como blanco
   onMounted(() => target.addEventListener(event, callback))
   onUnmounted(() => target.removeEventListener(event, callback))
 }
@@ -143,12 +143,12 @@ fetch('...')
 </script>
 
 <template>
-  <div v-if="error">Oops! Error encountered: {{ error.message }}</div>
+  <div v-if="error">¡Vaya! Se detectó un error: {{ error.message }}</div>
   <div v-else-if="data">
-    Data loaded:
+    Datos cargados:
     <pre>{{ data }}</pre>
   </div>
-  <div v-else>Loading...</div>
+  <div v-else>Cargando...</div>
 </template>
 ```
 
@@ -182,23 +182,23 @@ const { data, error } = useFetch('...')
 
 ### Aceptar Estado Reactivo {#accepting-reactive-state}
 
-`useFetch()` toma una cadena de URL estática como entrada, por lo que realiza la petición solo una vez y luego termina. ¿Qué pasa si queremos que vuelva a realizar la petición cada vez que la URL cambie? Para lograr esto, necesitamos pasar estado reactivo a la función composable, y dejar que el composable cree `watchers` que realicen acciones usando el estado pasado.
+`useFetch()` toma una cadena de URL estática como entrada, por lo que realiza la petición solo una vez y luego termina. ¿Qué pasa si queremos que vuelva a realizar la petición cada vez que la URL cambie? Para lograr esto, necesitamos pasar estado reactivo a la función composable, y dejar que el composable cree watchers que realicen acciones usando el estado pasado.
 
-Por ejemplo, `useFetch()` debería poder aceptar una `ref`:
+Por ejemplo, `useFetch()` debería poder aceptar una ref:
 
 ```js
 const url = ref('/initial-url')
 
 const { data, error } = useFetch(url)
 
-// this should trigger a re-fetch
+// esto debería disparar un re-fetch
 url.value = '/new-url'
 ```
 
 O aceptar una [función getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description):
 
 ```js
-// re-fetch when props.id changes
+// re-fetch cuando props.id cambia
 const { data, error } = useFetch(() => `/posts/${props.id}`)
 ```
 
@@ -212,7 +212,7 @@ export function useFetch(url) {
   const error = ref(null)
 
   const fetchData = () => {
-    // reset state before fetching..
+    // restablecer estado antes del fetch...
     data.value = null
     error.value = null
 
@@ -230,11 +230,11 @@ export function useFetch(url) {
 }
 ```
 
-`toValue()` es una API añadida en la versión 3.3. Está diseñada para normalizar `ref`s o `getter`s en valores. Si el argumento es una `ref`, devuelve el valor de la `ref`; si el argumento es una función, la llamará y devolverá su valor de retorno. De lo contrario, devuelve el argumento tal cual. Funciona de manera similar a [`unref()`](/api/reactivity-utilities.html#unref), pero con un tratamiento especial para las funciones.
+`toValue()` es una API añadida en la versión 3.3. Está diseñada para normalizar refs o getters en valores. Si el argumento es una ref, devuelve el valor de la ref; si el argumento es una función, la llamará y devolverá su valor de retorno. De lo contrario, devuelve el argumento tal cual. Funciona de manera similar a [`unref()`](/api/reactivity-utilities.html#unref), pero con un tratamiento especial para las funciones.
 
-Observa que `toValue(url)` se llama **dentro** de la función de callback de `watchEffect`. Esto asegura que cualquier dependencia reactiva accedida durante la normalización de `toValue()` sea rastreada por el `watcher`.
+Observa que `toValue(url)` se llama **dentro** de la función de callback de `watchEffect`. Esto asegura que cualquier dependencia reactiva accedida durante la normalización de `toValue()` sea rastreada por el watcher.
 
-Esta versión de `useFetch()` ahora acepta cadenas de URL estáticas, `ref`s y `getter`s, lo que la hace mucho más flexible. El efecto `watch` se ejecutará inmediatamente y rastreará cualquier dependencia accedida durante `toValue(url)`. Si no se rastrea ninguna dependencia (por ejemplo, `url` ya es una cadena), el efecto se ejecuta solo una vez; de lo contrario, se volverá a ejecutar cada vez que una dependencia rastreada cambie.
+Esta versión de `useFetch()` ahora acepta cadenas de URL estáticas, refs y getters, lo que la hace mucho más flexible. El efecto watch se ejecutará inmediatamente y rastreará cualquier dependencia accedida durante `toValue(url)`. Si no se rastrea ninguna dependencia (por ejemplo, url ya es una cadena), el efecto se ejecuta solo una vez; de lo contrario, se volverá a ejecutar cada vez que una dependencia rastreada cambie.
 
 Aquí tienes [la versión actualizada de `useFetch()`](https://play.vuejs.org/#eNp9Vdtu20YQ/ZUpUUA0qpAOjL4YktCbC7Rom8BN8sSHrMihtfZql9iLZEHgv2dml6SpxMiDIWkuZ+acmR2fs1+7rjgEzG6zlaut7Dw49KHbVFruO2M9nMFiu4Ta7LvgsYEeWmv2sKCkxSwoOPwTfb2b/EU5mopHR5GVro12HrbC4UerYA2Lnfeduy3LR2d0p0SNO6MatIU/dbI2DRZUtPSmMa4kgJQuG8qkjvLF28XVaAwRb2wxz69gvZkK/UQ5xUGogBQ/ZpyhEV4sAa01lnpeTwRyApsFWvT2RO6Eea40THBMgfq6NLwlS1/pVZnUJB3ph8c98fNIvwD+MaKBzkQut2xYbYP3RsPhTWvsusokSA0/Vxn8UitZP2GFSX/+8Sz7z1W2OZ9BQt+vypQXS1R+1cgDQciW4iMrimR0wu8270znfoC7SBaJWdAeLTa3QFgxuNijc+IBIy5PPyYOjU19RDEI954/Z/UptKTy6VvqA5XD1AwLTTl/0Aco4s5lV51F5sG+VJJ+v4qxYbmkfiiKYvSvyknPbJnNtoyW+HJpj4Icd22LtV+CN5/ikC4XuNL4HFPaoGsvie3FIqSJp1WIzabl00HxkoyetEVfufhv1kAu3EnX8z0CKEtKofcGzhMb2CItAELL1SPlFMV1pwVj+GROc/vWPoc26oDgdxhfSArlLnbWaBOcOoEzIP3CgbeifqLXLRyICaDBDnVD+3KC7emCSyQ4sifspOx61Hh4Qy/d8BsaOEdkYb1sZS2FoiJKnIC6FbqhsaTVZfk8gDgK6cHLPZowFGUzAQTNWl/BUSrFbzRYHXmSdeAp28RMsI0fyFDaUJg9Spd0SbERZcvZDBRleCPdQMCPh8ARwdRRnBCTjGZ5WkT0i0GlSMqixTR6VKyHmmWEHIfV+naSOETyRx8vEYwMv7pa8dJU+hU9Kz2t86ReqjcgaTzCe3oGpEOeD4uyJOcjTXe+obScHwaAi82lo9dC/q/wuyINjrwbuC5uZrS4WAQeyTN9ftOXIVwy537iecoX92kR4q/F1UvqIMsSbq6vo5XF6ekCeEcTauVDFJpuQESvMv53IBXadx3r4KqMrt0w0kwoZY5/R5u3AZejvd5h/fSK/dE9s63K3vN7tQesssnnhX1An9x3//+Hz/R9cu5NExRFf8d5zyIF7jGF/RZ0Q23P4mK3f8XLRmfhg7t79qjdSIobjXLE+Cqju/b7d6i/tHtT3MQ8VrH/Ahstp5A=), con un retraso artificial y un error aleatorio con fines de demostración.
 
@@ -246,53 +246,53 @@ Es una convención nombrar las funciones composable con nombres camelCase que co
 
 ### Argumentos de Entrada {#input-arguments}
 
-Un composable puede aceptar argumentos `ref` o `getter` incluso si no dependen de ellos para la reactividad. Si estás escribiendo un composable que puede ser usado por otros desarrolladores, es una buena idea manejar el caso de que los argumentos de entrada sean `ref`s o `getter`s en lugar de valores directos. La función de utilidad [`toValue()`](/api/reactivity-utilities#tovalue) será útil para este propósito:
+Un composable puede aceptar argumentos ref o getter incluso si no dependen de ellos para la reactividad. Si estás escribiendo un composable que puede ser usado por otros desarrolladores, es una buena idea manejar el caso de que los argumentos de entrada sean refs o getters en lugar de valores directos. La función de utilidad [`toValue()`](/api/reactivity-utilities#tovalue) será útil para este propósito:
 
 ```js
 import { toValue } from 'vue'
 
 function useFeature(maybeRefOrGetter) {
-  // If maybeRefOrGetter is a ref or a getter,
-  // its normalized value will be returned.
-  // Otherwise, it is returned as-is.
+  // Si maybeRefOrGetter es un ref o un getter,
+  // se devolverá su valor normalizado.
+  // De lo contrario, se devolverá tal cual.
   const value = toValue(maybeRefOrGetter)
 }
 ```
 
-Si tu composable crea efectos reactivos cuando la entrada es una `ref` o un `getter`, asegúrate de observar explícitamente la `ref` / `getter` con `watch()`, o de llamar a `toValue()` dentro de un `watchEffect()` para que se rastree correctamente.
+Si tu composable crea efectos reactivos cuando la entrada es una ref o un getter, asegúrate de observar explícitamente la ref / getter con `watch()`, o de llamar a `toValue()` dentro de un `watchEffect()` para que se rastree correctamente.
 
-La [implementación de `useFetch()` discutida anteriormente](#accepting-reactive-state) proporciona un ejemplo concreto de un composable que acepta `ref`s, `getter`s y valores planos como argumento de entrada.
+La [implementación de useFetch() discutida anteriormente](#accepting-reactive-state) proporciona un ejemplo concreto de un composable que acepta refs, getters y valores planos como argumento de entrada.
 
 ### Valores de Retorno {#return-values}
 
-Probablemente hayas notado que hemos estado usando exclusivamente `ref()` en lugar de `reactive()` en los composables. La convención recomendada es que los composables siempre devuelvan un objeto plano, no reactivo, que contenga múltiples `ref`s. Esto permite que se desestructure en los componentes manteniendo la reactividad:
+Probablemente hayas notado que hemos estado usando exclusivamente `ref()` en lugar de `reactive()` en los composables. La convención recomendada es que los composables siempre devuelvan un objeto plano, no reactivo, que contenga múltiples refs. Esto permite que se desestructure en los componentes manteniendo la reactividad:
 
 ```js
-// x and y are refs
+// x y y son refs
 const { x, y } = useMouse()
 ```
 
-Devolver un objeto `reactive` desde un composable hará que dichas desestructuraciones pierdan la conexión de reactividad con el estado dentro del composable, mientras que las `ref`s mantendrán esa conexión.
+Devolver un objeto reactive desde un composable hará que dichas desestructuraciones pierdan la conexión de reactividad con el estado dentro del composable, mientras que las refs mantendrán esa conexión.
 
-Si prefieres usar el estado devuelto de los composables como propiedades de objeto, puedes envolver el objeto devuelto con `reactive()` para que las `ref`s se desenvuelvan. Por ejemplo:
+Si prefieres usar el estado devuelto de los composables como propiedades de objeto, puedes envolver el objeto devuelto con `reactive()` para que las refs se desenvuelvan. Por ejemplo:
 
 ```js
 const mouse = reactive(useMouse())
-// mouse.x is linked to original ref
+// mouse.x está vinculado al ref original
 console.log(mouse.x)
 ```
 
 ```vue-html
-Mouse position is at: {{ mouse.x }}, {{ mouse.y }}
+Posición del ratón: {{ mouse.x }}, {{ mouse.y }}
 ```
 
 ### Efectos Secundarios {#side-effects}
 
 Está bien realizar efectos secundarios (por ejemplo, añadir escuchadores de eventos del DOM o obtener datos) en los composables, pero presta atención a las siguientes reglas:
 
--   Si estás trabajando en una aplicación que usa [Server-Side Rendering](/guide/scaling-up/ssr) (SSR), asegúrate de realizar los efectos secundarios específicos del DOM en los hooks de ciclo de vida posteriores al montaje, por ejemplo, `onMounted()`. Estos hooks solo se llaman en el navegador, por lo que puedes estar seguro de que el código dentro de ellos tiene acceso al DOM.
+- Si estás trabajando en una aplicación que usa [Renderizado en el Lado del Servidor](/guide/scaling-up/ssr) (SSR), asegúrate de realizar los efectos secundarios específicos del DOM en los hooks de ciclo de vida posteriores al montaje, por ejemplo, `onMounted()`. Estos hooks solo se llaman en el navegador, por lo que puedes estar seguro de que el código dentro de ellos tiene acceso al DOM.
 
--   Recuerda limpiar los efectos secundarios en `onUnmounted()`. Por ejemplo, si un composable configura un escuchador de eventos del DOM, debe eliminar ese escuchador en `onUnmounted()` como hemos visto en el ejemplo de `useMouse()`. Puede ser una buena idea usar un composable que haga esto automáticamente por ti, como el ejemplo de `useEventListener()`.
+- Recuerda limpiar los efectos secundarios en `onUnmounted()`. Por ejemplo, si un composable configura un escuchador de eventos del DOM, debe eliminar ese escuchador en `onUnmounted()` como hemos visto en el ejemplo de `useMouse()`. Puede ser una buena idea usar un composable que haga esto automáticamente por ti, como el ejemplo de `useEventListener()`.
 
 ### Restricciones de Uso {#usage-restrictions}
 
@@ -302,7 +302,7 @@ Estas restricciones son importantes porque son los contextos en los que Vue pued
 
 1.  Los hooks de ciclo de vida puedan registrarse en ella.
 
-2.  Las propiedades `computed` y los `watchers` puedan vincularse a ella, para que puedan eliminarse cuando la instancia se desmonte y evitar fugas de memoria.
+2.  Las propiedades computed y los watchers puedan vincularse a ella, para que puedan eliminarse cuando la instancia se desmonte y evitar fugas de memoria.
 
 :::tip
 `<script setup>` es el único lugar donde puedes llamar a los composables **después** de usar `await`. El compilador restaura automáticamente el contexto de instancia activa para ti después de la operación asíncrona.
@@ -341,10 +341,10 @@ export default {
     return { x, y, data, error }
   },
   mounted() {
-    // setup() exposed properties can be accessed on `this`
+    // se puede acceder a las propiedades expuestas de setup() en `this`
     console.log(this.x)
   }
-  // ...other options
+  // ...otras opciones
 }
 ```
 
@@ -354,7 +354,7 @@ export default {
 
 Los usuarios que vienen de Vue 2 pueden estar familiarizados con la opción [mixins](/api/options-composition#mixins), que también nos permite extraer la lógica del componente en unidades reutilizables. Hay tres inconvenientes principales en los mixins:
 
-1.  **Fuente poco clara de las propiedades**: al usar muchos mixins, no queda claro qué propiedad de instancia es inyectada por qué mixin, lo que dificulta rastrear la implementación y comprender el comportamiento del componente. Esta es también la razón por la que recomendamos usar el patrón de `ref`s + desestructuración para los composables: hace que la fuente de la propiedad sea clara en los componentes que los consumen.
+1.  **Fuente poco clara de las propiedades**: al usar muchos mixins, no queda claro qué propiedad de instancia es inyectada por qué mixin, lo que dificulta rastrear la implementación y comprender el comportamiento del componente. Esta es también la razón por la que recomendamos usar el patrón de refs + desestructuración para los composables: hace que la fuente de la propiedad sea clara en los componentes que los consumen.
 
 2.  **Colisiones de nombres**: múltiples mixins de diferentes autores pueden registrar las mismas claves de propiedad, causando colisiones de nombres. Con los composables, puedes cambiar el nombre de las variables desestructuradas si hay claves conflictivas de diferentes composables.
 
@@ -376,7 +376,7 @@ Si tienes experiencia con React, habrás notado que esto se parece mucho a los c
 
 ## Lectura Adicional {#further-reading}
 
--   [Reactivity In Depth](/guide/extras/reactivity-in-depth): para una comprensión de bajo nivel de cómo funciona el sistema de reactividad de Vue.
--   [State Management](/guide/scaling-up/state-management): para patrones de gestión de estado compartido por múltiples componentes.
--   [Testing Composables](/guide/scaling-up/testing#testing-composables): consejos sobre cómo hacer pruebas unitarias de composables.
--   [VueUse](https://vueuse.org/): una colección cada vez mayor de composables de Vue. El código fuente también es un excelente recurso de aprendizaje.
+- [Reactividad en Profundidad](/guide/extras/reactivity-in-depth): para una comprensión de bajo nivel de cómo funciona el sistema de reactividad de Vue.
+- [Gestión del Estado](/guide/scaling-up/state-management): para patrones de gestión de estado compartido por múltiples componentes.
+- [Pruebas de Composables](/guide/scaling-up/testing#testing-composables): consejos sobre cómo hacer pruebas unitarias de composables.
+- [VueUse](https://vueuse.org/): una colección cada vez mayor de composables de Vue. El código fuente también es un excelente recurso de aprendizaje.

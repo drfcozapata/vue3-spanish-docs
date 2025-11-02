@@ -9,16 +9,16 @@ import { defineAsyncComponent } from 'vue'
 
 const AsyncComp = defineAsyncComponent(() => {
   return new Promise((resolve, reject) => {
-    // ...load component from server
-    resolve(/* loaded component */)
+    // ...cargar componente desde el servidor
+    resolve(/* componente cargado */)
   })
 })
-// ... use `AsyncComp` like a normal component
+// ...usar `AsyncComp` como un componente normal
 ```
 
-Como puedes ver, `defineAsyncComponent` acepta una función cargadora que devuelve una `Promise`. La función de callback `resolve` de la `Promise` debe ser llamada cuando hayas recuperado la definición de tu componente del servidor. También puedes llamar a `reject(reason)` para indicar que la carga ha fallado.
+Como puedes ver, `defineAsyncComponent` acepta una función cargadora que devuelve una Promise. La función de callback `resolve` de la Promise debe ser llamada cuando hayas recuperado la definición de tu componente del servidor. También puedes llamar a `reject(reason)` para indicar que la carga ha fallado.
 
-[La importación dinámica de módulos ES](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) también devuelve una `Promise`, así que la mayoría de las veces la usaremos en combinación con `defineAsyncComponent`. Bundlers como Vite y webpack también soportan esta sintaxis (y la usarán como puntos de división de bundle), así que podemos usarla para importar SFCs de Vue:
+[La importación dinámica de módulos ES](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) también devuelve una Promise, así que la mayoría de las veces la usaremos en combinación con `defineAsyncComponent`. Bundlers como Vite y webpack también soportan esta sintaxis (y la usarán como puntos de división de bundle), así que podemos usarla para importar SFCs de Vue:
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -28,14 +28,15 @@ const AsyncComp = defineAsyncComponent(() =>
 )
 ```
 
-El `AsyncComp` resultante es un componente envoltorio que solo llama a la función cargadora cuando se renderiza realmente en la página. Además, pasará cualquier `props` y `slots` al componente interno, por lo que puedes usar el envoltorio asíncrono para reemplazar sin problemas el componente original mientras logras la carga perezosa.
+El `AsyncComp` resultante es un componente envoltorio que solo llama a la función cargadora cuando se renderiza realmente en la página. Además, pasará cualquier props y slots al componente interno, por lo que puedes usar el envoltorio asíncrono para reemplazar sin problemas el componente original mientras logras la carga perezosa.
 
 Al igual que con los componentes normales, los componentes asíncronos pueden ser [registrados globalmente](/guide/components/registration#global-registration) usando `app.component()`:
 
 ```js
-app.component('MyComponent', defineAsyncComponent(() =>
-  import('./components/MyComponent.vue')
-))
+app.component(
+  'MyComponent',
+  defineAsyncComponent(() => import('./components/MyComponent.vue'))
+)
 ```
 
 <div class="options-api">
@@ -88,25 +89,25 @@ Las operaciones asíncronas inevitablemente implican estados de carga y error - 
 
 ```js
 const AsyncComp = defineAsyncComponent({
-  // the loader function
+  // la función de carga
   loader: () => import('./Foo.vue'),
 
-  // A component to use while the async component is loading
+  // Un componente a usar mientras se carga el componente asíncrono
   loadingComponent: LoadingComponent,
-  // Delay before showing the loading component. Default: 200ms.
+  // Retraso antes de mostrar el componente de carga. Por defecto: 200ms.
   delay: 200,
 
-  // A component to use if the load fails
+  // Un componente a usar si falla la carga
   errorComponent: ErrorComponent,
-  // The error component will be displayed if a timeout is
-  // provided and exceeded. Default: Infinity.
+  // El componente de error se mostrará si se proporciona un
+  // tiempo de espera y se supera. Por defecto: Infinito.
   timeout: 3000
 })
 ```
 
 Si se proporciona un componente de carga, este se mostrará primero mientras se carga el componente interno. Hay un retraso predeterminado de 200ms antes de que se muestre el componente de carga - esto se debe a que en redes rápidas, un estado de carga instantáneo podría ser reemplazado demasiado rápido y terminar pareciendo un parpadeo.
 
-Si se proporciona un componente de error, este se mostrará cuando la `Promise` devuelta por la función cargadora sea rechazada. También puedes especificar un `timeout` para mostrar el componente de error cuando la solicitud está tardando demasiado.
+Si se proporciona un componente de error, este se mostrará cuando la Promise devuelta por la función cargadora sea rechazada. También puedes especificar un timeout para mostrar el componente de error cuando la solicitud está tardando demasiado.
 
 ## Hidratación Perezosa <sup class="vt-badge" data-text="3.5+" /> {#lazy-hydration}
 
@@ -114,9 +115,9 @@ Si se proporciona un componente de error, este se mostrará cuando la `Promise` 
 
 En Vue 3.5+, los componentes asíncronos pueden controlar cuándo se hidratan al proporcionar una estrategia de hidratación.
 
-- Vue proporciona varias estrategias de hidratación incorporadas. Estas estrategias incorporadas deben importarse individualmente para que puedan ser `tree-shaken` si no se utilizan.
+- Vue proporciona varias estrategias de hidratación incorporadas. Estas estrategias incorporadas deben importarse individualmente para que puedan ser tree-shaken si no se utilizan.
 
-- El diseño es intencionadamente de bajo nivel para mayor flexibilidad. El `syntax sugar` del compilador puede construirse sobre esto en el futuro, ya sea en el `core` o en soluciones de nivel superior (por ejemplo, Nuxt).
+- El diseño es intencionadamente de bajo nivel para mayor flexibilidad. El syntax sugar del compilador puede construirse sobre esto en el futuro, ya sea en el core o en soluciones de nivel superior (por ejemplo, Nuxt).
 
 ### Hidratar en Inactividad {#hydrate-on-idle}
 
@@ -127,7 +128,8 @@ import { defineAsyncComponent, hydrateOnIdle } from 'vue'
 
 const AsyncComp = defineAsyncComponent({
   loader: () => import('./Comp.vue'),
-  hydrate: hydrateOnIdle(/* optionally pass a max timeout */)
+  hydrate:
+    hydrateOnIdle(/* opcionalmente, pasar un tiempo de espera máximo */)
 })
 ```
 
@@ -152,7 +154,7 @@ hydrateOnVisible({ rootMargin: '100px' })
 
 ### Hidratar por Media Query {#hydrate-on-media-query}
 
-Hidrata cuando la `media query` especificada coincide.
+Hidrata cuando la media query especificada coincide.
 
 ```js
 import { defineAsyncComponent, hydrateOnMediaQuery } from 'vue'
@@ -188,16 +190,16 @@ hydrateOnInteraction(['wheel', 'mouseover'])
 import { defineAsyncComponent, type HydrationStrategy } from 'vue'
 
 const myStrategy: HydrationStrategy = (hydrate, forEachElement) => {
-  // forEachElement is a helper to iterate through all the root elements
-  // in the component's non-hydrated DOM, since the root can be a fragment
-  // instead of a single element
-  forEachElement(el => {
+  // forEachElement es un helper para iterar a través de todos los
+  // elementos raíz en el DOM no hidratado del componente, ya que
+  // la raíz puede ser un fragmento en lugar de un solo elemento
+  forEachElement((el) => {
     // ...
   })
-  // call `hydrate` when ready
+  // llama a `hydrate` cuando esté listo
   hydrate()
   return () => {
-    // return a teardown function if needed
+    // devuelve una función de desmontaje si es necesario
   }
 }
 

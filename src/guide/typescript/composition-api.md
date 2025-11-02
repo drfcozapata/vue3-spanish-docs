@@ -479,7 +479,7 @@ const openModal = () => {
 
 Ten en cuenta que con `@vue/language-tools` 2.1+, los tipos de `template refs` estáticos pueden inferirse automáticamente y lo anterior solo es necesario en casos excepcionales.
 
-## Tipado de Directivas Personalizadas Globales {#typing-global-custom-directives}
+## Tipado de Directivas Globales Personalizadas {#typing-global-custom-directives}
 
 Para obtener sugerencias de tipo y comprobación de tipo para directivas personalizadas globales declaradas con `app.directive()`, puedes extender `ComponentCustomProperties`
 

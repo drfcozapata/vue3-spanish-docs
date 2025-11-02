@@ -13,8 +13,8 @@ Un "atributo de fallthrough" es un atributo o un `v-on` event listener que se pa
 Cuando un componente renderiza un único elemento raíz, los atributos de fallthrough se añadirán automáticamente a los atributos del elemento raíz. Por ejemplo, dado un componente `<MyButton>` con la siguiente plantilla:
 
 ```vue-html
-<!-- template of <MyButton> -->
-<button>Click Me</button>
+<!-- template de <MyButton> -->
+<button>Hazme Clic</button>
 ```
 
 Y un padre usando este componente con:
@@ -26,7 +26,7 @@ Y un padre usando este componente con:
 El DOM renderizado final sería:
 
 ```html
-<button class="large">Click Me</button>
+<button class="large">Hazme Clic</button>
 ```
 
 Aquí, `<MyButton>` no declaró `class` como una prop aceptada. Por lo tanto, `class` se trata como un atributo de fallthrough y se añade automáticamente al elemento raíz de `<MyButton>`.
@@ -36,14 +36,14 @@ Aquí, `<MyButton>` no declaró `class` como una prop aceptada. Por lo tanto, `c
 Si el elemento raíz del componente hijo ya tiene atributos `class` o `style` existentes, se fusionarán con los valores `class` y `style` que se heredan del padre. Supongamos que cambiamos la plantilla de `<MyButton>` en el ejemplo anterior a:
 
 ```vue-html
-<!-- template of <MyButton> -->
-<button class="btn">Click Me</button>
+<!-- template de <MyButton> -->
+<button class="btn">Hazme Clic</button>
 ```
 
 Entonces el DOM renderizado final ahora sería:
 
 ```html
-<button class="btn large">Click Me</button>
+<button class="btn large">Hazme Clic</button>
 ```
 
 ### Herencia de Listeners `v-on` {#v-on-listener-inheritance}
@@ -61,7 +61,7 @@ El listener `click` se añadirá al elemento raíz de `<MyButton>`, es decir, al
 Si un componente renderiza otro componente como su nodo raíz, por ejemplo, refactorizamos `<MyButton>` para renderizar un `<BaseButton>` como su raíz:
 
 ```vue-html
-<!-- template of <MyButton/> that simply renders another component -->
+<!-- template de <MyButton/> que simplemente renderiza otro componente -->
 <BaseButton />
 ```
 
@@ -69,9 +69,9 @@ Entonces los atributos de fallthrough recibidos por `<MyButton>` se reenviarán 
 
 Ten en cuenta que:
 
-1.  Los atributos reenviados no incluyen ningún atributo que esté declarado como `props`, o `v-on` listeners de eventos declarados por `<MyButton>` - en otras palabras, las `props` y los listeners declarados han sido "consumidos" por `<MyButton>`.
+1.  Los atributos reenviados no incluyen ningún atributo que esté declarado como props, o `v-on` listeners de eventos declarados por `<MyButton>` - en otras palabras, las props y los listeners declarados han sido "consumidos" por `<MyButton>`.
 
-2.  Los atributos reenviados pueden ser aceptados como `props` por `<BaseButton>`, si son declarados por este.
+2.  Los atributos reenviados pueden ser aceptados como props por `<BaseButton>`, si son declarados por este.
 
 ## Deshabilitar la Herencia de Atributos {#disabling-attribute-inheritance}
 
@@ -86,7 +86,7 @@ Desde la versión 3.3 también puedes usar [`defineOptions`](/api/sfc-script-set
 defineOptions({
   inheritAttrs: false
 })
-// ...setup logic
+// ...lógica de setup
 </script>
 ```
 
@@ -97,22 +97,22 @@ El escenario común para deshabilitar la herencia de atributos es cuando los atr
 Estos atributos de fallthrough pueden ser accedidos directamente en las expresiones de plantilla como `$attrs`:
 
 ```vue-html
-<span>Fallthrough attributes: {{ $attrs }}</span>
+<span>Atributos de Fallthrough: {{ $attrs }}</span>
 ```
 
 El objeto `$attrs` incluye todos los atributos que no están declarados por las opciones `props` o `emits` del componente (por ejemplo, `class`, `style`, `v-on` listeners, etc.).
 
 Algunas notas:
 
--   A diferencia de las `props`, los atributos de fallthrough conservan su casing original en JavaScript, por lo que un atributo como `foo-bar` debe ser accedido como `$attrs['foo-bar']`.
+- A diferencia de las props, los atributos de fallthrough conservan su casing original en JavaScript, por lo que un atributo como `foo-bar` debe ser accedido como `$attrs['foo-bar']`.
 
--   Un `v-on` event listener como `@click` se expondrá en el objeto como una función bajo `$attrs.onClick`.
+- Un `v-on` event listener como `@click` se expondrá en el objeto como una función bajo `$attrs.onClick`.
 
 Usando nuestro ejemplo de componente `<MyButton>` de la [sección anterior](#attribute-inheritance) - a veces podemos necesitar envolver el elemento `<button>` real con un `<div>` extra para propósitos de estilo:
 
 ```vue-html
 <div class="btn-wrapper">
-  <button class="btn">Click Me</button>
+  <button class="btn">Hazme Clic</button>
 </div>
 ```
 
@@ -120,7 +120,7 @@ Queremos que todos los atributos de fallthrough como `class` y los listeners `v-
 
 ```vue-html{2}
 <div class="btn-wrapper">
-  <button class="btn" v-bind="$attrs">Click Me</button>
+  <button class="btn" v-bind="$attrs">Hazme Clic</button>
 </div>
 ```
 
@@ -169,7 +169,7 @@ Si no estás usando `<script setup>`, `attrs` se expondrá como una propiedad de
 ```js
 export default {
   setup(props, ctx) {
-    // fallthrough attributes are exposed as ctx.attrs
+    // Los atributos de fallthrough se exponen como ctx.attrs.
     console.log(ctx.attrs)
   }
 }
