@@ -21,7 +21,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 - Las clases de transición CSS se aplicarán a los elementos individuales de la lista, **no** al grupo / contenedor en sí.
 
 :::tip
-Cuando se utiliza en [plantillas en el DOM](/guide/essentials/component-basics#in-dom-template-parsing-caveats), debe referenciarse como `<transition-group>`.
+Cuando se utiliza en [templates en el DOM](/guide/essentials/component-basics#in-dom-template-parsing-caveats), debe referenciarse como `<transition-group>`.
 :::
 
 ## Transiciones de Entrada / Salida {#enter-leave-transitions}
@@ -55,7 +55,7 @@ Aquí hay un ejemplo de cómo aplicar transiciones de entrada / salida a una lis
 La demostración anterior tiene algunos defectos obvios: cuando se inserta o elimina un elemento, los elementos circundantes "saltan" instantáneamente a su lugar en lugar de moverse suavemente. Podemos arreglar esto añadiendo algunas reglas CSS adicionales:
 
 ```css{1,13-17}
-.list-move, /* apply transition to moving elements */
+.list-move, /* aplicar transición a elementos en movimiento */
 .list-enter-active,
 .list-leave-active {
   transition: all 0.5s ease;
@@ -67,8 +67,8 @@ La demostración anterior tiene algunos defectos obvios: cuando se inserta o eli
   transform: translateX(30px);
 }
 
-/* ensure leaving items are taken out of layout flow so that moving
-   animations can be calculated correctly. */
+/* asegúrate de que los elementos salientes sean retirados del layout para
+  que las animaciones de movimiento puedan calcularse correctamente. */
 .list-leave-active {
   position: absolute;
 }
@@ -136,4 +136,4 @@ function onEnter(el, done) {
 
 **Relacionado**
 
-- [Referencia de la API de `<TransitionGroup>`](/api/built-in-components#transitiongroup)
+- [Referencia de `<TransitionGroup>` de la API](/api/built-in-components#transitiongroup)

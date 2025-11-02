@@ -18,7 +18,7 @@ Vue ofrece dos componentes incorporados que pueden ayudar a trabajar con transic
 
 Aparte de estos dos componentes, también podemos aplicar animaciones en Vue utilizando otras técnicas como la alternancia de clases CSS o animaciones impulsadas por el estado a través de enlaces de estilo. Estas técnicas adicionales se cubren en el capítulo [Técnicas de Animación](/guide/extras/animation).
 
-## El componente `<Transition>` {#the-transition-component}
+## El Componente `<Transition>` {#the-transition-component}
 
 `<Transition>` es un componente incorporado: esto significa que está disponible en la plantilla de cualquier componente sin necesidad de registrarlo. Se puede usar para aplicar animaciones de entrada y salida en elementos o componentes que se le pasan a través de su slot predeterminado. La entrada o salida puede ser desencadenada por uno de los siguientes:
 
@@ -32,12 +32,12 @@ Este es un ejemplo del uso más básico:
 ```vue-html
 <button @click="show = !show">Toggle</button>
 <Transition>
-  <p v-if="show">hello</p>
+  <p v-if="show">hola</p>
 </Transition>
 ```
 
 ```css
-/* we will explain what these classes do next! */
+/* ¡A continuación explicaremos qué hacen estas clases! */
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;
@@ -74,9 +74,9 @@ Cuando un elemento en un componente `<Transition>` es insertado o eliminado, ocu
 
 3.  Si no se detectan transiciones / animaciones CSS y no se proporcionan hooks de JavaScript, las operaciones del DOM para la inserción y/o eliminación se ejecutarán en el siguiente frame de animación del navegador.
 
-## Transiciones basadas en CSS {#css-based-transitions}
+## Transiciones Basadas en CSS {#css-based-transitions}
 
-### Clases de Transición {#transition-classes}
+### Clases de Transition {#transition-classes}
 
 Hay seis clases aplicadas para las transiciones de entrada / salida.
 
@@ -98,7 +98,7 @@ Hay seis clases aplicadas para las transiciones de entrada / salida.
 
 `v-enter-active` y `v-leave-active` nos dan la capacidad de especificar diferentes curvas de aceleración para las transiciones de entrada / salida, de las cuales veremos un ejemplo en las siguientes secciones.
 
-### Transiciones Nombradas {#named-transitions}
+### Transiciones con Nombre {#named-transitions}
 
 Una transición se puede nombrar a través de la prop `name`:
 
@@ -130,14 +130,14 @@ Aquí hay un ejemplo más avanzado que transiciona múltiples propiedades, con d
 
 ```vue-html
 <Transition name="slide-fade">
-  <p v-if="show">hello</p>
+  <p v-if="show">hola</p>
 </Transition>
 ```
 
 ```css
 /*
-  Enter and leave animations can use different
-  durations and timing functions.
+  Las animaciones de entrada y salida pueden utilizar
+  diferentes duraciones y funciones de sincronización.
 */
 .slide-fade-enter-active {
   transition: all 0.3s ease-out;
@@ -176,7 +176,7 @@ Para la mayoría de las animaciones CSS, simplemente podemos declararlas bajo la
 ```vue-html
 <Transition name="bounce">
   <p v-if="show" style="text-align: center;">
-    Hello here is some bouncy text!
+    ¡Hola, aquí hay un texto animado!
   </p>
 </Transition>
 ```
@@ -228,13 +228,13 @@ También puedes especificar clases de transición personalizadas pasando las sig
 Estas anularán los nombres de clases convencionales. Esto es especialmente útil cuando quieres combinar el sistema de transición de Vue con una biblioteca de animación CSS existente, como [Animate.css](https://daneden.github.io/animate.css/):
 
 ```vue-html
-<!-- assuming Animate.css is included on the page -->
+<!-- asumiendo que Animate.css está incluido en la página -->
 <Transition
   name="custom-classes"
   enter-active-class="animate__animated animate__tada"
   leave-active-class="animate__animated animate__bounceOutRight"
 >
-  <p v-if="show">hello</p>
+  <p v-if="show">hola</p>
 </Transition>
 ```
 
@@ -259,7 +259,7 @@ Sin embargo, en algunos casos puede que quieras tener ambos en el mismo elemento
 <Transition type="animation">...</Transition>
 ```
 
-### Transiciones Anidadas y Duraciones de Transición Explícitas {#nested-transitions-and-explicit-transition-durations}
+### Duración de las Transiciones Anidadas y la Transición Explícita {#nested-transitions-and-explicit-transition-durations}
 
 Aunque las clases de transición solo se aplican al elemento hijo directo en `<Transition>`, podemos transicionar elementos anidados usando selectores CSS anidados:
 
@@ -267,14 +267,14 @@ Aunque las clases de transición solo se aplican al elemento hijo directo en `<T
 <Transition name="nested">
   <div v-if="show" class="outer">
     <div class="inner">
-      Hello
+      Hola
     </div>
   </div>
 </Transition>
 ```
 
 ```css
-/* rules that target nested elements */
+/* reglas que apuntan a elementos anidados */
 .nested-enter-active .inner,
 .nested-leave-active .inner {
   transition: all 0.3s ease-in-out;
@@ -286,13 +286,13 @@ Aunque las clases de transición solo se aplican al elemento hijo directo en `<T
   opacity: 0;
 }
 
-/* ... other necessary CSS omitted */
+/*  ...se omite otro CSS necesario */
 ```
 
 Incluso podemos añadir un retardo de transición al elemento anidado en la entrada, lo que crea una secuencia de animación de entrada escalonada:
 
 ```css{3}
-/* delay enter of nested element for staggered effect */
+/* retrasar la entrada del elemento anidado para lograr un efecto escalonado */
 .nested-enter-active .inner {
   transition-delay: 0.25s;
 }
@@ -450,7 +450,7 @@ Cuando se usan transiciones solo con JavaScript, generalmente es una buena idea 
 
 Con `:css="false"`, también somos totalmente responsables de controlar cuándo termina la transición. En este caso, los callbacks `done` son obligatorios para los hooks `@enter` y `@leave`. De lo contrario, los hooks se llamarán sincrónicamente y la transición finalizará inmediatamente.
 
-Aquí tienes una demo usando la [biblioteca GSAP](https://gsap.com/) para realizar las animaciones. Puedes, por supuesto, usar cualquier otra biblioteca de animación que desees, por ejemplo [Anime.js](https://animejs.com/) o [Motion One](https://motion.dev/):
+Aquí tienes una demo usando la [librería GSAP](https://gsap.com/) para realizar las animaciones. Puedes, por supuesto, usar cualquier otra librería de animación que desees, por ejemplo [Anime.js](https://animejs.com/) o [Motion One](https://motion.dev/):
 
 <JsHooks />
 
@@ -497,7 +497,7 @@ Ahora `MyTransition` puede importarse y usarse igual que la versión incorporada
 
 ```vue-html
 <MyTransition>
-  <div v-if="show">Hello</div>
+  <div v-if="show">Hola</div>
 </MyTransition>
 ```
 
@@ -654,4 +654,4 @@ Si hubiéramos excluido el atributo `key`, solo se actualizaría el nodo de text
 
 **Relacionado**
 
-- [Referencia de la API de `<Transition>`](/api/built-in-components#transition)
+- [Referencia de `<Transition>` de la API](/api/built-in-components#transition)

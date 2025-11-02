@@ -141,4 +141,4 @@ Ten en cuenta que:
 
 **Relacionado**
 
-- [Referencia de la API de `<KeepAlive>`](/api/built-in-components#keepalive)
+- [Referencia de `<KeepAlive>` de la API](/api/built-in-components#keepalive)

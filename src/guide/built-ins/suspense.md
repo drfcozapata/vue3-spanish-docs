@@ -65,13 +65,13 @@ const posts = await res.json()
 
 ### Componentes Asíncronos {#async-components}
 
-Los componentes asíncronos son **"suspensibles"** por defecto. Esto significa que si tiene un `<Suspense>` en la cadena de padres, será tratado como una dependencia asíncrona de ese `<Suspense>`. En este caso, el estado de carga será controlado por `<Suspense>`, y las opciones propias de carga, error, retardo y `timeout` del componente serán ignoradas.
+Los componentes asíncronos son **"suspensibles"** por defecto. Esto significa que si tiene un `<Suspense>` en la cadena de padres, será tratado como una dependencia asíncrona de ese `<Suspense>`. En este caso, el estado de carga será controlado por `<Suspense>`, y las opciones propias de carga, error, retardo y tiempo de salida del componente serán ignoradas.
 
 El componente asíncrono puede optar por salir del control de `Suspense` y dejar que el componente controle siempre su propio estado de carga especificando `suspensible: false` en sus opciones.
 
 ## Estado de Carga {#loading-state}
 
-El componente `<Suspense>` tiene dos slots: `#default` y `#fallback`. Ambos slots solo permiten **un** nodo hijo inmediato. El nodo en el slot `default` se muestra si es posible. Si no, se mostrará el nodo en el slot `fallback` en su lugar.
+El componente `<Suspense>` tiene dos slots: `#default` y `#fallback`. Ambos slots solo permiten **un** nodo hijo inmediato. El nodo en el slot default se muestra si es posible. Si no, se mostrará el nodo en el slot fallback en su lugar.
 
 ```vue-html
 <Suspense>
@@ -80,18 +80,18 @@ El componente `<Suspense>` tiene dos slots: `#default` y `#fallback`. Ambos slot
 
   <!-- estado de carga a través del slot #fallback -->
   <template #fallback>
-    Loading...
+    Cargando...
   </template>
 </Suspense>
 ```
 
-En el renderizado inicial, `<Suspense>` renderizará el contenido de su slot `default` en memoria. Si se encuentran dependencias asíncronas durante el proceso, entrará en un estado **pendiente**. Durante el estado pendiente, se mostrará el contenido de `fallback`. Cuando todas las dependencias asíncronas encontradas se hayan resuelto, `<Suspense>` entrará en un estado **resuelto** y se mostrará el contenido del slot `default` resuelto.
+En el renderizado inicial, `<Suspense>` renderizará el contenido de su slot default en memoria. Si se encuentran dependencias asíncronas durante el proceso, entrará en un estado **pendiente**. Durante el estado pendiente, se mostrará el contenido de fallback. Cuando todas las dependencias asíncronas encontradas se hayan resuelto, `<Suspense>` entrará en un estado **resuelto** y se mostrará el contenido del slot default resuelto.
 
 Si no se encontraron dependencias asíncronas durante el renderizado inicial, `<Suspense>` pasará directamente a un estado resuelto.
 
 Una vez en un estado resuelto, `<Suspense>` solo volverá a un estado pendiente si se reemplaza el nodo raíz del slot `#default`. Las nuevas dependencias asíncronas anidadas más profundamente en el árbol **no** harán que `<Suspense>` vuelva a un estado pendiente.
 
-Cuando ocurre una reversión, el contenido de `fallback` no se mostrará inmediatamente. En su lugar, `<Suspense>` mostrará el contenido `#default` anterior mientras espera que se resuelva el nuevo contenido y sus dependencias asíncronas. Este comportamiento se puede configurar con la prop `timeout`: `<Suspense>` cambiará al contenido de `fallback` si tarda más de `timeout` milisegundos en renderizar el nuevo contenido `default`. Un valor de `timeout` de `0` hará que el contenido de `fallback` se muestre inmediatamente cuando se reemplace el contenido `default`.
+Cuando ocurre una reversión, el contenido de fallback no se mostrará inmediatamente. En su lugar, `<Suspense>` mostrará el contenido `#default` anterior mientras espera que se resuelva el nuevo contenido y sus dependencias asíncronas. Este comportamiento se puede configurar con la prop `timeout`: `<Suspense>` cambiará al contenido de fallback si tarda más de `timeout` milisegundos en renderizar el nuevo contenido default. Un valor de `timeout` de `0` hará que el contenido de fallback se muestre inmediatamente cuando se reemplace el contenido default.
 
 ## Eventos {#events}
 
@@ -122,7 +122,7 @@ El siguiente ejemplo muestra cómo anidar estos componentes para que todos se co
 
           <!-- estado de carga -->
           <template #fallback>
-            Loading...
+            Cargando...
           </template>
         </Suspense>
       </KeepAlive>
@@ -147,7 +147,7 @@ Cuando tenemos múltiples componentes asíncronos (común para rutas anidadas o 
 </Suspense>
 ```
 
-`<Suspense>` crea un límite que resolverá todos los componentes asíncronos en el árbol, como se espera. Sin embargo, cuando cambiamos `DynamicAsyncOuter`, `<Suspense>` lo espera correctamente, pero cuando cambiamos `DynamicAsyncInner`, el `DynamicAsyncInner` anidado renderiza un nodo vacío hasta que se ha resuelto (en lugar del anterior o el slot `fallback`).
+`<Suspense>` crea un límite que resolverá todos los componentes asíncronos en el árbol, como se espera. Sin embargo, cuando cambiamos `DynamicAsyncOuter`, `<Suspense>` lo espera correctamente, pero cuando cambiamos `DynamicAsyncInner`, el `DynamicAsyncInner` anidado renderiza un nodo vacío hasta que se ha resuelto (en lugar del anterior o el slot fallback).
 
 Para resolver eso, podríamos tener un suspense anidado para manejar el parche para el componente anidado, como:
 
@@ -161,10 +161,10 @@ Para resolver eso, podríamos tener un suspense anidado para manejar el parche p
 </Suspense>
 ```
 
-Si no estableces la prop `suspensible`, el `<Suspense>` interno será tratado como un componente síncrono por el `<Suspense>` padre. Eso significa que tiene su propio slot `fallback` y si ambos componentes `Dynamic` cambian al mismo tiempo, podría haber nodos vacíos y múltiples ciclos de parcheo mientras el `<Suspense>` hijo está cargando su propio árbol de dependencias, lo cual podría no ser deseable. Cuando se establece, todo el manejo de dependencias asíncronas se entrega al `<Suspense>` padre (incluidos los eventos emitidos) y el `<Suspense>` interno sirve únicamente como otro límite para la resolución de dependencias y el parcheo.
+Si no estableces la prop `suspensible`, el `<Suspense>` interno será tratado como un componente síncrono por el `<Suspense>` padre. Eso significa que tiene su propio slot fallback y si ambos componentes `Dynamic` cambian al mismo tiempo, podría haber nodos vacíos y múltiples ciclos de parcheo mientras el `<Suspense>` hijo está cargando su propio árbol de dependencias, lo cual podría no ser deseable. Cuando se establece, todo el manejo de dependencias asíncronas se entrega al `<Suspense>` padre (incluidos los eventos emitidos) y el `<Suspense>` interno sirve únicamente como otro límite para la resolución de dependencias y el parcheo.
 
 ---
 
 **Relacionado**
 
-- [Referencia de la API de `<Suspense>`](/api/built-in-components#suspense)
+- [Referencia de `<Suspense>` de la API](/api/built-in-components#suspense)

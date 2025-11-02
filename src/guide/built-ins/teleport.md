@@ -14,7 +14,7 @@ Considera la siguiente estructura HTML.
 
 ```vue-html
 <div class="outer">
-  <h3>Vue Teleport Example</h3>
+  <h3>Ejemplo de Vue Teleport</h3>
   <div>
     <MyModal />
   </div>
@@ -33,11 +33,11 @@ const open = ref(false)
 </script>
 
 <template>
-  <button @click="open = true">Open Modal</button>
+  <button @click="open = true">Abrir Modal</button>
 
   <div v-if="open" class="modal">
-    <p>Hello from the modal!</p>
-    <button @click="open = false">Close</button>
+    <p>¡Hola desde el modal!</p>
+    <button @click="open = false">Cerrar</button>
   </div>
 </template>
 
@@ -68,11 +68,11 @@ export default {
 </script>
 
 <template>
-  <button @click="open = true">Open Modal</button>
+  <button @click="open = true">Abrir Modal</button>
 
   <div v-if="open" class="modal">
-    <p>Hello from the modal!</p>
-    <button @click="open = false">Close</button>
+    <p>¡Hola desde el modal!</p>
+    <button @click="open = false">Cerrar</button>
   </div>
 </template>
 
@@ -90,7 +90,7 @@ export default {
 
 </div>
 
-El componente contiene un `<button>` para activar la apertura del modal, y un `<div>` con una `class` de `.modal`, que contendrá el contenido del modal y un botón para autocerrarse.
+El componente contiene un `<button>` para activar la apertura del modal, y un `<div>` con una class de `.modal`, que contendrá el contenido del modal y un botón para autocerrarse.
 
 Al usar este componente dentro de la estructura HTML inicial, existen varios problemas potenciales:
 
@@ -101,12 +101,12 @@ Al usar este componente dentro de la estructura HTML inicial, existen varios pro
 `<Teleport>` proporciona una manera limpia de solucionar estos problemas, permitiéndonos salir de la estructura del DOM anidada. Modifiquemos `<MyModal>` para usar `<Teleport>`:
 
 ```vue-html{3,8}
-<button @click="open = true">Open Modal</button>
+<button @click="open = true">Abrir Modal</button>
 
 <Teleport to="body">
   <div v-if="open" class="modal">
-    <p>Hello from the modal!</p>
-    <button @click="open = false">Close</button>
+    <p>¡Hola desde el modal!</p>
+    <button @click="open = false">Cerrar</button>
   </div>
 </Teleport>
 ```
@@ -150,18 +150,18 @@ const open = ref(false)
 Puedes combinar `<Teleport>` con [`<Transition>`](./transition) para crear modales animados - consulta el [Ejemplo aquí](/examples/#modal).
 
 :::tip
-El objetivo `to` de `<Teleport>` debe estar ya en el DOM cuando el componente `<Teleport>` se monta. Idealmente, este debería ser un elemento fuera de toda la aplicación de Vue. Si apuntas a otro elemento renderizado por Vue, debes asegurarte de que ese elemento esté montado antes que el `<Teleport>`.
+El objetivo `to` de teleport debe estar ya en el DOM cuando el componente `<Teleport>` se monta. Idealmente, este debería ser un elemento fuera de toda la aplicación de Vue. Si apuntas a otro elemento renderizado por Vue, debes asegurarte de que ese elemento esté montado antes que el `<Teleport>`.
 :::
 
 ## Uso con Componentes {#using-with-components}
 
-`<Teleport>` solo altera la estructura del DOM renderizada; no afecta la jerarquía lógica de los componentes. Es decir, si `<Teleport>` contiene un componente, ese componente seguirá siendo un hijo lógico del componente padre que contiene el `<Teleport>`. El paso de `props` y la emisión de eventos seguirán funcionando de la misma manera.
+`<Teleport>` solo altera la estructura del DOM renderizada; no afecta la jerarquía lógica de los componentes. Es decir, si `<Teleport>` contiene un componente, ese componente seguirá siendo un hijo lógico del componente padre que contiene el `<Teleport>`. El paso de props y la emisión de eventos seguirán funcionando de la misma manera.
 
 Esto también significa que las inyecciones de un componente padre funcionan como se espera, y que el componente hijo estará anidado debajo del componente padre en las Vue Devtools, en lugar de ser colocado donde se movió el contenido real.
 
 ## Desactivar Teleport {#disabling-teleport}
 
-En algunos casos, es posible que queramos desactivar condicionalmente `<Teleport>`. Por ejemplo, podríamos querer renderizar un componente como una superposición para escritorio, pero en línea en móvil. `<Teleport>` soporta la `prop` `disabled`, que puede activarse/desactivarse dinámicamente:
+En algunos casos, es posible que queramos desactivar condicionalmente `<Teleport>`. Por ejemplo, podríamos querer renderizar un componente como una superposición para escritorio, pero en línea en móvil. `<Teleport>` soporta la prop `disabled`, que puede activarse/desactivarse dinámicamente:
 
 ```vue-html
 <Teleport :disabled="isMobile">
@@ -197,20 +197,20 @@ El resultado renderizado sería:
 
 ## Teleport Diferido <sup class="vt-badge" data-text="3.5+" /> {#deferred-teleport}
 
-En Vue 3.5 y superior, podemos usar la `prop` `defer` para diferir la resolución del objetivo de un Teleport hasta que otras partes de la aplicación se hayan montado. Esto permite que el Teleport apunte a un elemento contenedor que es renderizado por Vue, pero en una parte posterior del árbol de componentes:
+En Vue 3.5 y superior, podemos usar la prop `defer` para diferir la resolución del objetivo de un Teleport hasta que otras partes de la aplicación se hayan montado. Esto permite que el Teleport apunte a un elemento contenedor que es renderizado por Vue, pero en una parte posterior del árbol de componentes:
 
 ```vue-html
 <Teleport defer to="#late-div">...</Teleport>
 
-<!-- en algún lugar más tarde en la plantilla -->
+<!-- en algún lugar más tarde en el template -->
 <div id="late-div"></div>
 ```
 
-Ten en cuenta que el elemento objetivo debe renderizarse en el mismo ciclo de montaje / actualización que el Teleport; es decir, si el `<div>` se monta solo un segundo después, el Teleport seguirá reportando un error. El `defer` funciona de manera similar al hook del ciclo de vida `mounted`.
+Ten en cuenta que el elemento objetivo debe renderizarse en el mismo ciclo de montaje / actualización que el Teleport; es decir, si el `<div>` se monta solo un segundo después, el Teleport seguirá reportando un error. El defer funciona de manera similar al hook del ciclo de vida `mounted`.
 
 ---
 
 **Relacionado**
 
-- [`<Teleport>` referencia de la API](/api/built-in-components#teleport)
+- [Referencia de `<Teleport>` de la API](/api/built-in-components#teleport)
 - [Manejo de Teleports en SSR](/guide/scaling-up/ssr#teleports)
