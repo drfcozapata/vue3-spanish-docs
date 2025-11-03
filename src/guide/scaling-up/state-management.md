@@ -10,16 +10,16 @@ Técnicamente, cada instancia de componente Vue ya "gestiona" su propio estado r
 <script setup>
 import { ref } from 'vue'
 
-// state
+// estado
 const count = ref(0)
 
-// actions
+// acciones
 function increment() {
   count.value++
 }
 </script>
 
-<!-- view -->
+<!-- vista -->
 <template>{{ count }}</template>
 ```
 
@@ -29,13 +29,13 @@ function increment() {
 ```vue
 <script>
 export default {
-  // state
+  // estado
   data() {
     return {
       count: 0
     }
   },
-  // actions
+  // acciones
   methods: {
     increment() {
       this.count++
@@ -44,7 +44,7 @@ export default {
 }
 </script>
 
-<!-- view -->
+<!-- vista -->
 <template>{{ count }}</template>
 ```
 
@@ -67,9 +67,9 @@ Sin embargo, la simplicidad comienza a romperse cuando tenemos **múltiples comp
 1. Múltiples vistas pueden depender de la misma porción de estado.
 2. Las acciones de diferentes vistas pueden necesitar mutar la misma porción de estado.
 
-Para el primer caso, una posible solución es "elevar" el estado compartido a un componente ancestro común, y luego pasarlo hacia abajo como `props`. Sin embargo, esto rápidamente se vuelve tedioso en árboles de componentes con jerarquías profundas, llevando a otro problema conocido como [Prop Drilling](/guide/components/provide-inject#prop-drilling).
+Para el primer caso, una posible solución es "elevar" el estado compartido a un componente ancestro común, y luego pasarlo hacia abajo como props. Sin embargo, esto rápidamente se vuelve tedioso en árboles de componentes con jerarquías profundas, llevando a otro problema conocido como [Propagación de Props](/guide/components/provide-inject#prop-drilling).
 
-Para el segundo caso, a menudo nos encontramos recurriendo a soluciones como acceder a instancias de padre/hijo directas a través de `template refs`, o intentar mutar y sincronizar múltiples copias del estado a través de eventos emitidos. Ambos patrones son frágiles y rápidamente llevan a código inmanejable.
+Para el segundo caso, a menudo nos encontramos recurriendo a soluciones como acceder a instancias de padre/hijo directas a través de template refs, o intentar mutar y sincronizar múltiples copias del estado a través de eventos emitidos. Ambos patrones son frágiles y rápidamente llevan a código inmanejable.
 
 Una solución más simple y directa es extraer el estado compartido de los componentes y gestionarlo en un singleton global. Con esto, nuestro árbol de componentes se convierte en una gran "vista", ¡y cualquier componente puede acceder al estado o desencadenar acciones, sin importar dónde se encuentre en el árbol!
 
@@ -77,7 +77,7 @@ Una solución más simple y directa es extraer el estado compartido de los compo
 
 <div class="options-api">
 
-En la `Options API`, los datos reactivos se declaran utilizando la opción `data()`. Internamente, el objeto devuelto por `data()` se hace reactivo a través de la función [`reactive()`](/api/reactivity-core#reactive), que también está disponible como una API pública.
+En la Options API, los datos reactivos se declaran utilizando la opción `data()`. Internamente, el objeto devuelto por `data()` se hace reactivo a través de la función [`reactive()`](/api/reactivity-core#reactive), que también está disponible como una API pública.
 
 </div>
 
@@ -98,7 +98,7 @@ export const store = reactive({
 import { store } from './store.js'
 </script>
 
-<template>From A: {{ store.count }}</template>
+<template>Desde A: {{ store.count }}</template>
 ```
 
 ```vue [ComponentB.vue]
@@ -106,7 +106,7 @@ import { store } from './store.js'
 import { store } from './store.js'
 </script>
 
-<template>From B: {{ store.count }}</template>
+<template>Desde B: {{ store.count }}</template>
 ```
 
 </div>
@@ -125,7 +125,7 @@ export default {
 }
 </script>
 
-<template>From A: {{ store.count }}</template>
+<template>Desde A: {{ store.count }}</template>
 ```
 
 ```vue [ComponentB.vue]
@@ -141,7 +141,7 @@ export default {
 }
 </script>
 
-<template>From B: {{ store.count }}</template>
+<template>Desde B: {{ store.count }}</template>
 ```
 
 </div>
@@ -153,12 +153,12 @@ Sin embargo, esto también significa que cualquier componente que importe `store
 ```vue-html{2}
 <template>
   <button @click="store.count++">
-    From B: {{ store.count }}
+    Desde B: {{ store.count }}
   </button>
 </template>
 ```
 
-Si bien esto funciona en casos simples, el estado global que puede ser mutado arbitrariamente por cualquier componente no será muy mantenible a largo plazo. Para asegurar que la lógica de mutación de estado esté centralizada como el propio estado, se recomienda definir métodos en el `store` con nombres que expresen la intención de las acciones:
+Si bien esto funciona en casos simples, el estado global que puede ser mutado arbitrariamente por cualquier componente no será muy mantenible a largo plazo. Para asegurar que la lógica de mutación de estado esté centralizada como el propio estado, se recomienda definir métodos en el store con nombres que expresen la intención de las acciones:
 
 ```js{5-7} [store.js]
 import { reactive } from 'vue'
@@ -174,7 +174,7 @@ export const store = reactive({
 ```vue-html{2}
 <template>
   <button @click="store.increment()">
-    From B: {{ store.count }}
+    Desde B: {{ store.count }}
   </button>
 </template>
 ```
@@ -194,16 +194,16 @@ export const store = reactive({
 Ten en cuenta que el manejador de clic usa `store.increment()` con paréntesis; esto es necesario para llamar al método con el contexto `this` adecuado, ya que no es un método de componente.
 :::
 
-Aunque aquí estamos usando un único objeto reactivo como `store`, también puedes compartir estado reactivo creado usando otras [APIs de Reactividad](/api/reactivity-core) como `ref()` o `computed()`, o incluso devolver estado global desde un [Composable](/guide/reusability/composables):
+Aunque aquí estamos usando un único objeto reactivo como store, también puedes compartir estado reactivo creado usando otras [APIs de Reactividad](/api/reactivity-core) como `ref()` o `computed()`, o incluso devolver estado global desde un [Composable](/guide/reusability/composables):
 
 ```js
 import { ref } from 'vue'
 
-// global state, created in module scope
+// estado global, creado en el ámbito del módulo
 const globalCount = ref(1)
 
 export function useCount() {
-  // local state, created per-component
+  // estado local, creado por componente
   const localCount = ref(1)
 
   return {
@@ -217,7 +217,7 @@ El hecho de que el sistema de reactividad de Vue esté desacoplado del modelo de
 
 ## Consideraciones de SSR {#ssr-considerations}
 
-Si estás construyendo una aplicación que aprovecha el [Renderizado del Lado del Servidor (SSR)](./ssr), el patrón anterior puede llevar a problemas debido a que el `store` es un singleton compartido entre múltiples solicitudes. Esto se discute con [más detalles](./ssr#cross-request-state-pollution) en la guía de SSR.
+Si estás construyendo una aplicación que aprovecha el [Renderizado del Lado del Servidor (SSR)](./ssr), el patrón anterior puede llevar a problemas debido a que el store es un singleton compartido entre múltiples solicitudes. Esto se discute con [más detalles](./ssr#cross-request-state-pollution) en la guía de SSR.
 
 ## Pinia {#pinia}
 
@@ -234,4 +234,4 @@ Los usuarios existentes pueden estar familiarizados con [Vuex](https://vuex.vuej
 
 Pinia comenzó como una exploración de cómo podría ser la próxima iteración de Vuex, incorporando muchas ideas de las discusiones del equipo central para Vuex 5. Finalmente, nos dimos cuenta de que Pinia ya implementa la mayoría de lo que queríamos en Vuex 5, y decidimos convertirla en la nueva recomendación en su lugar.
 
-En comparación con Vuex, Pinia proporciona una API más simple con menos formalidades, ofrece APIs al estilo de la `Composition API` y, lo más importante, tiene un sólido soporte de inferencia de tipos cuando se usa con TypeScript.
+En comparación con Vuex, Pinia proporciona una API más simple con menos formalidades, ofrece APIs al estilo de la Composition API y, lo más importante, tiene un sólido soporte de inferencia de tipos cuando se usa con TypeScript.

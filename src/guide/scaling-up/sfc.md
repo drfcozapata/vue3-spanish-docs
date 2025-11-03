@@ -11,7 +11,7 @@ Los Componentes de Archivo Único de Vue (también conocidos como archivos `*.vu
 export default {
   data() {
     return {
-      greeting: 'Hello World!'
+      greeting: '¡Hola Mundo!'
     }
   }
 }
@@ -36,7 +36,7 @@ export default {
 ```vue
 <script setup>
 import { ref } from 'vue'
-const greeting = ref('Hello World!')
+const greeting = ref('¡Hola Mundo!')
 </script>
 
 <template>

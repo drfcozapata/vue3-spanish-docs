@@ -110,7 +110,7 @@ La extensión de herramientas de desarrollo del navegador de Vue te permite expl
 
 Artículo principal: [Uso de Vue con TypeScript](/guide/typescript/overview).
 
-- La [extensión Vue - Official](https://github.com/vuejs/language-tools) proporciona verificación de tipos para SFCs usando bloques `<script lang="ts">`, incluyendo expresiones de template y validación de `props` entre componentes.
+- La [extensión Vue - Official](https://github.com/vuejs/language-tools) proporciona verificación de tipos para SFCs usando bloques `<script lang="ts">`, incluyendo expresiones de template y validación de props entre componentes.
 
 - Usa [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) para realizar la misma verificación de tipos desde la línea de comandos, o para generar archivos `d.ts` para SFCs.
 
@@ -136,7 +136,7 @@ Los usuarios que usaban Vue CLI pueden estar acostumbrados a tener linters confi
 
 3. Ejecuta ESLint como parte del comando de construcción de producción, para que recibas retroalimentación completa del linter antes de desplegar a producción.
 
-4. (Opcional) Configura herramientas como [lint-staged](https://github.com/okonet/lint-staged) para analizar automáticamente los archivos modificados en cada `git commit`.
+4. (Opcional) Configura herramientas como [lint-staged](https://github.com/okonet/lint-staged) para analizar automáticamente los archivos modificados en cada git commit.
 
 ## Formato {#formatting}
 

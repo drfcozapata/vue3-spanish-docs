@@ -1,6 +1,6 @@
 # Enrutamiento {#routing}
 
-## Enrutamiento del lado del cliente vs. del lado del servidor {#client-side-vs-server-side-routing}
+## Enrutamiento del Lado del Cliente vs. del Lado del Servidor {#client-side-vs-server-side-routing}
 
 El enrutamiento del lado del servidor significa que el servidor envía una respuesta basada en la ruta URL que el usuario está visitando. Cuando hacemos clic en un enlace en una aplicación web tradicional renderizada por el servidor, el navegador recibe una respuesta HTML del servidor y recarga la página completa con el nuevo HTML.
 
@@ -51,9 +51,8 @@ const currentView = computed(() => {
 </script>
 
 <template>
-  <a href="#/">Home</a> |
-  <a href="#/about">About</a> |
-  <a href="#/non-existent-path">Broken Link</a>
+  <a href="#/">Inicio</a> | <a href="#/about">Acerca de</a> |
+  <a href="#/non-existent-path">Enlace Roto</a>
   <component :is="currentView" />
 </template>
 ```
@@ -88,16 +87,15 @@ export default {
   },
   mounted() {
     window.addEventListener('hashchange', () => {
-		  this.currentPath = window.location.hash
-		})
+      this.currentPath = window.location.hash
+    })
   }
 }
 </script>
 
 <template>
-  <a href="#/">Home</a> |
-  <a href="#/about">About</a> |
-  <a href="#/non-existent-path">Broken Link</a>
+  <a href="#/">Inicio</a> | <a href="#/about">Acerca de</a> |
+  <a href="#/non-existent-path">Enlace Roto</a>
   <component :is="currentView" />
 </template>
 ```

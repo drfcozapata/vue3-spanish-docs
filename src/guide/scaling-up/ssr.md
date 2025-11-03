@@ -57,9 +57,9 @@ Echemos un vistazo al ejemplo más básico de Vue SSR en acción.
 5. Crea un archivo `example.js`:
 
 ```js
-// this runs in Node.js on the server.
+// esto corre en Node.js en el servidor.
 import { createSSRApp } from 'vue'
-// Vue's server-rendering API is exposed under `vue/server-renderer`.
+// La API de renderizado del lado del servidor de Vue es expuesta como `vue/server-renderer`.
 import { renderToString } from 'vue/server-renderer'
 
 const app = createSSRApp({
@@ -109,7 +109,7 @@ server.get('/', (req, res) => {
     <!DOCTYPE html>
     <html>
       <head>
-        <title>Vue SSR Example</title>
+        <title>Ejemplo de Vue SSR</title>
       </head>
       <body>
         <div id="app">${html}</div>
@@ -120,7 +120,7 @@ server.get('/', (req, res) => {
 })
 
 server.listen(3000, () => {
-  console.log('ready')
+  console.log('listo')
 })
 ```
 
@@ -137,16 +137,16 @@ Para hacer que la aplicación del lado del cliente sea interactiva, Vue necesita
 Para montar una aplicación en modo de hidratación, necesitamos usar [`createSSRApp()`](/api/application#createssrapp) en lugar de `createApp()`:
 
 ```js{2}
-// this runs in the browser.
+// esto corre en el navegador.
 import { createSSRApp } from 'vue'
 
 const app = createSSRApp({
-  // ...same app as on server
+  // ...la misma aplicación en el servidor
 })
 
-// mounting an SSR app on the client assumes
-// the HTML was pre-rendered and will perform
-// hydration instead of mounting new DOM nodes.
+// montar una aplicación SSR en un cliente asume
+// que el HTML fue pre-renderizado y se realizará la
+// hidratación en lugar de montar nuevos nodos en el DOM.
 app.mount('#app')
 ```
 
@@ -157,7 +157,7 @@ Nota cómo necesitamos reutilizar la misma implementación de la aplicación que
 Aquí demostraremos la configuración más básica. Primero, dividamos la lógica de creación de la aplicación en un archivo dedicado, `app.js`:
 
 ```js [app.js]
-// (shared between server and client)
+// (compartido entre el servidor y el cliente)
 import { createSSRApp } from 'vue'
 
 export function createApp() {
@@ -181,7 +181,7 @@ createApp().mount('#app')
 Y el servidor utiliza la misma lógica de creación de la aplicación en el controlador de solicitudes:
 
 ```js{2,5} [server.js]
-// (irrelevant code omitted)
+// (código irrelevante omitido)
 import { createApp } from './app.js'
 
 server.get('/', (req, res) => {
@@ -267,18 +267,18 @@ Técnicamente podemos reinicializar todos los módulos JavaScript en cada solici
 La solución recomendada es crear una nueva instancia de toda la aplicación, incluyendo el router y los stores globales, en cada solicitud. Luego, en lugar de importarlo directamente en nuestros componentes, proporcionamos el estado compartido usando [provide a nivel de aplicación](/guide/components/provide-inject#app-level-provide) e inyectamos en los componentes que lo necesitan:
 
 ```js [app.js]
-// (shared between server and client)
+// (compartido entre el servidor y el cliente)
 import { createSSRApp } from 'vue'
 import { createStore } from './store.js'
 
-// called on each request
+// llamado con cada petición
 export function createApp() {
   const app = createSSRApp(/* ... */)
-  // create new instance of store per request
+  // crea una nueva instancia del store por cada petición
   const store = createStore(/* ... */)
-  // provide store at the app level
+  // provee el store en el nivel de la aplicación
   app.provide('store', store)
-  // also expose store for hydration purposes
+  // también expone el store para propósitos de hidratación
   return { app, store }
 }
 ```
@@ -292,14 +292,14 @@ Si la estructura del DOM del HTML pre-renderizado no coincide con la salida espe
 1. El template contiene una estructura de anidación HTML inválida, y el HTML renderizado fue "corregido" por el comportamiento nativo de análisis de HTML del navegador. Por ejemplo, un error común es que [`<div>` no puede colocarse dentro de `<p>`](https://stackoverflow.com/questions/8397852/why-cant-the-p-tag-contain-a-div-tag-inside-it):
 
    ```html
-   <p><div>hi</div></p>
+   <p><div>hola</div></p>
    ```
 
    Si producimos esto en nuestro HTML renderizado en el servidor, el navegador terminará el primer `<p>` cuando encuentre el `<div>` y lo analizará en la siguiente estructura del DOM:
 
    ```html
    <p></p>
-   <div>hi</div>
+   <div>hola</div>
    <p></p>
    ```
 
@@ -324,14 +324,14 @@ Dado que la mayoría de las directivas personalizadas implican manipulación dir
 ```js
 const myDirective = {
   mounted(el, binding) {
-    // client-side implementation:
-    // directly update the DOM
+    // implementación del lado del cliente:
+    // actualiza directamente el DOM
     el.id = binding.value
   },
   getSSRProps(binding) {
-    // server-side implementation:
-    // return the props to be rendered.
-    // getSSRProps only receives the directive binding.
+    // implementación del lado del servidor:
+    // retorna las props para ser renderizadas.
+    // getSSRProps sólo recibe la directiva binding.
     return {
       id: binding.value
     }
@@ -349,7 +349,7 @@ Si necesitas hidratar contenido teletransportado, este se expone bajo la propied
 const ctx = {}
 const html = await renderToString(app, ctx)
 
-console.log(ctx.teleports) // { '#teleported': 'teleported content' }
+console.log(ctx.teleports) // { '#teleported': 'contenido teleportado' }
 ```
 
 Necesitas inyectar el marcado del teleport en la ubicación correcta de tu HTML de página final de manera similar a cómo necesitas inyectar el marcado de la aplicación principal.
