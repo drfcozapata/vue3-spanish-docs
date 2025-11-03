@@ -16,8 +16,8 @@ onMounted(() => {
 En compilaciones de producción, el tercer argumento pasado a las siguientes APIs de manejo de errores será un código corto en lugar de la cadena de información completa:
 
 - [`app.config.errorHandler`](/api/application#app-config-errorhandler)
-- [`onErrorCaptured`](/api/composition-api-lifecycle#onerrorcaptured) (API de Composición)
-- [`errorCaptured`](/api/options-lifecycle#errorcaptured) (API de Opciones)
+- [`onErrorCaptured`](/api/composition-api-lifecycle#onerrorcaptured) (Composition API)
+- [`errorCaptured`](/api/options-lifecycle#errorcaptured) (Options API)
 
 La siguiente tabla mapea los códigos a sus cadenas de información completas originales.
 

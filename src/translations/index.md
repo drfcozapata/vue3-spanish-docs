@@ -1,5 +1,4 @@
-aside: false
----
+## aside: false
 
 # Traducciones {#translations}
 
@@ -23,7 +22,7 @@ aside: false
 ## Idiomas en Progreso {#work-in-progress-languages}
 
 - [العربية / Árabe](https://ar.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ar)]
-- [Español / Español](https://vue3-spanish-docs.netlify.app/) [[source](https://github.com/icarusgk/vuejs-spanish-docs)]
+- [Español / Español](https://vue3-spanish.netlify.app/) [[source](https://github.com/drfcozapata/vue3-spanish-docs)]
 - [Deutsch / Alemán](https://de.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-de)]
 
 ## Iniciar una Nueva Traducción {#starting-a-new-translation}
