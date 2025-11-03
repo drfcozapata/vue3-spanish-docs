@@ -4,7 +4,7 @@ outline: deep
 
 # Funciones de Renderizado & JSX {#render-functions-jsx}
 
-Vue recomienda usar plantillas para construir aplicaciones en la gran mayoría de los casos. Sin embargo, hay situaciones en las que necesitamos todo el poder programático de JavaScript. Ahí es donde podemos usar la **función de renderizado**.
+Vue recomienda usar templates para construir aplicaciones en la gran mayoría de los casos. Sin embargo, hay situaciones en las que necesitamos todo el poder programático de JavaScript. Ahí es donde podemos usar la **función de renderizado**.
 
 > Si eres nuevo en el concepto de DOM virtual y funciones de renderizado, asegúrate de leer primero el capítulo [Mecanismo de Renderizado](/guide/extras/rendering-mechanism).
 
@@ -80,7 +80,7 @@ La interfaz `VNode` completa contiene muchas otras propiedades internas, pero se
 
 <div class="composition-api">
 
-Cuando se utilizan plantillas con la Composition API, el valor de retorno del hook `setup()` se usa para exponer datos a la plantilla. Sin embargo, cuando se usan funciones de renderizado, podemos retornar directamente la función de renderizado en su lugar:
+Cuando se utilizan templates con la Composition API, el valor de retorno del hook `setup()` se usa para exponer datos a el template. Sin embargo, cuando se usan funciones de renderizado, podemos retornar directamente la función de renderizado en su lugar:
 
 ```js
 import { ref, h } from 'vue'
@@ -116,11 +116,7 @@ import { h } from 'vue'
 export default {
   setup() {
     // use an array to return multiple root nodes
-    return () => [
-      h('div'),
-      h('div'),
-      h('div')
-    ]
+    return () => [h('div'), h('div'), h('div')]
   }
 }
 ```
@@ -167,11 +163,7 @@ import { h } from 'vue'
 export default {
   render() {
     // use an array to return multiple root nodes
-    return [
-      h('div'),
-      h('div'),
-      h('div')
-    ]
+    return [h('div'), h('div'), h('div')]
   }
 }
 ```
@@ -261,11 +253,11 @@ Si hay código que depende de la presencia del espacio de nombres global `JSX`, 
 
 ## Recetas de Funciones de Renderizado {#render-function-recipes}
 
-A continuación, proporcionaremos algunas recetas comunes para implementar características de plantillas como sus equivalentes en funciones de renderizado / JSX.
+A continuación, proporcionaremos algunas recetas comunes para implementar características de templates como sus equivalentes en funciones de renderizado / JSX.
 
 ### `v-if` {#v-if}
 
-Plantilla:
+Template:
 
 ```vue-html
 <div>
@@ -301,7 +293,7 @@ h('div', [this.ok ? h('div', 'yes') : h('span', 'no')])
 
 ### `v-for` {#v-for}
 
-Plantilla:
+Template:
 
 ```vue-html
 <ul>
@@ -357,7 +349,7 @@ h(
 
 ### `v-on` {#v-on}
 
-Las props con nombres que comienzan con `on` seguidas de una letra mayúscula se tratan como listeners de eventos. Por ejemplo, `onClick` es el equivalente de `@click` en las plantillas.
+Las props con nombres que comienzan con `on` seguidas de una letra mayúscula se tratan como listeners de eventos. Por ejemplo, `onClick` es el equivalente de `@click` en los templates.
 
 ```js
 h(
@@ -585,9 +577,10 @@ Para renderizar un scoped slot en el componente padre, se pasa un slot al hijo. 
 // parent component
 export default {
   setup() {
-    return () => h(MyComp, null, {
-      default: ({ text }) => h('p', text)
-    })
+    return () =>
+      h(MyComp, null, {
+        default: ({ text }) => h('p', text)
+      })
   }
 }
 ```
@@ -607,9 +600,11 @@ export default {
 JSX equivalente:
 
 ```jsx
-<MyComponent>{{
-  default: ({ text }) => <p>{ text }</p>  
-}}</MyComponent>
+<MyComponent>
+  {{
+    default: ({ text }) => <p>{text}</p>
+  }}
+</MyComponent>
 ```
 
 ### Componentes Integrados {#built-in-components}
@@ -622,8 +617,8 @@ Los [componentes integrados](/api/built-in-components) como `<KeepAlive>`, `<Tra
 import { h, KeepAlive, Teleport, Transition, TransitionGroup } from 'vue'
 
 export default {
-  setup () {
-    return () => h(Transition, { mode: 'out-in' }, /* ... */)
+  setup() {
+    return () => h(Transition, { mode: 'out-in' } /* ... */)
   }
 }
 ```
@@ -635,8 +630,8 @@ export default {
 import { h, KeepAlive, Teleport, Transition, TransitionGroup } from 'vue'
 
 export default {
-  render () {
-    return h(Transition, { mode: 'out-in' }, /* ... */)
+  render() {
+    return h(Transition, { mode: 'out-in' } /* ... */)
   }
 }
 ```
@@ -645,7 +640,7 @@ export default {
 
 ### `v-model` {#v-model}
 
-La directiva `v-model` se expande a las props `modelValue` y `onUpdate:modelValue` durante la compilación de la plantilla; tendremos que proporcionar estas props nosotros mismos:
+La directiva `v-model` se expande a las props `modelValue` y `onUpdate:modelValue` durante la compilación de el template; tendremos que proporcionar estas props nosotros mismos:
 
 <div class="composition-api">
 
@@ -673,7 +668,8 @@ export default {
   render() {
     return h(SomeComponent, {
       modelValue: this.modelValue,
-      'onUpdate:modelValue': (value) => this.$emit('update:modelValue', value)
+      'onUpdate:modelValue': (value) =>
+        this.$emit('update:modelValue', value)
     })
   }
 }
@@ -690,8 +686,12 @@ import { h, withDirectives } from 'vue'
 
 // a custom directive
 const pin = {
-  mounted() { /* ... */ },
-  updated() { /* ... */ }
+  mounted() {
+    /* ... */
+  },
+  updated() {
+    /* ... */
+  }
 }
 
 // <div v-pin:top.animate="200"></div>
@@ -738,6 +738,7 @@ export default {
   }
 }
 ```
+
 </details>
 </div>
 <div class="options-api">
@@ -805,7 +806,7 @@ Los componentes funcionales se pueden registrar y consumir como componentes norm
 
 ### Tipado de Componentes Funcionales<sup class="vt-badge ts" /> {#typing-functional-components}
 
-Los componentes funcionales se pueden tipar según sean nombrados o anónimos. [Vue - Extensión oficial](https://github.com/vuejs/language-tools) también soporta la verificación de tipos de componentes funcionales correctamente tipados cuando se consumen en plantillas SFC.
+Los componentes funcionales se pueden tipar según sean nombrados o anónimos. [Vue - Extensión oficial](https://github.com/vuejs/language-tools) también soporta la verificación de tipos de componentes funcionales correctamente tipados cuando se consumen en templates SFC.
 
 **Componente Funcional Nombrado**
 
@@ -825,7 +826,7 @@ function FComponent(
 ) {
   return (
     <button onClick={() => context.emit('sendMessage', props.message)}>
-        {props.message} {' '}
+      {props.message}{' '}
     </button>
   )
 }

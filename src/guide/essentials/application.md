@@ -8,7 +8,7 @@ Cada aplicación Vue comienza creando una nueva **instancia de aplicación** con
 import { createApp } from 'vue'
 
 const app = createApp({
-  /* root component options */
+  /* opciones del componente raíz */
 })
 ```
 
@@ -20,7 +20,7 @@ Si estás usando Componentes de Un Solo Archivo (Single-File Components), normal
 
 ```js
 import { createApp } from 'vue'
-// import the root component App from a single-file component.
+// importa el componente raíz App desde un componente de un solo archivo.
 import App from './App.vue'
 
 const app = createApp(App)
@@ -59,7 +59,7 @@ El método `.mount()` siempre debe llamarse después de que todas las configurac
 
 ### Template de Componente Raíz en el DOM {#in-dom-root-component-template}
 
-La plantilla para el componente raíz suele ser parte del propio componente, pero también es posible proporcionar la plantilla por separado escribiéndola directamente dentro del contenedor de montaje:
+El template para el componente raíz suele ser parte del propio componente, pero también es posible proporcionar el template por separado escribiéndola directamente dentro del contenedor de montaje:
 
 ```html
 <div id="app">
@@ -81,9 +81,9 @@ const app = createApp({
 app.mount('#app')
 ```
 
-Vue utilizará automáticamente el `innerHTML` del contenedor como plantilla si el componente raíz aún no tiene una opción `template`.
+Vue utilizará automáticamente el `innerHTML` del contenedor como template si el componente raíz aún no tiene una opción `template`.
 
-Las plantillas en el DOM a menudo se utilizan en aplicaciones que están [usando Vue sin un paso de construcción](/guide/quick-start.html#using-vue-from-cdn). También pueden usarse en conjunto con frameworks del lado del servidor, donde la plantilla raíz podría ser generada dinámicamente por el servidor.
+Los templates en el DOM a menudo se utilizan en aplicaciones que están [usando Vue sin un paso de construcción](/guide/quick-start.html#using-vue-from-cdn). También pueden usarse en conjunto con frameworks del lado del servidor, donde el template raíz podría ser generada dinámicamente por el servidor.
 
 ## Configuraciones de la Aplicación {#app-configurations}
 
@@ -91,7 +91,7 @@ La instancia de aplicación expone un objeto `.config` que nos permite configura
 
 ```js
 app.config.errorHandler = (err) => {
-  /* handle error */
+  /* manejo del error */
 }
 ```
 

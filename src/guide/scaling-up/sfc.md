@@ -2,7 +2,7 @@
 
 ## Introducción {#introduction}
 
-Los Componentes de Archivo Único de Vue (también conocidos como archivos `*.vue`, abreviados como **SFC**) son un formato de archivo especial que nos permite encapsular la plantilla, la lógica **y** el estilado de un componente Vue en un solo archivo. Aquí tienes un ejemplo de SFC:
+Los Componentes de Archivo Único de Vue (también conocidos como archivos `*.vue`, abreviados como **SFC**) son un formato de archivo especial que nos permite encapsular el template, la lógica **y** el estilado de un componente Vue en un solo archivo. Aquí tienes un ejemplo de SFC:
 
 <div class="options-api">
 
@@ -61,11 +61,11 @@ Aunque los SFC requieren un paso de compilación, ofrecen numerosos beneficios a
 
 - Crear componentes modularizados utilizando la sintaxis familiar de HTML, CSS y JavaScript
 - [Colocación conjunta de intereses inherentemente acoplados](#what-about-separation-of-concerns)
-- Plantillas precompiladas sin costo de compilación en tiempo de ejecución
+- Templates precompilados sin costo de compilación en tiempo de ejecución
 - [CSS con alcance de componente](/api/sfc-css-features)
 - [Sintaxis más ergonómica al trabajar con la Composition API](/api/sfc-script-setup)
-- Más optimizaciones en tiempo de compilación mediante el análisis cruzado de plantilla y script
-- [Soporte para IDE](/guide/scaling-up/tooling#ide-support) con autocompletado y comprobación de tipos para expresiones de plantilla
+- Más optimizaciones en tiempo de compilación mediante el análisis cruzado de template y script
+- [Soporte para IDE](/guide/scaling-up/tooling#ide-support) con autocompletado y comprobación de tipos para expresiones de template
 - Soporte integrado para Hot-Module Replacement (HMR)
 
 SFC es una característica definitoria de Vue como framework, y es el enfoque recomendado para usar Vue en los siguientes escenarios:
@@ -102,6 +102,6 @@ Algunos usuarios con experiencia en desarrollo web tradicional pueden tener la p
 
 Para responder a esta pregunta, es importante que estemos de acuerdo en que la **separación de intereses no es igual a la separación de tipos de archivo**. El objetivo final de los principios de ingeniería es mejorar la mantenibilidad de las bases de código. La separación de intereses, cuando se aplica dogmáticamente como separación de tipos de archivo, no nos ayuda a alcanzar ese objetivo en el contexto de aplicaciones frontend cada vez más complejas.
 
-En el desarrollo de UI moderno, hemos descubierto que en lugar de dividir la base de código en tres grandes capas que se entrelazan entre sí, tiene mucho más sentido dividirlas en componentes débilmente acoplados y componerlos. Dentro de un componente, su plantilla, lógica y estilos están inherentemente acoplados, y colocarlos juntos realmente hace que el componente sea más cohesivo y mantenible.
+En el desarrollo de UI moderno, hemos descubierto que en lugar de dividir la base de código en tres grandes capas que se entrelazan entre sí, tiene mucho más sentido dividirlas en componentes débilmente acoplados y componerlos. Dentro de un componente, su template, lógica y estilos están inherentemente acoplados, y colocarlos juntos realmente hace que el componente sea más cohesivo y mantenible.
 
 Ten en cuenta que, incluso si no te agrada la idea de los Componentes de Archivo Único, aún puedes aprovechar sus características de recarga en caliente y precompilación separando tu JavaScript y CSS en archivos separados usando [Src Imports](/api/sfc-spec#src-imports).

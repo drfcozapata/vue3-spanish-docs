@@ -127,7 +127,7 @@ Primero, revisemos cómo se usa `v-model` en un elemento nativo:
 <input v-model="searchText" />
 ```
 
-Internamente, el compilador de plantillas expande `v-model` a su equivalente más verboso. Así que el código anterior hace lo mismo que lo siguiente:
+Internamente, el compilador de templates expande `v-model` a su equivalente más verboso. Así que el código anterior hace lo mismo que lo siguiente:
 
 ```vue-html
 <input

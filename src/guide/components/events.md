@@ -28,7 +28,7 @@ if (typeof window !== 'undefined') {
 
 ## Emitir y Escuchar Eventos {#emitting-and-listening-to-events}
 
-Un componente puede emitir eventos personalizados directamente en expresiones de plantilla (por ejemplo, en un handler de `v-on`) usando el método `$emit` incorporado:
+Un componente puede emitir eventos personalizados directamente en expresiones de template (por ejemplo, en un handler de `v-on`) usando el método `$emit` incorporado:
 
 ```vue-html
 <!-- MyComponent -->
@@ -63,7 +63,7 @@ El modificador `.once` también es compatible con los listeners de eventos de co
 <MyComponent @some-event.once="callback" />
 ```
 
-Al igual que los componentes y los props, los nombres de eventos proporcionan una transformación de mayúsculas y minúsculas automática. Observa que emitimos un evento en camelCase, pero podemos escucharlo usando un listener en kebab-cased en el padre. Al igual que con el [uso de mayúsculas/minúsculas en props](/guide/components/props#prop-name-casing), recomendamos usar listeners de eventos en kebab-cased en las plantillas.
+Al igual que los componentes y los props, los nombres de eventos proporcionan una transformación de mayúsculas y minúsculas automática. Observa que emitimos un evento en camelCase, pero podemos escucharlo usando un listener en kebab-cased en el padre. Al igual que con el [uso de mayúsculas/minúsculas en props](/guide/components/props#prop-name-casing), recomendamos usar listeners de eventos en kebab-cased en los templates.
 
 :::tip
 A diferencia de los eventos nativos del DOM, los eventos emitidos por componentes **no** hacen _bubbling_. Solo puedes escuchar los eventos emitidos por un componente hijo directo. Si necesitas comunicar entre componentes hermanos o profundamente anidados, utiliza un bus de eventos externo o una [solución de gestión de estado global](/guide/scaling-up/state-management).

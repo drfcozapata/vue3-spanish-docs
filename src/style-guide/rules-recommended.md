@@ -18,62 +18,62 @@ Este es el orden predeterminado que recomendamos para las opciones de componente
 
 1.  **Conocimiento Global** (requiere conocimiento más allá del componente)
 
-    -   `name`
+    - `name`
 
-2.  **Opciones del Compilador de Plantillas** (cambia la forma en que se compilan las plantillas)
+2.  **Opciones del Compilador de Templates** (cambia la forma en que se compilan los templates)
 
-    -   `compilerOptions`
+    - `compilerOptions`
 
-3.  **Dependencias de Plantillas** (recursos utilizados en la plantilla)
+3.  **Dependencias de Templates** (recursos utilizados en el template)
 
-    -   `components`
-    -   `directives`
+    - `components`
+    - `directives`
 
 4.  **Composición** (fusiona propiedades en las opciones)
 
-    -   `extends`
-    -   `mixins`
-    -   `provide`/`inject`
+    - `extends`
+    - `mixins`
+    - `provide`/`inject`
 
 5.  **Interfaz** (la interfaz del componente)
 
-    -   `inheritAttrs`
-    -   `props`
-    -   `emits`
+    - `inheritAttrs`
+    - `props`
+    - `emits`
 
 6.  **Composition API** (el punto de entrada para usar la Composition API)
 
-    -   `setup`
+    - `setup`
 
 7.  **Estado Local** (propiedades reactivas locales)
 
-    -   `data`
-    -   `computed`
+    - `data`
+    - `computed`
 
 8.  **Eventos** (callbacks activados por eventos reactivos)
 
-    -   `watch`
-    -   Eventos del Ciclo de Vida (en el orden en que son llamados)
-        -   `beforeCreate`
-        -   `created`
-        -   `beforeMount`
-        -   `mounted`
-        -   `beforeUpdate`
-        -   `updated`
-        -   `activated`
-        -   `deactivated`
-        -   `beforeUnmount`
-        -   `unmounted`
-        -   `errorCaptured`
-        -   `renderTracked`
-        -   `renderTriggered`
+    - `watch`
+    - Eventos del Ciclo de Vida (en el orden en que son llamados)
+      - `beforeCreate`
+      - `created`
+      - `beforeMount`
+      - `mounted`
+      - `beforeUpdate`
+      - `updated`
+      - `activated`
+      - `deactivated`
+      - `beforeUnmount`
+      - `unmounted`
+      - `errorCaptured`
+      - `renderTracked`
+      - `renderTriggered`
 
 9.  **Propiedades No Reactivas** (propiedades de instancia independientes del sistema de reactividad)
 
-    -   `methods`
+    - `methods`
 
 10. **Renderizado** (la descripción declarativa de la salida del componente)
-    -   `template`/`render`
+    - `template`/`render`
 
 ## Orden de los atributos de elemento {#element-attribute-order}
 
@@ -83,47 +83,47 @@ Este es el orden predeterminado que recomendamos para las opciones de componente
 
 1.  **Definición** (proporciona las opciones del componente)
 
-    -   `is`
+    - `is`
 
 2.  **Renderizado de Lista** (crea múltiples variaciones del mismo elemento)
 
-    -   `v-for`
+    - `v-for`
 
 3.  **Condicionales** (si el elemento se renderiza/muestra)
 
-    -   `v-if`
-    -   `v-else-if`
-    -   `v-else`
-    -   `v-show`
-    -   `v-cloak`
+    - `v-if`
+    - `v-else-if`
+    - `v-else`
+    - `v-show`
+    - `v-cloak`
 
 4.  **Modificadores de Renderizado** (cambia la forma en que se renderiza el elemento)
 
-    -   `v-pre`
-    -   `v-once`
+    - `v-pre`
+    - `v-once`
 
 5.  **Conocimiento Global** (requiere conocimiento más allá del componente)
 
-    -   `id`
+    - `id`
 
 6.  **Atributos Únicos** (atributos que requieren valores únicos)
 
-    -   `ref`
-    -   `key`
+    - `ref`
+    - `key`
 
 7.  **Enlace Bidireccional** (combina enlace y eventos)
 
-    -   `v-model`
+    - `v-model`
 
 8.  **Otros Atributos** (todos los atributos enlazados y no enlazados no especificados)
 
 9.  **Eventos** (listeners de eventos del componente)
 
-    -   `v-on`
+    - `v-on`
 
 10. **Contenido** (sobrescribe el contenido del elemento)
-    -   `v-html`
-    -   `v-text`
+    - `v-html`
+    - `v-text`
 
 ## Líneas vacías en las opciones de componente/instancia {#empty-lines-in-component-instance-options}
 
@@ -301,7 +301,7 @@ const inputClasses = computed(() => {
 
 o
 
-```vue-html  [ComponentA.vue]
+```vue-html [ComponentA.vue]
 <template>...</template>
 <script>/* ... */</script>
 <style>/* ... */</style>

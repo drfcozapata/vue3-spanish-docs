@@ -73,7 +73,7 @@ export default {
 
 <div class="composition-api">
 
-En `<script setup>`, cualquier variable camelCase que comience con el prefijo `v` puede usarse como una directiva personalizada. En el ejemplo anterior, `vHighlight` puede usarse en la plantilla como `v-highlight`.
+En `<script setup>`, cualquier variable camelCase que comience con el prefijo `v` puede usarse como una directiva personalizada. En el ejemplo anterior, `vHighlight` puede usarse en el template como `v-highlight`.
 
 Si no estás usando `<script setup>`, las directivas personalizadas pueden registrarse usando la opción `directives`:
 
@@ -95,7 +95,7 @@ export default {
 
 <div class="options-api">
 
-Similar a los componentes, las directivas personalizadas deben registrarse para que puedan usarse en las plantillas. En el ejemplo anterior, estamos usando el registro local a través de la opción `directives`.
+Similar a los componentes, las directivas personalizadas deben registrarse para que puedan usarse en los templates. En el ejemplo anterior, estamos usando el registro local a través de la opción `directives`.
 
 </div>
 
@@ -160,7 +160,7 @@ export default {
 
 Esta directiva es más útil que el atributo `autofocus` porque funciona no solo al cargar la página, ¡también funciona cuando el elemento es insertado dinámicamente por Vue!
 
-La creación de plantillas declarativas con directivas incorporadas como `v-bind` se recomienda cuando sea posible porque son más eficientes y compatibles con el renderizado en el servidor.
+La creación de templates declarativas con directivas incorporadas como `v-bind` se recomienda cuando sea posible porque son más eficientes y compatibles con el renderizado en el servidor.
 
 ## Hooks de Directiva {#directive-hooks}
 

@@ -2,11 +2,11 @@
 
  <VueSchoolLink href="https://vueschool.io/lessons/vue-3-teleport" title="Lección gratuita de Teleport en Vue.js"/>
 
-`<Teleport>` es un componente integrado que nos permite "teletransportar" una parte de la plantilla de un componente a un nodo del DOM que existe fuera de la jerarquía del DOM de ese componente.
+`<Teleport>` es un componente integrado que nos permite "teletransportar" una parte de el template de un componente a un nodo del DOM que existe fuera de la jerarquía del DOM de ese componente.
 
 ## Uso Básico {#basic-usage}
 
-A veces, una parte de la plantilla de un componente le pertenece lógicamente, pero desde un punto de vista visual, debería mostrarse en otro lugar del DOM, quizás incluso fuera de la aplicación de Vue.
+A veces, una parte de el template de un componente le pertenece lógicamente, pero desde un punto de vista visual, debería mostrarse en otro lugar del DOM, quizás incluso fuera de la aplicación de Vue.
 
 El ejemplo más común de esto es al construir un modal de pantalla completa. Idealmente, queremos que el código para el botón del modal y el propio modal estén escritos dentro del mismo componente de archivo único, ya que ambos están relacionados con el estado de abierto/cerrado del modal. Pero eso significa que el modal se renderizará junto al botón, profundamente anidado en la jerarquía del DOM de la aplicación. Esto puede crear algunos problemas complicados al posicionar el modal mediante CSS.
 
@@ -111,7 +111,7 @@ Al usar este componente dentro de la estructura HTML inicial, existen varios pro
 </Teleport>
 ```
 
-El objetivo `to` de `<Teleport>` espera una cadena de selector CSS o un nodo del DOM real. Aquí, esencialmente le estamos diciendo a Vue que "**teletransporte** este fragmento de plantilla **a** la etiqueta **`body`**".
+El objetivo `to` de `<Teleport>` espera una cadena de selector CSS o un nodo del DOM real. Aquí, esencialmente le estamos diciendo a Vue que "**teletransporte** este fragmento de template **a** la etiqueta **`body`**".
 
 Puedes hacer clic en el botón de abajo e inspeccionar la etiqueta `<body>` a través de las herramientas de desarrollo de tu navegador:
 

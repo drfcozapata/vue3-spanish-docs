@@ -20,7 +20,7 @@ Aparte de estos dos componentes, también podemos aplicar animaciones en Vue uti
 
 ## El Componente `<Transition>` {#the-transition-component}
 
-`<Transition>` es un componente incorporado: esto significa que está disponible en la plantilla de cualquier componente sin necesidad de registrarlo. Se puede usar para aplicar animaciones de entrada y salida en elementos o componentes que se le pasan a través de su slot predeterminado. La entrada o salida puede ser desencadenada por uno de los siguientes:
+`<Transition>` es un componente incorporado: esto significa que está disponible en el template de cualquier componente sin necesidad de registrarlo. Se puede usar para aplicar animaciones de entrada y salida en elementos o componentes que se le pasan a través de su slot predeterminado. La entrada o salida puede ser desencadenada por uno de los siguientes:
 
 - Renderizado condicional a través de `v-if`
 - Visualización condicional a través de `v-show`

@@ -16,7 +16,7 @@ Declara explícitamente un nombre de visualización para el componente.
 
   El nombre de un componente se utiliza para lo siguiente:
 
-  - Autorreferencia recursiva en la propia plantilla del componente
+  - Autorreferencia recursiva en el propio template del componente
   - Visualización en el árbol de inspección de componentes de Vue DevTools
   - Visualización en trazas de advertencia de componentes
 
@@ -156,7 +156,7 @@ Un objeto que registra directivas para que estén disponibles en la instancia de
   ```js
   export default {
     directives: {
-      // habilita v-focus en la plantilla
+      // habilita v-focus en el template
       focus: {
         mounted(el) {
           el.focus()

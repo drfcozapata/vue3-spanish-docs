@@ -1,7 +1,7 @@
 # Elementos Especiales Integrados {#built-in-special-elements}
 
 :::info No son componentes
-`<component>`, `<slot>` y `<template>` son características similares a componentes y parte de la sintaxis de la plantilla. No son componentes verdaderos y se compilan durante la compilación de la plantilla. Como tales, se escriben convencionalmente en minúsculas en las plantillas.
+`<component>`, `<slot>` y `<template>` son características similares a componentes y parte de la sintaxis de el template. No son componentes verdaderos y se compilan durante la compilación de el template. Como tales, se escriben convencionalmente en minúsculas en los templates.
 :::
 
 ## `<component>` {#component}
@@ -90,7 +90,7 @@ Un "meta componente" para renderizar componentes o elementos dinámicos.
 
   El registro no es necesario si pasas el componente mismo a `is` en lugar de su nombre, por ejemplo, en `<script setup>`.
 
-  Si se utiliza `v-model` en una etiqueta `<component>`, el compilador de plantillas lo expandirá a una prop `modelValue` y un oyente de evento `update:modelValue`, de forma muy similar a como lo haría para cualquier otro componente. Sin embargo, esto no será compatible con los elementos HTML nativos, como `<input>` o `<select>`. Como resultado, usar `v-model` con un elemento nativo creado dinámicamente no funcionará:
+  Si se utiliza `v-model` en una etiqueta `<component>`, el compilador de templates lo expandirá a una prop `modelValue` y un oyente de evento `update:modelValue`, de forma muy similar a como lo haría para cualquier otro componente. Sin embargo, esto no será compatible con los elementos HTML nativos, como `<input>` o `<select>`. Como resultado, usar `v-model` con un elemento nativo creado dinámicamente no funcionará:
 
   ```vue
   <script setup>
@@ -112,7 +112,7 @@ Un "meta componente" para renderizar componentes o elementos dinámicos.
 
 ## `<slot>` {#slot}
 
-Denota puntos de salida de contenido de slot en plantillas.
+Denota puntos de salida de contenido de slot en templates.
 
 - **Props**
 
@@ -136,7 +136,7 @@ Denota puntos de salida de contenido de slot en plantillas.
 
   El elemento mismo será reemplazado por su contenido de slot coincidente.
 
-  Los elementos `<slot>` en las plantillas de Vue se compilan en JavaScript, por lo que no deben confundirse con los [elementos `<slot>` nativos](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot).
+  Los elementos `<slot>` en los templates de Vue se compilan en JavaScript, por lo que no deben confundirse con los [elementos `<slot>` nativos](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot).
 
 - **Ver también** [Componente - Slots](/guide/components/slots)
 
@@ -156,7 +156,7 @@ La etiqueta `<template>` se usa como un marcador de posición cuando queremos us
 
   Una `<template>` con un `v-for` también puede tener un [`key` attribute](/api/built-in-special-attributes#key). Todos los demás atributos y directivas serán descartados, ya que no son significativos sin un elemento correspondiente.
 
-  Los componentes de un solo archivo utilizan una [etiqueta `<template>` de nivel superior](/api/sfc-spec#language-blocks) para envolver toda la plantilla. Ese uso es independiente del uso de `<template>` descrito anteriormente. Esa etiqueta de nivel superior no forma parte de la plantilla en sí y no es compatible con la sintaxis de plantillas, como las directivas.
+  Los componentes de un solo archivo utilizan una [etiqueta `<template>` de nivel superior](/api/sfc-spec#language-blocks) para envolver toda el template. Ese uso es independiente del uso de `<template>` descrito anteriormente. Esa etiqueta de nivel superior no forma parte de el template en sí y no es compatible con la sintaxis de templates, como las directivas.
 
 - **Ver también**
   - [Guía - `v-if` en `<template>`](/guide/essentials/conditional#v-if-on-template)

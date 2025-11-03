@@ -92,7 +92,7 @@ En comparación, la Composition API utiliza principalmente variables y funciones
 
 ### Paquete de Producción Más Pequeño y Menos Sobrecarga {#smaller-production-bundle-and-less-overhead}
 
-El código escrito en Composition API y `<script setup>` también es más eficiente y amigable con la minificación que su equivalente en Options API. Esto se debe a que la plantilla en un componente `<script setup>` se compila como una función en línea en el mismo alcance del código `<script setup>`. A diferencia del acceso a propiedades desde `this`, el código de plantilla compilado puede acceder directamente a las variables declaradas dentro de `<script setup>`, sin un proxy de instancia intermedio. Esto también conduce a una mejor minificación porque todos los nombres de las variables pueden acortarse de forma segura.
+El código escrito en Composition API y `<script setup>` también es más eficiente y amigable con la minificación que su equivalente en Options API. Esto se debe a que el template en un componente `<script setup>` se compila como una función en línea en el mismo alcance del código `<script setup>`. A diferencia del acceso a propiedades desde `this`, el código de template compilado puede acceder directamente a las variables declaradas dentro de `<script setup>`, sin un proxy de instancia intermedio. Esto también conduce a una mejor minificación porque todos los nombres de las variables pueden acortarse de forma segura.
 
 ## Relación con la Options API {#relationship-with-options-api}
 

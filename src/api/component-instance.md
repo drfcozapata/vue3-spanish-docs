@@ -55,7 +55,7 @@ El nodo DOM raíz que la instancia del componente está gestionando.
   - Para componentes con múltiples nodos raíz, `$el` será el nodo DOM marcador de posición que Vue usa para rastrear la posición del componente en el DOM (un nodo de texto, o un nodo de comentario en modo de hidratación SSR).
 
   :::tip
-  Para mayor consistencia, se recomienda usar [refs de plantilla](/guide/essentials/template-refs) para acceder directamente a los elementos en lugar de depender de `$el`.
+  Para mayor consistencia, se recomienda usar [Template Refs](/guide/essentials/template-refs) para acceder directamente a los elementos en lugar de depender de `$el`.
   :::
 
 ## $options {#options}
@@ -315,7 +315,9 @@ Versión ligada a la instancia de la API global [`nextTick()`](./general#nexttic
 
   ```ts
   interface ComponentPublicInstance {
-    $nextTick(callback?: (this: ComponentPublicInstance) => void): Promise<void>
+    $nextTick(
+      callback?: (this: ComponentPublicInstance) => void
+    ): Promise<void>
   }
   ```
 

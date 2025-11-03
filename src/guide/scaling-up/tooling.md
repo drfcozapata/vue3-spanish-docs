@@ -34,15 +34,15 @@ $ npm create vue@latest
 ```sh [pnpm]
 $ pnpm create vue@latest
 ```
-  
+
 ```sh [yarn]
 # Para Yarn Modern (v2+)
 $ yarn create vue@latest
-  
+
 # Para Yarn ^v4.11
 $ yarn dlx create-vue@latest
 ```
-  
+
 ```sh [bun]
 $ bun create vue@latest
 ```
@@ -65,21 +65,21 @@ Para obtener información sobre la migración de Vue CLI a Vite:
 - [Guía de Migración de Vue CLI -> Vite de VueSchool.io](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
 - [Herramientas / Plugins que ayudan con la auto-migración](https://github.com/vitejs/awesome-vite#vue-cli)
 
-### Nota sobre la Compilación de Plantillas en el Navegador {#note-on-in-browser-template-compilation}
+### Nota sobre la Compilación de Templates en el Navegador {#note-on-in-browser-template-compilation}
 
-Al usar Vue sin un paso de construcción, las plantillas de componentes se escriben directamente en el HTML de la página o como cadenas de JavaScript en línea. En tales casos, Vue necesita enviar el compilador de plantillas al navegador para realizar la compilación de plantillas sobre la marcha. Por otro lado, el compilador sería innecesario si precompilamos las plantillas con un paso de construcción. Para reducir el tamaño del paquete del cliente, Vue proporciona [diferentes "builds"](https://unpkg.com/browse/vue@3/dist/) optimizados para diferentes casos de uso.
+Al usar Vue sin un paso de construcción, los templates de componentes se escriben directamente en el HTML de la página o como cadenas de JavaScript en línea. En tales casos, Vue necesita enviar el compilador de templates al navegador para realizar la compilación de templates sobre la marcha. Por otro lado, el compilador sería innecesario si precompilamos los templates con un paso de construcción. Para reducir el tamaño del paquete del cliente, Vue proporciona [diferentes "builds"](https://unpkg.com/browse/vue@3/dist/) optimizados para diferentes casos de uso.
 
-- Los archivos de build que comienzan con `vue.runtime.*` son **builds solo en tiempo de ejecución**: no incluyen el compilador. Al usar estos builds, todas las plantillas deben ser precompiladas a través de un paso de construcción.
+- Los archivos de build que comienzan con `vue.runtime.*` son **builds solo en tiempo de ejecución**: no incluyen el compilador. Al usar estos builds, todas los templates deben ser precompiladas a través de un paso de construcción.
 
-- Los archivos de build que no incluyen `.runtime` son **builds completos**: incluyen el compilador y soportan la compilación de plantillas directamente en el navegador. Sin embargo, aumentarán la carga útil en ~14kb.
+- Los archivos de build que no incluyen `.runtime` son **builds completos**: incluyen el compilador y soportan la compilación de templates directamente en el navegador. Sin embargo, aumentarán la carga útil en ~14kb.
 
-Nuestras configuraciones de herramientas predeterminadas usan el build solo en tiempo de ejecución, ya que todas las plantillas en SFCs están precompiladas. Si, por alguna razón, necesitas la compilación de plantillas en el navegador incluso con un paso de construcción, puedes hacerlo configurando la herramienta de construcción para que `vue` sea un alias de `vue/dist/vue.esm-bundler.js` en su lugar.
+Nuestras configuraciones de herramientas predeterminadas usan el build solo en tiempo de ejecución, ya que todas los templates en SFCs están precompiladas. Si, por alguna razón, necesitas la compilación de templates en el navegador incluso con un paso de construcción, puedes hacerlo configurando la herramienta de construcción para que `vue` sea un alias de `vue/dist/vue.esm-bundler.js` en su lugar.
 
 Si estás buscando una alternativa más ligera para el uso sin paso de construcción, echa un vistazo a [petite-vue](https://github.com/vuejs/petite-vue).
 
 ## Soporte para IDE {#ide-support}
 
-- La configuración de IDE recomendada es [VS Code](https://code.visualstudio.com/) + la [extensión Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (anteriormente Volar). La extensión proporciona resaltado de sintaxis, soporte de TypeScript e intellisense para expresiones de plantilla y `props` de componentes.
+- La configuración de IDE recomendada es [VS Code](https://code.visualstudio.com/) + la [extensión Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (anteriormente Volar). La extensión proporciona resaltado de sintaxis, soporte de TypeScript e intellisense para expresiones de template y `props` de componentes.
 
   :::tip
   Vue - Official reemplaza a [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur), nuestra extensión oficial anterior de VS Code para Vue 2. Si tienes Vetur instalado actualmente, asegúrate de deshabilitarlo en proyectos de Vue 3.
@@ -110,7 +110,7 @@ La extensión de herramientas de desarrollo del navegador de Vue te permite expl
 
 Artículo principal: [Uso de Vue con TypeScript](/guide/typescript/overview).
 
-- La [extensión Vue - Official](https://github.com/vuejs/language-tools) proporciona verificación de tipos para SFCs usando bloques `<script lang="ts">`, incluyendo expresiones de plantilla y validación de `props` entre componentes.
+- La [extensión Vue - Official](https://github.com/vuejs/language-tools) proporciona verificación de tipos para SFCs usando bloques `<script lang="ts">`, incluyendo expresiones de template y validación de `props` entre componentes.
 
 - Usa [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) para realizar la misma verificación de tipos desde la línea de comandos, o para generar archivos `d.ts` para SFCs.
 

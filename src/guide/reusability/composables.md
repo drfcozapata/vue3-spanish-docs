@@ -328,7 +328,7 @@ Hasta cierto punto, puedes pensar en estos composables extraídos como servicios
 
 ## Usando Composables en la Options API {#using-composables-in-options-api}
 
-Si estás utilizando la Options API, los composables deben llamarse dentro de `setup()`, y los enlaces devueltos deben retornarse desde `setup()` para que se expongan a `this` y a la plantilla:
+Si estás utilizando la Options API, los composables deben llamarse dentro de `setup()`, y los enlaces devueltos deben retornarse desde `setup()` para que se expongan a `this` y a el template:
 
 ```js
 import { useMouse } from './mouse.js'

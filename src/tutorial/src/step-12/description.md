@@ -13,7 +13,7 @@ const props = defineProps({
 </script>
 ```
 
-Ten en cuenta que `defineProps()` es una macro de tiempo de compilación y no necesita ser importada. Una vez declarada, la `prop` `msg` puede ser usada en la plantilla del componente hijo. También puede ser accedida en JavaScript vía el objeto retornado de `defineProps()`.
+Ten en cuenta que `defineProps()` es una macro de tiempo de compilación y no necesita ser importada. Una vez declarada, la `prop` `msg` puede ser usada en el template del componente hijo. También puede ser accedida en JavaScript vía el objeto retornado de `defineProps()`.
 
 </div>
 
@@ -31,7 +31,7 @@ export default {
 }
 ```
 
-Una vez declarada, la `prop` `msg` es expuesta en `this` y puede ser usada en la plantilla del componente hijo. Las `props` recibidas son pasadas a `setup()` como el primer argumento.
+Una vez declarada, la `prop` `msg` es expuesta en `this` y puede ser usada en el template del componente hijo. Las `props` recibidas son pasadas a `setup()` como el primer argumento.
 
 </div>
 
@@ -48,7 +48,7 @@ export default {
 }
 ```
 
-Una vez declarada, la `prop` `msg` es expuesta en `this` y puede ser usada en la plantilla del componente hijo.
+Una vez declarada, la `prop` `msg` es expuesta en `this` y puede ser usada en el template del componente hijo.
 
 </div>
 

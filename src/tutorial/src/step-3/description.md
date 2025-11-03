@@ -6,7 +6,7 @@ En Vue, la sintaxis de bigotes solo se usa para la interpolación de texto. Para
 <div v-bind:id="dynamicId"></div>
 ```
 
-Una **directiva** es un atributo especial que comienza con el prefijo `v-`. Son parte de la sintaxis de plantillas de Vue. Similar a las interpolaciones de texto, los valores de las directivas son expresiones de JavaScript que tienen acceso al estado del componente. Todos los detalles de `v-bind` y la sintaxis de directivas se discuten en <a target="_blank" href="/guide/essentials/template-syntax.html">Guía - Sintaxis de Plantillas</a>.
+Una **directiva** es un atributo especial que comienza con el prefijo `v-`. Son parte de la sintaxis de templates de Vue. Similar a las interpolaciones de texto, los valores de las directivas son expresiones de JavaScript que tienen acceso al estado del componente. Todos los detalles de `v-bind` y la sintaxis de directivas se discuten en <a target="_blank" href="/guide/essentials/template-syntax.html">Guía - Sintaxis de Templates</a>.
 
 La parte después de los dos puntos (`:id`) es el "argumento" de la directiva. Aquí, el atributo `id` del elemento se sincronizará con la propiedad `dynamicId` del estado del componente.
 

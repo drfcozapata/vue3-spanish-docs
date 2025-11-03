@@ -84,14 +84,14 @@ export default {
     <button @click="count++">
       Me presionaste {{ count }} veces.
     </button>`
-  // También puede apuntar a una template dentro del DOM:
+  // También puede apuntar a un template dentro del DOM:
   // template: '#my-template-element'
 }
 ```
 
 </div>
 
-Aquí la plantilla se incluye en línea como una cadena de JavaScript, que Vue compilará sobre la marcha. También puedes usar un selector de ID que apunte a un elemento (normalmente elementos `<template>` nativos); Vue utilizará su contenido como fuente de la plantilla.
+Aquí el template se incluye en línea como una cadena de JavaScript, que Vue compilará sobre la marcha. También puedes usar un selector de ID que apunte a un elemento (normalmente elementos `<template>` nativos); Vue utilizará su contenido como fuente de el template.
 
 El ejemplo anterior define un solo componente y lo exporta como la exportación por defecto de un archivo `.js`, pero puedes usar exportaciones con nombre para exportar múltiples componentes desde el mismo archivo.
 
@@ -122,7 +122,7 @@ export default {
 </template>
 ```
 
-Para exponer el componente importado a nuestra plantilla, necesitamos [registrarlo](/guide/components/registration) con la opción `components`. El componente estará entonces disponible como una etiqueta usando la clave bajo la cual está registrado.
+Para exponer el componente importado a nuestro template, necesitamos [registrarlo](/guide/components/registration) con la opción `components`. El componente estará entonces disponible como una etiqueta usando la clave bajo la cual está registrado.
 
 </div>
 
@@ -139,7 +139,7 @@ import ButtonCounter from './ButtonCounter.vue'
 </template>
 ```
 
-Con `<script setup>`, los componentes importados se hacen disponibles automáticamente en la plantilla.
+Con `<script setup>`, los componentes importados se hacen disponibles automáticamente en el template.
 
 </div>
 
@@ -169,7 +169,7 @@ Observa que al hacer clic en los botones, cada uno mantiene su propio `count` se
 
 En los SFC, se recomienda usar nombres de etiqueta `PascalCase` para los componentes hijos para diferenciarlos de los elementos HTML nativos. Aunque los nombres de etiqueta HTML nativos no distinguen entre mayúsculas y minúsculas, Vue SFC es un formato compilado, por lo que podemos usar nombres de etiqueta que sí distinguen entre mayúsculas y minúsculas. También podemos usar `/>` para cerrar una etiqueta.
 
-Si estás creando tus plantillas directamente en el DOM (por ejemplo, como contenido de un elemento `<template>` nativo), la plantilla estará sujeta al comportamiento de análisis HTML nativo del navegador. En tales casos, deberás usar `kebab-case` y etiquetas de cierre explícitas para los componentes:
+Si estás creando tus templates directamente en el DOM (por ejemplo, como contenido de un elemento `<template>` nativo), el template estará sujeta al comportamiento de análisis HTML nativo del navegador. En tales casos, deberás usar `kebab-case` y etiquetas de cierre explícitas para los componentes:
 
 ```vue-html
 <!-- si esta template es escrita en el DOM -->
@@ -200,7 +200,7 @@ export default {
 </template>
 ```
 
-Cuando se pasa un valor a un atributo de prop, este se convierte en una propiedad de esa instancia de componente. El valor de esa propiedad es accesible dentro de la plantilla y en el contexto `this` del componente, al igual que cualquier otra propiedad del componente.
+Cuando se pasa un valor a un atributo de prop, este se convierte en una propiedad de esa instancia de componente. El valor de esa propiedad es accesible dentro de el template y en el contexto `this` del componente, al igual que cualquier otra propiedad del componente.
 
 </div>
 <div class="composition-api">
@@ -215,7 +215,7 @@ defineProps(['title'])
 </template>
 ```
 
-`defineProps` es una macro en tiempo de compilación que solo está disponible dentro de `<script setup>` y no necesita ser importada explícitamente. Las props declaradas se exponen automáticamente a la plantilla. `defineProps` también devuelve un objeto que contiene todas las props pasadas al componente, de modo que podemos acceder a ellas en JavaScript si es necesario:
+`defineProps` es una macro en tiempo de compilación que solo está disponible dentro de `<script setup>` y no necesita ser importada explícitamente. Las props declaradas se exponen automáticamente a el template. `defineProps` también devuelve un objeto que contiene todas las props pasadas al componente, de modo que podemos acceder a ellas en JavaScript si es necesario:
 
 ```js
 const props = defineProps(['title'])
@@ -336,7 +336,7 @@ const postFontSize = ref(1)
 
 </div>
 
-Que puede usarse en la plantilla para controlar el tamaño de la fuente de todas las entradas de blog:
+Que puede usarse en el template para controlar el tamaño de la fuente de todas las entradas de blog:
 
 ```vue-html{1,7}
 <div :style="{ fontSize: postFontSize + 'em' }">
@@ -348,7 +348,7 @@ Que puede usarse en la plantilla para controlar el tamaño de la fuente de todas
 </div>
 ```
 
-Ahora agreguemos un botón a la plantilla del componente `<BlogPost>`:
+Ahora agreguemos un botón a el template del componente `<BlogPost>`:
 
 ```vue{5} [BlogPost.vue]
 <!-- omitiendo <script> -->
@@ -543,19 +543,19 @@ Al cambiar entre múltiples componentes con `<component :is="...">`, un componen
 
 ## Consideraciones sobre el Análisis de Templates en el DOM {#in-dom-template-parsing-caveats}
 
-Si estás escribiendo tus plantillas de Vue directamente en el DOM, Vue tendrá que recuperar la cadena de la plantilla del DOM. Esto conlleva algunas consideraciones debido al comportamiento nativo de análisis HTML de los navegadores.
+Si estás escribiendo tus templates de Vue directamente en el DOM, Vue tendrá que recuperar la cadena de el template del DOM. Esto conlleva algunas consideraciones debido al comportamiento nativo de análisis HTML de los navegadores.
 
 :::tip
-Cabe señalar que las limitaciones que se discuten a continuación solo se aplican si estás escribiendo tus plantillas directamente en el DOM. NO se aplican si estás utilizando plantillas de cadena de las siguientes fuentes:
+Cabe señalar que las limitaciones que se discuten a continuación solo se aplican si estás escribiendo tus templates directamente en el DOM. NO se aplican si estás utilizando templates de cadena de las siguientes fuentes:
 
 - Componentes de Archivo Único
-- Cadenas de plantilla en línea (por ejemplo, `template: '...'`)
+- Cadenas de template en línea (por ejemplo, `template: '...'`)
 - `<script type="text/x-template">`
   :::
 
 ### Insensibilidad a Mayúsculas y Minúsculas {#case-insensitivity}
 
-Las etiquetas HTML y los nombres de atributos no distinguen entre mayúsculas y minúsculas, por lo que los navegadores interpretarán cualquier carácter en mayúscula como minúscula. Esto significa que cuando uses plantillas en el DOM, los nombres de componentes en PascalCase y los nombres de prop en camelCase o los nombres de eventos `v-on` deberán usar sus equivalentes en kebab-case (delimitados por guiones):
+Las etiquetas HTML y los nombres de atributos no distinguen entre mayúsculas y minúsculas, por lo que los navegadores interpretarán cualquier carácter en mayúscula como minúscula. Esto significa que cuando uses templates en el DOM, los nombres de componentes en PascalCase y los nombres de prop en camelCase o los nombres de eventos `v-on` deberán usar sus equivalentes en kebab-case (delimitados por guiones):
 
 ```js
 // camelCase en JavaScript
@@ -581,9 +581,9 @@ Hemos estado utilizando etiquetas de cierre automático para componentes en ejem
 <MyComponent />
 ```
 
-Esto se debe a que el analizador de plantillas de Vue respeta `/>` como una indicación para finalizar cualquier etiqueta, independientemente de su tipo.
+Esto se debe a que el analizador de templates de Vue respeta `/>` como una indicación para finalizar cualquier etiqueta, independientemente de su tipo.
 
-Sin embargo, en las plantillas en el DOM, siempre debemos incluir etiquetas de cierre explícitas:
+Sin embargo, en los templates en el DOM, siempre debemos incluir etiquetas de cierre explícitas:
 
 ```vue-html
 <my-component></my-component>
@@ -628,6 +628,6 @@ El componente personalizado `<blog-post-row>` se extraerá como contenido no vá
 Cuando se utiliza en elementos HTML nativos, el valor de `is` debe ir prefijado con `vue:` para ser interpretado como un componente de Vue. Esto es necesario para evitar confusiones con los [elementos customizados integrados](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example) nativos.
 :::
 
-Eso es todo lo que necesitas saber sobre las consideraciones del análisis de plantillas en el DOM por ahora, y de hecho, el final de los _Fundamentos_ de Vue. ¡Felicidades! Aún hay más que aprender, pero primero, te recomendamos tomar un descanso para jugar con Vue por tu cuenta: construye algo divertido, o consulta algunos de los [Ejemplos](/examples/) si aún no lo has hecho.
+Eso es todo lo que necesitas saber sobre las consideraciones del análisis de templates en el DOM por ahora, y de hecho, el final de los _Fundamentos_ de Vue. ¡Felicidades! Aún hay más que aprender, pero primero, te recomendamos tomar un descanso para jugar con Vue por tu cuenta: construye algo divertido, o consulta algunos de los [Ejemplos](/examples/) si aún no lo has hecho.
 
 Una vez que te sientas cómodo con los conocimientos que acabas de asimilar, continúa con la guía para aprender más a fondo sobre los componentes.

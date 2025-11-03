@@ -11,7 +11,7 @@ El hook `setup()` sirve como punto de entrada para el uso de la Composition API 
 Si estás usando la Composition API con Componentes de Archivo Único, se recomienda encarecidamente [`<script setup>`](/api/sfc-script-setup) para una sintaxis más concisa y ergonómica.
 :::
 
-Podemos declarar estado reactivo usando las [APIs de Reactividad](./reactivity-core) y exponerlos a la plantilla devolviendo un objeto desde `setup()`. Las propiedades del objeto devuelto también estarán disponibles en la instancia del componente (si se usan otras opciones):
+Podemos declarar estado reactivo usando las [APIs de Reactividad](./reactivity-core) y exponerlos a el template devolviendo un objeto desde `setup()`. Las propiedades del objeto devuelto también estarán disponibles en la instancia del componente (si se usan otras opciones):
 
 ```vue
 <script>
@@ -38,7 +38,7 @@ export default {
 </template>
 ```
 
-Los [refs](/api/reactivity-core#ref) devueltos desde `setup` se [desenvuelven automáticamente de forma superficial](/guide/essentials/reactivity-fundamentals#deep-reactivity) cuando se acceden en la plantilla, por lo que no necesitas usar `.value` al acceder a ellos. También se desenvuelven de la misma manera cuando se acceden en `this`.
+Los [refs](/api/reactivity-core#ref) devueltos desde `setup` se [desenvuelven automáticamente de forma superficial](/guide/essentials/reactivity-fundamentals#deep-reactivity) cuando se acceden en el template, por lo que no necesitas usar `.value` al acceder a ellos. También se desenvuelven de la misma manera cuando se acceden en `this`.
 
 `setup()` en sí mismo no tiene acceso a la instancia del componente: `this` tendrá un valor de `undefined` dentro de `setup()`. Puedes acceder a los valores expuestos por la Composition API desde la Options API, pero no al revés.
 
@@ -115,7 +115,7 @@ export default {
 
 ### Exponiendo Propiedades Públicas {#exposing-public-properties}
 
-`expose` es una función que se puede usar para limitar explícitamente las propiedades expuestas cuando la instancia del componente es accedida por un componente padre a través de [refs de plantilla](/guide/essentials/template-refs#ref-on-component):
+`expose` es una función que se puede usar para limitar explícitamente las propiedades expuestas cuando la instancia del componente es accedida por un componente padre a través de [Template Refs](/guide/essentials/template-refs#ref-on-component):
 
 ```js{5,10}
 export default {
@@ -147,7 +147,7 @@ export default {
 }
 ```
 
-Devolver una función de renderizado nos impide devolver cualquier otra cosa. Internamente eso no debería ser un problema, pero puede ser problemático si queremos exponer métodos de este componente al componente padre a través de `refs` de plantilla.
+Devolver una función de renderizado nos impide devolver cualquier otra cosa. Internamente eso no debería ser un problema, pero puede ser problemático si queremos exponer métodos de este componente al componente padre a través de `refs` de template.
 
 Podemos resolver este problema llamando a [`expose()`](#exposing-public-properties):
 
@@ -168,4 +168,4 @@ export default {
 }
 ```
 
-El método `increment` estaría entonces disponible en el componente padre a través de una `ref` de plantilla.
+El método `increment` estaría entonces disponible en el componente padre a través de una `ref` de template.

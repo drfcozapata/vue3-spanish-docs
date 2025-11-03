@@ -6,7 +6,7 @@ Lo que ves en el editor es un Componente de Archivo Único (SFC) de Vue. Un SFC 
 
 </div>
 
-La característica principal de Vue es el **renderizado declarativo**: usando una sintaxis de plantilla que extiende HTML, podemos describir cómo debe verse el HTML basándose en el estado de JavaScript. Cuando el estado cambia, el HTML se actualiza automáticamente.
+La característica principal de Vue es el **renderizado declarativo**: usando una sintaxis de template que extiende HTML, podemos describir cómo debe verse el HTML basándose en el estado de JavaScript. Cuando el estado cambia, el HTML se actualiza automáticamente.
 
 <div class="composition-api">
 
@@ -38,7 +38,7 @@ Los detalles sobre `reactive()` y `ref()` se discuten en <a target="_blank" href
 
 <div class="sfc">
 
-El estado reactivo declarado en el bloque `<script setup>` del componente se puede usar directamente en la plantilla. Así es como podemos renderizar texto dinámico basándonos en el valor del objeto `counter` y la `ref` `message`, usando la sintaxis de bigotes:
+El estado reactivo declarado en el bloque `<script setup>` del componente se puede usar directamente en el template. Así es como podemos renderizar texto dinámico basándonos en el valor del objeto `counter` y la `ref` `message`, usando la sintaxis de bigotes:
 
 </div>
 
@@ -57,7 +57,7 @@ setup() {
 }
 ```
 
-Las propiedades en el objeto devuelto estarán disponibles en la plantilla. Así es como podemos renderizar texto dinámico basándonos en el valor de `message`, usando la sintaxis de bigotes:
+Las propiedades en el objeto devuelto estarán disponibles en el template. Así es como podemos renderizar texto dinámico basándonos en el valor de `message`, usando la sintaxis de bigotes:
 
 </div>
 
@@ -66,7 +66,7 @@ Las propiedades en el objeto devuelto estarán disponibles en la plantilla. Así
 <p>Count is: {{ counter.count }}</p>
 ```
 
-Observa cómo no necesitamos usar `.value` al acceder a la `ref` `message` en las plantillas: se desenvuelve automáticamente para un uso más conciso.
+Observa cómo no necesitamos usar `.value` al acceder a la `ref` `message` en los templates: se desenvuelve automáticamente para un uso más conciso.
 
 </div>
 
@@ -103,7 +103,7 @@ createApp({
 
 </div>
 
-La propiedad `message` estará disponible en la plantilla. Así es como podemos renderizar texto dinámico basándonos en el valor de `message`, usando la sintaxis de bigotes:
+La propiedad `message` estará disponible en el template. Así es como podemos renderizar texto dinámico basándonos en el valor de `message`, usando la sintaxis de bigotes:
 
 ```vue-html
 <h1>{{ message }}</h1>
@@ -119,12 +119,12 @@ El contenido dentro de los bigotes no se limita solo a identificadores o rutas; 
 
 <div class="composition-api">
 
-Ahora, intenta crear un estado reactivo tú mismo y úsalo para renderizar contenido de texto dinámico para el `<h1>` en la plantilla.
+Ahora, intenta crear un estado reactivo tú mismo y úsalo para renderizar contenido de texto dinámico para el `<h1>` en el template.
 
 </div>
 
 <div class="options-api">
 
-Ahora, intenta crear una propiedad `data` tú mismo y úsala como contenido de texto para el `<h1>` en la plantilla.
+Ahora, intenta crear una propiedad `data` tú mismo y úsala como contenido de texto para el `<h1>` en el template.
 
 </div>

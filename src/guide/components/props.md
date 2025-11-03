@@ -186,7 +186,7 @@ La función externa puede llamar al getter (o normalizarlo con [toValue](/api/re
 
 ### Casos de Nombres de Props {#prop-name-casing}
 
-Declaramos nombres de props largos usando camelCase porque esto evita tener que usar comillas al usarlos como claves de propiedad, y nos permite referenciarlos directamente en expresiones de plantilla porque son identificadores JavaScript válidos:
+Declaramos nombres de props largos usando camelCase porque esto evita tener que usar comillas al usarlos como claves de propiedad, y nos permite referenciarlos directamente en expresiones de template porque son identificadores JavaScript válidos:
 
 <div class="composition-api">
 
@@ -213,13 +213,13 @@ export default {
 <span>{{ greetingMessage }}</span>
 ```
 
-Técnicamente, también puedes usar camelCase al pasar props a un componente hijo (excepto en [plantillas en el DOM](/guide/essentials/component-basics#in-dom-template-parsing-caveats)). Sin embargo, la convención es usar kebab-case en todos los casos para alinearse con los atributos HTML:
+Técnicamente, también puedes usar camelCase al pasar props a un componente hijo (excepto en [templates en el DOM](/guide/essentials/component-basics#in-dom-template-parsing-caveats)). Sin embargo, la convención es usar kebab-case en todos los casos para alinearse con los atributos HTML:
 
 ```vue-html
 <MyComponent greeting-message="hola" />
 ```
 
-Usamos [PascalCase para etiquetas de componentes](/guide/components/registration#component-name-casing) cuando es posible porque mejora la legibilidad de la plantilla al diferenciar los componentes de Vue de los elementos nativos. Sin embargo, no hay tanto beneficio práctico en usar camelCase al pasar props, por lo que elegimos seguir las convenciones de cada lenguaje.
+Usamos [PascalCase para etiquetas de componentes](/guide/components/registration#component-name-casing) cuando es posible porque mejora la legibilidad de el template al diferenciar los componentes de Vue de los elementos nativos. Sin embargo, no hay tanto beneficio práctico en usar camelCase al pasar props, por lo que elegimos seguir las convenciones de cada lenguaje.
 
 ### Props Estáticas vs. Dinámicas {#static-vs-dynamic-props}
 
@@ -326,7 +326,7 @@ const post = {
 
 </div>
 
-La siguiente plantilla:
+El siguiente template:
 
 ```vue-html
 <BlogPost v-bind="post" />

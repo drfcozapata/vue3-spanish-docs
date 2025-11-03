@@ -10,7 +10,7 @@ outline: deep
 
 Un "atributo de fallthrough" es un atributo o un `v-on` event listener que se pasa a un componente, pero que no está declarado explícitamente en las [props](./props) o [emits](./events#declaring-emitted-events) del componente receptor. Ejemplos comunes de esto incluyen los atributos `class`, `style` e `id`.
 
-Cuando un componente renderiza un único elemento raíz, los atributos de fallthrough se añadirán automáticamente a los atributos del elemento raíz. Por ejemplo, dado un componente `<MyButton>` con la siguiente plantilla:
+Cuando un componente renderiza un único elemento raíz, los atributos de fallthrough se añadirán automáticamente a los atributos del elemento raíz. Por ejemplo, dado un componente `<MyButton>` con el siguiente template:
 
 ```vue-html
 <!-- template de <MyButton> -->
@@ -33,7 +33,7 @@ Aquí, `<MyButton>` no declaró `class` como una prop aceptada. Por lo tanto, `c
 
 ### Fusión de `class` y `style` {#class-and-style-merging}
 
-Si el elemento raíz del componente hijo ya tiene atributos `class` o `style` existentes, se fusionarán con los valores `class` y `style` que se heredan del padre. Supongamos que cambiamos la plantilla de `<MyButton>` en el ejemplo anterior a:
+Si el elemento raíz del componente hijo ya tiene atributos `class` o `style` existentes, se fusionarán con los valores `class` y `style` que se heredan del padre. Supongamos que cambiamos el template de `<MyButton>` en el ejemplo anterior a:
 
 ```vue-html
 <!-- template de <MyButton> -->
@@ -94,7 +94,7 @@ defineOptions({
 
 El escenario común para deshabilitar la herencia de atributos es cuando los atributos necesitan aplicarse a otros elementos además del nodo raíz. Al establecer la opción `inheritAttrs` en `false`, puedes tener control total sobre dónde deben aplicarse los atributos de fallthrough.
 
-Estos atributos de fallthrough pueden ser accedidos directamente en las expresiones de plantilla como `$attrs`:
+Estos atributos de fallthrough pueden ser accedidos directamente en las expresiones de template como `$attrs`:
 
 ```vue-html
 <span>Atributos de Fallthrough: {{ $attrs }}</span>
@@ -134,7 +134,7 @@ A diferencia de los componentes con un único nodo raíz, los componentes con m�
 <CustomLayout id="custom-layout" @click="changeValue" />
 ```
 
-Si `<CustomLayout>` tiene la siguiente plantilla multi-raíz, habrá una advertencia porque Vue no puede estar seguro de dónde aplicar los atributos de fallthrough:
+Si `<CustomLayout>` tiene el siguiente template multi-raíz, habrá una advertencia porque Vue no puede estar seguro de dónde aplicar los atributos de fallthrough:
 
 ```vue-html
 <header>...</header>

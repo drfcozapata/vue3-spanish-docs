@@ -120,7 +120,7 @@ Ver también:
 
 ### Uso en Componentes de Archivo Único {#usage-in-single-file-components}
 
-Para usar TypeScript en SFCs, añade el atributo `lang="ts"` a las etiquetas `<script>`. Cuando `lang="ts"` está presente, todas las expresiones de la plantilla también disfrutan de una verificación de tipos más estricta.
+Para usar TypeScript en SFCs, añade el atributo `lang="ts"` a las etiquetas `<script>`. Cuando `lang="ts"` está presente, todas las expresiones de el template también disfrutan de una verificación de tipos más estricta.
 
 ```vue
 <script lang="ts">
@@ -157,9 +157,9 @@ const count = ref(1)
 </template>
 ```
 
-### TypeScript en Plantillas {#typescript-in-templates}
+### TypeScript en Templates {#typescript-in-templates}
 
-La etiqueta `<template>` también soporta TypeScript en expresiones de enlace (binding expressions) cuando se usa `<script lang="ts">` o `<script setup lang="ts">`. Esto es útil en casos donde necesitas realizar una conversión de tipos (type casting) en expresiones de la plantilla.
+La etiqueta `<template>` también soporta TypeScript en expresiones de enlace (binding expressions) cuando se usa `<script lang="ts">` o `<script setup lang="ts">`. Esto es útil en casos donde necesitas realizar una conversión de tipos (type casting) en expresiones de el template.
 
 Aquí tienes un ejemplo forzado:
 
@@ -187,7 +187,7 @@ let x: string | number = 1
 ```
 
 :::tip
-Si utilizas Vue CLI o una configuración basada en webpack, TypeScript en las expresiones de la plantilla requiere `vue-loader@^16.8.0`.
+Si utilizas Vue CLI o una configuración basada en webpack, TypeScript en las expresiones de el template requiere `vue-loader@^16.8.0`.
 :::
 
 ### Uso con TSX {#usage-with-tsx}

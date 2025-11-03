@@ -268,9 +268,9 @@ export function MyComponent() {
 
 ### Web Components basados en Vue y TypeScript {#web-components-and-typescript}
 
-Al escribir plantillas SFC de Vue, es posible que desees [comprobar el tipo](/guide/scaling-up/tooling.html#typescript) de tus componentes Vue, incluyendo aquellos definidos como elementos personalizados.
+Al escribir templates SFC de Vue, es posible que desees [comprobar el tipo](/guide/scaling-up/tooling.html#typescript) de tus componentes Vue, incluyendo aquellos definidos como elementos personalizados.
 
-Los elementos personalizados se registran globalmente en los navegadores utilizando sus APIs integradas, y por defecto no tendrán inferencia de tipos cuando se usen en plantillas de Vue. Para proporcionar soporte de tipos para los componentes Vue registrados como elementos personalizados, podemos registrar tipados de componentes globales aumentando la interfaz [`GlobalComponents`](https://github.com/vuejs/language-tools/wiki/Global-Component-Types) para la verificación de tipos en plantillas Vue (los usuarios de JSX pueden aumentar el tipo [JSX.IntrinsicElements](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements) en su lugar, lo cual no se muestra aquí).
+Los elementos personalizados se registran globalmente en los navegadores utilizando sus APIs integradas, y por defecto no tendrán inferencia de tipos cuando se usen en templates de Vue. Para proporcionar soporte de tipos para los componentes Vue registrados como elementos personalizados, podemos registrar tipados de componentes globales aumentando la interfaz [`GlobalComponents`](https://github.com/vuejs/language-tools/wiki/Global-Component-Types) para la verificación de tipos en templates Vue (los usuarios de JSX pueden aumentar el tipo [JSX.IntrinsicElements](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements) en su lugar, lo cual no se muestra aquí).
 
 Así es como se define el tipo para un elemento personalizado hecho con Vue:
 
@@ -300,7 +300,7 @@ declare module 'vue' {
 
 ## Web Components no-Vue y TypeScript {#non-vue-web-components-and-typescript}
 
-Aquí está la forma recomendada de habilitar la verificación de tipos en plantillas SFC de elementos personalizados que no están construidos con Vue.
+Aquí está la forma recomendada de habilitar la verificación de tipos en templates SFC de elementos personalizados que no están construidos con Vue.
 
 :::tip Nota
 Este enfoque es una posible forma de hacerlo, pero puede variar dependiendo del framework que se utilice para crear los elementos personalizados.
@@ -385,7 +385,7 @@ type VueEmit<T extends EventMap> = EmitFn<{
 Hemos marcado `$props` y `$emit` como `deprecated` para que, cuando obtengamos una `ref` a un elemento personalizado, no tengamos la tentación de usar estas propiedades, ya que estas propiedades son solo para fines de verificación de tipos cuando se trata de elementos personalizados. Estas propiedades no existen realmente en las instancias de elementos personalizados.
 :::
 
-Usando el `type helper` ahora podemos seleccionar las propiedades JS que deben exponerse para la verificación de tipos en las plantillas de Vue:
+Usando el `type helper` ahora podemos seleccionar las propiedades JS que deben exponerse para la verificación de tipos en los templates de Vue:
 
 ```ts [some-lib/src/SomeElement.vue.ts]
 import {
@@ -497,7 +497,7 @@ Algunos desarrolladores creen que los modelos de componentes propietarios de los
 
 De hecho, existe un cierto nivel de superposición de características entre Custom Elements y Vue Components: ambos nos permiten definir componentes reutilizables con paso de datos, emisión de eventos y gestión del ciclo de vida. Sin embargo, las APIs de Web Components son relativamente de bajo nivel y básicas. Para construir una aplicación real, necesitamos bastantes capacidades adicionales que la plataforma no cubre:
 
-- Un sistema de plantillas declarativo y eficiente;
+- Un sistema de templates declarativo y eficiente;
 
 - Un sistema de gestión de estado reactivo que facilite la extracción y reutilización de lógica entre componentes;
 

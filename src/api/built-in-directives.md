@@ -18,7 +18,7 @@ Actualiza el contenido de texto del elemento.
   <span>{{msg}}</span>
   ```
 
-- **Ver también** [Sintaxis de Plantilla - Interpolación de Texto](/guide/essentials/template-syntax#text-interpolation)
+- **Ver también** [Sintaxis de Template - Interpolación de Texto](/guide/essentials/template-syntax#text-interpolation)
 
 ## v-html {#v-html}
 
@@ -28,13 +28,13 @@ Actualiza el [innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Elemen
 
 - **Detalles**
 
-  El contenido de `v-html` se inserta como HTML plano - la sintaxis de plantilla de Vue no será procesada. Si te encuentras intentando componer plantillas usando `v-html`, intenta repensar la solución utilizando componentes en su lugar.
+  El contenido de `v-html` se inserta como HTML plano - la sintaxis de template de Vue no será procesada. Si te encuentras intentando componer templates usando `v-html`, intenta repensar la solución utilizando componentes en su lugar.
 
   ::: warning Nota de Seguridad
   Renderizar dinámicamente HTML arbitrario en tu sitio web puede ser muy peligroso porque puede conducir fácilmente a [ataques XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Usa `v-html` solo en contenido de confianza y **nunca** en contenido proporcionado por el usuario.
   :::
 
-  En [Componentes de Archivo Único](/guide/scaling-up/sfc), los estilos `scoped` no se aplicarán al contenido dentro de `v-html`, porque ese HTML no es procesado por el compilador de plantillas de Vue. Si deseas aplicar estilos CSS `scoped` al contenido de `v-html`, puedes usar [módulos CSS](./sfc-css-features#css-modules) o un elemento `<style>` global adicional con una estrategia de alcance manual como BEM.
+  En [Componentes de Archivo Único](/guide/scaling-up/sfc), los estilos `scoped` no se aplicarán al contenido dentro de `v-html`, porque ese HTML no es procesado por el compilador de templates de Vue. Si deseas aplicar estilos CSS `scoped` al contenido de `v-html`, puedes usar [módulos CSS](./sfc-css-features#css-modules) o un elemento `<style>` global adicional con una estrategia de alcance manual como BEM.
 
 - **Ejemplo**
 
@@ -42,7 +42,7 @@ Actualiza el [innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Elemen
   <div v-html="html"></div>
   ```
 
-- **Ver también** [Sintaxis de Plantilla - HTML Crudo](/guide/essentials/template-syntax#raw-html)
+- **Ver también** [Sintaxis de Template - HTML Crudo](/guide/essentials/template-syntax#raw-html)
 
 ## v-show {#v-show}
 
@@ -58,7 +58,7 @@ Alterna la visibilidad del elemento basándose en el valor de verdad de la expre
 
 ## v-if {#v-if}
 
-Renderiza condicionalmente un elemento o un fragmento de plantilla basándose en el valor de verdad de la expresión.
+Renderiza condicionalmente un elemento o un fragmento de template basándose en el valor de verdad de la expresión.
 
 - **Espera:** `any`
 
@@ -132,7 +132,7 @@ Denota el "bloque else if" para `v-if`. Puede encadenarse.
 
 ## v-for {#v-for}
 
-Renderiza el elemento o bloque de plantilla múltiples veces basándose en los datos de origen.
+Renderiza el elemento o bloque de template múltiples veces basándose en los datos de origen.
 
 - **Espera:** `Array | Object | number | string | Iterable`
 
@@ -258,6 +258,7 @@ Adjunta un escuchador de eventos al elemento.
 Vincula dinámicamente uno o más atributos, o una `prop` de componente a una expresión.
 
 - **Abreviatura:**
+
   - `:` o `.` (cuando se usa el modificador `.prop`)
   - Omitiendo valor (cuando el atributo y el valor vinculado tienen el mismo nombre, requiere 3.4+)
 
@@ -333,13 +334,13 @@ Vincula dinámicamente uno o más atributos, o una `prop` de componente a una ex
   <div .someProperty="someObject"></div>
   ```
 
-  El modificador `.camel` permite camelizar un nombre de atributo `v-bind` cuando se usan plantillas en el DOM, por ejemplo, el atributo SVG `viewBox`:
+  El modificador `.camel` permite camelizar un nombre de atributo `v-bind` cuando se usan templates en el DOM, por ejemplo, el atributo SVG `viewBox`:
 
   ```vue-html
   <svg :view-box.camel="viewBox"></svg>
   ```
 
-  `.camel` no es necesario si estás utilizando plantillas de cadena, o pre-compilando la plantilla con un paso de construcción.
+  `.camel` no es necesario si estás utilizando templates de cadena, o pre-compilando el template con un paso de construcción.
 
 - **Ver también**
   - [Vinculación de Clases y Estilos](/guide/essentials/class-and-style)
@@ -428,7 +429,7 @@ Omite la compilación para este elemento y todos sus hijos.
 
 - **Detalles**
 
-  Dentro del elemento con `v-pre`, toda la sintaxis de plantilla de Vue se conservará y se renderizará tal cual. El caso de uso más común es mostrar etiquetas de bigotes sin procesar.
+  Dentro del elemento con `v-pre`, toda la sintaxis de template de Vue se conservará y se renderizará tal cual. El caso de uso más común es mostrar etiquetas de bigotes sin procesar.
 
 - **Ejemplo**
 
@@ -462,7 +463,7 @@ Renderiza el elemento y el componente una sola vez, y omite futuras actualizacio
   </ul>
   ```
 
-  Desde la versión 3.2, también puedes memoizar parte de la plantilla con condiciones de invalidación usando [`v-memo`](#v-memo).
+  Desde la versión 3.2, también puedes memoizar parte de el template con condiciones de invalidación usando [`v-memo`](#v-memo).
 
 - **Ver también**
   - [Sintaxis de Vinculación de Datos - interpolaciones](/guide/essentials/template-syntax#text-interpolation)
@@ -476,7 +477,7 @@ Renderiza el elemento y el componente una sola vez, y omite futuras actualizacio
 
 - **Detalles**
 
-  Memoiza un subárbol de la plantilla. Puede usarse tanto en elementos como en componentes. La directiva espera un array de longitud fija de valores de dependencia para comparar para la memoización. Si cada valor en el array fue el mismo que en el último renderizado, entonces las actualizaciones para todo el subárbol se omitirán. Por ejemplo:
+  Memoiza un subárbol de el template. Puede usarse tanto en elementos como en componentes. La directiva espera un array de longitud fija de valores de dependencia para comparar para la memoización. Si cada valor en el array fue el mismo que en el último renderizado, entonces las actualizaciones para todo el subárbol se omitirán. Por ejemplo:
 
   ```vue-html
   <div v-memo="[valueA, valueB]">
@@ -512,7 +513,7 @@ Renderiza el elemento y el componente una sola vez, y omite futuras actualizacio
 
 ## v-cloak {#v-cloak}
 
-Se utiliza para ocultar la plantilla sin compilar hasta que esté lista.
+Se utiliza para ocultar el template sin compilar hasta que esté lista.
 
 - **No espera expresión**
 
@@ -520,9 +521,9 @@ Se utiliza para ocultar la plantilla sin compilar hasta que esté lista.
 
   **Esta directiva solo es necesaria en configuraciones sin paso de construcción.**
 
-  Al usar plantillas en el DOM, puede haber un "destello de plantillas sin compilar": el usuario puede ver etiquetas de bigotes sin procesar hasta que el componente montado las reemplace con contenido renderizado.
+  Al usar templates en el DOM, puede haber un "destello de templates sin compilar": el usuario puede ver etiquetas de bigotes sin procesar hasta que el componente montado las reemplace con contenido renderizado.
 
-  `v-cloak` permanecerá en el elemento hasta que la instancia del componente asociado esté montada. Combinado con reglas CSS como `[v-cloak] { display: none }`, se puede usar para ocultar las plantillas sin procesar hasta que el componente esté listo.
+  `v-cloak` permanecerá en el elemento hasta que la instancia del componente asociado esté montada. Combinado con reglas CSS como `[v-cloak] { display: none }`, se puede usar para ocultar los templates sin procesar hasta que el componente esté listo.
 
 - **Ejemplo**
 

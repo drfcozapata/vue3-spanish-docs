@@ -48,7 +48,7 @@ components/
 
 **Los nombres de archivo de los [Single-File Components](/guide/scaling-up/sfc) deben ser siempre PascalCase o siempre kebab-case.**
 
-PascalCase funciona mejor con la función de autocompletado en los editores de código, ya que es consistente con la forma en que referenciamos los componentes en JS(X) y las plantillas, siempre que sea posible. Sin embargo, los nombres de archivo con mayúsculas y minúsculas mezcladas a veces pueden generar problemas en sistemas de archivos que no distinguen entre mayúsculas y minúsculas, por lo que kebab-case también es perfectamente aceptable.
+PascalCase funciona mejor con la función de autocompletado en los editores de código, ya que es consistente con la forma en que referenciamos los componentes en JS(X) y los templates, siempre que sea posible. Sin embargo, los nombres de archivo con mayúsculas y minúsculas mezcladas a veces pueden generar problemas en sistemas de archivos que no distinguen entre mayúsculas y minúsculas, por lo que kebab-case también es perfectamente aceptable.
 
 <div class="style-example style-example-bad">
 <h3>Mal</h3>
@@ -313,22 +313,22 @@ components/
 
 ## Componentes de autocierre {#self-closing-components}
 
-**Los componentes sin contenido deben autocerrarse en [Single-File Components](/guide/scaling-up/sfc), plantillas de cadena y [JSX](/guide/extras/render-function#jsx-tsx), pero nunca en plantillas in-DOM.**
+**Los componentes sin contenido deben autocerrarse en [Single-File Components](/guide/scaling-up/sfc), templates de cadena y [JSX](/guide/extras/render-function#jsx-tsx), pero nunca en templates in-DOM.**
 
 Los componentes que se autocierran comunican que no solo no tienen contenido, sino que **están destinados** a no tener contenido. Es la diferencia entre una página en blanco en un libro y una etiquetada como "Esta página se dejó en blanco intencionalmente". Tu código también es más limpio sin la etiqueta de cierre innecesaria.
 
-Desafortunadamente, HTML no permite que los elementos personalizados se autocierren, solo los [elementos "void" oficiales](https://www.w3.org/TR/html/syntax.html#void-elements). Por eso, la estrategia solo es posible cuando el compilador de plantillas de Vue puede acceder a la plantilla antes del DOM, para luego servir el HTML que cumple con las especificaciones del DOM.
+Desafortunadamente, HTML no permite que los elementos personalizados se autocierren, solo los [elementos "void" oficiales](https://www.w3.org/TR/html/syntax.html#void-elements). Por eso, la estrategia solo es posible cuando el compilador de templates de Vue puede acceder a el template antes del DOM, para luego servir el HTML que cumple con las especificaciones del DOM.
 
 <div class="style-example style-example-bad">
 <h3>Mal</h3>
 
 ```vue-html
-<!-- En Single-File Components, plantillas de cadena y JSX -->
+<!-- En Single-File Components, templates de cadena y JSX -->
 <MyComponent></MyComponent>
 ```
 
 ```vue-html
-<!-- En plantillas in-DOM -->
+<!-- En templates in-DOM -->
 <my-component/>
 ```
 
@@ -338,28 +338,28 @@ Desafortunadamente, HTML no permite que los elementos personalizados se autocier
 <h3>Bien</h3>
 
 ```vue-html
-<!-- En Single-File Components, plantillas de cadena y JSX -->
+<!-- En Single-File Components, templates de cadena y JSX -->
 <MyComponent/>
 ```
 
 ```vue-html
-<!-- En plantillas in-DOM -->
+<!-- En templates in-DOM -->
 <my-component></my-component>
 ```
 
 </div>
 
-## Uso de mayúsculas/minúsculas en nombres de componentes en plantillas {#component-name-casing-in-templates}
+## Uso de mayúsculas/minúsculas en nombres de componentes en templates {#component-name-casing-in-templates}
 
-**En la mayoría de los proyectos, los nombres de los componentes siempre deben estar en PascalCase en [Single-File Components](/guide/scaling-up/sfc) y plantillas de cadena, pero en kebab-case en plantillas in-DOM.**
+**En la mayoría de los proyectos, los nombres de los componentes siempre deben estar en PascalCase en [Single-File Components](/guide/scaling-up/sfc) y templates de cadena, pero en kebab-case en templates in-DOM.**
 
 PascalCase tiene algunas ventajas sobre kebab-case:
 
-- Los editores pueden autocompletar los nombres de los componentes en las plantillas, porque PascalCase también se usa en JavaScript.
+- Los editores pueden autocompletar los nombres de los componentes en los templates, porque PascalCase también se usa en JavaScript.
 - `<MyComponent>` es visualmente más distinto de un elemento HTML de una sola palabra que `<my-component>`, porque hay dos diferencias de caracteres (las dos mayúsculas), en lugar de solo una (un guion).
-- Si utilizas algún elemento personalizado no Vue en tus plantillas, como un web component, PascalCase asegura que tus componentes Vue permanezcan claramente visibles.
+- Si utilizas algún elemento personalizado no Vue en tus templates, como un web component, PascalCase asegura que tus componentes Vue permanezcan claramente visibles.
 
-Desafortunadamente, debido a la insensibilidad a mayúsculas y minúsculas de HTML, las plantillas in-DOM aún deben usar kebab-case.
+Desafortunadamente, debido a la insensibilidad a mayúsculas y minúsculas de HTML, los templates in-DOM aún deben usar kebab-case.
 
 También ten en cuenta que si ya has invertido mucho en kebab-case, la consistencia con las convenciones de HTML y la posibilidad de usar el mismo formato en todos tus proyectos puede ser más importante que las ventajas mencionadas anteriormente. En esos casos, **usar kebab-case en todas partes también es aceptable.**
 
@@ -367,17 +367,17 @@ También ten en cuenta que si ya has invertido mucho en kebab-case, la consisten
 <h3>Mal</h3>
 
 ```vue-html
-<!-- En Single-File Components y plantillas de cadena -->
+<!-- En Single-File Components y templates de cadena -->
 <mycomponent/>
 ```
 
 ```vue-html
-<!-- En Single-File Components y plantillas de cadena -->
+<!-- En Single-File Components y templates de cadena -->
 <myComponent/>
 ```
 
 ```vue-html
-<!-- En plantillas in-DOM -->
+<!-- En templates in-DOM -->
 <MyComponent></MyComponent>
 ```
 
@@ -387,12 +387,12 @@ También ten en cuenta que si ya has invertido mucho en kebab-case, la consisten
 <h3>Bien</h3>
 
 ```vue-html
-<!-- En Single-File Components y plantillas de cadena -->
+<!-- En Single-File Components y templates de cadena -->
 <MyComponent/>
 ```
 
 ```vue-html
-<!-- En plantillas in-DOM -->
+<!-- En templates in-DOM -->
 <my-component></my-component>
 ```
 
@@ -410,12 +410,12 @@ O
 **Los nombres de los componentes en JS/[JSX](/guide/extras/render-function#jsx-tsx) siempre deben estar en PascalCase, aunque pueden estar en kebab-case dentro de cadenas para aplicaciones más simples que solo utilizan el registro global de componentes a través de `app.component`.**
 
 ::: details Explicación Detallada
-En JavaScript, PascalCase es la convención para clases y constructores de prototipos, esencialmente, cualquier cosa que pueda tener instancias distintas. Los componentes de Vue también tienen instancias, por lo que tiene sentido usar también PascalCase. Como beneficio adicional, el uso de PascalCase dentro de JSX (y las plantillas) permite a los lectores del código distinguir más fácilmente entre componentes y elementos HTML.
+En JavaScript, PascalCase es la convención para clases y constructores de prototipos, esencialmente, cualquier cosa que pueda tener instancias distintas. Los componentes de Vue también tienen instancias, por lo que tiene sentido usar también PascalCase. Como beneficio adicional, el uso de PascalCase dentro de JSX (y los templates) permite a los lectores del código distinguir más fácilmente entre componentes y elementos HTML.
 
 Sin embargo, para aplicaciones que usan **solamente** definiciones de componentes globales a través de `app.component`, recomendamos kebab-case en su lugar. Las razones son:
 
 - Es raro que los componentes globales se referencien en JavaScript, por lo que seguir una convención para JavaScript tiene menos sentido.
-- Estas aplicaciones siempre incluyen muchas plantillas in-DOM, donde [kebab-case **debe** usarse](#component-name-casing-in-templates).
+- Estas aplicaciones siempre incluyen muchas templates in-DOM, donde [kebab-case **debe** usarse](#component-name-casing-in-templates).
   :::
 
 <div class="style-example style-example-bad">
@@ -505,7 +505,7 @@ components/
 
 ## Uso de mayúsculas/minúsculas en los nombres de las props {#prop-name-casing}
 
-**Los nombres de las `props` siempre deben usar camelCase durante la declaración. Cuando se usan dentro de plantillas in-DOM, las `props` deben ser kebab-cased. Las plantillas de Single-File Components y [JSX](/guide/extras/render-function#jsx-tsx) pueden usar `props` en kebab-case o camelCase. El uso de mayúsculas/minúsculas debe ser consistente: si eliges usar `props` en camelCase, asegúrate de no usar `props` en kebab-case en tu aplicación.**
+**Los nombres de las `props` siempre deben usar camelCase durante la declaración. Cuando se usan dentro de templates in-DOM, las `props` deben ser kebab-cased. Los templates de Single-File Components y [JSX](/guide/extras/render-function#jsx-tsx) pueden usar `props` en kebab-case o camelCase. El uso de mayúsculas/minúsculas debe ser consistente: si eliges usar `props` en camelCase, asegúrate de no usar `props` en kebab-case en tu aplicación.**
 
 <div class="style-example style-example-bad">
 <h3>Mal</h3>
@@ -531,7 +531,7 @@ const props = defineProps({
 </div>
 
 ```vue-html
-// para plantillas in-DOM
+// para templates in-DOM
 <welcome-message greetingText="hi"></welcome-message>
 ```
 
@@ -569,7 +569,7 @@ const props = defineProps({
 ```
 
 ```vue-html
-// para plantillas in-DOM
+// para templates in-DOM
 <welcome-message greeting-text="hi"></welcome-message>
 ```
 
@@ -579,7 +579,7 @@ const props = defineProps({
 
 **Los elementos con múltiples atributos deben ocupar varias líneas, con un atributo por línea.**
 
-En JavaScript, dividir objetos con múltiples propiedades en varias líneas se considera ampliamente una buena convención, porque es mucho más fácil de leer. Nuestras plantillas y [JSX](/guide/extras/render-function#jsx-tsx) merecen la misma consideración.
+En JavaScript, dividir objetos con múltiples propiedades en varias líneas se considera ampliamente una buena convención, porque es mucho más fácil de leer. Nuestras templates y [JSX](/guide/extras/render-function#jsx-tsx) merecen la misma consideración.
 
 <div class="style-example style-example-bad">
 <h3>Mal</h3>
@@ -614,11 +614,11 @@ En JavaScript, dividir objetos con múltiples propiedades en varias líneas se c
 
 </div>
 
-## Expresiones simples en plantillas {#simple-expressions-in-templates}
+## Expresiones simples en templates {#simple-expressions-in-templates}
 
-**Las plantillas de los componentes solo deben incluir expresiones simples, con expresiones más complejas refactorizadas en propiedades `computed` o `methods`.**
+**Los templates de los componentes solo deben incluir expresiones simples, con expresiones más complejas refactorizadas en propiedades `computed` o `methods`.**
 
-Las expresiones complejas en tus plantillas las hacen menos declarativas. Debemos esforzarnos por describir _qué_ debe aparecer, no _cómo_ estamos calculando ese valor. Las propiedades `computed` y los `methods` también permiten reutilizar el código.
+Las expresiones complejas en tus templates las hacen menos declarativas. Debemos esforzarnos por describir _qué_ debe aparecer, no _cómo_ estamos calculando ese valor. Las propiedades `computed` y los `methods` también permiten reutilizar el código.
 
 <div class="style-example style-example-bad">
 <h3>Mal</h3>
@@ -637,7 +637,7 @@ Las expresiones complejas en tus plantillas las hacen menos declarativas. Debemo
 <h3>Bien</h3>
 
 ```vue-html
-<!-- En una plantilla -->
+<!-- En un template -->
 {{ normalizedFullName }}
 ```
 

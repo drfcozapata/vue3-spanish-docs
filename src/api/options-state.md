@@ -227,7 +227,7 @@ Declara los `methods` que se mezclarán en la instancia del componente.
 
 - **Detalles**
 
-  Los `methods` declarados pueden ser accedidos directamente en la instancia del componente, o usados en expresiones de plantilla. Todos los `methods` tienen su contexto `this` automáticamente vinculado a la instancia del componente, incluso cuando se pasan.
+  Los `methods` declarados pueden ser accedidos directamente en la instancia del componente, o usados en expresiones de template. Todos los `methods` tienen su contexto `this` automáticamente vinculado a la instancia del componente, incluso cuando se pasan.
 
   Evita usar funciones flecha al declarar `methods`, ya que no tendrán acceso a la instancia del componente a través de `this`.
 

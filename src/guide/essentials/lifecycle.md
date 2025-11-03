@@ -1,6 +1,6 @@
 # Hooks del Ciclo de Vida {#lifecycle-hooks}
 
-Cada instancia de componente Vue pasa por una serie de pasos de inicialización cuando se crea; por ejemplo, necesita configurar la observación de datos, compilar la plantilla, montar la instancia en el DOM y actualizar el DOM cuando los datos cambian. A lo largo del proceso, también ejecuta funciones llamadas hooks de ciclo de vida, lo que brinda a los usuarios la oportunidad de agregar su propio código en etapas específicas.
+Cada instancia de componente Vue pasa por una serie de pasos de inicialización cuando se crea; por ejemplo, necesita configurar la observación de datos, compilar el template, montar la instancia en el DOM y actualizar el DOM cuando los datos cambian. A lo largo del proceso, también ejecuta funciones llamadas hooks de ciclo de vida, lo que brinda a los usuarios la oportunidad de agregar su propio código en etapas específicas.
 
 ## Registrando Hooks del Ciclo de Vida {#registering-lifecycle-hooks}
 

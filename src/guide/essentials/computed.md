@@ -10,7 +10,7 @@
 
 ## Ejemplo Básico {#basic-example}
 
-Las expresiones en plantilla son muy convenientes, pero están pensadas para operaciones sencillas. Poner demasiada lógica en tus plantillas puede hacerlas pesadas y difíciles de mantener. Por ejemplo, si tenemos un objeto con un array anidado:
+Las expresiones en template son muy convenientes, pero están pensadas para operaciones sencillas. Poner demasiada lógica en tus templates puede hacerlas pesadas y difíciles de mantener. Por ejemplo, si tenemos un objeto con un array anidado:
 
 <div class="options-api">
 
@@ -54,7 +54,7 @@ Y queremos mostrar mensajes diferentes dependiendo de si `author` ya tiene algun
 <span>{{ author.books.length > 0 ? 'Sí' : 'No' }}</span>
 ```
 
-En este punto, la plantilla se está volviendo un poco recargada. Tenemos que mirarla un segundo antes de darnos cuenta de que realiza un cálculo que depende de `author.books`. Más importante aún, probablemente no queramos repetirnos si necesitamos incluir este cálculo en la plantilla más de una vez.
+En este punto, el template se está volviendo un poco recargada. Tenemos que mirarla un segundo antes de darnos cuenta de que realiza un cálculo que depende de `author.books`. Más importante aún, probablemente no queramos repetirnos si necesitamos incluir este cálculo en el template más de una vez.
 
 Por eso, para lógica compleja que incluye datos reactivos, se recomienda usar una **propiedad computada**. Aquí tienes el mismo ejemplo, refactorizado:
 
@@ -95,7 +95,7 @@ Aquí hemos declarado una propiedad computada `publishedBooksMessage`.
 
 Intenta cambiar el valor del array `books` en los `data` de la aplicación y verás cómo `publishedBooksMessage` cambia consecuentemente.
 
-Puedes enlazar datos a propiedades computadas en las plantillas igual que a una propiedad normal. Vue sabe que `this.publishedBooksMessage` depende de `this.author.books`, por lo que actualizará cualquier enlace que dependa de `this.publishedBooksMessage` cuando `this.author.books` cambie.
+Puedes enlazar datos a propiedades computadas en los templates igual que a una propiedad normal. Vue sabe que `this.publishedBooksMessage` depende de `this.author.books`, por lo que actualizará cualquier enlace que dependa de `this.publishedBooksMessage` cuando `this.author.books` cambie.
 
 Ver también: [Tipado de Propiedades Computadas](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
 
@@ -130,7 +130,7 @@ const publishedBooksMessage = computed(() => {
 
 [Pruébalo en el Playground](https://play.vuejs.org/#eNp1kE9Lw0AQxb/KI5dtoTainkoaaREUoZ5EEONhm0ybYLO77J9CCfnuzta0vdjbzr6Zeb95XbIwZroPlMySzJW2MR6OfDB5oZrWaOtRwZIsfbOnCUrdmuCpQo+N1S0ET4pCFarUynnI4GntMT9PjLpCAUq2NIN41bXCkyYxiZ9rrX/cDF/xDYiPQLjDDRbVXqqSHZ5DUw2tg3zP8lK6pvxHe2DtvSasDs6TPTAT8F2ofhzh0hTygm6pc+I1Yb1rXE3VMsKsyDm5JcY/9Y5GY8xzHI+wnIpVw4nTI/10R2rra+S4xSPEJzkBvvNNs310ztK/RDlLLjy1Zic9cQVkJn+R7gIwxJGlMXiWnZEq77orhH3Pq2NH9DjvTfpfSBSbmA==)
 
-Aquí hemos declarado una propiedad computada `publishedBooksMessage`. La función `computed()` espera que se le pase una [función getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description), y el valor devuelto es una **ref computada**. De forma similar a las refs normales, puedes acceder al resultado computado como `publishedBooksMessage.value`. Las refs computadas también se desempaquetan automáticamente en las plantillas, por lo que puedes referenciarlas sin `.value` en las expresiones de plantilla.
+Aquí hemos declarado una propiedad computada `publishedBooksMessage`. La función `computed()` espera que se le pase una [función getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description), y el valor devuelto es una **ref computada**. De forma similar a las refs normales, puedes acceder al resultado computado como `publishedBooksMessage.value`. Las refs computadas también se desempaquetan automáticamente en los templates, por lo que puedes referenciarlas sin `.value` en las expresiones de template.
 
 Una propiedad computada rastrea automáticamente sus dependencias reactivas. Vue sabe que el cálculo de `publishedBooksMessage` depende de `author.books`, por lo que actualizará cualquier enlace que dependa de `publishedBooksMessage` cuando `author.books` cambie.
 

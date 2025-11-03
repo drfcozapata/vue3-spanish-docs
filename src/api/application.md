@@ -444,7 +444,7 @@ Establece esto en `true` para habilitar el seguimiento de rendimiento de inicial
 
 ## app.config.compilerOptions {#app-config-compileroptions}
 
-Configura las opciones del compilador en tiempo de ejecución. Los valores establecidos en este objeto se pasarán al compilador de plantillas en el navegador y afectarán a cada componente de la `app` configurada. Ten en cuenta que también puedes anular estas opciones por componente utilizando la [opción `compilerOptions`](/api/options-rendering#compileroptions).
+Configura las opciones del compilador en tiempo de ejecución. Los valores establecidos en este objeto se pasarán al compilador de templates en el navegador y afectarán a cada componente de la `app` configurada. Ten en cuenta que también puedes anular estas opciones por componente utilizando la [opción `compilerOptions`](/api/options-rendering#compileroptions).
 
 ::: warning Importante
 Esta opción de configuración solo se respeta cuando se utiliza la compilación completa (es decir, el `vue.js` independiente que puede compilar `templates` en el navegador). Si utilizas la compilación solo en tiempo de ejecución con una configuración de compilación, las opciones del compilador deben pasarse a `@vue/compiler-dom` a través de las configuraciones de la herramienta de compilación.
@@ -479,7 +479,7 @@ Especifica un método de verificación para reconocer elementos personalizados n
 
 ### app.config.compilerOptions.whitespace {#app-config-compileroptions-whitespace}
 
-Ajusta el comportamiento del manejo de espacios en blanco en las plantillas.
+Ajusta el comportamiento del manejo de espacios en blanco en los templates.
 
 - **Tipo:** `'condense' | 'preserve'`
 
@@ -487,7 +487,7 @@ Ajusta el comportamiento del manejo de espacios en blanco en las plantillas.
 
 - **Detalles**
 
-  Vue elimina / condensa los caracteres de espacio en blanco en las plantillas para producir una salida compilada más eficiente. La estrategia predeterminada es "condense", con el siguiente comportamiento:
+  Vue elimina / condensa los caracteres de espacio en blanco en los templates para producir una salida compilada más eficiente. La estrategia predeterminada es "condense", con el siguiente comportamiento:
 
   1. Los caracteres de espacio en blanco iniciales / finales dentro de un elemento se condensan en un solo espacio.
   2. Los caracteres de espacio en blanco entre elementos que contienen saltos de línea se eliminan.
@@ -522,7 +522,7 @@ Ajusta los delimitadores utilizados para la interpolación de texto dentro del t
 
 ### app.config.compilerOptions.comments {#app-config-compileroptions-comments}
 
-Ajusta el tratamiento de los comentarios HTML en las plantillas.
+Ajusta el tratamiento de los comentarios HTML en los templates.
 
 - **Tipo:** `boolean`
 

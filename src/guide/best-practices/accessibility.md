@@ -44,7 +44,7 @@ Para ocultar el enlace a menos que esté enfocado, puedes añadir el siguiente e
 }
 ```
 
-Una vez que un usuario cambia de ruta, devuelve el enfoque al principio de la página, justo antes del enlace para omitir. Esto se puede lograr llamando al método `focus` en la `ref` de plantilla `backToTop` (asumiendo el uso de `vue-router`):
+Una vez que un usuario cambia de ruta, devuelve el enfoque al principio de la página, justo antes del enlace para omitir. Esto se puede lograr llamando al método `focus` en la `ref` de template `backToTop` (asumiendo el uso de `vue-router`):
 
 <div class="options-api">
 
@@ -120,16 +120,16 @@ Los usuarios pueden navegar por una aplicación a través de los encabezados. Te
 
 Los [puntos de referencia (landmarks)](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role) proporcionan acceso programático a secciones dentro de una aplicación. Los usuarios que dependen de tecnología de asistencia pueden navegar a cada sección de la aplicación y omitir contenido. Puedes usar [roles ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles) para ayudarte a lograr esto.
 
-| HTML            | Rol ARIA             | Propósito del Punto de Referencia                                                                                |
-| --------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `header`          | `role="banner"`        | Encabezado principal: título de la página                                                                        |
-| `nav`             | `role="navigation"`    | Colección de enlaces adecuados para usar al navegar por el documento o documentos relacionados                   |
-| `main`            | `role="main"`          | El contenido principal o central del documento.                                                                  |
-| `footer`          | `role="contentinfo"`   | Información sobre el documento padre: notas al pie/derechos de autor/enlaces a la declaración de privacidad      |
-| `aside`           | `role="complementary"` | Soporta el contenido principal, pero está separado y tiene significado por sí mismo.                             |
-| `search`          | `role="search"`        | Esta sección contiene la funcionalidad de búsqueda para la aplicación                                            |
-| `form`            | `role="form"`          | Colección de elementos asociados a formularios                                                                   |
-| `section`         | `role="region"`        | Contenido relevante al que los usuarios probablemente querrán navegar. Se debe proporcionar una etiqueta para este elemento |
+| HTML      | Rol ARIA               | Propósito del Punto de Referencia                                                                                           |
+| --------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `header`  | `role="banner"`        | Encabezado principal: título de la página                                                                                   |
+| `nav`     | `role="navigation"`    | Colección de enlaces adecuados para usar al navegar por el documento o documentos relacionados                              |
+| `main`    | `role="main"`          | El contenido principal o central del documento.                                                                             |
+| `footer`  | `role="contentinfo"`   | Información sobre el documento padre: notas al pie/derechos de autor/enlaces a la declaración de privacidad                 |
+| `aside`   | `role="complementary"` | Soporta el contenido principal, pero está separado y tiene significado por sí mismo.                                        |
+| `search`  | `role="search"`        | Esta sección contiene la funcionalidad de búsqueda para la aplicación                                                       |
+| `form`    | `role="form"`          | Colección de elementos asociados a formularios                                                                              |
+| `section` | `role="region"`        | Contenido relevante al que los usuarios probablemente querrán navegar. Se debe proporcionar una etiqueta para este elemento |
 
 [Leer más sobre puntos de referencia](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
 

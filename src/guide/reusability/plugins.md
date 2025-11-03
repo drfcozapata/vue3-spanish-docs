@@ -48,13 +48,13 @@ export default {
 }
 ```
 
-Queremos crear una función de traducción. Esta función recibirá una cadena `key` delimitada por puntos, que utilizaremos para buscar la cadena traducida en las opciones proporcionadas por el usuario. Este es el uso previsto en las plantillas:
+Queremos crear una función de traducción. Esta función recibirá una cadena `key` delimitada por puntos, que utilizaremos para buscar la cadena traducida en las opciones proporcionadas por el usuario. Este es el uso previsto en los templates:
 
 ```vue-html
 <h1>{{ $translate('greetings.hello') }}</h1>
 ```
 
-Dado que esta función debería estar disponible globalmente en todas las plantillas, la haremos así adjuntándola a `app.config.globalProperties` en nuestro plugin:
+Dado que esta función debería estar disponible globalmente en todas los templates, la haremos así adjuntándola a `app.config.globalProperties` en nuestro plugin:
 
 ```js{3-10} [plugins/i18n.js]
 export default {

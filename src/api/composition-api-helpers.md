@@ -68,7 +68,7 @@ Este es el ayudante subyacente que impulsa a [`defineModel()`](/api/sfc-script-s
 
 ## useTemplateRef() <sup class="vt-badge" data-text="3.5+" /> {#usetemplateref}
 
-Devuelve un `ref` superficial cuyo valor se sincronizará con el elemento de plantilla o componente que tenga un atributo `ref` coincidente.
+Devuelve un `ref` superficial cuyo valor se sincronizará con el elemento de template o componente que tenga un atributo `ref` coincidente.
 
 - **Tipo**
 
@@ -95,9 +95,9 @@ Devuelve un `ref` superficial cuyo valor se sincronizará con el elemento de pla
   ```
 
 - **Ver también**
-  - [Guía - Refs de Plantilla](/guide/essentials/template-refs)
-  - [Guía - Tipado de Refs de Plantilla](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
-  - [Guía - Tipado de Refs de Plantilla de Componentes](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
+  - [Guía - Template Refs](/guide/essentials/template-refs)
+  - [Guía - Tipado de Template Refs](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
+  - [Guía - Tipado de Template Refs de Componentes](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
 ## useId() <sup class="vt-badge" data-text="3.5+" /> {#useid}
 

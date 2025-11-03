@@ -1,8 +1,8 @@
-# Ciclo de Vida y Refs de Plantilla {#lifecycle-and-template-refs}
+# Ciclo de Vida y Template Refs {#lifecycle-and-template-refs}
 
 Hasta ahora, Vue ha estado manejando todas las actualizaciones del DOM por nosotros, gracias a la reactividad y la renderización declarativa. Sin embargo, inevitablemente habrá casos en los que necesitemos trabajar manualmente con el DOM.
 
-Podemos solicitar una **ref de plantilla** - es decir, una referencia a un elemento en la plantilla - usando el <a target="_blank" href="/api/built-in-special-attributes.html#ref">atributo especial `ref`</a>:
+Podemos solicitar una **ref de template** - es decir, una referencia a un elemento en el template - usando el <a target="_blank" href="/api/built-in-special-attributes.html#ref">atributo especial `ref`</a>:
 
 ```vue-html
 <p ref="pElementRef">hello</p>
@@ -33,7 +33,7 @@ setup() {
 
 </div>
 
-Observa que la `ref` se inicializa con el valor `null`. Esto se debe a que el elemento aún no existe cuando <span class="sfc">`<script setup>`</span><span class="html">`setup()`</span> se ejecuta. La `ref` de plantilla solo es accesible después de que el componente está **montado**.
+Observa que la `ref` se inicializa con el valor `null`. Esto se debe a que el elemento aún no existe cuando <span class="sfc">`<script setup>`</span><span class="html">`setup()`</span> se ejecuta. La `ref` de template solo es accesible después de que el componente está **montado**.
 
 Para ejecutar código después del montaje, podemos usar la función `onMounted()`:
 

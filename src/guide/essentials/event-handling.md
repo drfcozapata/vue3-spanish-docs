@@ -131,7 +131,7 @@ Ver también: [Typing Event Manejadores](/guide/typescript/options-api#typing-ev
 
 ### Detección de Método vs. En Línea {#method-vs-inline-detection}
 
-El compilador de plantillas detecta los manejadores de método comprobando si la cadena de valor de `v-on` es un identificador de JavaScript válido o una ruta de acceso a una propiedad. Por ejemplo, `foo`, `foo.bar` y `foo['bar']` se tratan como manejadores de método, mientras que `foo()` y `count++` se tratan como manejadores en línea.
+El compilador de templates detecta los manejadores de método comprobando si la cadena de valor de `v-on` es un identificador de JavaScript válido o una ruta de acceso a una propiedad. Por ejemplo, `foo`, `foo.bar` y `foo['bar']` se tratan como manejadores de método, mientras que `foo()` y `count++` se tratan como manejadores en línea.
 
 ## Llamando Métodos en Manejadores en Línea {#calling-methods-in-inline-handlers}
 

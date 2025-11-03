@@ -45,7 +45,7 @@ Las [definiciones de prop](/guide/components/props#prop-validation) detalladas t
 
 - Documentan la API del componente, de modo que es fácil ver cómo se debe utilizar el componente.
 - En desarrollo, Vue te advertirá si a un componente se le proporcionan `props` con formato incorrecto, ayudándote a detectar posibles fuentes de error.
-:::
+  :::
 
 <div class="options-api">
 
@@ -225,7 +225,7 @@ Hay dos casos comunes en los que esto puede ser tentador:
 - Para evitar renderizar una lista si debe estar oculta (por ejemplo, `v-for="user in users" v-if="shouldShowUsers"`). En estos casos, mueve el `v-if` a un elemento contenedor (por ejemplo, `ul`, `ol`).
 
 ::: details Explicación Detallada
-Cuando Vue procesa las directivas, `v-if` tiene una prioridad más alta que `v-for`, de modo que esta plantilla:
+Cuando Vue procesa las directivas, `v-if` tiene una prioridad más alta que `v-for`, de modo que este template:
 
 ```vue-html
 <ul>

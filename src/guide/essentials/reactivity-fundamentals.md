@@ -509,7 +509,7 @@ const map = reactive(new Map([['count', ref(0)]]))
 console.log(map.get('count').value)
 ```
 
-### Advertencia al Desenvolver en Plantillas \*\* {#caveat-when-unwrapping-in-templates}
+### Advertencia al Desenvolver en Templates \*\* {#caveat-when-unwrapping-in-templates}
 
 El desenvolvimiento de refs en templates solo se aplica si la ref es una propiedad de nivel superior en el contexto de renderizado del template.
 

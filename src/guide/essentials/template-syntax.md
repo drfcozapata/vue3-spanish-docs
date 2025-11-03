@@ -1,14 +1,14 @@
 # Sintaxis de Template {#template-syntax}
 
-<ScrimbaLink href="https://scrimba.com/links/vue-template-syntax" title="Lección gratuita e interactiva de Sintaxis de Plantilla de Vue.js" type="scrimba">
+<ScrimbaLink href="https://scrimba.com/links/vue-template-syntax" title="Lección gratuita e interactiva de Sintaxis de Template de Vue.js" type="scrimba">
   Mira una lección en video interactiva en Scrimba
 </ScrimbaLink>
 
-Vue utiliza una sintaxis de plantilla basada en HTML que te permite enlazar declarativamente el DOM renderizado con los datos de la instancia del componente subyacente. Todas las plantillas de Vue son HTML sintácticamente válido que puede ser analizado por navegadores y analizadores HTML que cumplen con las especificaciones.
+Vue utiliza una sintaxis de template basada en HTML que te permite enlazar declarativamente el DOM renderizado con los datos de la instancia del componente subyacente. Todas los templates de Vue son HTML sintácticamente válido que puede ser analizado por navegadores y analizadores HTML que cumplen con las especificaciones.
 
-Internamente, Vue compila las plantillas en código JavaScript altamente optimizado. Combinado con el sistema de reactividad, Vue puede determinar inteligentemente el número mínimo de componentes a re-renderizar y aplicar la cantidad mínima de manipulaciones del DOM cuando el estado de la aplicación cambia.
+Internamente, Vue compila los templates en código JavaScript altamente optimizado. Combinado con el sistema de reactividad, Vue puede determinar inteligentemente el número mínimo de componentes a re-renderizar y aplicar la cantidad mínima de manipulaciones del DOM cuando el estado de la aplicación cambia.
 
-Si estás familiarizado con los conceptos del Virtual DOM y prefieres el poder puro de JavaScript, también puedes [escribir funciones de renderizado directamente](/guide/extras/render-function) en lugar de plantillas, con soporte opcional de JSX. Sin embargo, ten en cuenta que no disfrutan del mismo nivel de optimizaciones en tiempo de compilación que las plantillas.
+Si estás familiarizado con los conceptos del Virtual DOM y prefieres el poder puro de JavaScript, también puedes [escribir funciones de renderizado directamente](/guide/extras/render-function) en lugar de templates, con soporte opcional de JSX. Sin embargo, ten en cuenta que no disfrutan del mismo nivel de optimizaciones en tiempo de compilación que los templates.
 
 ## Interpolación de Texto {#text-interpolation}
 
@@ -40,7 +40,7 @@ Los dobles bigotes interpretan los datos como texto plano, no como HTML. Para ge
 
 Aquí nos encontramos con algo nuevo. El atributo `v-html` que estás viendo se llama **directiva**. Las directivas tienen el prefijo `v-` para indicar que son atributos especiales proporcionados por Vue, y como habrás adivinado, aplican un comportamiento reactivo especial al DOM renderizado. Aquí, básicamente estamos diciendo "mantén el HTML interno de este elemento actualizado con la propiedad `rawHtml` de la instancia activa actual".
 
-El contenido del `span` será reemplazado por el valor de la propiedad `rawHtml`, interpretado como HTML plano; los enlaces de datos se ignoran. Ten en cuenta que no puedes usar `v-html` para componer parciales de plantilla, porque Vue no es un motor de plantillas basado en cadenas. En su lugar, los componentes son preferidos como la unidad fundamental para la reutilización y composición de la interfaz de usuario.
+El contenido del `span` será reemplazado por el valor de la propiedad `rawHtml`, interpretado como HTML plano; los enlaces de datos se ignoran. Ten en cuenta que no puedes usar `v-html` para componer parciales de template, porque Vue no es un motor de templates basado en cadenas. En su lugar, los componentes son preferidos como la unidad fundamental para la reutilización y composición de la interfaz de usuario.
 
 :::warning Advertencia de Seguridad
 Renderizar dinámicamente HTML arbitrario en tu sitio web puede ser muy peligroso porque puede conducir fácilmente a [vulnerabilidades XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Solo usa `v-html` en contenido de confianza y **nunca** en contenido proporcionado por el usuario.
@@ -68,7 +68,7 @@ Los atributos que comienzan con `:` pueden parecer un poco diferentes del HTML n
 
 > Para el resto de la guía, usaremos la sintaxis abreviada en los ejemplos de código, ya que es el uso más común para los desarrolladores de Vue.
 
-### Abreviación con el mismo nombre {#same-name-shorthand}
+### Abreviación con el Mismo Nombre {#same-name-shorthand}
 
 - Solo compatible con 3.4+
 
@@ -134,7 +134,7 @@ Puedes enlazarlos a un solo elemento usando `v-bind` sin un argumento:
 
 ## Uso de Expresiones JavaScript {#using-javascript-expressions}
 
-Hasta ahora solo hemos estado enlazando a claves de propiedades simples en nuestras plantillas. Pero Vue realmente admite todo el poder de las expresiones JavaScript dentro de todos los enlaces de datos:
+Hasta ahora solo hemos estado enlazando a claves de propiedades simples en nuestras templates. Pero Vue realmente admite todo el poder de las expresiones JavaScript dentro de todos los enlaces de datos:
 
 ```vue-html
 {{ number + 1 }}
@@ -148,7 +148,7 @@ Hasta ahora solo hemos estado enlazando a claves de propiedades simples en nuest
 
 Estas expresiones se evaluarán como JavaScript en el ámbito de datos de la instancia del componente actual.
 
-En las plantillas de Vue, las expresiones JavaScript se pueden usar en las siguientes posiciones:
+En los templates de Vue, las expresiones JavaScript se pueden usar en las siguientes posiciones:
 
 - Dentro de las interpolaciones de texto (bigotes)
 - En el valor del atributo de cualquier directiva de Vue (atributos especiales que comienzan con `v-`)
@@ -183,9 +183,9 @@ Las funciones llamadas dentro de las expresiones de enlace se llamarán cada vez
 
 ### Acceso Restringido a Globales {#restricted-globals-access}
 
-Las expresiones de plantilla están en un entorno aislado (sandboxed) y solo tienen acceso a una [lista restringida de globales](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsAllowList.ts#L3). La lista expone globales integrados comúnmente utilizados como `Math` y `Date`.
+Las expresiones de template están en un entorno aislado (sandboxed) y solo tienen acceso a una [lista restringida de globales](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsAllowList.ts#L3). La lista expone globales integrados comúnmente utilizados como `Math` y `Date`.
 
-Los globales no incluidos explícitamente en la lista, por ejemplo, las propiedades adjuntas por el usuario en `window`, no serán accesibles en las expresiones de plantilla. Sin embargo, puedes definir explícitamente globales adicionales para todas las expresiones de Vue agregándolos a [`app.config.globalProperties`](/api/application#app-config-globalproperties).
+Los globales no incluidos explícitamente en la lista, por ejemplo, las propiedades adjuntas por el usuario en `window`, no serán accesibles en las expresiones de template. Sin embargo, puedes definir explícitamente globales adicionales para todas las expresiones de Vue agregándolos a [`app.config.globalProperties`](/api/application#app-config-globalproperties).
 
 ## Directivas {#directives}
 
@@ -266,13 +266,13 @@ Las expresiones de argumento dinámico tienen algunas restricciones de sintaxis 
 
 Si necesitas pasar un argumento dinámico complejo, probablemente sea mejor usar una [propiedad computada](./computed), que cubriremos en breve.
 
-Al usar plantillas en el DOM (plantillas escritas directamente en un archivo HTML), también debes evitar nombrar claves con caracteres en mayúscula, ya que los navegadores forzarán los nombres de los atributos a minúsculas:
+Al usar templates en el DOM (templates escritas directamente en un archivo HTML), también debes evitar nombrar claves con caracteres en mayúscula, ya que los navegadores forzarán los nombres de los atributos a minúsculas:
 
 ```vue-html
 <a :[someAttr]="value"> ... </a>
 ```
 
-Lo anterior se convertirá en `:[someattr]` en las plantillas en el DOM. Si tu componente tiene una propiedad `someAttr` en lugar de `someattr`, tu código no funcionará. Las plantillas dentro de los Componentes de Archivo Único (SFC) **no** están sujetas a esta restricción.
+Lo anterior se convertirá en `:[someattr]` en los templates en el DOM. Si tu componente tiene una propiedad `someAttr` en lugar de `someattr`, tu código no funcionará. Los templates dentro de los Componentes de Archivo Único (SFC) **no** están sujetas a esta restricción.
 
 ### Modificadores {#modifiers}
 

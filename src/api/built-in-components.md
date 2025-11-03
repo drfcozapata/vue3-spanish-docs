@@ -5,7 +5,7 @@ pageClass: api
 # Componentes Integrados {#built-in-components}
 
 :::info Registro y Uso
-Los componentes integrados se pueden usar directamente en las plantillas sin necesidad de ser registrados. También son "tree-shakeable": solo se incluyen en la construcción cuando se usan.
+Los componentes integrados se pueden usar directamente en los templates sin necesidad de ser registrados. También son "tree-shakeable": solo se incluyen en la construcción cuando se usan.
 
 Cuando se usan en [funciones de renderizado](/guide/extras/render-function), deben importarse explícitamente. Por ejemplo:
 
@@ -64,7 +64,7 @@ Proporciona efectos de transición animados a un **único** elemento o component
 
     /**
      * Props para personalizar las clases de transición.
-     * Usa kebab-case en las plantillas, por ejemplo, enter-from-class="xxx"
+     * Usa kebab-case en los templates, por ejemplo, enter-from-class="xxx"
      */
     enterFromClass?: string
     enterActiveClass?: string
@@ -144,7 +144,7 @@ Proporciona efectos de transición para **múltiples** elementos o componentes e
     tag?: string
     /**
      * Para personalizar la clase CSS aplicada durante las transiciones de movimiento.
-     * Usa kebab-case en las plantillas, por ejemplo, move-class="xxx"
+     * Usa kebab-case en los templates, por ejemplo, move-class="xxx"
      */
     moveClass?: string
   }

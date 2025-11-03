@@ -217,7 +217,7 @@ Se llama cuando se ha capturado un error que se propaga desde un componente desc
 
   **Advertencias de Captura de Errores**
 
-  - En componentes con una función `setup()` asíncrona (con `await` de nivel superior), Vue **siempre** intentará renderizar la plantilla del componente, incluso si `setup()` lanzó un error. Esto probablemente causará más errores porque durante el renderizado la plantilla del componente podría intentar acceder a propiedades no existentes del contexto `setup()` fallido. Al capturar errores en dichos componentes, prepárate para manejar errores tanto de un `setup()` asíncrono fallido (siempre vendrán primero) como del proceso de renderizado fallido.
+  - En componentes con una función `setup()` asíncrona (con `await` de nivel superior), Vue **siempre** intentará renderizar el template del componente, incluso si `setup()` lanzó un error. Esto probablemente causará más errores porque durante el renderizado el template del componente podría intentar acceder a propiedades no existentes del contexto `setup()` fallido. Al capturar errores en dichos componentes, prepárate para manejar errores tanto de un `setup()` asíncrono fallido (siempre vendrán primero) como del proceso de renderizado fallido.
 
   - <sup class="vt-badge" data-text="SSR only"></sup> Reemplazar un componente hijo con error en el componente padre profundamente dentro de `<Suspense>` causará desajustes de hidratación en SSR. En su lugar, intenta separar la lógica que posiblemente pueda lanzar errores de la función `setup()` del hijo en una función separada y ejecutarla en la función `setup()` del componente padre, donde puedes `try/catch` de forma segura el proceso de ejecución y realizar el reemplazo si es necesario antes de renderizar el componente hijo real.
 

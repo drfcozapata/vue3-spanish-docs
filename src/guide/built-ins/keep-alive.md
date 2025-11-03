@@ -47,7 +47,7 @@ Ahora, el estado persistirá a través de los cambios de componente:
 </div>
 
 :::tip
-Cuando se usa en [plantillas en el DOM](/guide/essentials/component-basics#in-dom-template-parsing-caveats), debe ser referenciado como `<keep-alive>`.
+Cuando se usa en [templates en el DOM](/guide/essentials/component-basics#in-dom-template-parsing-caveats), debe ser referenciado como `<keep-alive>`.
 :::
 
 ## Incluir / Excluir {#include-exclude}

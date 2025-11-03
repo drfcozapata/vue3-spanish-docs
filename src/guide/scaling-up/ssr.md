@@ -18,7 +18,7 @@ Comparado con una Aplicación de Página Única (SPA) del lado del cliente, la v
 
 - **Tiempo de carga del contenido más rápido**: esto es más notorio en conexiones a internet lentas o dispositivos lentos. El marcado renderizado en el servidor no necesita esperar a que todo el JavaScript se haya descargado y ejecutado para mostrarse, por lo que tu usuario verá una página completamente renderizada antes. Además, la obtención de datos se realiza en el lado del servidor para la visita inicial, lo que probablemente tiene una conexión más rápida a tu base de datos que el cliente. Esto generalmente resulta en métricas mejoradas de [Core Web Vitals](https://web.dev/vitals/), una mejor experiencia de usuario y puede ser crítico para aplicaciones donde el tiempo de carga del contenido está directamente asociado con la tasa de conversión.
 
-- **Modelo mental unificado**: puedes usar el mismo lenguaje y el mismo modelo mental declarativo y orientado a componentes para desarrollar toda tu aplicación, en lugar de saltar entre un sistema de plantillas de backend y un framework de frontend.
+- **Modelo mental unificado**: puedes usar el mismo lenguaje y el mismo modelo mental declarativo y orientado a componentes para desarrollar toda tu aplicación, en lugar de saltar entre un sistema de templates de backend y un framework de frontend.
 
 - **Mejor SEO**: los rastreadores de motores de búsqueda verán directamente la página completamente renderizada.
 
@@ -207,7 +207,7 @@ Pasar del ejemplo a una aplicación SSR lista para producción implica mucho má
 - Soportar SFCs de Vue y otros requisitos del paso de compilación. De hecho, necesitaremos coordinar dos compilaciones para la misma aplicación: una para el cliente y otra para el servidor.
 
   :::tip
-  Los componentes de Vue se compilan de manera diferente cuando se usan para SSR: las plantillas se compilan en concatenaciones de cadenas en lugar de funciones de renderizado del Virtual DOM para un rendimiento de renderizado más eficiente.
+  Los componentes de Vue se compilan de manera diferente cuando se usan para SSR: los templates se compilan en concatenaciones de cadenas en lugar de funciones de renderizado del Virtual DOM para un rendimiento de renderizado más eficiente.
   :::
 
 - En el controlador de solicitudes del servidor, renderizar el HTML con los enlaces de activos del lado del cliente correctos y las sugerencias de recursos óptimas. También podríamos necesitar cambiar entre el modo SSR y SSG, o incluso mezclar ambos en la misma aplicación.
@@ -289,7 +289,7 @@ Librerías de gestión de estado como Pinia están diseñadas con esto en mente.
 
 Si la estructura del DOM del HTML pre-renderizado no coincide con la salida esperada de la aplicación del lado del cliente, habrá un error de incompatibilidad de hidratación. La incompatibilidad de hidratación se introduce más comúnmente por las siguientes causas:
 
-1. La plantilla contiene una estructura de anidación HTML inválida, y el HTML renderizado fue "corregido" por el comportamiento nativo de análisis de HTML del navegador. Por ejemplo, un error común es que [`<div>` no puede colocarse dentro de `<p>`](https://stackoverflow.com/questions/8397852/why-cant-the-p-tag-contain-a-div-tag-inside-it):
+1. El template contiene una estructura de anidación HTML inválida, y el HTML renderizado fue "corregido" por el comportamiento nativo de análisis de HTML del navegador. Por ejemplo, un error común es que [`<div>` no puede colocarse dentro de `<p>`](https://stackoverflow.com/questions/8397852/why-cant-the-p-tag-contain-a-div-tag-inside-it):
 
    ```html
    <p><div>hi</div></p>

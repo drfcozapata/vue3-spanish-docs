@@ -46,7 +46,7 @@ data() {
 
 </div>
 
-Y la siguiente plantilla:
+Y el siguiente template:
 
 ```vue-html
 <div
@@ -198,10 +198,10 @@ Sin embargo, esto puede ser un poco verboso si tienes múltiples clases condicio
 
 Cuando usas el atributo `class` en un componente con un solo elemento raíz, esas clases se añadirán al elemento raíz del componente y se fusionarán con cualquier clase existente ya en él.
 
-Por ejemplo, si tenemos un componente llamado `MyComponent` con la siguiente plantilla:
+Por ejemplo, si tenemos un componente llamado `MyComponent` con el siguiente template:
 
 ```vue-html
-<!-- plantilla del componente hijo -->
+<!-- template del componente hijo -->
 <p class="foo bar">¡Hola!</p>
 ```
 
@@ -233,7 +233,7 @@ Cuando `isActive` sea verdadero, el HTML renderizado será:
 Si tu componente tiene múltiples elementos raíz, necesitarías definir qué elemento recibirá esta clase. Puedes hacerlo usando la propiedad de componente `$attrs`:
 
 ```vue-html
-<!-- plantilla de MyComponent usando $attrs -->
+<!-- template de MyComponent usando $attrs -->
 <p :class="$attrs.class">¡Hola!</p>
 <span>Este es un componente hijo</span>
 ```
@@ -289,7 +289,7 @@ Aunque se recomiendan las claves en `camelCase`, `:style` también admite claves
 <div :style="{ 'font-size': fontSize + 'px' }"></div>
 ```
 
-A menudo es una buena idea enlazar directamente a un objeto de estilo para que la plantilla sea más limpia:
+A menudo es una buena idea enlazar directamente a un objeto de estilo para que el template sea más limpio:
 
 <div class="composition-api">
 

@@ -6,7 +6,7 @@
 
 ## Contenido y Salida de Slot {#slot-content-and-outlet}
 
-Hemos aprendido que los componentes pueden aceptar props, que pueden ser valores JavaScript de cualquier tipo. Pero, ¿qué pasa con el contenido de la plantilla? En algunos casos, es posible que queramos pasar un fragmento de plantilla a un componente hijo, y dejar que el componente hijo renderice el fragmento dentro de su propia plantilla.
+Hemos aprendido que los componentes pueden aceptar props, que pueden ser valores JavaScript de cualquier tipo. Pero, ¿qué pasa con el contenido de el template? En algunos casos, es posible que queramos pasar un fragmento de template a un componente hijo, y dejar que el componente hijo renderice el fragmento dentro de su propia template.
 
 Por ejemplo, podríamos tener un componente `<FancyButton>` que admita un uso como este:
 
@@ -16,7 +16,7 @@ Por ejemplo, podríamos tener un componente `<FancyButton>` que admita un uso co
 </FancyButton>
 ```
 
-La plantilla de `<FancyButton>` se ve así:
+El template de `<FancyButton>` se ve así:
 
 ```vue-html{2}
 <button class="fancy-btn">
@@ -63,7 +63,7 @@ function FancyButton(slotContent) {
 }
 ```
 
-El contenido del slot no se limita solo a texto. Puede ser cualquier contenido de plantilla válido. Por ejemplo, podemos pasar múltiples elementos, o incluso otros componentes:
+El contenido del slot no se limita solo a texto. Puede ser cualquier contenido de template válido. Por ejemplo, podemos pasar múltiples elementos, o incluso otros componentes:
 
 ```vue-html
 <FancyButton>
@@ -98,9 +98,9 @@ El contenido del slot tiene acceso al ámbito de datos del componente padre, por
 
 Aquí ambas interpolaciones <span v-pre>`{{ message }}`</span> renderizarán el mismo contenido.
 
-El contenido del slot **no** tiene acceso a los datos del componente hijo. Las expresiones en las plantillas de Vue solo pueden acceder al ámbito en el que están definidas, lo que es consistente con el alcance léxico de JavaScript. En otras palabras:
+El contenido del slot **no** tiene acceso a los datos del componente hijo. Las expresiones en los templates de Vue solo pueden acceder al ámbito en el que están definidas, lo que es consistente con el alcance léxico de JavaScript. En otras palabras:
 
-> Las expresiones en la plantilla padre solo tienen acceso al ámbito padre; las expresiones en la plantilla hijo solo tienen acceso al ámbito hijo.
+> Las expresiones en el template padre solo tienen acceso al ámbito padre; las expresiones en el template hijo solo tienen acceso al ámbito hijo.
 
 ## Contenido Alternativo {#fallback-content}
 
@@ -159,7 +159,7 @@ Entonces el contenido proporcionado será renderizado en su lugar:
 
 ## Slots con Nombre {#named-slots}
 
-Hay ocasiones en las que es útil tener múltiples salidas de slot en un solo componente. Por ejemplo, en un componente `<BaseLayout>` con la siguiente plantilla:
+Hay ocasiones en las que es útil tener múltiples salidas de slot en un solo componente. Por ejemplo, en un componente `<BaseLayout>` con el siguiente template:
 
 ```vue-html
 <div class="container">
@@ -205,7 +205,7 @@ Para pasar un slot nombrado, necesitamos usar un elemento `<template>` con la di
 </BaseLayout>
 ```
 
-`v-slot` tiene una abreviatura dedicada `#`, por lo que `<template v-slot:header>` puede acortarse a simplemente `<template #header>`. Piensa en ello como "renderizar este fragmento de plantilla en el slot 'header' del componente hijo".
+`v-slot` tiene una abreviatura dedicada `#`, por lo que `<template v-slot:header>` puede acortarse a simplemente `<template #header>`. Piensa en ello como "renderizar este fragmento de template en el slot 'header' del componente hijo".
 
 ![named slots diagram](./images/named-slots.png)
 

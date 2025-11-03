@@ -2,7 +2,7 @@
 
 ## template {#template}
 
-Una plantilla de cadena para el componente.
+Un template de cadena para el componente.
 
 - **Tipo**
 
@@ -14,16 +14,16 @@ Una plantilla de cadena para el componente.
 
 - **Detalles**
 
-  Una plantilla proporcionada a través de la opción `template` se compilará sobre la marcha en tiempo de ejecución. Solo es compatible cuando se utiliza una construcción de Vue que incluye el compilador de plantillas. El compilador de plantillas **NO** está incluido en las construcciones de Vue que tienen la palabra `runtime` en sus nombres, p. ej. `vue.runtime.esm-bundler.js`. Consulta la [guía de archivos dist](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use) para más detalles sobre las diferentes construcciones.
+  Un template proporcionada a través de la opción `template` se compilará sobre la marcha en tiempo de ejecución. Solo es compatible cuando se utiliza una construcción de Vue que incluye el compilador de templates. El compilador de templates **NO** está incluido en las construcciones de Vue que tienen la palabra `runtime` en sus nombres, p. ej. `vue.runtime.esm-bundler.js`. Consulta la [guía de archivos dist](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use) para más detalles sobre las diferentes construcciones.
 
-  Si la cadena comienza con `#`, se utilizará como un `querySelector` y se usará el `innerHTML` del elemento seleccionado como la cadena de plantilla. Esto permite que la plantilla de origen se cree utilizando elementos `<template>` nativos.
+  Si la cadena comienza con `#`, se utilizará como un `querySelector` y se usará el `innerHTML` del elemento seleccionado como la cadena de template. Esto permite que el template de origen se cree utilizando elementos `<template>` nativos.
 
   Si la opción `render` también está presente en el mismo componente, `template` será ignorado.
 
-  Si el componente raíz de tu aplicación no tiene una opción `template` o `render` especificada, Vue intentará usar el `innerHTML` del elemento montado como plantilla en su lugar.
+  Si el componente raíz de tu aplicación no tiene una opción `template` o `render` especificada, Vue intentará usar el `innerHTML` del elemento montado como template en su lugar.
 
   :::warning Nota de Seguridad
-  Solo usa fuentes de plantilla en las que puedas confiar. No uses contenido proporcionado por el usuario como tu plantilla. Consulta la [Guía de Seguridad](/guide/best-practices/security#rule-no-1-never-use-non-trusted-templates) para más detalles.
+  Solo usa fuentes de template en las que puedas confiar. No uses contenido proporcionado por el usuario como tu template. Consulta la [Guía de Seguridad](/guide/best-practices/security#rule-no-1-never-use-non-trusted-templates) para más detalles.
   :::
 
 ## render {#render}
@@ -53,9 +53,9 @@ Una función que devuelve programáticamente el árbol DOM virtual del component
 
 - **Detalles**
 
-  `render` es una alternativa a las plantillas de cadena que te permite aprovechar todo el poder programático de JavaScript para declarar la salida de renderizado del componente.
+  `render` es una alternativa a los templates de cadena que te permite aprovechar todo el poder programático de JavaScript para declarar la salida de renderizado del componente.
 
-  Las plantillas precompiladas, por ejemplo, las de los Single-File Components, se compilan en la opción `render` en tiempo de construcción. Si tanto `render` como `template` están presentes en un componente, `render` tendrá mayor prioridad.
+  Los templates precompilados, por ejemplo, las de los Single-File Components, se compilan en la opción `render` en tiempo de construcción. Si tanto `render` como `template` están presentes en un componente, `render` tendrá mayor prioridad.
 
 - **Ver también**
   - [Mecanismo de Renderizado](/guide/extras/rendering-mechanism)
@@ -63,7 +63,7 @@ Una función que devuelve programáticamente el árbol DOM virtual del component
 
 ## compilerOptions {#compileroptions}
 
-Configura las opciones del compilador en tiempo de ejecución para la plantilla del componente.
+Configura las opciones del compilador en tiempo de ejecución para el template del componente.
 
 - **Tipo**
 
@@ -80,7 +80,7 @@ Configura las opciones del compilador en tiempo de ejecución para la plantilla 
 
 - **Detalles**
 
-  Esta opción de configuración solo se respeta cuando se utiliza la construcción completa (es decir, el `vue.js` independiente que puede compilar plantillas en el navegador). Es compatible con las mismas opciones que el [app.config.compilerOptions](/api/application#app-config-compileroptions) a nivel de aplicación, y tiene mayor prioridad para el componente actual.
+  Esta opción de configuración solo se respeta cuando se utiliza la construcción completa (es decir, el `vue.js` independiente que puede compilar templates en el navegador). Es compatible con las mismas opciones que el [app.config.compilerOptions](/api/application#app-config-compileroptions) a nivel de aplicación, y tiene mayor prioridad para el componente actual.
 
 - **Ver también** [app.config.compilerOptions](/api/application#app-config-compileroptions)
 

@@ -52,7 +52,7 @@ export default {
 
 - Cada archivo `*.vue` puede contener como máximo un bloque `<script setup>` (excluyendo un `<script>` normal).
 
-- El script se preprocesa y se utiliza como la función `setup()` del componente, lo que significa que se ejecutará **para cada instancia del componente**. Los enlaces de nivel superior en `<script setup>` se exponen automáticamente a la plantilla. Para más detalles, consulta la [documentación dedicada sobre `<script setup>`](/api/sfc-script-setup).
+- El script se preprocesa y se utiliza como la función `setup()` del componente, lo que significa que se ejecutará **para cada instancia del componente**. Los enlaces de nivel superior en `<script setup>` se exponen automáticamente a el template. Para más detalles, consulta la [documentación dedicada sobre `<script setup>`](/api/sfc-script-setup).
 
 ### `<style>` {#style}
 
@@ -76,7 +76,7 @@ Un SFC infiere automáticamente el nombre del componente a partir de su **nombre
 
 - Formato de advertencia de desarrollo
 - Inspección en DevTools
-- Autorreferencia recursiva, por ejemplo, un archivo llamado `FooBar.vue` puede referirse a sí mismo como `<FooBar/>` en su plantilla. Esto tiene menor prioridad que los componentes registrados/importados explícitamente.
+- Autorreferencia recursiva, por ejemplo, un archivo llamado `FooBar.vue` puede referirse a sí mismo como `<FooBar/>` en su template. Esto tiene menor prioridad que los componentes registrados/importados explícitamente.
 
 ## Preprocesadores {#pre-processors}
 

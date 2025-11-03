@@ -4,7 +4,7 @@
 
 <VueSchoolLink href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components" title="Lección Gratuita de Registro de Componentes Vue.js"/>
 
-Un componente Vue necesita ser "registrado" para que Vue sepa dónde localizar su implementación cuando se encuentre en una plantilla. Hay dos maneras de registrar componentes: global y local.
+Un componente Vue necesita ser "registrado" para que Vue sepa dónde localizar su implementación cuando se encuentre en un template. Hay dos maneras de registrar componentes: global y local.
 
 ## Registro Global {#global-registration}
 
@@ -42,7 +42,7 @@ app
   .component('ComponentC', ComponentC)
 ```
 
-Los componentes registrados globalmente pueden usarse en la plantilla de cualquier componente dentro de esta aplicación:
+Los componentes registrados globalmente pueden usarse en el template de cualquier componente dentro de esta aplicación:
 
 ```vue-html
 <!-- esto funcionará en cualquier componente dentro de la aplicación -->
@@ -134,8 +134,8 @@ A lo largo de la guía, estamos usando nombres PascalCase al registrar component
 
 1.  Los nombres PascalCase son identificadores JavaScript válidos. Esto facilita la importación y el registro de componentes en JavaScript. También ayuda a los IDEs con el autocompletado.
 
-2.  `<PascalCase />` hace más obvio que se trata de un componente Vue en lugar de un elemento HTML nativo en las plantillas. También diferencia los componentes Vue de los elementos personalizados (web components).
+2.  `<PascalCase />` hace más obvio que se trata de un componente Vue en lugar de un elemento HTML nativo en los templates. También diferencia los componentes Vue de los elementos personalizados (web components).
 
-Este es el estilo recomendado cuando se trabaja con SFC o plantillas de cadena. Sin embargo, como se discute en [Consideraciones sobre el Análisis de Templates en el DOM](/guide/essentials/component-basics#in-dom-template-parsing-caveats), las etiquetas PascalCase no son utilizables en plantillas en el DOM.
+Este es el estilo recomendado cuando se trabaja con SFC o templates de cadena. Sin embargo, como se discute en [Consideraciones sobre el Análisis de Templates en el DOM](/guide/essentials/component-basics#in-dom-template-parsing-caveats), las etiquetas PascalCase no son utilizables en templates en el DOM.
 
-Afortunadamente, Vue admite la resolución de etiquetas kebab-case a componentes registrados usando PascalCase. Esto significa que un componente registrado como `MyComponent` puede ser referenciado dentro de una plantilla Vue (o dentro de un elemento HTML renderizado por Vue) tanto a través de `<MyComponent>` como de `<my-component>`. Esto nos permite usar el mismo código de registro de componentes JavaScript independientemente de la fuente de la plantilla.
+Afortunadamente, Vue admite la resolución de etiquetas kebab-case a componentes registrados usando PascalCase. Esto significa que un componente registrado como `MyComponent` puede ser referenciado dentro de un template Vue (o dentro de un elemento HTML renderizado por Vue) tanto a través de `<MyComponent>` como de `<my-component>`. Esto nos permite usar el mismo código de registro de componentes JavaScript independientemente de la fuente de el template.

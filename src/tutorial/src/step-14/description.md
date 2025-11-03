@@ -1,6 +1,6 @@
 # Ranuras {#slots}
 
-Además de pasar datos a través de `props`, el componente padre también puede pasar fragmentos de plantilla al hijo a través de **ranuras**:
+Además de pasar datos a través de `props`, el componente padre también puede pasar fragmentos de template al hijo a través de **ranuras**:
 
 <div class="sfc">
 

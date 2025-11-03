@@ -53,7 +53,7 @@ Una de las formas más efectivas de mejorar el rendimiento de carga de página e
 
   - Muchas de las APIs de Vue son ["tree-shakable"](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking) si se empaquetan mediante una herramienta de compilación moderna. Por ejemplo, si no usas el componente incorporado `<Transition>`, no se incluirá en el bundle de producción final. El `Tree-shaking` también puede eliminar otros módulos no utilizados en tu código fuente.
 
-  - Al usar un paso de compilación, las plantillas se pre-compilan, por lo que no necesitamos enviar el compilador de Vue al navegador. Esto ahorra **14kb** de JavaScript min+gzipped y evita el costo de compilación en tiempo de ejecución.
+  - Al usar un paso de compilación, los templates se pre-compilan, por lo que no necesitamos enviar el compilador de Vue al navegador. Esto ahorra **14kb** de JavaScript min+gzipped y evita el costo de compilación en tiempo de ejecución.
 
 - ¡Ten cuidado con el tamaño al introducir nuevas dependencias! En aplicaciones del mundo real, los bundles hinchados suelen ser el resultado de introducir dependencias pesadas sin darse cuenta.
 

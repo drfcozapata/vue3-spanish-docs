@@ -33,7 +33,7 @@ El término _componente_ no es exclusivo de Vue. Es común a muchos frameworks d
 
 Los componentes son el mecanismo principal proporcionado por Vue para dividir una interfaz de usuario en piezas más pequeñas, tanto para mejorar la mantenibilidad como para permitir la reutilización de código.
 
-Un componente de Vue es un objeto. Todas las propiedades son opcionales, pero se requiere una template o una función de renderizado para que el componente se renderice. Por ejemplo, el siguiente objeto sería un componente válido:
+Un componente de Vue es un objeto. Todas las propiedades son opcionales, pero se requiere un template o una función de renderizado para que el componente se renderice. Por ejemplo, el siguiente objeto sería un componente válido:
 
 ```js
 const HelloWorldComponent = {

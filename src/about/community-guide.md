@@ -27,7 +27,7 @@ Nuestro [Código de Conducta](/about/coc) es una guía para facilitar el enrique
 - [Foro](https://forum.vuejs.org/): El mejor lugar para hacer preguntas y obtener respuestas sobre Vue y su ecosistema.
 - [Comunidad DEV](https://dev.to/t/vue): Comparte y discute temas relacionados con Vue en Dev.to.
 - [Meetups](https://events.vuejs.org/meetups): ¿Quieres encontrar entusiastas de Vue locales como tú? ¿Interesado en convertirte en un líder de la comunidad? ¡Tenemos la ayuda y el soporte que necesitas aquí mismo!
-- [GitHub](https://github.com/vuejs): Si tienes un error que reportar o una característica que solicitar, para eso están los issues de GitHub. Por favor, respeta las reglas especificadas en la plantilla de issues de cada repositorio.
+- [GitHub](https://github.com/vuejs): Si tienes un error que reportar o una característica que solicitar, para eso están los issues de GitHub. Por favor, respeta las reglas especificadas en el template de issues de cada repositorio.
 - [Comunidad de Twitter (no oficial)](https://twitter.com/i/communities/1516368750634840064): Una comunidad de Twitter, donde puedes conocer a otros entusiastas de Vue, obtener ayuda o simplemente charlar sobre Vue.
 
 ### Explora el Ecosistema {#explore-the-ecosystem}
@@ -63,8 +63,8 @@ Las correcciones de errores son bienvenidas en cualquier momento. Para nuevas ca
 
 Además de responder preguntas y compartir recursos en el foro y el chat, hay otras formas menos obvias de compartir y expandir lo que sabes:
 
--   **Desarrolla materiales de aprendizaje.** A menudo se dice que la mejor manera de aprender es enseñar. Si hay algo interesante que estás haciendo con Vue, fortalece tu experiencia escribiendo una entrada de blog, desarrollando un taller o incluso publicando un gist que compartas en las redes sociales.
--   **Sigue un repositorio que te interese.** Esto te enviará notificaciones cada vez que haya actividad en ese repositorio, dándote conocimiento interno sobre las discusiones en curso y las próximas características. Es una forma fantástica de desarrollar experiencia para que, con el tiempo, puedas ayudar a abordar issues y pull requests.
+- **Desarrolla materiales de aprendizaje.** A menudo se dice que la mejor manera de aprender es enseñar. Si hay algo interesante que estás haciendo con Vue, fortalece tu experiencia escribiendo una entrada de blog, desarrollando un taller o incluso publicando un gist que compartas en las redes sociales.
+- **Sigue un repositorio que te interese.** Esto te enviará notificaciones cada vez que haya actividad en ese repositorio, dándote conocimiento interno sobre las discusiones en curso y las próximas características. Es una forma fantástica de desarrollar experiencia para que, con el tiempo, puedas ayudar a abordar issues y pull requests.
 
 ### Traduce la Documentación {#translate-docs}
 
@@ -76,8 +76,8 @@ Consulta la [guía de Traducciones](/translations/) para obtener más detalles s
 
 Hay mucho que puedes hacer para ayudar a Vue a crecer en tu comunidad:
 
--   **Presenta en tu meetup local.** Ya sea dando una charla o dirigiendo un taller, puedes aportar mucho valor a tu comunidad ayudando a los desarrolladores de Vue, tanto nuevos como experimentados, a seguir creciendo.
--   **Inicia tu propio meetup.** Si aún no hay un meetup de Vue en tu área, ¡puedes iniciar el tuyo propio! ¡Usa los [recursos en events.vuejs.org](https://events.vuejs.org/resources/#getting-started) para ayudarte a tener éxito!
--   **Ayuda a los organizadores de meetups.** Nunca sobra la ayuda cuando se trata de organizar un evento, así que ofrece una mano para ayudar a los organizadores locales a que cada evento sea un éxito.
+- **Presenta en tu meetup local.** Ya sea dando una charla o dirigiendo un taller, puedes aportar mucho valor a tu comunidad ayudando a los desarrolladores de Vue, tanto nuevos como experimentados, a seguir creciendo.
+- **Inicia tu propio meetup.** Si aún no hay un meetup de Vue en tu área, ¡puedes iniciar el tuyo propio! ¡Usa los [recursos en events.vuejs.org](https://events.vuejs.org/resources/#getting-started) para ayudarte a tener éxito!
+- **Ayuda a los organizadores de meetups.** Nunca sobra la ayuda cuando se trata de organizar un evento, así que ofrece una mano para ayudar a los organizadores locales a que cada evento sea un éxito.
 
 Si tienes alguna pregunta sobre cómo puedes involucrarte más con tu comunidad local de Vue, ¡contáctanos en Twitter en [@vuejs_events](https://www.twitter.com/vuejs_events)!

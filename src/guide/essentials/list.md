@@ -38,7 +38,7 @@ data() {
 </li>
 ```
 
-Dentro del ámbito de `v-for`, las expresiones de plantilla tienen acceso a todas las propiedades del ámbito padre. Además, `v-for` también soporta un segundo alias opcional para el índice del elemento actual:
+Dentro del ámbito de `v-for`, las expresiones de template tienen acceso a todas las propiedades del ámbito padre. Además, `v-for` también soporta un segundo alias opcional para el índice del elemento actual:
 
 <div class="composition-api">
 
@@ -200,7 +200,7 @@ Y otro para el índice:
 
 ## `v-for` con un Rango {#v-for-with-a-range}
 
-`v-for` también puede tomar un entero. En este caso, repetirá la plantilla esa cantidad de veces, basándose en un rango de `1...n`.
+`v-for` también puede tomar un entero. En este caso, repetirá el template esa cantidad de veces, basándose en un rango de `1...n`.
 
 ```vue-html
 <span v-for="n in 10">{{ n }}</span>
@@ -210,7 +210,7 @@ Ten en cuenta que aquí `n` comienza con un valor inicial de `1` en lugar de `0`
 
 ## `v-for` en `<template>` {#v-for-on-template}
 
-Similar a la plantilla `v-if`, también puedes usar una etiqueta `<template>` con `v-for` para renderizar un bloque de múltiples elementos. Por ejemplo:
+Similar a el template `v-if`, también puedes usar una etiqueta `<template>` con `v-for` para renderizar un bloque de múltiples elementos. Por ejemplo:
 
 ```vue-html
 <ul>

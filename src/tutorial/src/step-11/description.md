@@ -2,7 +2,7 @@
 
 Hasta ahora, solo hemos estado trabajando con un único componente. Las aplicaciones Vue reales se crean típicamente con componentes anidados.
 
-Un componente padre puede renderizar otro componente en su plantilla como un componente hijo. Para usar un componente hijo, primero necesitamos importarlo:
+Un componente padre puede renderizar otro componente en su template como un componente hijo. Para usar un componente hijo, primero necesitamos importarlo:
 
 <div class="composition-api">
 <div class="sfc">
@@ -34,7 +34,7 @@ También necesitamos registrar el componente usando la opción `components`. Aqu
 
 <div class="sfc">
 
-Luego, podemos usar el componente en la plantilla como:
+Luego, podemos usar el componente en el template como:
 
 ```vue-html
 <ChildComp />
@@ -56,7 +56,7 @@ createApp({
 
 También necesitamos registrar el componente usando la opción `components`. Aquí estamos usando la abreviatura de propiedad de objeto para registrar el componente `ChildComp` bajo la clave `ChildComp`.
 
-Debido a que estamos escribiendo la plantilla en el DOM, estará sujeta a las reglas de análisis del navegador, que no distinguen entre mayúsculas y minúsculas para los nombres de etiquetas. Por lo tanto, necesitamos usar el nombre en `kebab-case` para referenciar el componente hijo:
+Debido a que estamos escribiendo el template en el DOM, estará sujeta a las reglas de análisis del navegador, que no distinguen entre mayúsculas y minúsculas para los nombres de etiquetas. Por lo tanto, necesitamos usar el nombre en `kebab-case` para referenciar el componente hijo:
 
 ```vue-html
 <child-comp></child-comp>
@@ -64,4 +64,4 @@ Debido a que estamos escribiendo la plantilla en el DOM, estará sujeta a las re
 
 </div>
 
-Ahora inténtalo tú mismo: importa el componente hijo y renderízalo en la plantilla.
+Ahora inténtalo tú mismo: importa el componente hijo y renderízalo en el template.

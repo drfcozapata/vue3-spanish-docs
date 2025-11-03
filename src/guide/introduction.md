@@ -83,7 +83,7 @@ const count = ref(0)
 
 El ejemplo anterior demuestra las dos características principales de Vue:
 
-- **Renderizado Declarativo**: Vue extiende el HTML estándar con una sintaxis de plantilla que nos permite describir declarativamente la salida HTML basándose en el estado de JavaScript.
+- **Renderizado Declarativo**: Vue extiende el HTML estándar con una sintaxis de template que nos permite describir declarativamente la salida HTML basándose en el estado de JavaScript.
 
 - **Reactividad**: Vue rastrea automáticamente los cambios de estado de JavaScript y actualiza de manera eficiente el DOM cuando ocurren cambios.
 
@@ -112,7 +112,7 @@ A pesar de la flexibilidad, el conocimiento central sobre cómo funciona Vue se 
 
 ## Componentes de un Solo Archivo {#single-file-components}
 
-En la mayoría de los proyectos Vue que utilizan herramientas de construcción, creamos componentes Vue usando un formato de archivo similar a HTML llamado **Componente de un Solo Archivo** (también conocido como archivos `*.vue`, abreviado como **SFC**). Un SFC de Vue, como su nombre indica, encapsula la lógica (JavaScript), la plantilla (HTML) y los estilos (CSS) del componente en un solo archivo. Aquí tienes el ejemplo anterior, escrito en formato SFC:
+En la mayoría de los proyectos Vue que utilizan herramientas de construcción, creamos componentes Vue usando un formato de archivo similar a HTML llamado **Componente de un Solo Archivo** (también conocido como archivos `*.vue`, abreviado como **SFC**). Un SFC de Vue, como su nombre indica, encapsula la lógica (JavaScript), el template (HTML) y los estilos (CSS) del componente en un solo archivo. Aquí tienes el ejemplo anterior, escrito en formato SFC:
 
 <div class="options-api">
 
@@ -173,25 +173,25 @@ Con Options API, definimos la lógica de un componente usando un objeto de opcio
 ```vue
 <script>
 export default {
-  // Properties returned from data() become reactive state
-  // and will be exposed on `this`.
+  // Las propiedades retornadas desde data() se tornan
+  // estado reactivo y se expondrán en `this`.
   data() {
     return {
       count: 0
     }
   },
 
-  // Methods are functions that mutate state and trigger updates.
-  // They can be bound as event handlers in templates.
+  // Los métodos son funciones que mutan el estado y disparan actualizaciones.
+  // Se pueden vincular como gestores de eventos en los templates.
   methods: {
     increment() {
       this.count++
     }
   },
 
-  // Lifecycle hooks are called at different stages
-  // of a component's lifecycle.
-  // This function will be called when the component is mounted.
+  // Los hooks del ciclo de vida se llaman en diferentes etapas
+  // del ciclo de vida del componente.
+  // Esta función se llamará cuando se monte el componente.
   mounted() {
     console.log(`La cuenta inicial es ${this.count}.`)
   }
@@ -207,23 +207,23 @@ export default {
 
 ### Composition API {#composition-api}
 
-Con Composition API, definimos la lógica de un componente usando funciones de API importadas. En SFC, Composition API se utiliza típicamente con [`<script setup>`](/api/sfc-script-setup). El atributo `setup` es una indicación que hace que Vue realice transformaciones en tiempo de compilación que nos permiten usar Composition API con menos boilerplate. Por ejemplo, las importaciones y las variables/funciones de nivel superior declaradas en `<script setup>` son directamente utilizables en la plantilla.
+Con Composition API, definimos la lógica de un componente usando funciones de API importadas. En SFC, Composition API se utiliza típicamente con [`<script setup>`](/api/sfc-script-setup). El atributo `setup` es una indicación que hace que Vue realice transformaciones en tiempo de compilación que nos permiten usar Composition API con menos boilerplate. Por ejemplo, las importaciones y las variables/funciones de nivel superior declaradas en `<script setup>` son directamente utilizables en el template.
 
-Aquí está el mismo componente, con la misma plantilla, pero usando Composition API y `<script setup>` en su lugar:
+Aquí está el mismo componente, con la misma template, pero usando Composition API y `<script setup>` en su lugar:
 
 ```vue
 <script setup>
 import { ref, onMounted } from 'vue'
 
-// reactive state
+// estado reactivo
 const count = ref(0)
 
-// functions that mutate state and trigger updates
+// funciones que mutan el estado y disparan actualizaciones
 function increment() {
   count.value++
 }
 
-// lifecycle hooks
+// hooks del ciclo de vida
 onMounted(() => {
   console.log(`La cuenta inicial es ${count.value}.`)
 })
@@ -244,7 +244,7 @@ La Options API se centra en el concepto de "instancia de componente" (`this` com
 
 La Composition API se centra en declarar variables de estado reactivas directamente en un ámbito de función y en componer el estado a partir de múltiples funciones para manejar la complejidad. Es más de estilo libre y requiere una comprensión de cómo funciona la reactividad en Vue para ser utilizada eficazmente. A cambio, su flexibilidad permite patrones más potentes para organizar y reutilizar la lógica.
 
-Puedes aprender más sobre la comparación entre los dos estilos y los beneficios potenciales de Composition API en las [Preguntas Frecuentes de Composition API](/guide/extras/composition-api-faq).
+Puedes aprender más sobre la comparación entre los dos estilos y los beneficios potenciales de Composition API en las [Preguntas Frecuentes de la Composition API](/guide/extras/composition-api-faq).
 
 Si eres nuevo en Vue, aquí está nuestra recomendación general:
 

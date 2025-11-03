@@ -4,7 +4,7 @@
 
 - Código más conciso con menos código repetitivo
 - Capacidad de declarar `props` y eventos emitidos usando TypeScript puro
-- Mejor rendimiento en tiempo de ejecución (la plantilla se compila en una función de renderizado en el mismo ámbito, sin un proxy intermedio)
+- Mejor rendimiento en tiempo de ejecución (el template se compila en una función de renderizado en el mismo ámbito, sin un proxy intermedio)
 - Mejor rendimiento de inferencia de tipos del IDE (menos trabajo para el servidor de lenguaje al extraer tipos del código)
 
 ## Sintaxis Básica {#basic-syntax}
@@ -19,9 +19,9 @@ console.log('hello script setup')
 
 El código dentro se compila como el contenido de la función `setup()` del componente. Esto significa que, a diferencia de un `<script>` normal, que solo se ejecuta una vez cuando el componente se importa por primera vez, el código dentro de `<script setup>` se **ejecutará cada vez que se cree una instancia del componente**.
 
-### Los bindings de nivel superior se exponen a la plantilla {#top-level-bindings-are-exposed-to-template}
+### Los bindings de nivel superior se exponen a el template {#top-level-bindings-are-exposed-to-template}
 
-Al usar `<script setup>`, cualquier binding de nivel superior (incluyendo variables, declaraciones de funciones e importaciones) declarado dentro de `<script setup>` es directamente utilizable en la plantilla:
+Al usar `<script setup>`, cualquier binding de nivel superior (incluyendo variables, declaraciones de funciones e importaciones) declarado dentro de `<script setup>` es directamente utilizable en el template:
 
 ```vue
 <script setup>
@@ -39,7 +39,7 @@ function log() {
 </template>
 ```
 
-Las importaciones se exponen de la misma manera. Esto significa que puedes usar directamente una función auxiliar importada en expresiones de plantilla sin tener que exponerla a través de la opción `methods`:
+Las importaciones se exponen de la misma manera. Esto significa que puedes usar directamente una función auxiliar importada en expresiones de template sin tener que exponerla a través de la opción `methods`:
 
 ```vue
 <script setup>
@@ -53,7 +53,7 @@ import { capitalize } from './helpers'
 
 ## Reactividad {#reactivity}
 
-El estado reactivo debe crearse explícitamente usando las [Reactivity APIs](./reactivity-core). Similar a los valores devueltos por una función `setup()`, las `ref` se desenvuelven automáticamente cuando se referencian en plantillas:
+El estado reactivo debe crearse explícitamente usando las [Reactivity APIs](./reactivity-core). Similar a los valores devueltos por una función `setup()`, las `ref` se desenvuelven automáticamente cuando se referencian en templates:
 
 ```vue
 <script setup>
@@ -81,7 +81,7 @@ import MyComponent from './MyComponent.vue'
 </template>
 ```
 
-Piensa en `MyComponent` como si fuera referenciado como una variable. Si has usado JSX, el modelo mental es similar aquí. El equivalente en `kebab-case` `<my-component>` también funciona en la plantilla; sin embargo, se recomienda encarecidamente usar etiquetas de componentes en `PascalCase` para mantener la coherencia. También ayuda a diferenciarlos de los elementos personalizados nativos.
+Piensa en `MyComponent` como si fuera referenciado como una variable. Si has usado JSX, el modelo mental es similar aquí. El equivalente en `kebab-case` `<my-component>` también funciona en el template; sin embargo, se recomienda encarecidamente usar etiquetas de componentes en `PascalCase` para mantener la coherencia. También ayuda a diferenciarlos de los elementos personalizados nativos.
 
 ### Componentes Dinámicos {#dynamic-components}
 
@@ -103,7 +103,7 @@ Observa cómo los componentes pueden usarse como variables en una expresión ter
 
 ### Componentes Recursivos {#recursive-components}
 
-Un SFC puede referirse implícitamente a sí mismo a través de su nombre de archivo. Por ejemplo, un archivo llamado `FooBar.vue` puede referirse a sí mismo como `<FooBar/>` en su plantilla.
+Un SFC puede referirse implícitamente a sí mismo a través de su nombre de archivo. Por ejemplo, un archivo llamado `FooBar.vue` puede referirse a sí mismo como `<FooBar/>` en su template.
 
 Ten en cuenta que esto tiene menor prioridad que los componentes importados. Si tienes una importación nombrada que entra en conflicto con el nombre inferido del componente, puedes aliasar la importación:
 
@@ -408,7 +408,7 @@ defineOptions({
 
 Este macro se puede usar para proporcionar sugerencias de tipo a los IDEs para la comprobación de tipos del nombre y las `props` del slot.
 
-`defineSlots()` solo acepta un parámetro de tipo y ningún argumento en tiempo de ejecución. El parámetro de tipo debe ser un tipo literal donde la clave de la propiedad sea el nombre del slot, y el tipo de valor sea la función del slot. El primer argumento de la función son las `props` que el slot espera recibir, y su tipo se usará para las `slot props` en la plantilla. El tipo de retorno se ignora actualmente y puede ser `any`, pero podríamos aprovecharlo para la comprobación del contenido del slot en el futuro.
+`defineSlots()` solo acepta un parámetro de tipo y ningún argumento en tiempo de ejecución. El parámetro de tipo debe ser un tipo literal donde la clave de la propiedad sea el nombre del slot, y el tipo de valor sea la función del slot. El primer argumento de la función son las `props` que el slot espera recibir, y su tipo se usará para las `slot props` en el template. El tipo de retorno se ignora actualmente y puede ser `any`, pero podríamos aprovecharlo para la comprobación del contenido del slot en el futuro.
 
 También devuelve el objeto `slots`, que es equivalente al objeto `slots` expuesto en el contexto `setup` o devuelto por `useSlots()`.
 
@@ -422,7 +422,7 @@ const slots = defineSlots<{
 
 ## useSlots() & useAttrs() {#useslots-useattrs}
 
-El uso de `slots` y `attrs` dentro de `<script setup>` debería ser relativamente raro, ya que puedes acceder a ellos directamente como `$slots` y `$attrs` en la plantilla. En el raro caso en que los necesites, usa los asistentes `useSlots` y `useAttrs` respectivamente:
+El uso de `slots` y `attrs` dentro de `<script setup>` debería ser relativamente raro, ya que puedes acceder a ellos directamente como `$slots` y `$attrs` en el template. En el raro caso en que los necesites, usa los asistentes `useSlots` y `useAttrs` respectivamente:
 
 ```vue
 <script setup>
@@ -531,7 +531,11 @@ Puedes usar la directiva `@vue-generic` para pasar tipos explícitos, para cuand
 ```vue
 <template>
   <!-- @vue-generic {import('@/api').Actor} -->
-  <ApiSelect v-model="peopleIds" endpoint="/api/actors" id-prop="actorId" />
+  <ApiSelect
+    v-model="peopleIds"
+    endpoint="/api/actors"
+    id-prop="actorId"
+  />
 
   <!-- @vue-generic {import('@/api').Genre} -->
   <ApiSelect v-model="genreIds" endpoint="/api/genres" id-prop="genreId" />
@@ -559,4 +563,4 @@ ref<ComponentExposed<typeof genericComponent>>();
 ## Restricciones {#restrictions}
 
 - Debido a la diferencia en la semántica de ejecución de módulos, el código dentro de `<script setup>` depende del contexto de un SFC. Cuando se mueve a archivos `.js` o `.ts` externos, puede generar confusión tanto para desarrolladores como para herramientas. Por lo tanto, **`<script setup>`** no se puede usar con el atributo `src`.
-- `<script setup>` no admite la plantilla de componente raíz en el DOM. ([Discusión Relacionada](https://github.com/vuejs/core/issues/8391))
+- `<script setup>` no admite el template de componente raíz en el DOM. ([Discusión Relacionada](https://github.com/vuejs/core/issues/8391))

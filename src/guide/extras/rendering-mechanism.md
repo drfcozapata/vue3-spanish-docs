@@ -4,7 +4,7 @@ outline: deep
 
 # Mecanismo de Renderizado {#rendering-mechanism}
 
-¿Cómo toma Vue una plantilla y la convierte en nodos DOM reales? ¿Cómo actualiza Vue esos nodos DOM de manera eficiente? Aquí intentaremos arrojar luz sobre estas preguntas adentrándonos en el mecanismo de renderizado interno de Vue.
+¿Cómo toma Vue un template y la convierte en nodos DOM reales? ¿Cómo actualiza Vue esos nodos DOM de manera eficiente? Aquí intentaremos arrojar luz sobre estas preguntas adentrándonos en el mecanismo de renderizado interno de Vue.
 
 ## DOM Virtual {#virtual-dom}
 
@@ -38,7 +38,7 @@ El principal beneficio del DOM virtual es que le da al desarrollador la capacida
 
 A un alto nivel, esto es lo que sucede cuando se monta un componente Vue:
 
-1.  **Compilación**: Las plantillas de Vue se compilan en **funciones de renderizado**: funciones que devuelven árboles DOM virtuales. Este paso se puede realizar tanto de forma anticipada mediante un paso de compilación, como sobre la marcha utilizando el compilador en tiempo de ejecución.
+1.  **Compilación**: Los templates de Vue se compilan en **funciones de renderizado**: funciones que devuelven árboles DOM virtuales. Este paso se puede realizar tanto de forma anticipada mediante un paso de compilación, como sobre la marcha utilizando el compilador en tiempo de ejecución.
 
 2.  **Montaje**: El renderizador en tiempo de ejecución invoca las funciones de renderizado, recorre el árbol DOM virtual devuelto y crea nodos DOM reales basados en él. Este paso se realiza como un [efecto reactivo](./reactivity-in-depth), por lo que rastrea todas las dependencias reactivas que se utilizaron.
 
@@ -48,29 +48,29 @@ A un alto nivel, esto es lo que sucede cuando se monta un componente Vue:
 
 <!-- https://www.figma.com/file/elViLsnxGJ9lsQVsuhwqxM/Rendering-Mechanism -->
 
-## Plantillas vs. Funciones de Renderizado {#templates-vs-render-functions}
+## Templates vs. Funciones de Renderizado {#templates-vs-render-functions}
 
-Las plantillas de Vue se compilan en funciones de renderizado de DOM virtual. Vue también proporciona APIs que nos permiten omitir el paso de compilación de plantillas y crear directamente funciones de renderizado. Las funciones de renderizado son más flexibles que las plantillas cuando se trata de lógica altamente dinámica, porque puedes trabajar con vnodes usando todo el poder de JavaScript.
+Los templates de Vue se compilan en funciones de renderizado de DOM virtual. Vue también proporciona APIs que nos permiten omitir el paso de compilación de templates y crear directamente funciones de renderizado. Las funciones de renderizado son más flexibles que los templates cuando se trata de lógica altamente dinámica, porque puedes trabajar con vnodes usando todo el poder de JavaScript.
 
-Entonces, ¿por qué Vue recomienda las plantillas por defecto? Hay varias razones:
+Entonces, ¿por qué Vue recomienda los templates por defecto? Hay varias razones:
 
-1.  Las plantillas están más cerca del HTML real. Esto facilita la reutilización de fragmentos de HTML existentes, la aplicación de las mejores prácticas de accesibilidad, el estilo con CSS y que los diseñadores las entiendan y modifiquen.
+1.  Los templates están más cerca del HTML real. Esto facilita la reutilización de fragmentos de HTML existentes, la aplicación de las mejores prácticas de accesibilidad, el estilo con CSS y que los diseñadores las entiendan y modifiquen.
 
-2.  Las plantillas son más fáciles de analizar estáticamente debido a su sintaxis más determinista. Esto permite que el compilador de plantillas de Vue aplique muchas optimizaciones en tiempo de compilación para mejorar el rendimiento del DOM virtual (lo cual discutiremos a continuación).
+2.  Los templates son más fáciles de analizar estáticamente debido a su sintaxis más determinista. Esto permite que el compilador de templates de Vue aplique muchas optimizaciones en tiempo de compilación para mejorar el rendimiento del DOM virtual (lo cual discutiremos a continuación).
 
-En la práctica, las plantillas son suficientes para la mayoría de los casos de uso en las aplicaciones. Las funciones de renderizado se utilizan típicamente solo en componentes reutilizables que necesitan manejar lógica de renderizado altamente dinámica. El uso de funciones de renderizado se discute con más detalle en [Funciones de Renderizado y JSX](./render-function).
+En la práctica, los templates son suficientes para la mayoría de los casos de uso en las aplicaciones. Las funciones de renderizado se utilizan típicamente solo en componentes reutilizables que necesitan manejar lógica de renderizado altamente dinámica. El uso de funciones de renderizado se discute con más detalle en [Funciones de Renderizado y JSX](./render-function).
 
 ## DOM Virtual con Información del Compilador {#compiler-informed-virtual-dom}
 
 La implementación del DOM virtual en React y la mayoría de las otras implementaciones de DOM virtual son puramente en tiempo de ejecución: el algoritmo de reconciliación no puede hacer ninguna suposición sobre el árbol DOM virtual entrante, por lo que tiene que recorrer completamente el árbol y comparar las `props` de cada `vnode` para asegurar la corrección. Además, incluso si una parte del árbol nunca cambia, siempre se crean nuevos `vnodes` para ellas en cada nuevo renderizado, lo que resulta en una presión de memoria innecesaria. Este es uno de los aspectos más criticados del DOM virtual: el proceso de reconciliación algo de fuerza bruta sacrifica la eficiencia a cambio de la declarativad y la corrección.
 
-Pero no tiene por qué ser así. En Vue, el framework controla tanto el compilador como el tiempo de ejecución. Esto nos permite implementar muchas optimizaciones en tiempo de compilación de las que solo un renderizador estrechamente acoplado puede aprovechar. El compilador puede analizar estáticamente la plantilla y dejar pistas en el código generado para que el tiempo de ejecución pueda tomar atajos siempre que sea posible. Al mismo tiempo, todavía preservamos la capacidad para que el usuario descienda a la capa de la función de renderizado para un control más directo en casos extremos. A este enfoque híbrido lo llamamos **DOM Virtual con Información del Compilador**.
+Pero no tiene por qué ser así. En Vue, el framework controla tanto el compilador como el tiempo de ejecución. Esto nos permite implementar muchas optimizaciones en tiempo de compilación de las que solo un renderizador estrechamente acoplado puede aprovechar. El compilador puede analizar estáticamente el template y dejar pistas en el código generado para que el tiempo de ejecución pueda tomar atajos siempre que sea posible. Al mismo tiempo, todavía preservamos la capacidad para que el usuario descienda a la capa de la función de renderizado para un control más directo en casos extremos. A este enfoque híbrido lo llamamos **DOM Virtual con Información del Compilador**.
 
-A continuación, discutiremos algunas de las principales optimizaciones realizadas por el compilador de plantillas de Vue para mejorar el rendimiento en tiempo de ejecución del DOM virtual.
+A continuación, discutiremos algunas de las principales optimizaciones realizadas por el compilador de templates de Vue para mejorar el rendimiento en tiempo de ejecución del DOM virtual.
 
 ### Caché Estática {#cache-static}
 
-Con bastante frecuencia habrá partes en una plantilla que no contengan ningún enlace dinámico:
+Con bastante frecuencia habrá partes en un template que no contengan ningún enlace dinámico:
 
 ```vue-html{2-3}
 <div>
@@ -121,7 +121,7 @@ if (vnode.patchFlag & PatchFlags.CLASS /* 2 */) {
 
 Las verificaciones bit a bit son extremadamente rápidas. Con las banderas de parcheo, Vue es capaz de realizar la menor cantidad de trabajo necesario al actualizar elementos con enlaces dinámicos.
 
-Vue también codifica el tipo de hijos que tiene un `vnode`. Por ejemplo, una plantilla que tiene múltiples nodos raíz se representa como un fragmento. En la mayoría de los casos, sabemos con seguridad que el orden de estos nodos raíz nunca cambiará, por lo que esta información también puede proporcionarse al tiempo de ejecución como una bandera de parcheo:
+Vue también codifica el tipo de hijos que tiene un `vnode`. Por ejemplo, un template que tiene múltiples nodos raíz se representa como un fragmento. En la mayoría de los casos, sabemos con seguridad que el orden de estos nodos raíz nunca cambiará, por lo que esta información también puede proporcionarse al tiempo de ejecución como una bandera de parcheo:
 
 ```js{4}
 export function render() {
@@ -145,7 +145,7 @@ export function render() {
 }
 ```
 
-Conceptualmente, un "bloque" es una parte de la plantilla que tiene una estructura interna estable. En este caso, toda la plantilla tiene un único bloque porque no contiene directivas estructurales como `v-if` y `v-for`.
+Conceptualmente, un "bloque" es una parte de el template que tiene una estructura interna estable. En este caso, toda el template tiene un único bloque porque no contiene directivas estructurales como `v-if` y `v-for`.
 
 Cada bloque rastrea cualquier nodo descendiente (no solo hijos directos) que tenga banderas de parcheo. Por ejemplo:
 
@@ -167,7 +167,7 @@ div (block root)
 - div con enlace {{ bar }}
 ```
 
-Cuando este componente necesita volver a renderizarse, solo necesita recorrer el árbol aplanado en lugar del árbol completo. Esto se llama **Aplanamiento de Árbol**, y reduce en gran medida el número de nodos que deben ser recorridos durante la reconciliación del DOM virtual. Cualquier parte estática de la plantilla se omite efectivamente.
+Cuando este componente necesita volver a renderizarse, solo necesita recorrer el árbol aplanado en lugar del árbol completo. Esto se llama **Aplanamiento de Árbol**, y reduce en gran medida el número de nodos que deben ser recorridos durante la reconciliación del DOM virtual. Cualquier parte estática de el template se omite efectivamente.
 
 Las directivas `v-if` y `v-for` crearán nuevos nodos de bloque:
 
@@ -187,6 +187,6 @@ Un bloque hijo se rastrea dentro del array de descendientes dinámicos del bloqu
 
 Tanto las banderas de parcheo como el aplanamiento de árbol también mejoran enormemente el rendimiento de la [Hidratación SSR](/guide/scaling-up/ssr#client-hydration) de Vue:
 
--   La hidratación de un solo elemento puede tomar rutas rápidas basadas en la bandera de parcheo del `vnode` correspondiente.
+- La hidratación de un solo elemento puede tomar rutas rápidas basadas en la bandera de parcheo del `vnode` correspondiente.
 
--   Solo los nodos de bloque y sus descendientes dinámicos necesitan ser recorridos durante la hidratación, logrando efectivamente una hidratación parcial a nivel de plantilla.
+- Solo los nodos de bloque y sus descendientes dinámicos necesitan ser recorridos durante la hidratación, logrando efectivamente una hidratación parcial a nivel de template.
