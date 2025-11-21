@@ -29,28 +29,6 @@
     "platinum": true
   },
   {
-    "name": "Passionate People",
-    "logo": "passionatepeople.png",
-    "flipLogo": true,
-    "intro": "Te proporcionamos capacidad técnica adicional para impulsar tus viajes de transformación digital con nuestros equipos de ingenieros y consultores de primera clase. Ingenieros Full Stack de JavaScript en la Nube listos para trabajar contigo y tus equipos.",
-    "description": [
-      "Fundada en octubre de 2017, Passionate People es la consultora de JavaScript líder en los Países Bajos.",
-      "Nuestro objetivo es ayudar a nuestros clientes a acelerar sus iniciativas de transformación digital a escala, y nuestro estándar es el más alto del sector.",
-      "Contamos con una amplia base de clientes que abarca industrias como FinTech, E-commerce, Logística, Cadena de Suministro, Automatización Industrial, etc. Para lograr sus objetivos digitales y hacer que sus productos sean escalables y seguros para millones de usuarios, empresas como Albert Heijn Digital, GrandVision, Nationale Nederlanden, Talpa y AKQA han confiado en nosotros para entregar un trabajo de primera categoría.",
-      "Además de ser la consultora de JavaScript líder en los Países Bajos, Passionate People también se enorgullece de organizar las conferencias tecnológicas y eventos comunitarios más grandes del mundo.",
-      "Comenzando en febrero de 2018 con Frontend Love y Vue.js Amsterdam, ahora somos responsables de muchas otras conferencias en Europa bajo la marca Frontend Love: React Live, AngularNL, Vue.js Amsterdam y JS World Conference."
-    ],
-    "proficiencies": ["Vue", "Nuxt", "Node.js", "JAMStack"],
-    "region": ["Europa"],
-    "location": ["Ámsterdam, Países Bajos"],
-    "website": {
-      "text": "passionatepeople.io",
-      "url": "https://passionatepeople.io/"
-    },
-    "contact": "info@passionatepeople.io",
-    "platinum": true
-  },
-  {
     "name": "Monterail",
     "logo": "monterail.png",
     "hero": "monterail-hero.png",

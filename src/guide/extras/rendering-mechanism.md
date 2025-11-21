@@ -10,7 +10,7 @@ outline: deep
 
 Probablemente hayas oído hablar del término "DOM virtual", en el que se basa el sistema de renderizado de Vue.
 
-El DOM virtual (VDOM) es un concepto de programación en el que se mantiene en memoria una representación ideal, o “virtual”, de una interfaz de usuario y se sincroniza con el DOM “real”. El concepto fue pionero en [React](https://reactjs.org/) y ha sido adoptado en muchos otros frameworks con diferentes implementaciones, incluido Vue.
+El DOM virtual (VDOM) es un concepto de programación en el que se mantiene en memoria una representación ideal, o “virtual”, de una interfaz de usuario y se sincroniza con el DOM “real”. El concepto fue pionero en [React](https://react.dev/) y ha sido adoptado en muchos otros frameworks con diferentes implementaciones, incluido Vue.
 
 El DOM virtual es más un patrón que una tecnología específica, por lo que no existe una implementación canónica única. Podemos ilustrar la idea utilizando un ejemplo simple:
 

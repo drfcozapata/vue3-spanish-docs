@@ -43,7 +43,7 @@ También puede intentar convencer a su empleador de que patrocine Vue como empre
 - **Patrocinador Especial Global**:
   - Limitado a **un** patrocinador a nivel global. <span v-if="!data?.special">Actualmente vacante. ¡[Póngase en contacto](mailto:sponsor@vuejs.org?subject=Vue.js%20special%20sponsor%20inquiry)!</span><span v-else>(Actualmente ocupado)</span>
   - (Exclusivo) Colocación del logo **en la parte superior visible** de la página principal de [vuejs.org](/).
-  - (Exclusivo) Mención especial y retweets regulares de lanzamientos de productos importantes a través de la [cuenta oficial de X de Vue](https://twitter.com/vuejs) (320k seguidores).
+  - (Exclusivo) Mención especial y retweets regulares de lanzamientos de productos importantes a través de la [cuenta oficial de X de Vue](https://x.com/vuejs) (320k seguidores).
   - Colocación del logo más prominente en todas las ubicaciones de los niveles inferiores.
 - **Platino (USD$2,000/mes)**:
   - Colocación prominente del logo en la página principal de [vuejs.org](/).

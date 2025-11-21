@@ -252,7 +252,7 @@ Los tests de extremo a extremo no importan ningún código de tu aplicación Vue
 
 Los tests de extremo a extremo validan muchas de las capas de tu aplicación. Pueden dirigirse a tu aplicación construida localmente o incluso a un entorno de staging en vivo. Probar contra tu entorno de staging no solo incluye tu código frontend y servidor estático, sino todos los servicios e infraestructura de backend asociados.
 
-> Cuanto más se parezcan tus tests a cómo se usa tu software, más confianza te pueden dar. - [Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106) - Autor de Testing Library
+> Cuanto más se parezcan tus tests a cómo se usa tu software, más confianza te pueden dar. - [Kent C. Dodds](https://x.com/kentcdodds/status/977018512689455106) - Autor de Testing Library
 
 Al probar cómo las acciones del usuario impactan en tu aplicación, los tests E2E suelen ser la clave para una mayor confianza en si una aplicación funciona correctamente o no.
 

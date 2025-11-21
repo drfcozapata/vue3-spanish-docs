@@ -16,10 +16,10 @@ Nuestro [Código de Conducta](/about/coc) es una guía para facilitar el enrique
 
 ### Mantente Informado {#stay-in-the-know}
 
-- Sigue nuestra [cuenta oficial de Twitter](https://twitter.com/vuejs).
+- Sigue nuestra [cuenta oficial de Twitter](https://x.com/vuejs).
 - Sigue a los [miembros de nuestro equipo](./team) en Twitter o GitHub.
 - Sigue las [discusiones RFC](https://github.com/vuejs/rfcs).
-- Suscríbete al [blog oficial](https://blog.vuejs.org/).
+- # Suscríbete al [blog oficial](https://blog.vuejs.org/).
 
 ### Obtén Soporte {#get-support}
 
@@ -28,7 +28,7 @@ Nuestro [Código de Conducta](/about/coc) es una guía para facilitar el enrique
 - [Comunidad DEV](https://dev.to/t/vue): Comparte y discute temas relacionados con Vue en Dev.to.
 - [Meetups](https://events.vuejs.org/meetups): ¿Quieres encontrar entusiastas de Vue locales como tú? ¿Interesado en convertirte en un líder de la comunidad? ¡Tenemos la ayuda y el soporte que necesitas aquí mismo!
 - [GitHub](https://github.com/vuejs): Si tienes un error que reportar o una característica que solicitar, para eso están los issues de GitHub. Por favor, respeta las reglas especificadas en el template de issues de cada repositorio.
-- [Comunidad de Twitter (no oficial)](https://twitter.com/i/communities/1516368750634840064): Una comunidad de Twitter, donde puedes conocer a otros entusiastas de Vue, obtener ayuda o simplemente charlar sobre Vue.
+- [Comunidad de Twitter (no oficial)](https://x.com/i/communities/1516368750634840064): Una comunidad de Twitter, donde puedes conocer a otros entusiastas de Vue, obtener ayuda o simplemente charlar sobre Vue.
 
 ### Explora el Ecosistema {#explore-the-ecosystem}
 
@@ -80,4 +80,4 @@ Hay mucho que puedes hacer para ayudar a Vue a crecer en tu comunidad:
 - **Inicia tu propio meetup.** Si aún no hay un meetup de Vue en tu área, ¡puedes iniciar el tuyo propio! ¡Usa los [recursos en events.vuejs.org](https://events.vuejs.org/resources/#getting-started) para ayudarte a tener éxito!
 - **Ayuda a los organizadores de meetups.** Nunca sobra la ayuda cuando se trata de organizar un evento, así que ofrece una mano para ayudar a los organizadores locales a que cada evento sea un éxito.
 
-Si tienes alguna pregunta sobre cómo puedes involucrarte más con tu comunidad local de Vue, ¡contáctanos en Twitter en [@vuejs_events](https://www.twitter.com/vuejs_events)!
+Si tienes alguna pregunta sobre cómo puedes involucrarte más con tu comunidad local de Vue, ¡contáctanos en Twitter en [@vuejs_events](https://www.x.com/vuejs_events)!
