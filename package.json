@@ -29,14 +29,8 @@
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "pnpm@10.33.0",
-  "pnpm": {
-    "overrides": {
-      "vitepress>vite": "npm:vite@8.0.7"
-    },
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "vue-demi"
-    ]
-  }
+  "overrides": {
+    "vitepress>vite": "npm:vite@8.0.7"
+  },
+  "packageManager": "pnpm@11.9.0"
 }
